@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "61fec6bda333632cd8582c04"
+  },
+  "email": "henri.talfumier@wanadoo.fr",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61fec6c3a333632cd8582c08"
+  },
+  "email": "henri.talfumier@wanadoo.fr",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61ff775cb8f6003f341c7e0e"
+  },
+  "email": "xxxx@cc.vv",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61ff78dbb8f6003f341c7e12"
+  },
+  "email": "xxxx@cc.vv",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62ebf580d08c0a02c2c16b30"
+  },
+  "email": "nnon@test.com",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62f3489b412657e85506c67b"
+  },
+  "email": "henri.talfumier11@wanadoo.fr",
+  "__v": 0
+}]

@@ -1,0 +1,13 @@
+div .comment {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  border-color:rgb(82, 169, 185); ;
+  height: 100%; /* if you want Flexible textarea/div then give min-height instead of height */
+  overflow: auto;
+  resize:vertical;
+  max-width:"30%";
+  font-size: 15px;
+  color: rgb(82, 82, 185);
+  background-color: rgba(233, 243, 243, 0.918);
+}

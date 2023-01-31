@@ -1,0 +1,405 @@
+[
+  {
+    "id_user": {
+      "$oid": "5d1b9971ffb6ee0025cc1f79"
+    },
+    "siret": "253662563",
+    "siren": "1352646",
+    "assuranceNumber": "256336599",
+    "__v": 0,
+    "address": {
+      "address": "62 rue de guinot",
+      "postcode": "31330",
+      "city": "merville",
+      "country": "France"
+    },
+    "code_parrainage_given_to_pro": 2,
+    "code_parrainage_given": 1,
+    "tarif": 10,
+    "updatedAt": {
+      "$date": "2022-07-22T12:28:07.854Z"
+    }
+  },
+  {
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "000",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given": 0,
+    "__v": 0,
+    "address": {
+      "address": "abc",
+      "city": "def",
+      "postcode": "312000",
+      "country": "France"
+    },
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "code_parrainage_used": "pechmerle",
+    "code_parrainage_given_to_pro": 0,
+    "__v": 0,
+    "code_parrainage": "001ef16543",
+    "address": {
+      "address": "Ferme équestre du Pech Merle​",
+      "postcode": "46330",
+      "city": "CABRERETS",
+      "country": "FRANCE"
+    },
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e71dfe9b6855d3e29a84205"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given_to_pro": 0,
+    "tarif": 10,
+    "__v": 0,
+    "code_parrainage": "3e29a84205"
+  },
+  {
+    "id_user": {
+      "$oid": "5e736f11d9e764001ef16546"
+    },
+    "corpName": "Ferme équestre La Haie Dû",
+    "siret": "",
+    "siren": "438 282 261",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "FERME EQUESTRE LA HAIE DU",
+    "checkAdress": "Ferme équestre \"La Haie du\" - 29270 SAINT HERNIN",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given_to_pro": 0,
+    "__v": 0,
+    "code_parrainage": "001ef16546",
+    "address": {},
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "siret": "447 733 296",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "Cavalquinta",
+    "checkAdress": "« La Bergerie du Quintanel » 30770 BLANDAS",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given_to_pro": 0,
+    "__v": 0,
+    "code_parrainage": "001ef16548",
+    "address": {
+      "address": "« La Bergerie du Quintanel »",
+      "postcode": "30770",
+      "city": "BLANDAS",
+      "country": "FRANCE"
+    },
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e7653fbd9e764001ef1654e"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given": 0,
+    "__v": 0,
+    "address": {
+      "address": "Les Cognets",
+      "postcode": "22400",
+      "city": "PLURIEN",
+      "country": "FRANCE"
+    },
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e77a115d9e764001ef1654f"
+    },
+    "corpName": "SABLES D'OR EQUITATION",
+    "siret": "",
+    "siren": "838 735 991",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "SABLES D'OR EQUITATION",
+    "checkAdress": "LES COGNETS 22240 PLURIEN",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given_to_pro": 0,
+    "__v": 0,
+    "code_parrainage": "001ef1654f",
+    "address": {
+      "address": "Les Cognets",
+      "postcode": "22400",
+      "city": "PLURIEN",
+      "country": "FRANCE"
+    },
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e81b244d9e764001ef16556"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "address": {
+      "address": "32, rue d'orditour",
+      "city": "toulouse",
+      "postcode": "31000",
+      "country": "france"
+    },
+    "__v": 0,
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e8ad2b423f97a001eb4117f"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given_to_pro": 0,
+    "__v": 0,
+    "code_parrainage": "001eb4117f",
+    "address": {
+      "address": "145, route de la Serva",
+      "postcode": "67130",
+      "city": "BELMONT",
+      "country": "FRANCE"
+    },
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "5e981ea89e2e6a001f840497"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given_to_pro": 1,
+    "__v": 0,
+    "code_parrainage": "001f840497",
+    "tarif": 10,
+    "updatedAt": {
+      "$date": "2022-07-26T12:33:08.269Z"
+    },
+    "code_parrainage_given": 3
+  },
+  {
+    "id_user": {
+      "$oid": "5eea10cd9e2e6a001f8404a6"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "code_parrainage_used": "",
+    "code_parrainage_given": 0,
+    "__v": 0,
+    "address": {
+      "address": "1 rue de la Pie",
+      "city": "Pigarde",
+      "postcode": "31987",
+      "country": "France"
+    },
+    "tarif": 10
+  },
+  {
+    "id_user": {
+      "$oid": "603f59a56839f4001e3640c9"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "tarif": 10,
+    "code_parrainage_used": "",
+    "code_parrainage_given": 0,
+    "__v": 0
+  },
+  {
+    "id_user": {
+      "$oid": "62550fb66839f4001e3640cf"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "penalty": 0,
+    "tarif": 28,
+    "code_parrainage_used": "henri",
+    "code_parrainage_given": 0,
+    "__v": 0,
+    "address": {
+      "address": "4, impasse du pigeonnier",
+      "postcode": "31330",
+      "city": "LARRA",
+      "country": "France"
+    },
+    "updatedAt": {
+      "$date": "2022-10-20T18:25:08.046Z"
+    }
+  },
+  {
+    "id_user": {
+      "$oid": "62dfdf0403c4b5ade42d23a0"
+    },
+    "siret": "",
+    "siren": "",
+    "assuranceNumber": "",
+    "bankCode": "",
+    "guichetCode": "",
+    "numberAccount": "",
+    "bic": "",
+    "iban": "",
+    "checkNumber": "",
+    "checkAccount": "",
+    "checkOrder": "",
+    "checkAdress": "",
+    "code_parrainage_used": "001f840497",
+    "penalty": 0,
+    "tarif": 10,
+    "createdAt": {
+      "$date": "2022-07-26T12:33:08.157Z"
+    },
+    "updatedAt": {
+      "$date": "2022-07-26T12:33:08.157Z"
+    },
+    "__v": 0
+  }
+]

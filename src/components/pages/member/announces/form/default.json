@@ -1,0 +1,226 @@
+{
+  "_id": {"name": "_id", "data": {"default": "", "saved": ""}},
+  "id_user": {"name": "id_user", "data": {"default": "", "saved": ""}},
+  "title": {
+    "name": "title",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "description": {
+    "name": "description",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "typicalDay": {
+    "name": "typicalDay",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "horseDescription": {
+    "name": "horseDescription",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "saddleryDescription": {
+    "name": "saddleryDescription",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "supervisingDescription": {
+    "name": "supervisingDescription",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "mealDescription": {
+    "name": "mealDescription",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "howToGoTo": {
+    "name": "howToGoTo",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "accommodationDescription": {
+    "name": "accommodationDescription",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "included": {
+    "name": "included",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "notIncluded": {
+    "name": "notIncluded",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "establishment": {
+    "name": "establishment",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "infosAdditional": {
+    "name": "infosAdditional",
+    "data": {"default": {"en": "", "fr": ""}, "saved": {}}
+  },
+  "destination": {
+    "name": "destination",
+    "data": {"default": [], "saved": ""}
+  },
+  "city": {"name": "city", "data": {"default": "", "saved": ""}},
+  "postalCode": {
+    "name": "postalCode",
+    "data": {"default": "", "saved": ""}
+  },
+  "position": {
+    "name": "position",
+    "data": {"default": {"lat": 0, "lng": 0}, "saved": {}}
+  },
+  "category": {
+    "name": "category",
+    "data": {"default": "", "saved": ""}
+  },
+  "nbDays": {"name": "nbDays", "data": {"default": "3", "saved": ""}},
+  "nbNights": {"name": "nbNights", "data": {"default": "0", "saved": ""}},
+  "frenchLevel": {"name": "frenchLevel", "data": {"default": 5, "saved": ""}},
+  "englishLevel": {
+    "name": "englishLevel",
+    "data": {"default": 2, "saved": ""}
+  },
+  "germanLevel": {"name": "germanLevel", "data": {"default": 2, "saved": ""}},
+  "spanishLevel": {
+    "name": "spanishLevel",
+    "data": {"default": 2, "saved": ""}
+  },
+  "openToAdults": {
+    "name": "openToAdults",
+    "data": {"default": true, "saved": ""}
+  },
+  "openToChildren": {
+    "name": "openToChildren",
+    "data": {"default": true, "saved": ""}
+  },
+  "openToNonRiders": {
+    "name": "openToNonRiders",
+    "data": {"default": false, "saved": ""}
+  },
+  "devise": {"name": "devise", "data": {"default": "€", "saved": ""}},
+  "priceAdulte": {"name": "priceAdulte", "data": {"default": 0, "saved": ""}},
+  "priceChild": {"name": "priceChild", "data": {"default": 0, "saved": ""}},
+  "priceAccompagnateur": {
+    "name": "priceAccompagnateur",
+    "data": {"default": 0, "saved": ""}
+  },
+  "equestrianLevel": {
+    "name": "equestrianLevel",
+    "data": {"default": 2, "saved": ""}
+  },
+  "comfortLevel": {
+    "name": "comfortLevel",
+    "data": {"default": 3, "saved": ""}
+  },
+  "physicalLevel": {
+    "name": "physicalLevel",
+    "data": {"default": 2, "saved": ""}
+  },
+  "haveGuide": {
+    "name": "haveGuide",
+    "data": {"default": false, "saved": ""}
+  },
+  "guaranteedDeparture": {
+    "name": "guaranteedDeparture",
+    "data": {"default": true, "saved": ""}
+  },
+  "status": {
+    "name": "status",
+    "data": {"default": "brouillon", "saved": ""}
+  },
+  "log": {
+    "name": "log",
+    "data": {
+      "default": {"status": [["brouillon", null]], "archived": [[false, null]]},
+      "saved": {"status": [[]], "archived": [[]]}
+    }
+  },
+  "archived": {
+    "name": "archived",
+    "data": {"default": false, "saved": ""}
+  },
+  "participantMin": {
+    "name": "participantMin",
+    "data": {"default": 5, "saved": ""}
+  },
+  "participantMax": {
+    "name": "participantMax",
+    "data": {"default": 10, "saved": ""}
+  },
+  "ageMinParticipant": {
+    "name": "ageMinParticipant",
+    "data": {"default": 15, "saved": ""}
+  },
+  "ageMaxParticipant": {
+    "name": "ageMaxParticipant",
+    "data": {"default": 99, "saved": ""}
+  },
+  "childUnderOf": {
+    "name": "childUnderOf",
+    "data": {"default": 15, "saved": ""}
+  },
+  "datesType": {
+    "name": "datesType",
+    "data": {"default": "Flex_Fixed", "saved": ""}
+  },
+  "dates": {"name": "dates", "data": {"default": [], "saved": []}},
+  "days": {"name": "days", "data": {"default": [], "saved": []}},
+  "options": {"name": "options", "data": {"default": [], "saved": []}},
+  "highlights": {
+    "name": "highlights",
+    "data": {"default": [], "saved": []}
+  },
+  "images": {
+    "name": "images",
+    "data": {
+      "default": {
+        "data": [
+          {
+            "image": 1,
+            "name": "",
+            "main": false,
+            "type": "",
+            "size": 0,
+            "lastModified": 0,
+            "data": ""
+          },
+          {
+            "image": 2,
+            "name": "",
+            "main": false,
+            "type": "",
+            "size": 0,
+            "lastModified": 0,
+            "data": ""
+          },
+          {
+            "image": 3,
+            "name": "",
+            "main": false,
+            "type": "",
+            "size": 0,
+            "lastModified": 0,
+            "data": ""
+          },
+          {
+            "image": 4,
+            "name": "",
+            "main": false,
+            "type": "",
+            "size": 0,
+            "lastModified": 0,
+            "data": ""
+          },
+          {
+            "image": 5,
+            "name": "",
+            "main": false,
+            "type": "",
+            "size": 0,
+            "lastModified": 0,
+            "data": ""
+          }
+        ],
+        "total": 0
+      },
+      "saved": {"data": [], "total": 0}
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_id": true,
+  "id_user": true,
+  "corpName": false,
+  "address": {
+    "address": false,
+    "postcode": false,
+    "city": false,
+    "country": false
+  },
+  "siret": false,
+  "siren": false,
+  "assuranceNumber": false,
+  "bankCode": false,
+  "guichetCode": false,
+  "numberAccount": false,
+  "keyAccount": false,
+  "deviseAccount": false,
+  "domiciliation": false,
+  "iban": false,
+  "bic": false,
+  "checkOrder": false,
+  "checkAdress": false,
+  "code_parrainage": true,
+  "code_parrainage_used": true,
+  "penalty": true,
+  "tarif": true
+}

@@ -1,0 +1,78 @@
+{
+  "0": {
+    "saved": null,
+    "by": "particulier",
+    "active": true,
+    "next": {"particulier": {"submit": null}}
+  },
+  "1": {
+    "submitted": null,
+    "by": "particulier",
+    "active": false,
+    "next": {"particulier": {"sendTotal": null}}
+  },
+  "2": {
+    "totalSent": null,
+    "by": "particulier",
+    "active": false,
+    "next": {"pro": {"akn": null}}
+  },
+  "3": {
+    "totalReceived": null,
+    "by": "pro",
+    "active": false,
+    "next": {"pro": {"validate": null}}
+  },
+  "4": {
+    "validated": null,
+    "by": "pro",
+    "active": false,
+    "next": {"particulier": {"seeYou": null}}
+  },
+  "15": {
+    "cancelRequest": null,
+    "by": "particulier",
+    "active": false,
+    "next": {"pro": {"akn": null}}
+  },
+  "16": {
+    "cancelRequestReceived": null,
+    "by": "pro",
+    "active": false,
+    "next": {
+      "pro": {
+        "multiple": {
+          "waitRefundDecision": null,
+          "refundAccepted": null,
+          "refundRejected": null
+        }
+      }
+    }
+  },
+  "17": {
+    "refundAccepted": null,
+    "by": "pro",
+    "active": false,
+    "next": {"pro": {"sendRefund": null}}
+  },
+  "18": {
+    "refundSent": null,
+    "by": "pro",
+    "active": false,
+    "next": {"particulier": {"seeYouSoon": null}}
+  },
+  "20": {
+    "refundRejected": null,
+    "by": "pro",
+    "active": false,
+    "next": {
+      "pro": {"informRejected": null},
+      "particulier": {"informRejected": null}
+    }
+  },
+  "22": {
+    "completed": null,
+    "by": "admin",
+    "active": false
+  }
+}

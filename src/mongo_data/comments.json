@@ -1,0 +1,119 @@
+[{
+  "_id": {
+    "$oid": "5e84a0fd14fdef2572ea0d1b"
+  },
+  "creationDate": {
+    "$date": "2020-04-01T14:08:29.514Z"
+  },
+  "environmentLandscapeNote": 0,
+  "cavalryNote": 0,
+  "qualityPriceNote": 0,
+  "receptionNote": 0,
+  "archived": false,
+  "firstName": "Lucas",
+  "city": "Toulouse",
+  "title": "commentaire test",
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "__v": 0,
+  "text": "test"
+},{
+  "_id": {
+    "$oid": "5e8756e423f97a001eb4117a"
+  },
+  "creationDate": {
+    "$date": "2020-04-03T14:39:28.699Z"
+  },
+  "environmentLandscapeNote": 0,
+  "cavalryNote": 0,
+  "qualityPriceNote": 0,
+  "receptionNote": 0,
+  "archived": false,
+  "firstName": "Sylvain",
+  "city": "Meudon",
+  "title": "Superbe randonnée très dépaysante",
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "id_user": {
+    "$oid": "5d1b9971ffb6ee0025cc1f79"
+  },
+  "__v": 0,
+  "text": "Les paysages sont magnifiques, j'ai découvert tout un patrimoine naturel et culturel que je ne connaissais pas : les causses, qui offrent de formidables points de vue sur le Lot et l'Alzou, le gouffre de Saint Sauveur, le Château des Anglais de Bouziès, le chemin de halage, Saint Cirq Lapopie, l'abbaye de Marcilhac, le château de Vaillac, ... Sans oublier les beaux galops dans les champs avec des chevaux généreux et fiables. Je garde plein de très jolis souvenirs de cette randonnée Nom de mon cheval : causse toujours. Il est généreux et fiable"
+},{
+  "_id": {
+    "$oid": "5e87576b23f97a001eb4117b"
+  },
+  "creationDate": {
+    "$date": "2022-08-21T17:08:27.566Z"
+  },
+  "environmentLandscapeNote": 0,
+  "cavalryNote": 3,
+  "qualityPriceNote": 0,
+  "receptionNote": 0,
+  "archived": false,
+  "firstName": "Jean-Paul",
+  "title": "Une très belle découverte de la région et de beaux chemins de randonnées",
+  "city": "Lyon",
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "id_user": {
+    "$oid": "5d1b9971ffb6ee0025cc1f79"
+  },
+  "__v": 0,
+  "text": "Je conseille fortement ce séjour sportif (il faut une bonne condition physique). Un guide très attentif et prévenant envers ses cavaliers et ses chevaux, Pascal à l’intelligence de contenter ses cavaliers tout en préservant ses chevaux. Belle découverte de la région et des gîtes équestres avec des hôtes très accueillants. Les chevaux sont vraiment bien entretenus et valeureux ils sont bien dressés et ainsi permettent une randonnée en toute sécurité Il ne faut pas les sangler on est donc obligé d’eliquibrer le poids sur les étriers",
+  "updatedAt": {
+    "$date": "2022-08-21T17:08:27.602Z"
+  }
+},{
+  "_id": {
+    "$oid": "5e96c05fe103251ee326ec4c"
+  },
+  "creationDate": {
+    "$date": "2020-04-15T08:01:11.648Z"
+  },
+  "environmentLandscapeNote": 1,
+  "cavalryNote": 2,
+  "qualityPriceNote": 2,
+  "receptionNote": 1,
+  "archived": false,
+  "firstName": "Prénom test",
+  "city": "Ville Test",
+  "title": "Titre test",
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "__v": 0,
+  "text": "Commentaire test"
+},{
+  "_id": {
+    "$oid": "5e96d3d59e2e6a001f840490"
+  },
+  "creationDate": {
+    "$date": "2020-04-15T09:17:56.830Z"
+  },
+  "environmentLandscapeNote": 5,
+  "cavalryNote": 5,
+  "qualityPriceNote": 5,
+  "receptionNote": 5,
+  "archived": false,
+  "firstName": "final test",
+  "city": "final test",
+  "title": "final test",
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "__v": 0,
+  "text": "final test"
+}]

@@ -1,0 +1,365 @@
+[
+  {
+    "_id": {
+      "$oid": "5d1b9971ffb6ee0025cc1f79"
+    },
+    "type": "particulier",
+    "status": "ACTIVE",
+    "role": "ADMIN",
+    "eula": false,
+    "registration_date": {
+      "$date": "2019-07-02T15:52:29.463Z"
+    },
+    "aboNewsletter": false,
+    "email": "antoin.bouillet@gmail.com",
+    "password": "$2b$10$HxFad/zfqYegc6PgZlbQyusUiQnn3zBLN2wHr/2BPtqzq3RG40Tse",
+    "__v": 0,
+    "address": {
+      "address": "62 rue de guinot",
+      "postcode": "31330",
+      "city": "merville",
+      "country": "France"
+    },
+    "firstName": "antoine",
+    "lastName": "BOUILLET",
+    "phone": "603967158",
+    "img_url": "/img/avatar_anonym.jpg",
+    "updatedAt": {
+      "$date": "2022-07-22T12:28:07.854Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "type": "particulier",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-09T10:30:27.707Z"
+    },
+    "aboNewsletter": false,
+    "email": "ounissa.sellou@strateg.in",
+    "password": "$2b$10$HxFad/zfqYegc6PgZlbQyusUiQnn3zBLN2wHr/2BPtqzq3RG40Tse",
+    "__v": 0,
+    "address": {
+      "address": "abc",
+      "city": "def",
+      "postcode": "312000",
+      "country": "France"
+    },
+    "firstName": "Ounissa",
+    "lastName": "Sellou",
+    "phone": "0000000000"
+  },
+  {
+    "_id": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-09T10:30:27.707Z"
+    },
+    "aboNewsletter": false,
+    "email": "pechmerle@horse-around.com",
+    "password": "$2b$10$HxFad/zfqYegc6PgZlbQyusUiQnn3zBLN2wHr/2BPtqzq3RG40Tse",
+    "__v": 0,
+    "address": {
+      "address": "Ferme équestre du Pech Merle​",
+      "postcode": "46330",
+      "city": "CABRERETS",
+      "country": "FRANCE"
+    },
+    "firstName": "pascal",
+    "lastName": "gaudebert",
+    "phone": "06-11-93-25-23"
+  },
+  {
+    "_id": {
+      "$oid": "5e71dfe9b6855d3e29a84205"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-18T08:19:53.505Z"
+    },
+    "aboNewsletter": false,
+    "email": "test@test.com",
+    "password": "$2b$10$HxFad/zfqYegc6PgZlbQyusUiQnn3zBLN2wHr/2BPtqzq3RG40Tse",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e736f11d9e764001ef16546"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-09T10:30:27.707Z"
+    },
+    "aboNewsletter": false,
+    "email": "fermelahaiedu@horse-around.com",
+    "password": "$2b$10$OyqWciMJPcINWAkNoDuweuScQkvnHted12XZNvSJHX..aKanVR4yW",
+    "__v": 0,
+    "address": {},
+    "lastName": "Gery"
+  },
+  {
+    "_id": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-09T10:30:27.707Z"
+    },
+    "aboNewsletter": false,
+    "email": "cavalquinta@horse-around.com",
+    "password": "$2b$10$cxaSc7o3/C6dxbItXt5phOxZIyw7sFKFzOm8yKZJ.TqJnOgF.XEhy",
+    "__v": 0,
+    "address": {
+      "address": "« La Bergerie du Quintanel »",
+      "postcode": "30770",
+      "city": "BLANDAS",
+      "country": "FRANCE"
+    },
+    "firstName": "Robin",
+    "lastName": "Beucher",
+    "phone": "+33 (0)6 24 66 23 66"
+  },
+  {
+    "_id": {
+      "$oid": "5e7653fbd9e764001ef1654e"
+    },
+    "type": "particulier",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-09T10:30:27.707Z"
+    },
+    "aboNewsletter": false,
+    "email": "cav1@horse-around.com",
+    "password": "$2b$10$/gBgr7/Q7QIxG/RBcXUB8eWhh/P4kX5F4y2.xabBXyuim/v/iqQvO",
+    "__v": 0,
+    "address": {
+      "address": "Les Cognets",
+      "postcode": "22400",
+      "city": "PLURIEN",
+      "country": "FRANCE"
+    },
+    "firstName": "Martin",
+    "lastName": "Paul",
+    "phone": "06 09 95 38 89"
+  },
+  {
+    "_id": {
+      "$oid": "5e77a115d9e764001ef1654f"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-09T10:30:27.707Z"
+    },
+    "aboNewsletter": false,
+    "email": "cognetsequitation@horse-around.com",
+    "password": "$2b$10$b5DFkdZy/337k8cnS6lFBOcOZxvW1V2EwXOs.aZZQM9K8K/DiqK..",
+    "__v": 0,
+    "address": {
+      "address": "Les Cognets",
+      "postcode": "22400",
+      "city": "PLURIEN",
+      "country": "FRANCE"
+    },
+    "firstName": "A définir",
+    "lastName": "A définir",
+    "phone": "06 09 95 38 89"
+  },
+  {
+    "_id": {
+      "$oid": "5e81b244d9e764001ef16556"
+    },
+    "type": "particulier",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-03-09T10:30:27.707Z"
+    },
+    "aboNewsletter": false,
+    "email": "cav2@horse-around.com",
+    "password": "$2b$10$Eih.7AMoaSqngcvib/4x7uBM6ili1c89o8ZL08YSNFrwYm8oxKdY2",
+    "firstName": "Dupont",
+    "lastName": "Nicolas",
+    "address": {
+      "address": "32, rue d'orditour",
+      "city": "toulouse",
+      "postcode": "31000",
+      "country": "france"
+    },
+    "__v": 0,
+    "phone": "0678907860"
+  },
+  {
+    "_id": {
+      "$oid": "5e8ad2b423f97a001eb4117f"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-04-03T14:39:28.795Z"
+    },
+    "aboNewsletter": false,
+    "email": "julie@cheval.alsace",
+    "password": "$2b$10$NmGkJu01QXWXs7QiqMiyx.kaUYoV6pLkyD7f9K1uAdm9D5dsHK1wa",
+    "__v": 0,
+    "address": {
+      "address": "145, route de la Serva",
+      "postcode": "67130",
+      "city": "BELMONT",
+      "country": "FRANCE"
+    },
+    "firstName": "Julie",
+    "lastName": "Cheval Alsace",
+    "phone": "0770796763"
+  },
+  {
+    "_id": {
+      "$oid": "5e981ea89e2e6a001f840497"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-04-15T09:17:56.938Z"
+    },
+    "aboNewsletter": false,
+    "email": "pro1@horse-around.com",
+    "password": "$2b$10$ULMMY9u8c0Q.60IYP04kG.EUmpDQ0HdbLoqkC7YfZZxakwPDx4YZu",
+    "__v": 0,
+    "updatedAt": {
+      "$date": "2022-07-26T12:33:08.269Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5eea10cd9e2e6a001f8404a6"
+    },
+    "type": "particulier",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-04-15T09:17:56.938Z"
+    },
+    "aboNewsletter": false,
+    "email": "nirina.ratovomanana@strateg.in",
+    "password": "$2b$10$VhIdWEaS9rjaHszaIHcxQ.W2nUk6VZW3LRCvzTlTpjfmmHgL6cKxm",
+    "__v": 0,
+    "address": {
+      "address": "1 rue de la Pie",
+      "city": "Pigarde",
+      "postcode": "31987",
+      "country": "France"
+    },
+    "firstName": "Nirina",
+    "lastName": "Ratovomanana",
+    "phone": "0601020304"
+  },
+  {
+    "_id": {
+      "$oid": "603f59a56839f4001e3640c9"
+    },
+    "type": "particulier",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-11-25T11:05:34.143Z"
+    },
+    "aboNewsletter": false,
+    "email": "virmika013@gmail.com",
+    "password": "$2b$10$ZrALG3f2XxLqizUMc2gChuAMBqa4/bs7xXM/prY5VPI3eP50gPyjC",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "62550fb66839f4001e3640cf"
+    },
+    "type": "pro",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "ADMIN",
+    "eula": false,
+    "registration_date": {
+      "$date": "2020-11-25T11:05:34.143Z"
+    },
+    "aboNewsletter": false,
+    "email": "henri.talfumier@wanadoo.fr",
+    "password": "$2b$10$Q20P6c3aGhY5DpxWMFrV7eAcRi0Q2e3yrSnayyATEUZC/blS3x96e",
+    "__v": 0,
+    "address": {
+      "address": "4, impasse du pigeonnier",
+      "postcode": "31330",
+      "city": "LARRA",
+      "country": "France"
+    },
+    "firstName": "Henri",
+    "lastName": "TALFUMIER",
+    "phone": "+33616096567",
+    "updatedAt": {
+      "$date": "2022-10-20T18:25:08.046Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "62dfdf0403c4b5ade42d23a0"
+    },
+    "email": "henri@horse-around.com",
+    "type": "pro",
+    "password": "$2b$10$HxFad/zfqYegc6PgZlbQyusUiQnn3zBLN2wHr/2BPtqzq3RG40Tse",
+    "img_url": "/img/avatar_anonym.jpg",
+    "status": "ACTIVE",
+    "role": "USER",
+    "eula": false,
+    "registration_date": {
+      "$date": "2022-07-26T12:18:44.699Z"
+    },
+    "aboNewsletter": false,
+    "createdAt": {
+      "$date": "2022-07-26T12:33:08.157Z"
+    },
+    "updatedAt": {
+      "$date": "2022-07-26T12:33:08.157Z"
+    },
+    "__v": 0,
+    "firstName": "Henri"
+  }
+]

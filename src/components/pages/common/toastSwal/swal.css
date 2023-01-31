@@ -1,0 +1,34 @@
+.swal-modal {
+  max-width:25%;
+  max-height:50%
+}
+.swal-title {
+  font-size: 1.9rem;
+  color:rgb(255, 102, 0);
+  font-family:monospace
+
+}
+.swal-text {
+  font-size: 1.7rem;
+  color:rgb(26, 25, 25)
+}
+.swal-button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.swal-button--confirm {
+  background: #8CAA7B;
+  border: #8CAA7B;
+}
+.swal-button:hover{
+  background: #8CAA7B;
+}
+.swal-icon {
+  width:40px;
+  height:40px
+}
+.swal-icon--warning__body {
+  height:20px;
+}.swal-icon--warning__dot {
+  height:0px;
+}

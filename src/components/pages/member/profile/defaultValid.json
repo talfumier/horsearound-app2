@@ -1,0 +1,21 @@
+{
+  "_id": true,
+  "lastName": false,
+  "firstName": false,
+  "phone": false,
+  "email": false,
+  "type": true,
+  "status": true,
+  "role": true,
+  "eula": true,
+  "address": {
+    "address": false,
+    "postcode": false,
+    "city": false,
+    "country": false
+  },
+  "registration_date": false,
+  "last_login_date": true,
+  "aboNewsletter": false,
+  "code_parrainage_used": true
+}

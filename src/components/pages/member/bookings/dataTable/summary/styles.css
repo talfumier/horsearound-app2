@@ -1,0 +1,48 @@
+.summary.card{
+  background-color: rgb(217, 238, 217);
+}
+.summary.bolder {
+  font-weight: bolder;
+  margin-right: 5;
+  padding:0;  
+}
+.summary.title {
+  font-weight:bolder;
+  font-size: 15;
+  margin:5;
+}
+.summary.title.deposit-balance {
+  margin-left:7%;
+}
+.summary.title.payment-means {
+  margin-left:9%;
+}
+.summary.title.rib {
+  padding-left:5%;
+  font-size: 12;
+}
+.summary.title.rules-cancel {
+  margin-left:3%;
+}
+
+.summary.normal {
+  font-weight:normal;
+  font-size: 15;
+  margin-left:5;
+  margin-right:10;
+  color:black;
+}
+
+.summary.li{
+  padding-top: 10;
+}
+.summary.h5{
+  font-weight: bolder;
+  font-size: 17;
+  
+}
+.container.summary {
+  background-color: rgb(217, 238, 217);
+  margin: 0;
+  padding:0;
+}

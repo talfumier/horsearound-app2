@@ -1,0 +1,2125 @@
+[{
+  "_id": {
+    "$oid": "5e72338eec893222b93a6c5a"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": {
+      "$date": "2020-07-02T10:00:00Z"
+    },
+    "dateEnd": {
+      "$date": "2020-07-04T10:00:00Z"
+    }
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-03-18T10:18:27.446Z"
+    },
+    "status": "Paiement total en attente de validation",
+    "amount": 1549,
+    "billingFirstName": "Ounissa",
+    "billingLastName": "Sellou",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "31200",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "next": {
+        "particulier": {
+          "submit": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "next": {
+        "particulier": {
+          "sendDeposit": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f68b545c0ce8e5548fa86df"
+  },
+  "complementaryInfos": {
+    "participants": [
+      {
+        "name": "Paul",
+        "age": "12"
+      }
+    ],
+    "birthdate": "28/08/1991",
+    "birthplace": "Test",
+    "diet": "veggie",
+    "treatment": "meds"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e9ddff99e2e6a001f8404a4"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-06-28T10:00:00.000Z",
+    "dateEnd": "2020-07-04T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "status": "Paiement total en attente de validation",
+    "amount": 700,
+    "billingFirstName": "Ounissa",
+    "billingLastName": "Sellou",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "312000",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6281ed166839f4001e3640d9"
+  },
+  "complementaryInfos": {
+    "participants": [],
+    "birthdate": "21/05/1962",
+    "birthplace": "Pris"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "62550fb66839f4001e3640cf"
+  },
+  "id_announce": {
+    "$oid": "5e7b1013d9e764001ef16553"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2021-10-10T10:00:00.000Z",
+    "dateEnd": "2021-10-15T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-11-25T11:05:34.003Z"
+    },
+    "status": "Paiement total en attente de validation",
+    "amount": 1190,
+    "billingFirstName": "Henri",
+    "billingLastName": "TALFUMIER",
+    "billingEmail": "henri.talfumier@wanadoo.fr",
+    "billingAddress": "4 impasse du pigeonnier",
+    "billingCity": "LARRA",
+    "billingPostCode": "31330",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e73a8f2d9e764001ef1654b"
+  },
+  "options": [],
+  "byPro": true,
+  "id_user": {
+    "$oid": "5e738886d9e764001ef16548"
+  },
+  "id_announce": {
+    "$oid": "5e739d61d9e764001ef1654a"
+  },
+  "adults": {
+    "nb": 3,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-05-31T10:00:00.000Z",
+    "dateEnd": "2020-06-05T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-03-09T10:30:27.579Z"
+    },
+    "status": "Paiement total validé",
+    "billingFirstName": "Réservation externe à Horse Around",
+    "billingLastName": null,
+    "amount": 0
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e875ebd23f97a001eb4117c"
+  },
+  "complementaryInfos": {
+    "participants": []
+  },
+  "options": [],
+  "byPro": true,
+  "id_user": {
+    "$oid": "5e694ca1d9e764001ef16543"
+  },
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "adults": {
+    "nb": 4,
+    "price": 0
+  },
+  "children": {
+    "nb": 1,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-05-10T10:00:00.000Z",
+    "dateEnd": "2020-05-15T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-04-03T14:39:28.673Z"
+    },
+    "status": "Paiement total validé",
+    "billingFirstName": "Test",
+    "billingLastName": "bernard",
+    "amount": 0
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f68b46cc0ce8e5548fa86dd"
+  },
+  "complementaryInfos": {
+    "participants": [],
+    "birthdate": "28/08/1991",
+    "birthplace": "Test"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-05-10T10:00:00.000Z",
+    "dateEnd": "2020-05-15T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "status": "Paiement total en attente de validation",
+    "amount": 1011.5,
+    "billingFirstName": "Ounissa",
+    "billingLastName": "Sellou",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "312000",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5facf97e7bb1170a0cd01ee8"
+  },
+  "complementaryInfos": {
+    "participants": []
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 1,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": {
+      "$date": "2020-11-04T11:00:00Z"
+    },
+    "dateEnd": {
+      "$date": "2020-11-30T11:00:00Z"
+    }
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-11-12T08:15:46.140Z"
+    },
+    "status": "Paiement en attente",
+    "amount": 570.4
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61b212946839f4001e3640ce"
+  },
+  "complementaryInfos": {
+    "participants": []
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e7653fbd9e764001ef1654e"
+  },
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 1,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2022-08-22T10:00:00.000Z",
+    "dateEnd": "2022-08-27T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-11-25T11:05:34.003Z"
+    },
+    "status": "Paiement en attente",
+    "amount": 1880
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e848bb3d9e764001ef1655b"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-11-04T11:00:00.000Z",
+    "dateEnd": "2020-11-07T11:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-03-09T10:30:27.579Z"
+    },
+    "status": "Acompte total de 30% en attente de validation",
+    "amount": 1549,
+    "billingFirstName": "Ounissa",
+    "billingLastName": "Sellou",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "31200",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62fd04738c20c58435f66e20"
+  },
+  "complementaryInfos": {
+    "participants": [],
+    "birthdate": "28/08/1991",
+    "birthplace": "Test"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5d1b9971ffb6ee0025cc1f79"
+  },
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-05-10T10:00:00.000Z",
+    "dateEnd": "2020-05-15T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "status": "Paiement total en attente de validation",
+    "amount": 1011.5,
+    "billingFirstName": "Ounissa",
+    "billingLastName": "Sellou",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "31200",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e849d9555139322cbf2b949"
+  },
+  "complementaryInfos": {
+    "participants": [],
+    "birthdate": "12/12/13",
+    "birthplace": "toulouse",
+    "diet": "oui",
+    "treatment": "non"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-11-04T11:00:00.000Z",
+    "dateEnd": "2020-11-07T11:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-04-01T13:54:11.939Z"
+    },
+    "status": "Acompte total de 30% en attente de validation",
+    "amount": 1239.2,
+    "billingFirstName": "Ounissa",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingLastName": "Sellou",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "31200",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e87621f23f97a001eb4117e"
+  },
+  "complementaryInfos": {
+    "birthdate": "27/03/1978",
+    "participants": [
+      {
+        "name": "Paul",
+        "age": "16"
+      }
+    ],
+    "birthplace": "CAHORS"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e81b244d9e764001ef16556"
+  },
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 1,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-07-12T10:00:00.000Z",
+    "dateEnd": "2020-07-17T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-04-03T14:39:28.673Z"
+    },
+    "status": "Acompte total de 30% en attente de validation",
+    "amount": 2380,
+    "billingFirstName": "Dupont",
+    "billingLastName": "Nicolas",
+    "billingEmail": "cav2@horse-around.com",
+    "billingAddress": "32, rue d'orditour",
+    "billingCity": "toulouse",
+    "billingPostCode": "31000",
+    "billingCountry": "france"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f68b4c8c0ce8e5548fa86de"
+  },
+  "complementaryInfos": {
+    "birthdate": "28/08/1991",
+    "participants": [],
+    "birthplace": "Test"
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e7b1013d9e764001ef16553"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-07-05T10:00:00.000Z",
+    "dateEnd": "2020-07-10T10:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "status": "Paiement total en attente de validation",
+    "amount": 1190,
+    "billingFirstName": "Ounissa",
+    "billingLastName": "Sellou",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "312000",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5facf97e7bb1170a0cd01ee7"
+  },
+  "complementaryInfos": {
+    "participants": []
+  },
+  "options": [],
+  "byPro": false,
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "adults": {
+    "nb": 1,
+    "price": 0
+  },
+  "children": {
+    "nb": 1,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "date": {
+    "dateStart": "2020-11-04T11:00:00.000Z",
+    "dateEnd": "2020-11-30T11:00:00.000Z"
+  },
+  "paymentInfo": {
+    "datePayment": {
+      "$date": "2020-11-12T08:15:46.140Z"
+    },
+    "status": "Paiement en attente de validation",
+    "amount": 570.4,
+    "billingFirstName": "Ounissa",
+    "billingLastName": "Sellou",
+    "billingEmail": "ounissa.sellou@strateg.in",
+    "billingAddress": "abc",
+    "billingCity": "def",
+    "billingPostCode": "312000",
+    "billingCountry": "France"
+  },
+  "steps": [
+    {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "submit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "active": true,
+      "by": "particulier",
+      "next": {
+        "sendDeposit": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositSent": null,
+      "active": false,
+      "by": "particulier",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "depositReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "validate": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "validated": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "sendBalance": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceSent": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "akn": {
+          "by": "pro",
+          "due": null
+        }
+      }
+    },
+    {
+      "balanceReceived": null,
+      "active": false,
+      "by": "pro",
+      "next": {
+        "seeYou": {
+          "by": "particulier",
+          "due": null
+        }
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63d81d540d61e6fa2a9d1e4b"
+  },
+  "ref": "f16543_2023_001",
+  "id_user": {
+    "$oid": "62dfdf0403c4b5ade42d23a0"
+  },
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "date": {
+    "dateStart": {
+      "$date": "2022-10-23T22:00:00Z"
+    },
+    "dateEnd": {
+      "$date": "2022-10-28T22:00:00Z"
+    }
+  },
+  "daysNights": "6/5",
+  "adults": {
+    "nb": 1,
+    "price": 1190
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "paymentRecap": {
+    "options": {
+      "amount": 0
+    },
+    "total": {
+      "amount": 1190
+    }
+  },
+  "paymentInfo": {
+    "billingFirstName": "Henri",
+    "billingLastName": "TALFUMIER",
+    "billingAddress": "4 impasse du pigeonnier",
+    "billingCity": "LARRA",
+    "billingPostCode": "31330",
+    "billingCountry": "France",
+    "billingConditionsAccepted": true,
+    "billingPaymentMeans": "bank transfer",
+    "status": "Paiement en attente"
+  },
+  "byPro": false,
+  "steps": {
+    "0": {
+      "saved": "2023-01-30T19:41:08.734Z",
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "particulier": {
+          "submit": null
+        }
+      }
+    },
+    "1": {
+      "submitted": "2023-01-30T19:41:08.734Z",
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "particulier": {
+          "sendTotal": null
+        }
+      }
+    },
+    "2": {
+      "totalSent": "2023-01-30T19:42:18.356Z",
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "pro": {
+          "akn": null
+        }
+      }
+    },
+    "3": {
+      "totalReceived": "2023-01-30T19:42:22.109Z",
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "validate": null
+        }
+      }
+    },
+    "4": {
+      "validated": "2023-01-30T19:42:39.216Z",
+      "by": "pro",
+      "active": true,
+      "next": {
+        "particulier": {
+          "seeYou": "2022-10-23T22:00:00.000Z"
+        }
+      }
+    },
+    "15": {
+      "cancelRequest": null,
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "pro": {
+          "akn": null
+        }
+      }
+    },
+    "16": {
+      "cancelRequestReceived": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "multiple": {
+            "waitRefundDecision": null,
+            "refundAccepted": null,
+            "refundRejected": null
+          }
+        }
+      }
+    },
+    "17": {
+      "refundAccepted": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "sendRefund": null
+        }
+      }
+    },
+    "18": {
+      "refundSent": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "particulier": {
+          "seeYouSoon": null
+        }
+      }
+    },
+    "20": {
+      "refundRejected": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "informRejected": null
+        },
+        "particulier": {
+          "informRejected": null
+        }
+      }
+    },
+    "22": {
+      "completed": null,
+      "by": "admin",
+      "active": false
+    }
+  },
+  "createdAt": {
+    "$date": "2023-01-30T19:41:08.780Z"
+  },
+  "updatedAt": {
+    "$date": "2023-01-30T19:42:39.314Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63d81d540d61e6fa2a9d1e4d"
+  },
+  "ref": "f16543_2023-002",
+  "id_user": {
+    "$oid": "62dfdf0403c4b5ade42d23a0"
+  },
+  "id_announce": {
+    "$oid": "5e694fe7d9e764001ef16544"
+  },
+  "date": {
+    "dateStart": {
+      "$date": "2023-09-17T22:00:00Z"
+    },
+    "dateEnd": {
+      "$date": "2023-09-22T22:00:00Z"
+    }
+  },
+  "daysNights": "6/5",
+  "adults": {
+    "nb": 1,
+    "price": 1190
+  },
+  "children": {
+    "nb": 0,
+    "price": 0
+  },
+  "companions": {
+    "nb": 0,
+    "price": 0
+  },
+  "paymentRecap": {
+    "deposit": {
+      "amount": 357
+    },
+    "balance": {
+      "amount": 833,
+      "due": {
+        "$date": "2023-08-08T22:00:00Z"
+      }
+    },
+    "options": {
+      "amount": 0
+    },
+    "total": {
+      "amount": 1190
+    }
+  },
+  "paymentInfo": {
+    "billingFirstName": "Henri",
+    "billingLastName": "TALFUMIER",
+    "billingAddress": "4 impasse du pigeonnier",
+    "billingCity": "LARRA",
+    "billingPostCode": "31330",
+    "billingCountry": "France",
+    "billingConditionsAccepted": true,
+    "billingPaymentMeans": "bank transfer",
+    "status": "Paiement en attente"
+  },
+  "byPro": false,
+  "steps": {
+    "0": {
+      "saved": "2023-01-30T19:41:08.734Z",
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "particulier": {
+          "submit": null
+        }
+      }
+    },
+    "1": {
+      "submitted": "2023-01-30T19:41:08.734Z",
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "particulier": {
+          "sendDeposit": null
+        }
+      }
+    },
+    "2": {
+      "depositSent": "2023-01-30T19:41:19.939Z",
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "pro": {
+          "akn": null
+        }
+      }
+    },
+    "3": {
+      "depositReceived": "2023-01-30T19:41:22.893Z",
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "validate": null
+        }
+      }
+    },
+    "4": {
+      "validated": "2023-01-30T19:41:25.404Z",
+      "by": "pro",
+      "active": false,
+      "next": {
+        "particulier": {
+          "sendBalance": "2023-08-08T22:00:00.000Z"
+        }
+      }
+    },
+    "5": {
+      "balanceSent": "2023-01-30T19:43:04.932Z",
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "pro": {
+          "akn": null
+        }
+      }
+    },
+    "6": {
+      "balanceReceived": "2023-01-30T19:43:08.452Z",
+      "by": "pro",
+      "active": true,
+      "next": {
+        "particulier": {
+          "seeYou": "2023-09-17T22:00:00.000Z"
+        }
+      }
+    },
+    "15": {
+      "cancelRequest": null,
+      "by": "particulier",
+      "active": false,
+      "next": {
+        "pro": {
+          "akn": null
+        }
+      }
+    },
+    "16": {
+      "cancelRequestReceived": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "multiple": {
+            "waitRefundDecision": null,
+            "refundAccepted": null,
+            "refundRejected": null
+          }
+        }
+      }
+    },
+    "17": {
+      "refundAccepted": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "sendRefund": null
+        }
+      }
+    },
+    "18": {
+      "refundSent": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "particulier": {
+          "seeYouSoon": null
+        }
+      }
+    },
+    "20": {
+      "refundRejected": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "pro": {
+          "informRejected": null
+        },
+        "particulier": {
+          "informRejected": null
+        }
+      }
+    },
+    "22": {
+      "completed": null,
+      "by": "admin",
+      "active": false
+    }
+  },
+  "createdAt": {
+    "$date": "2023-01-30T19:41:08.791Z"
+  },
+  "updatedAt": {
+    "$date": "2023-01-30T19:43:08.542Z"
+  },
+  "__v": 0
+}]

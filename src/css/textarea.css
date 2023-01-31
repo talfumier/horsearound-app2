@@ -1,0 +1,13 @@
+div .textarea {
+  margin: 10px;
+  padding: 4px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  height: 100%; /* if you want Flexible textarea/div then give min-height instead of height */
+  overflow: auto;
+  resize: both;
+  min-height: 50px;
+  width: 85%;
+  font-size: 15px;
+  color: #000;
+}

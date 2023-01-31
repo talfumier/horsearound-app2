@@ -1,0 +1,3000 @@
+[
+  {
+    "_id": {
+      "$oid": "5e71e494b6855d3e29a84206"
+    },
+    "score": 4,
+    "nbDays": 3,
+    "nbNights": 2,
+    "frenchLevel": 0,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 1,
+    "comfortLevel": 1,
+    "physicalLevel": 1,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": true,
+    "noteMoy": 2.3,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 2,
+    "cavalryNote": 2.3333333333333335,
+    "qualityPriceNote": 2.3333333333333335,
+    "receptionNote": 2,
+    "numberRatings": 3,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-18T08:19:53.683Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "test",
+      "en": "testing"
+    },
+    "description": {
+      "fr": "tester différents changements \n\ntest\n\n\n\ncoucouuuuuuuuuuuuuuuuuuuuuu",
+      "en": "testing various changes "
+    },
+    "destination": ["france", "occitanie"],
+    "city": "Toulouse",
+    "postalCode": "31200",
+    "position": {"lat": 0, "lng": 0},
+    "category": "trailer",
+    "dates": [
+      {
+        "bookingsByDay": null,
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2020-11-04T11:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-11-30T11:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": 20
+      }
+    ],
+    "participantMin": 1,
+    "participantMax": 3,
+    "ageMinParticipant": 10,
+    "ageMaxParticipant": 17,
+    "childUnderOf": 10,
+    "priceAdulte": 455,
+    "id_user": {
+      "$oid": "5e71dfe9b6855d3e29a84205"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [
+      {
+        "day": 1,
+        "title": {"fr": "jour1", "en": "day1"},
+        "description": {"fr": "desc jour1", "en": "desc day1"},
+        "accommodation": {"fr": "ah", "en": "yes"},
+        "nbHoursEqui": "56"
+      },
+      {
+        "day": 2,
+        "title": {"fr": "jour2", "en": "day2"},
+        "description": {"fr": "desc jour2", "en": "desc day2"},
+        "accommodation": {"fr": "ah", "en": "yes"},
+        "nbHoursEqui": "34"
+      }
+    ],
+    "options": [
+      {
+        "option": 1,
+        "description": {"fr": "option1", "en": "option1"},
+        "price": "13",
+        "type": "All"
+      },
+      {
+        "option": 2,
+        "description": {"fr": "option2", "en": "option2"},
+        "price": "98",
+        "type": "Day"
+      },
+      {
+        "option": 3,
+        "description": {"fr": "option3", "en": "option3"},
+        "price": "23",
+        "type": "Night"
+      }
+    ],
+    "highlights": [],
+    "__v": 0,
+    "priceChild": 713,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T06:56:07.707Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "score": 4,
+    "nbDays": 6,
+    "nbNights": 5,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 3,
+    "physicalLevel": 3,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 1,
+    "horseAroundNote": 5,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 2,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "La randonnée Rocamadour",
+      "en": "Rocamadour ride"
+    },
+    "description": {
+      "fr": "De Rocamadour à Saint-Cirq Lapopie, en passant par Marcilhac-sur-Célé, ou encore Caniac-du-Causse, le Lot vous ouvrira les portes de son histoire et de ses territoires.Vous pénétrerez au cœur du Parc Naturel Régional des Causses du Quercy, où vous découvrirez les richesses naturelles, culturelles et historiques qui le composent.​"
+    },
+    "destination": ["france", "occitanie"],
+    "city": "CABRERETS",
+    "postalCode": "46330",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "dates": [
+      {
+        "bookingsByDay": null,
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2020-05-10T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-05-15T10:00:00Z"
+          }
+        },
+        "bookings": 5,
+        "promotion": 15
+      },
+      {
+        "bookingsByDay": null,
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2021-07-11T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2021-07-16T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "bookingsByDay": null,
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2021-08-22T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2021-08-27T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "bookingsByDay": null,
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2021-10-24T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2021-10-29T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "bookingsByDay": null,
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-08-08T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-08-13T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-08-22T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-08-27T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-09-05T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-10T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-10-24T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-10-29T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      }
+    ],
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "ageMaxParticipant": 99,
+    "ageMinParticipant": 10,
+    "childUnderOf": 16,
+    "included": {
+      "fr": "- Encadrement et accompagnement de la randonnée.\n​- La pension complète\n​- Le cheval équipé\n​- Transport des bagages, intendance"
+    },
+    "notIncluded": {
+      "fr": "​-Les nuits supplémentaires (avant et après la rando)\n-Les visites des sites\n​-Les apéritifs et boissons hors repas."
+    },
+    "participantMax": 8,
+    "participantMin": 3,
+    "priceAccompagnateur": 690,
+    "priceAdulte": 1190,
+    "priceChild": 1190,
+    "typicalDay": {
+      "fr": "Vous chevaucherez à travers des paysages variés, comme les causses, les vallées vertes et rocailleuses du Lot et du Célé, et des villages mythiques qui font le charme du Quercy. Vous partagerez avec vos montures, compagnon de routes, de forts moments en émotion, où la complicité et l'écoute priment. Vous apprécierez aussi l'accueil chaleureux et conviviale de nos hôtes, qui combineront la découverte de la gastronomie lotoise et l'utilisation des produits de terroirs pour le plaisir de vos papilles. \n\nAinsi, ce séjour est un mélange d'expériences et de nouveautés, et saura vous convaincre que la randonnée équestre est votre passion."
+    },
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-08T21:34:26.978Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e6aaee6d9e764001ef16545"
+    },
+    "score": 4,
+    "nbDays": 3,
+    "nbNights": 2,
+    "frenchLevel": 4,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 3,
+    "physicalLevel": 3,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Randonnée équestre - Au confluent du Lot et du Célé"
+    },
+    "description": {
+      "fr": "Dans le décor grandiose des vallées du Lot et du Célé, nous suivrons le cours de ces rivières encaissées, par des chemins taillés dans la roche ou dominent d’imposantes falaises calcaires."
+    },
+    "destination": ["france", "nouvelleAquitaine"],
+    "city": "Salignac-Eyvigues",
+    "postalCode": "24590",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "bookingsByDay": null,
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2021-07-30T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2021-08-01T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-07-19T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-07-21T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-08-16T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-08-18T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-08-30T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-01T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-09-12T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-14T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-10-17T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-10-19T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      }
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": {"fr": "Marcilhac sur Célé", "en": ""},
+        "description": {
+          "fr": "Nous longeons les falaises bordant la vallée du Célé : une étape sauvage sur d’anciens chemins rocailleux.Déjeuner champêtre au musée de plein air de Cuzal.Nuit et repas en chambres d’hôtes à Marcilhac-sur-Célé, pittoresque village médiéval.",
+          "en": ""
+        },
+        "accommodation": {"fr": "", "en": ""},
+        "nbHoursEqui": ""
+      },
+      {
+        "day": 2,
+        "title": {"fr": "Marcilhac sur Célé / Saint Jean de Laur", "en": ""},
+        "description": {
+          "fr": "Traversée du massif calcaire qui sépare les vallées du Lot et du Célé. Après quelques chemins ponctués de cazelles, un sentier en encorbellement nous mène à Cajarc, bourg médiéval et vivant.  Ascension du rocher où se trouve notre étape du soir : le Domaine de Gayfié.  Nuit en maison individuelle, et repas au domaine.",
+          "en": ""
+        },
+        "accommodation": {"fr": "", "en": ""},
+        "nbHoursEqui": ""
+      },
+      {
+        "day": 3,
+        "title": {"fr": "Cabrerets", "en": ""},
+        "description": {
+          "fr": "Cabrerets par la vallée du Lot, afin de rejoindre le village de Saint Cirq Lapopie, et de profiter d’un repas dans l’un des restaurants au cœur de la cité médiévale.  Retour à la ferme équestre en fin d’après-midi par le chemin de halage, taillé dans la falaise.",
+          "en": ""
+        },
+        "accommodation": {"fr": "", "en": ""},
+        "nbHoursEqui": ""
+      }
+    ],
+    "participantMin": 3,
+    "participantMax": 8,
+    "ageMinParticipant": 10,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 16,
+    "priceAdulte": 580,
+    "priceChild": 580,
+    "priceAccompagnateur": 210,
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T06:56:07.707Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e7396c1d9e764001ef16549"
+    },
+    "score": 4,
+    "nbDays": 2,
+    "nbNights": 1,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 3,
+    "physicalLevel": 3,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0.8,
+    "horseAroundNote": 4,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Sur les traces des Templiers"
+    },
+    "description": {
+      "fr": "Entre le XIIème et le XIVème siècle les Templiers et particulièrement l’ordre Hospitalier établirent des commanderies dans la région du sud Larzac. C’est sur leurs traces que nous partirons, le temps d’un week-end à cheval."
+    },
+    "destination": ["france", "occitanie"],
+    "city": "BLANDAS",
+    "postalCode": "30770",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "typicalDay": {
+      "fr": "Nous traverserons les paysages karstiques des Grands Causses, riches en flore et faune endémique. Arrivé dans la cité hospitalière de la Couvertoirade où nous ferons étape au sein des remparts, vous pourrez apprécier le patrimoine bâti de cette cité étonnamment conservée. Outre le moulin, le four à pain ou encore les tours carrées, vous aurez le loisir de déambuler dans les rue pavées et de profiter du calme d’une nuit empreinte d’Histoire.\n\nSur le retour, nous emprunterons d’anciennes voies romaines en traversant le Causse de Campestre avant de redescendre dans les gorges de la Vis en profitant du calme des abords de la rivière mystérieuse. Vous serez surpris des merveilles que recèle ce territoire et probablement étonné de la diversités d’horizons que vous pourrez  apprécier à cheval, le temps d’un week-end, sur les traces des Templiers."
+    },
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 2,
+          "nbNights": 1
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-06-13T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-06-14T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 2,
+          "nbNights": 1
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-09-05T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-09-06T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      }
+    ],
+    "participantMin": 4,
+    "participantMax": 8,
+    "ageMinParticipant": 10,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 18,
+    "horseDescription": {
+      "fr": "Voici une présentation de notre cavalerie, qui vous accompagnera dans vos aventures avec nous. Certains sont la depuis le début, ce sont des chevaux très expérimentés. D’autres, plus jeunes et issus de notre élevage, débutent mais sont habitués aux chemins que nous empruntons car ils vivent dans les parcs en extérieur toute l’année. Ils ont des pieds surs et un mental terrible. De plus, nos chevaux sont très habitués à l’homme car nous les manipulons depuis la naissance. Nos jeunes chevaux sont débourrés et travaillés par des élèves en lycées agricoles pendant les périodes scolaires, un très bon entrainement pour eux et une manipulation quotidienne qui accentue leur patience et gentillesse."
+    },
+    "priceAdulte": 330,
+    "priceChild": 330,
+    "id_user": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e9ddff99e2e6a001f8404a4"
+    },
+    "score": 4,
+    "nbDays": 7,
+    "nbNights": 6,
+    "frenchLevel": 4,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 1,
+    "comfortLevel": 2,
+    "physicalLevel": 2,
+    "haveGuide": null,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-04-15T09:17:57.310Z"
+    },
+    "hidden": false,
+    "city": "Plaine",
+    "postalCode": "67420",
+    "position": {"lat": 0, "lng": 0},
+    "title": {
+      "fr": "SEJOUR ENFANT- Cheval Sport 9/12 ans ou 13/17 ans",
+      "en": "HOLIDAYS CAMP FOR CHILDREN - \"Horses' addict\""
+    },
+    "description": {
+      "fr": "Ce séjour dans notre ferme équestre en Alsace est axé sur la découverte ou le perfectionnement de l’équitation de pleine nature.\nSelon son âge l'enfant sera dans un groupe de 9 à 12 ans ou de 13 à 17 ans et les activités seront adaptées aux âges.\nÀ la fin du séjour il est possible de passer un Galop de pleine nature.",
+      "en": "A stay with horse's activities only!\nDepending on his age the child will be in a group of 9 to 12 years old or 13 to 17 years old and the activities will be adapted to the ages.\n​\nThis stay is the right one for horses' addict children from 9 y.o.! More than 5 hours a day of activities with horses are the good opportunity to pursue their passion and to improve their riding's ability!\n\nAnyway, you will learn everything you need to know to be a perfect outdoor rider!\nThis stay is suitable for beginner as well as advanced riders and is available for all French holidays."
+    },
+    "destination": ["france", "grandEst"],
+    "category": "outdoorHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-06-28T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-04T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-05T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-11T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-12T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-18T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-19T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-25T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-26T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-08-01T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-10-18T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-10-24T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": 8
+      },
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-10-24T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-10-30T11:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": 8
+      }
+    ],
+    "participantMin": 1,
+    "participantMax": 12,
+    "ageMinParticipant": 9,
+    "ageMaxParticipant": 17,
+    "childUnderOf": 9,
+    "accommodationDescription": {
+      "fr": "Hébergement en cabanes trappeurs / tipis ou chalet selon la saison."
+    },
+    "priceAdulte": 700,
+    "priceChild": 700,
+    "included": {
+      "fr": "La randonnée avec un accompagnateur\nL'hébergement\nLa restauration\nLes boissons pendant les repas\nL'encadrement de la vie quotidienne par des animateurs et un directeur de séjour"
+    },
+    "id_user": {
+      "$oid": "5e981ea89e2e6a001f840497"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "highlights": [],
+    "__v": 0,
+    "establishment": {
+      "fr": "Notre centre équestre est au sommet d'une montagne, le champ du feu. C'est le point de départ de nos nombreuses randonnées équestres...\n\nNos installations:\n5 chambres d'hôtes (exclusivement réservées aux cavaliers)\n1 gîte comportant 5 appartements\n13 boxes & 2 stabulations libres\n1 carrière 20*40\n1 camp western avec cabanes trappeurs et tipis"
+    },
+    "horseDescription": {
+      "fr": "Nous possédons plus de 70 chevaux de races différentes... Vous trouverez étrier à votre pied:\n\nL'ISLANDAIS\n\nL'islandais est un cheval de selle de petite taille originaire d’Islande (unique race d'Islande). Ce sont vraisemblablement les descendants directs des montures des vikings amenés lors de la colonisation de l'Islande. Bien qu'il y ait une relation étroite entre ces chevaux et des poneys, ils ont gardé le nom de « cheval ». Leur particularité est de posséder fréquemment cinq allures : le tölt et l'amble en plus des trois allures habituelles du cheval (le pas, trot et galop) ce qui en font des chevaux très confortables !!\n\nLE FJORD\n\nLe Fjord est un petit cheval venu de Norvège. Ses origines sont anciennes et il a peu connu de croisements ; c'est pourquoi le Fjord est considéré comme très pur, descendant de chevaux asiatiques primitifs arrivés en Norvège par l'Est.\nLe Fjord possède une couleur de robe très caractéristique nommée isabelle, plus rarement souris. Grâce à sa robe, ses marques primitives telles que la raie de mulet et les zébrures sur les membres, et sa crinière bicolore, le Fjord peut-être reconnu sans ambiguïté.\n\nC'est un très bon cheval de balade calme et au pied sûr.\n\nLE PUR SANG ARABE\n\nLe pur-sang arabe, lignée pure élevée principalement par les bédouins, est une race chevaline de selle originaire du Moyen-Orient. Avec sa tête très typée et son port de queue relevé, l'arabe fait partie des races les plus facilement identifiables. Au cours de l'histoire, les chevaux arabes ont quitté leur Moyen-Orient natal pour gagner d'autres régions à l'occasion de guerres ou d'échanges commerciaux. Ils sont utilisés en croisement pour apporter de la vitesse, de l'endurance, de l'élégance et des os solides aux autres races de chevaux. On trouve désormais des arabes dans la plupart des élevages modernes de chevaux de selle.\n\nLe cheval arabe est réputé être l'une des meilleures montures en compétition d'endurance, mais aussi un excellent cheval de randonnée pour nos cavaliers confirmés!\n\nLE PUR SANG ANGLAIS\n\nLe pur-sang anglais est une race très connue puisque c'est celle qui court sur les pistes d'hippodromes lors des courses de galop.\nIl est le résultat d'un élevage sélectif commencé aux XVIIe et XVIIIe siècles en Angleterre, lorsque des juments locales furent croisées avec des étalons étrangers, principalement arabes.\n\nIls vous accompagneront lors de nos randonnées pour les cavaliers confirmés.\n\nLE PURE RACE ESPAGNOLE\n\nLe Pure race espagnole ou PRE est une race de cheval de selle de souche ancienne, d'origine principalement andalouse. Ces chevaux ont été utilisés comme chevaux de prestige dans de nombreuses cours européennes et comme montures pour les gardiens de troupeaux.\n\nActuellement, ils excellent en dressage. Ils ont également la faveur des écuyers de cirque et de spectacle. Ils servent souvent de monture au cinéma pour leur allure et leur bon tempérament.\n\nL'IRISH COB\n\nLe Gypsy Cob, Irish cob ou Tinker est une race chevaline de type cob, provenant d'Irlande et d'Angleterre. Il est à l'origine sélectionné par les nomades des îles britanniques, notamment les Travellers d'Irlande, à partir de chevaux de races diverses. Cette race a été créée pour tracter leurs lourdes roulottes, les verdines.\n\nLe Gypsy Cob est reconnaissables grâce à sa robe généralement pie, son port de tête relevé et fier, sa ligne du dessus et surtout ses crins et ses fanons, très abondants.\nSon domaine d'excellence est l'attelage mais c'est également un très bon cheval de randonnée calme et au pied sur.\n\nLE SHETLAND\n\nLe Shetland est une race de poney britannique originaire des îles Shetland, au Nord de l'Écosse. C'est l'un des plus petits équidés du monde, particularité qu'il doit à son adaptation au biotope rigoureux de son île originelle. Le Shetland connaît un grand succès dès les années 1850 grâce à sa taille réduite, qui lui permet de se faufiler dans les étroites galeries minières pour porter du charbon ou des métaux. Il est exporté partout dans les îles Britanniques.\n\nLe shetland est donc un poney pour les enfants lors de vos balades à la longe et aussi un excellent poney d'attelage.\n \nL'ISLAND COB\n\nUne race que nous avons \"créée\" ici en croisant des chevaux islandais avec des Irish Cob.\nCe qui donne de gentils petit chevaux de robe noire ou pie, porteur, calme et au pied sur.",
+      "en": "We have more than 90 horses different breeds'!\nYou will surely find the right one for amazing rides and trails...\n​\nICELANDIC\n\nIcelandic is the only horse's breed coming from Island. These horses have a little size. In all likelihood they are descended from the vikings' horses.\nAlthough they seem like ponies, they are still described as \"horses\" and not as \"ponies\".\n\nOne of their particularities is they have five gaits (walk, trot, gallop, tölt and amble), it makes them very confortable.\n\nFJORD PONY\n\nFjord pony is coming from Norway. This breed is very ancient and knew few interbreeding. That's why this breed is considered as very pure. It is descended from primitive Asian horses that came in Norway from East.\n\nMost of Fjord ponies are isabelline. A few ones are mouse grey. Fjord ponies are very calm and sweet. \n\nARABIAN THOROUGHBRED\n\nThe Arabian Thoroughbred, pure line bred mainly by the Bedouins, is a horse saddle breed native to the Middle East. With its very distinctive head and raised queue port, Arabic is one of the most easily identifiable races. Throughout history, Arabian horses have left their native Middle East to travel to other regions during wars or trade. They are used in crossbreeding to bring speed, endurance, elegance and strong bones to other breeds of horses. Arabs are now found in most modern saddle horse farms.\n\nThe Arabian horse is reputed to be one of the best mounts in endurance competition, but also an excellent touring horse for our experienced riders!\n\nENGLISH THOROUGHBRED\n\nThe English thoroughbred is a very well-known breed since it is the one that runs on racetracks during gallop races.\nIt is the result of a selective breeding started in the XVIIth and XVIIIth centuries in England, when local mares were crossed with foreign stallions, mainly Arab.\n\nThey will accompany you on our hikes for experienced riders.\n\nSPANISH THOROUGHBRED\n\nThe Pure Spanish Race is a breed of saddle horse of ancient stock, of mainly Andalusian origin. These horses have been used as prestige horses in many European courts and as mounts for herders.\n\nCurrently, they excel in dressage. They are also favored by circus and show riders. They often serve as frames for the cinema for their looks and good temper.\n\nIRISH COB\n\nThe Gypsy Cob, Irish cob or Tinker is a cob type horse breed, from Ireland and England. It is originally selected by nomads from the British Isles, especially Travelers from Ireland, from horses of various breeds. This breed was created to tow their heavy trailers, the verdines.\n\nThe Gypsy Cob is recognizable thanks to its generally magpie coat, its raised and proud head shape, its top line and especially its very abundant horsehair and baleen.\nHis area of excellence is harnessing, but he is also a very good, calm, foot-riding horse.\n\nSHETLAND PONY\n\nThe Shetland is a breed of British pony native to the Shetland Islands in the North of Scotland. It is one of the smallest equines in the world, a peculiarity which it owes to its adaptation to the rigorous biotope of its original island. The Shetland was very successful in the 1850s thanks to its reduced size, which allowed it to squeeze through the narrow mining galleries to carry coal or metals. It is exported throughout the British Isles.\n\n\nThe shetland is therefore a pony for children during your lanyard rides and also an excellent harness pony.\n \nISLAND COB\n\nA breed that we have \"created\" here by crossing Icelandic horses with Irish Cob.\n\nWhich gives gentle little horses in black dress or pie, carrying, calm and on foot."
+    },
+    "typicalDay": {
+      "fr": "Tu effectueras des randonnées à cheval à la demi-journée ou à la journée avec pique-nique. Du P.T.V (parcours en terrain varié) te sera également proposé afin d’apprendre à maîtriser ton cheval lors de passage de différents obstacles que tu pourrais rencontrer lors des balades (petit tronc, fossé, barrière à ouvrir, pont…) Tu apprendras aussi à lire une carte pour pouvoir t'orienter. Des séances d'éthologie te seront également proposées : ces séances te permettront d'apprendre à observer ton cheval afin de mieux communiquer avec lui et établir ainsi une relation de confiance... Bref, toutes les clés pour devenir un parfait cavalier d'extérieur! Une séance d’accrobranche te sera également proposée durant le séjour.\n\nLe soir des veillées au coin du feu seront préparées par tes animateurs…",
+      "en": "We are specialized in outdoor riding and horse's ethology (learning to watch horse's behavior and how to communicate with it):\n- Horseback riding of a half day or full day\n- Training on the PTV (Parcours en Terrain Varié, means varied terrain course), it's a circuit, that presents a range of natural difficulties like gate, tree trunk, ditch, footbridge, hedge, water crossing, etc. \n- Learning how to read a map\n- Horse's ethology activities, it's the right opportunity to learn how to understand and how to communicate with your horse, moreover it will enable you to develop your relationship with your horse!\n- Evenings by the fireside"
+    },
+    "infosAdditional": {
+      "en": "OUR HOLIDAYS CAMPS HAVE THE FRENCH APPROVAL \"JEUNESSE ET SPORT\" "
+    },
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e9de00a9e2e6a001f8404a5"
+    },
+    "score": 4,
+    "nbDays": 0,
+    "nbNights": 0,
+    "frenchLevel": 0,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 0,
+    "comfortLevel": 0,
+    "physicalLevel": 0,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-04-15T09:17:57.310Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "SEJOUR ENFANT- Cheval Sport 13/17 ans"
+    },
+    "description": {
+      "fr": "Ce séjour est axé sur la découverte ou le perfectionnement de l’équitation de pleine nature. Tu effectueras des randonnées à cheval à la demi-journée ou à la journée avec pique-nique. Du P.T.V (parcours en terrain varié) te sera également proposé afin d’apprendre à maîtriser ton cheval lors de passage de différents obstacles que tu pourrais rencontrer lors des balades (petit tronc, fossé, barrière à ouvrir, pont…) Tu apprendras aussi à lire une carte pour pouvoir t'orienter. Des séances d'éthologie te seront également proposées : ces séances te permettront d'apprendre à observer ton cheval afin de mieux communiquer avec lui et établir ainsi une relation de confiance... Bref, toutes les clés pour devenir un parfait cavalier d'extérieur! Une séance d’accrobranche te sera également proposée durant le séjour.\n\nLe soir des veillées au coin du feu seront préparées par tes animateurs…\n\nÀ la fin du séjour il est possible de passer un Galop de pleine nature."
+    },
+    "destination": ["france", "grandEst"],
+    "city": "Plaine",
+    "postalCode": "67420",
+    "position": {"lat": 0, "lng": 0},
+    "category": "outdoorHike",
+    "id_user": {
+      "$oid": "5e981ea89e2e6a001f840497"
+    },
+    "status": "brouillon",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "dates": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "ageMaxParticipant": 99,
+    "ageMinParticipant": 10,
+    "discountAmount": 0,
+    "participantMax": 15,
+    "participantMin": 5,
+    "updatedAt": {
+      "$date": "2022-09-09T08:49:46.168Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e739d61d9e764001ef1654a"
+    },
+    "score": 4,
+    "nbDays": 6,
+    "nbNights": 5,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 3,
+    "physicalLevel": 3,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "destination": ["france", "occitanie"],
+    "description": {
+      "fr": "Les Cévennes, théâtre de la Guerre des Camisards, Terre d’inspiration de Robert Louis Stevenson et paradis des amoureux de la Nature vous accueillent pour un temps à dos de cheval."
+    },
+    "typicalDay": {
+      "fr": "Nous quitterons le causse de Blandas pour une semaine, à la découverte des Cévennes majestueuses et mystérieuses en traversant le Lingas. Là-bas, autant de coins insolites inattendus, comme le Lac des Pises ou le Pic Saint-Guiral.\n\nLes crêtes, causses et vallées se succèdent, nombreuses, jusqu’aux Gorges de la Jonte, Terres impénétrables des Vautours et canyons époustouflants.\nPuis les immenses étendues arides du Causse Méjean nous offrent de fantastiques galops jusqu’au Chaos de Nîmes le Vieux, site ruiniforme hors du temps. Entre Sauveterre et Méjean, au cœur du Parc National des Cévennes, nous attaquerons le sommet de l’Aigoual, point de vue unique sur les Alpes, les Pyrénées et la Méditerranée.\n\nNos derniers kilomètres nous ramèneront vers la vallée de l’Arre, le pays Viganais avant de remonter les drailles de transhumance qui nous guident au Quintanel par les crêtes du Pic d’Anjeau. Au coeur du Parc ou en site classé, nous pourrons apprécier la rudesse accueillante des lieux, entre calcaire et granit, et entre chêne vert et châtaignier. Mais c’est également à la rencontre de la faune et de la flore que nous partirons; Et suivant la saison vous aurez peut-être la chance d’apprécier le brame du cerf roi ou de découvrir la floraison des orchidées sauvages..\n\nCette rando-raid est pratiquée par tous les temps, toute l’année sur réservation. C’est une randonnée originale, créée et renouvelée en permanence par nos soins. L’immensité qui s’offre à nous et aux chevaux nous permet de ne jamais prendre deux fois le même chemin. Votre randonnée sera une randonnée unique."
+    },
+    "title": {
+      "fr": "Rando-Raid en Cévennes - Robert Louis Stevenson"
+    },
+    "city": "Nîmes le Vieux",
+    "postalCode": "48400",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-10-18T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-10-24T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-05-31T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-06-05T10:00:00Z"
+          }
+        },
+        "bookings": 3
+      }
+    ],
+    "participantMin": 4,
+    "participantMax": 8,
+    "ageMinParticipant": 12,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 18,
+    "horseDescription": {
+      "fr": "Voici une présentation de notre cavalerie, qui vous accompagnera dans vos aventures avec nous. Certains sont la depuis le début, ce sont des chevaux très expérimentés. D’autres, plus jeunes et issus de notre élevage, débutent mais sont habitués aux chemins que nous empruntons car ils vivent dans les parcs en extérieur toute l’année. Ils ont des pieds surs et un mental terrible. De plus, nos chevaux sont très habitués à l’homme car nous les manipulons depuis la naissance. Nos jeunes chevaux sont débourrés et travaillés par des élèves en lycées agricoles pendant les périodes scolaires, un très bon entrainement pour eux et une manipulation quotidienne qui accentue leur patience et gentillesse."
+    },
+    "accommodationDescription": {
+      "fr": "Gîtes d’étape, auberges et gîtes."
+    },
+    "priceAdulte": 990,
+    "priceChild": 990,
+    "id_user": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T06:56:07.707Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e7b1013d9e764001ef16553"
+    },
+    "score": 4,
+    "nbDays": 6,
+    "nbNights": 5,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 3,
+    "physicalLevel": 4,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Les chemins de Saint-Jacques à cheval",
+      "en": "The paths of Santiago de Compostela on horseback"
+    },
+    "description": {
+      "fr": "Nous sommes sur la Via Podiensis : l'un des chemins contemporains du pèlerinage de Saint-Jacques-de-Compostelle.​\nAu cœur du Parc Naturel Régional des Causses du Quercy, entre plateaux arides et vertes vallées, le chemin de Compostelle nourrit cinq jours d’une randonnée très culturelle. Un chapelet de sites récite la préhistoire, le repos du pèlerin dans les prieurés, les fastes de l’histoire ou l’ordinaire du berger…\nDans ce décor de pierre et de verdure, au gré des rivières Lot et Célé, je vous invite à chevaucher cette grande classique Lotoise. Soyez en sûr ; Le chemin millénaire vous réserve mille et une promesses de bonheur.",
+      "en": "We are on Via Podiensis: one of the contemporary routes of the pilgrimage to Santiago de Compostela.\nAt the heart of the Causses du Quercy Regional Natural Park, between arid plateaus and green valleys, the Camino de Compostela provides five days of a very cultural hike. A series of sites recites prehistory, the pilgrim's rest in the priory, the splendours of history or the shepherd's routine ...\nIn this setting of stone and greenery, at the mercy of the Lot and Célé rivers, I invite you to ride this great Lotoise classic. Be sure; The millennial path offers you a thousand and one promises of happiness."
+    },
+    "destination": ["france", "occitanie"],
+    "city": "CAJARC",
+    "postalCode": "46160",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-05T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-10T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2021-08-15T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2021-08-20T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2021-09-12T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2021-09-17T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2021-10-10T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2021-10-15T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-07-11T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-07-16T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-07-25T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-07-30T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-09-19T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-24T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-10-03T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-10-08T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      }
+    ],
+    "participantMin": 4,
+    "participantMax": 8,
+    "ageMinParticipant": 16,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 16,
+    "priceAdulte": 1190,
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-06T15:14:40.617Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e9daa4a9e2e6a001f84049b"
+    },
+    "score": 4,
+    "nbDays": 6,
+    "nbNights": 6,
+    "frenchLevel": 4,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 1,
+    "comfortLevel": 3,
+    "physicalLevel": 2,
+    "haveGuide": null,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-04-15T09:17:57.310Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Test oeil"
+    },
+    "description": {
+      "fr": "test oeil"
+    },
+    "destination": ["france", "corse"],
+    "city": "Ajaccio",
+    "postalCode": "20000",
+    "position": {"lat": 0, "lng": 0},
+    "category": "farriery",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 6
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2020-05-01T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-09-06T10:00:00Z"
+          }
+        },
+        "bookings": null,
+        "bookingsByDay": null,
+        "promotion": null
+      }
+    ],
+    "participantMin": 2,
+    "participantMax": 12,
+    "ageMinParticipant": 18,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 18,
+    "priceAdulte": 679,
+    "id_user": {
+      "$oid": "5e981ea89e2e6a001f840497"
+    },
+    "status": "brouillon",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T09:04:25.012Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e77a723d9e764001ef16550"
+    },
+    "score": 4,
+    "nbDays": 5,
+    "nbNights": 6,
+    "frenchLevel": 4,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 2,
+    "comfortLevel": 1,
+    "physicalLevel": 2,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Randonnée Junior sur la Côte d’Émeraude - Hébergement insolite en yourte"
+    },
+    "description": {
+      "fr": "Découvrez l’équitation d’extérieure et le cadre exceptionnel de la Côte d’Émeraude. Durant ce séjour, apprenez les techniques d’équitation d’extérieure. Mettez les en pratique lors d’une randonnée en étoile et en itinérance du mardi au vendredi (deux bivouacs). Les cavaliers réalisent entre 15km et 20 km par jour."
+    },
+    "destination": ["france", "bretagne"],
+    "city": "PLURIEN",
+    "postalCode": "22400",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 5,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-05T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-11T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 5,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-12T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-18T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 5,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-19T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-25T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 5,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-26T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-08-01T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      }
+    ],
+    "priceAdulte": 662,
+    "priceChild": 662,
+    "ageMinParticipant": 9,
+    "ageMaxParticipant": 17,
+    "typicalDay": {
+      "fr": "Au fil des plages de la Côte d’EMERAUDE et de ses chemins se succèdent des paysages aussi variés et différents que le marais des SABLES d’OR, les grandes plages de PLENEUF ou encore le magnifique parc du Château de BIENASSIS.\nVous galoperez sur la grande plage des SABLES D’OR en contemplant le légendaire FORT LA LATTE ainsi que son voisin, le Cap FREHEL.\nAu cours de la randonnée, les jeunes apprennent toutes les spécificités de la randonnée : nœuds utiles aux randonneurs, harnachement, soins des chevaux, montage d’un bivouac.\nLa semaine est rythmée par les soirées à thème et des ateliers sur la semaine (concours photo, herbier).\nNous vous racontons les comtes et légendes de notre région.\nDes jeux de pistes, des promenades nocturnes ou des baignades."
+    },
+    "accommodationDescription": {
+      "fr": "En  yourte sur le centre équestre\nEn tente lors des nuits à l’extérieur\nLe centre équestre dispose de structures confortables et conviviales avec des sanitaires adaptés à l’accueil de public en séjours et une pièce de vie pour l’accueil des groupes.\nNous disposons également d’un campement de yourtes  qui peuvent accueillir entre 6 et 8 personnes chacun.\nLes bivouacs s’effectuent en tente avec une intendance."
+    },
+    "mealDescription": {
+      "fr": "Pension complète comprenant petit déjeuner, déjeuner, goûter et dîner.\nPossibilité de s’adapter aux régimes alimentaires particuliers (végétarien, hallal …).\nPréparation des menus avec des producteurs et traiteurs locaux."
+    },
+    "supervisingDescription": {
+      "fr": "Des méthodes simples, efficaces et sécuritaires afin de vous apprendre à mieux utiliser et communiquer avec votre cheval. Notre équipe pédagogique favorise une relation privilégiée avec le cheval et une approche tout en douceur.\nNotre équipe est composée de professionnels du cheval, formés pour vous satisfaire (BEES 2, BEES 1, BPJEPS TE, ATE)."
+    },
+    "horseDescription": {
+      "fr": "Nous disposons d’une cinquantaine de poneys et chevaux de selle dressés au travail en carrière et à l’équitation d’extérieur."
+    },
+    "saddleryDescription": {
+      "fr": "Nos chevaux ont chacun leur propre matériel, de type anglais."
+    },
+    "childUnderOf": 9,
+    "participantMin": 4,
+    "participantMax": 12,
+    "id_user": {
+      "$oid": "5e77a115d9e764001ef1654f"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e77b023d9e764001ef16551"
+    },
+    "score": 4,
+    "nbDays": 3,
+    "nbNights": 2,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 4,
+    "comfortLevel": 2,
+    "physicalLevel": 3,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "destination": ["france", "bretagne"],
+    "city": "Saint-Cast-le-Guildo",
+    "postalCode": "22380",
+    "position": {"lat": 0, "lng": 0},
+    "title": {
+      "fr": "Cavales des Caps - joyaux de la côte d’Emeraude"
+    },
+    "description": {
+      "fr": "3 jours pour partir à la découverte des joyaux de la côte d’Emeraude, entre le Cap d’Erquy et du Cap Fréhel. Sur un rythme sportif, vous sillonnerez les paysages exceptionnels du futur « Grand Site ». Au bord de l’eau ou à l’intérieur des terres, vous admirerez toutes les richesses naturelles, culturelles et historiques de ce territoire unique des côtes bretonnes !\n• Une approche naturelle autour des chevaux\n• Le caractère chaleureux des Bretons\n• Les chevaux volontaires et habitués à la randonnée\n• Les grands galops sur la plage\n• Découvertes des sites classés Cap Fréhel Cap d’Erquy\n• Des chemins labellisés EQUIBREIZH\n• La découverte du terroir Breton et de ses produits de la mer"
+    },
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-05-21T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-05-23T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-05-30T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-06-01T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      }
+    ],
+    "participantMin": 5,
+    "participantMax": 10,
+    "ageMinParticipant": 16,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 16,
+    "id_user": {
+      "$oid": "5e77a115d9e764001ef1654f"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [
+      {
+        "day": 1,
+        "title": {"fr": "Pays de Fréhel", "en": ""},
+        "description": {
+          "fr": "La première journée débute par la découverte des Sables d’Or, sa plage, l’îlot St Michel. Cette randonnée se poursuit par les chemins côtiers entre landes et bruyères du pays de Fréhel avec ses points de vue sur les falaises de grès rose du Cap et l’anse du Croc de Fréhel …",
+          "en": ""
+        },
+        "accommodation": {
+          "fr": "Nous bivouacons sur Saint-Cast Le Guildo.",
+          "en": ""
+        },
+        "nbHoursEqui": ""
+      },
+      {
+        "day": 2,
+        "title": {"fr": "Plages, chapelle et château", "en": ""},
+        "description": {
+          "fr": "La deuxième journée, débute par la traversée des plages plage de Pen guen et des 4 Vaulx à Saint Cast Le Guildo. Puis une halte au Guildo pour un pique-nique avant la remontée vers Fréhel par les chemins des Templiers. Vous découvrez la chapelle Saint Sébastien ou encore le château du Vaurouault.",
+          "en": ""
+        },
+        "accommodation": {"fr": "Yourtes du centre équestre.", "en": ""},
+        "nbHoursEqui": ""
+      },
+      {
+        "day": 3,
+        "title": {"fr": "Plages et château de Bienassis", "en": ""},
+        "description": {
+          "fr": "La troisième journée, nous traversons le marais des sables d’Or pour atteindre les rives de l’ îslet . Nous arrivons au Château de Bienassis où nous déjeunons. Nous rentrerons par les plages d’Erquy et de Pleneuf ( Caroual, Saint Pabu ) .",
+          "en": ""
+        },
+        "accommodation": {"fr": "", "en": ""},
+        "nbHoursEqui": ""
+      }
+    ],
+    "options": [
+      {
+        "option": 1,
+        "description": {
+          "fr": "deux nuits et deux repas supplémentaires (nuit précédent et nuit suivant la randonnée)",
+          "en": ""
+        },
+        "price": "50",
+        "type": "All"
+      },
+      {
+        "option": 2,
+        "description": {
+          "fr": "Transferts possibles depuis la gare de Lamballe (prix à partager pour le nombre de personnes)",
+          "en": ""
+        },
+        "price": "40",
+        "type": "All"
+      }
+    ],
+    "highlights": [],
+    "__v": 0,
+    "included": {
+      "fr": "– la randonnée en pension complète pour 3 jours\n– les boissons"
+    },
+    "notIncluded": {
+      "fr": "– l’organisation d’un éventuel circuit de visite de la région avant ou après la randonnée\n– les pourboires\n– les dépenses personnelles\n– les transferts depuis et vers la gare de Lamballe : 40€ / trajet à diviser selon le nombre de personne (à payer sur place)\n– toute autre prestation\n– Assurances optionnelles"
+    },
+    "priceAdulte": 420,
+    "priceChild": 420,
+    "accommodationDescription": {
+      "fr": "Voir programme.\nLe centre équestre dispose de structures confortables et conviviales avec des sanitaires adaptés à l’accueil de public en séjours et une pièce de vie pour l’accueil des groupes.\nDeux yourtes sont mises à dispositions des randonneurs et peuvent accueillir entre 6 et 8 personnes chacune.\nUn matériel de camping est également utilisé pour les bivouacs en dehors du centre équestre."
+    },
+    "horseDescription": {
+      "fr": "Une cavalerie adaptée. Pour ces randonnées, le centre équestre sélectionne des Connemara, des Fjords, des Irish cob et des chevaux de selle qui sont spécialisés pleine nature. Avec eux, vous vivrez des moments de plaisirs inoubliables."
+    },
+    "infosAdditional": {
+      "fr": "Les cavaliers doivent être à l’aise aux trois allures et avoir une expérience de randonnée. Le rythme de la randonnée est assez soutenu, nous demandons donc d’avoir une bonne forme physique."
+    },
+    "mealDescription": {
+      "fr": "Les petits déjeuners et dîners sont pris à l’hébergement.\nLes déjeuners, sous forme de pique nique, sont fournis par le véhicule d’intendance."
+    },
+    "saddleryDescription": {
+      "fr": "La sellerie est anglaise uniquement."
+    },
+    "supervisingDescription": {
+      "fr": "la sécurité avant tout.\nLa randonnée est encadrée par des professionnels, formés  (BEES2, BPJEPS TE, ATE).Des moyens humains et techniques performants, vous permettes de vivre votre passion en toute sécurité."
+    },
+    "typicalDay": {
+      "fr": "Durant ces 3 jours, vous découvrez la diversité panoramique qu’offre le pays de Fréhel et d’Erquy et les sites remarquables de la région.\nLes horaires et les tracés peuvent être modifiés selon la saison, les horaires de marées ainsi que le niveau des cavaliers."
+    },
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-06T15:43:54.896Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e7a3339d9e764001ef16552"
+    },
+    "score": 4,
+    "nbDays": 7,
+    "nbNights": 6,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 3,
+    "physicalLevel": 3,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Des Cévennes aux Volcans d’Auvergne - première semaine"
+    },
+    "description": {
+      "fr": "Se déroulant en grande partie dans le Parc National des Cévennes cette randonnée vous offrira des paysages époustouflants et des sensations garanties!\nCette randonnée est la première partie d'une randonnée de 15 jours reliant Cévennes et volcans d'Auvergne:\n"
+    },
+    "destination": ["france", "occitanie"],
+    "city": "Nasbinals",
+    "postalCode": "48260",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 7,
+          "nbNights": 6
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-08-16T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-08-23T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      }
+    ],
+    "typicalDay": {
+      "fr": "Seconde édition de cette randonnée, voici un apreçu de la précédente édition: \nPartis en 2018 du Causse Bégon pour un premier tronçon de 6 jours, les cavaliers ont traversé le Parc National des Cévennes vers le Nord. \nLe franchissement des Gorges de la Jonte par Meyrueis permet d’arriver sur le Causse Méjéan que nous traversons et quittons en traversant les Gorges du Tarn par Ste Enimie pour rejoindre le Causse de Sauveterre. \nAprès un petit crochet sur le Sauveterre, nous traversons la Vallée du lot pour rejoindre le Sud de l’Aubrac. Le plateau de l’Aubrac est traversé du Sud au Nord et la première étape se termine à Plomb du Cantal, point culminant des Monts du Cantal. Le premier Volcan est alors atteint et la deuxième semaine peut commencer..."
+    },
+    "horseDescription": {
+      "fr": "Certains sont la depuis le début, ce sont des chevaux très expérimentés. D’autres, plus jeunes et issus de notre élevage, débutent mais sont habitués aux chemins que nous empruntons car ils vivent dans les parcs en extérieur toute l’année. Ils ont des pieds surs et un mental terrible. De plus, nos chevaux sont très habitués à l’homme car nous les manipulons depuis la naissance. Nos jeunes chevaux sont débourrés et travaillés par des élèves en lycées agricoles pendant les périodes scolaires, un très bon entrainement pour eux et une manipulation quotidienne qui accentue leur patience et gentillesse."
+    },
+    "participantMin": 4,
+    "participantMax": 8,
+    "ageMinParticipant": 14,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 14,
+    "priceAdulte": 1180,
+    "priceChild": 1180,
+    "id_user": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-06T15:43:54.896Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e73747fd9e764001ef16547"
+    },
+    "score": 4,
+    "nbDays": 6,
+    "nbNights": 5,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 4,
+    "comfortLevel": 4,
+    "physicalLevel": 4,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 1,
+    "horseAroundNote": 5,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Randonnée des Monts d'Arrée\""
+    },
+    "description": {
+      "fr": "Découvrez une randonnée à cheval en Bretagne sur les crêtes des Monts d'Arrée, les Highlands de Bretagne. Après la forêt dense et mystérieuse de Huelgoat, la traversée à cheval en Bretagne de la Rivière d'Argent, vous cavalez vers les sommets du Finistère au coeur de paysages rocailleux et de landes infinies. Pendant votre randonnée équestre en Bretagne, sport et dépaysement total sur cette terre fondue dans le creuset d'une mythologie vivante.\n\nVotre guide vous fera également découvrir les secrets de cette nature protégée. Vous découvrirez les tourbières ancestrales, un monde venue de l'époque des dinosaures ainsi qu'une flore protégée avec soin comme l'orchidée des Monts d'Arrée et ses jolies clochettes rosées.\n\nBretagne rime avec gastronomie également. Et les Monts d'Arrée ont été propices au développement d'une cuisine tirée de maigres parcelles de terre rocailleuse. Vous découvrirez le sarrasin sous des formes improbales. Dépaisement gustatif garanti !"
+    },
+    "destination": ["france", "bretagne"],
+    "city": "SAINT HERNIN",
+    "postalCode": "29270",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-04-12T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-04-17T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-04T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-07-09T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      },
+      {
+        "duration": {
+          "nbDays": 6,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-08-01T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-08-06T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      }
+    ],
+    "days": [
+      {
+        "day": 1,
+        "title": {"fr": "Accueil à la Ferme équestre", "en": ""},
+        "description": {
+          "fr": "Arrivée des cavaliers en Bretagne - Nuit à la ferme chez votre guide. L'arrivée se fait en fin de journée directement à la ferme équestre chez votre guide à partir de 18h. Un apéritif de bienvenue vous attend sur l'esplanade de la ferme face aux Montagnes Noires. Au diner, notre guide vous fera une présentation de la randonnée autour d'un bon repas aux saveurs locales. Un transfert pour les cavaliers est organisé depuis la gare de Carhaix Plouguer : une navette vous prendra en charge à 18h30 devant la gare. Pour organiser votre trajet en train depuis Paris : prendre un TGV Paris Guingamp (durée moyenne du trajet direct 2h40, changement à Guingamp où vous prendrez une navette assurée par train ou bus d'une durée d'1 heure). Pour les cavaliers voyageant en avion un transfert est assuré depuis l'aéroport de Brest à 18h. De nombreuses villes sont desservies par l'aéroport de Brest (Lyon , Marseille, Montpellier, Paris, Ajaccio, Bastia, Toulon, Toulouse, Bordeaux et Genève).",
+          "en": ""
+        },
+        "accommodation": {
+          "fr": "Chez votre guide à la ferme équestre",
+          "en": ""
+        },
+        "nbHoursEqui": ""
+      },
+      {
+        "day": 2,
+        "title": {"fr": "Saint Hernin - Scrignac", "en": ""},
+        "description": {
+          "fr": "Première étape sportive de ce périple. Notre parcours débute par de longues cavalcades sur l'ancienne des 11 voies romaines qui rayonnaient depuis Vorguium (Carhaix). Nous évoluerons dans des paysages familiers aux lecteurs d'Asterix et Obélix entre plaines et forêt, jusqu'au massif de Huelgoat Dîner avec votre guide dans une ancienne gare rénovée récemment. Difficultés techniques • Nombreux longs galops supérieurs à 5 minutes.",
+          "en": ""
+        },
+        "accommodation": {
+          "fr": "Gite de la Gare de Scrignac - Nuitée en gîte (Chambres de 2 cavaliers, salle de bain privative)",
+          "en": ""
+        },
+        "nbHoursEqui": "5h à 6h - 42 km"
+      },
+      {
+        "day": 3,
+        "title": {"fr": "Scrignac - Botmeur", "en": ""},
+        "description": {
+          "fr": "Nous poursuivrons en matinée notre chevauchée en pays gaulois et traversrons le Camp d'Artus en forêt de Huelgoat. Derrière le Murus Gallicus, changement d'athmosphère ... les korrigans et autres habitants du Petit Peuple du Youdig. Entre forêts et rivières cette étape nature vous plongera dans des payasages variés. Récompense du soir : l'ascension du Roc'h Trevezel et son vaste panorama sur les Monts d'Arrée. Arrivée dans le village de Botmeur et nuitée au gîte d'étape. Difficultés techniques • Franchissement de gué • Etape en forêt : les sentiers peuvent se trouver barrés par des arbres tombés. Les cavaliers devront contourner les obstacles (franchissements de branches basses, contre haut et contre bas importants, ...) • Ascension en main du Roc’h Trevezel : marche en main sur sentiers rocailleux d’environ 1/4 d’heure • Evolution en terrain rocailleux avec marches naturelles à franchir.",
+          "en": ""
+        },
+        "accommodation": {
+          "fr": "Gite d'étape de Botmeur (dortoir de 6 personnes) ou Troglogites (hébergement insolite)",
+          "en": ""
+        },
+        "nbHoursEqui": "6h - 33km"
+      },
+      {
+        "day": 4,
+        "title": {"fr": "Botmeur - Saint Rivoal", "en": ""},
+        "description": {
+          "fr": "Les Highlands bretonnes... Journée 100% nature sur la ligne des crêtes des Monts d'Arrée. Vous ne saurez où poser vos yeux : les arrêtes tranchantes et torturées des blocs de schistes du Tuchenn Kador, les sentiers blancs serpentants à flanc de colline, les nuages façonnés par des vents toujours très présents. Après une halte au calme du lac du Drennec, notre randonnée à cheval en Bretagne nous fait découvrir la charmante vallée de Saint Rivoal et sa Maison Cornec. Possibilité de visiter l’écomusée des Monts d’Arrée. Dîner et nuit en gîte. Journée de récupération physique : l’allure principale est le pas. En fonction de la météo la halte se prolonge au Drennec où vous pourrez profiter d’un temps de repos au bord du lac ou vous baigner.",
+          "en": ""
+        },
+        "accommodation": {
+          "fr": "Gite de Saint Rivoal (chambre de 2 à 3 personnes) ou Troglogites (hébergement insolite)",
+          "en": ""
+        },
+        "nbHoursEqui": "5h - 28km"
+      },
+      {
+        "day": 5,
+        "title": {"fr": "Saint Rivoal - Scrignac", "en": ""},
+        "description": {
+          "fr": "Etape sportive Après avoir quitté la vallée de Saint Rivoal nous aborderons le Réservoir Saint Michel par la Noce de Pierres \"Eured Ven\", petits menhirs. Le parcours sur le GR 380 vous donnera une vue plongeante sur le Yeun Elez, et ses vastes étendues arides. Vous rejoindrez l'étape du midi à Tredudon Le Moine par des chemins propices à de longs galops et profiterez du calme des chemins creux bretons. Après un dernier galop sur une longue piste vous prendrez un repos bien mérité chez notre hôte de la Gare de Scrignac. Difficultés techniques • Etape du matin assez longue : 4 heures environ • Etape en forêt : les sentiers peuvent se trouver barrés par des arbres tombés. Les cavaliers devront contourner les obstacles (franchissements de branches basses, contre haut et contre bas importants, ...) • Galops supérieurs à 5 minutes en terrain varié",
+          "en": ""
+        },
+        "accommodation": {
+          "fr": "Gite de la Gare de Scrignac - Nuitée en gîte (Chambres de 2 cavaliers, salle de bain privative)",
+          "en": ""
+        },
+        "nbHoursEqui": "6 à 7h - 38 km"
+      },
+      {
+        "day": 6,
+        "title": {"fr": "Scrignac - Saint Hernin", "en": ""},
+        "description": {
+          "fr": "Etape sportive Dernière étape de notre randonnée, toujours à un rythme soutenu. La voie verte Morlaix Concarneau nous permet un retour à la ferme qui contentera les fans de vitesse. Entre forêts et cours d'eau le paysage n'en sera pas moins fort varié. Arrivée en fin d'après midi après 18h. Les cavaliers qui le souhaitent pourront se reposer une nuit à la ferme. Difficultés techniques • Nombreux longs galops.",
+          "en": ""
+        },
+        "accommodation": {"fr": "", "en": ""},
+        "nbHoursEqui": ""
+      }
+    ],
+    "id_user": {
+      "$oid": "5e736f11d9e764001ef16546"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "ageMaxParticipant": 99,
+    "ageMinParticipant": 14,
+    "childUnderOf": 18,
+    "horseDescription": {
+      "fr": "Les chevaux sont très bien entraînés à la randonnée, ils ont le pied sûr et sont dynamiques : Trotteur arabe, appaloosa, et chevaux de races variés"
+    },
+    "infosAdditional": {
+      "fr": "Adulte, adolescent. Pour cavalier confirmé et expérimenté en extérieur. Cette randonnée est destinée à des cavaliers ayant déjà eu des expériences de randonnées en itinérance. \n\nPoids maximum : 85 kg, nous contacter pour vous fournir une monture adaptée."
+    },
+    "notIncluded": {
+      "fr": "Le tarif ci-dessus ne comprend pas boissons et extras personnels"
+    },
+    "participantMax": 9,
+    "participantMin": 2,
+    "priceAdulte": 920,
+    "priceChild": 920,
+    "saddleryDescription": {
+      "fr": "Sellerie spécifique de randonnée et de selles australiennes (possibilité d'apporter son propre matériel)."
+    },
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T06:56:07.707Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e73ac12d9e764001ef1654c"
+    },
+    "score": 4,
+    "nbDays": 8,
+    "nbNights": 7,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 2,
+    "physicalLevel": 3,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Randonnée au Mont Lozère"
+    },
+    "description": {
+      "fr": "Découvrez le Mont Lozère comme vous ne l’avez jamais vu !\nRobin vous propose de randonner à cheval au cœur des Cévennes, jusqu’au Mont Lozère.Amateur des grands espaces, cette randonnée est pour vous!\n\nSituée au nord des Cévennes, le Mont Lozère, terre de granit, est un immense territoire pourvu d’une nature très riche. Point culminant des Cévennes, le Mont Lozère s’élève à 1699 mètres d’altitude, et son territoire est entièrement compris dans la zone cœur du Parc National des Cévennes. Cette randonnée vous fera découvrir les magnifiques forets de hêtres et de châtaigniers, et les plaines recouvertes de bruyères. Sa flore exceptionnelle offre la possibilité de voir des droséra (plante carnivore), et de nombreux cerfs peuplent ses bois. Peut être aurez vous la chance d’en croiser au détour d’un chemin!"
+    },
+    "destination": ["france", "occitanie"],
+    "city": "Mont Lozère",
+    "postalCode": "48220",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 8,
+          "nbNights": 7
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-05-17T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-05-24T10:00:00Z"
+          }
+        },
+        "bookings": 0
+      }
+    ],
+    "horseDescription": {
+      "fr": "Voici une présentation de notre cavalerie, qui vous accompagnera dans vos aventures avec nous. Certains sont la depuis le début, ce sont des chevaux très expérimentés. D’autres, plus jeunes et issus de notre élevage, débutent mais sont habitués aux chemins que nous empruntons car ils vivent dans les parcs en extérieur toute l’année. Ils ont des pieds surs et un mental terrible. De plus, nos chevaux sont très habitués à l’homme car nous les manipulons depuis la naissance. Nos jeunes chevaux sont débourrés et travaillés par des élèves en lycées agricoles pendant les périodes scolaires, un très bon entrainement pour eux et une manipulation quotidienne qui accentue leur patience et gentillesse."
+    },
+    "participantMin": 4,
+    "participantMax": 8,
+    "accommodationDescription": {
+      "fr": "Gîte d’étape / Bivouac sur demande"
+    },
+    "priceAdulte": 1320,
+    "priceChild": 1320,
+    "ageMinParticipant": 14,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 18,
+    "id_user": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e73b3f8d9e764001ef1654d"
+    },
+    "score": 4,
+    "nbDays": 14,
+    "nbNights": 13,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 3,
+    "physicalLevel": 3,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-03-09T10:30:28.056Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Des Cévennes aux Volcans d’Auvergne"
+    },
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 14,
+          "nbNights": 13
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2020-08-16T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-08-30T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null
+      }
+    ],
+    "description": {
+      "fr": "Se déroulant en grande partie dans le Parc National des Cévennes et le Parc Naturel Régional des Volcans d’Auvergne, cette randonnée vous offrira des paysages époustouflants et des sensations garanties!"
+    },
+    "city": "Chanterelle",
+    "postalCode": "15190",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "destination": ["france", "auvergneRhoneAlpes"],
+    "priceAdulte": 2360,
+    "priceChild": 2360,
+    "participantMin": 4,
+    "participantMax": 8,
+    "ageMinParticipant": 14,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 14,
+    "horseDescription": {
+      "fr": "Certains sont la depuis le début, ce sont des chevaux très expérimentés. D’autres, plus jeunes et issus de notre élevage, débutent mais sont habitués aux chemins que nous empruntons car ils vivent dans les parcs en extérieur toute l’année. Ils ont des pieds surs et un mental terrible. De plus, nos chevaux sont très habitués à l’homme car nous les manipulons depuis la naissance. Nos jeunes chevaux sont débourrés et travaillés par des élèves en lycées agricoles pendant les périodes scolaires, un très bon entrainement pour eux et une manipulation quotidienne qui accentue leur patience et gentillesse."
+    },
+    "typicalDay": {
+      "fr": "Seconde édition de cette randonnée, voici un apreçu de la précédente édition:\nPartis en 2018 du Causse Bégon pour un premier tronçon de 6 jours, les cavaliers ont traversé le Parc National des Cévennes vers le Nord. Le franchissement des Gorges de la Jonte par Meyrueis permet d’arriver sur le Causse Méjéan que nous traversons et quittons en traversant les Gorges du Tarn par Ste Enimie pour rejoindre le Causse de Sauveterre. Après un petit crochet sur le Sauveterre, nous traversons la Vallée du lot pour rejoindre le Sud de l’Aubrac. Le plateau de l’Aubrac est traversé du Sud au Nord et la première étape se termine à Plomb du Cantal, point culminant des Monts du Cantal. Le premier Volcan est alors atteint et la deuxième semaine peut commencer, après une journée de repos bien méritée pour les chevaux.\n\nVous découvrirez ensuite les magnifiques volcans du Cantal, vous longerez le Puy Mary, classé Grand Site de France en 2018 jusqu’à arriver en vue du plus majestueux d’entre eux, le Puy de Sancy, qui culmine à 1886m d’altitude. Point culminant du Massif Central, le Massif du Sancy est composé de strato-volcans, c’est à dire de plusieurs volcans imbriqués les uns dans les autres, ce qui donne ces paysages si particuliers."
+    },
+    "id_user": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "days": [],
+    "options": [],
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T06:56:07.707Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e8ad8cf23f97a001eb41180"
+    },
+    "score": 4,
+    "nbDays": 2,
+    "nbNights": 2,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 3,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 1,
+    "comfortLevel": 3,
+    "physicalLevel": 1,
+    "haveGuide": true,
+    "guaranteedDeparture": true,
+    "archived": true,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-04-03T14:39:29.142Z"
+    },
+    "hidden": false,
+    "description": {
+      "fr": "Partez à la conquête des sommets alsaciens, arpentez à cheval les forêts millénaires des Vosges...\nCe séjour est également disponible pour les cavaliers débutants."
+    },
+    "destination": ["france", "grandEst"],
+    "title": {
+      "fr": "Week-end randonnée Monts d'Alsace pour cavaliers confirmés"
+    },
+    "city": "BELMONT",
+    "postalCode": "67130",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "typicalDay": {
+      "fr": "​Les programmes ne sont donnés qu'à titre indicatif et sont susceptibles d'être modifiés selon la météo et les envies du groupe.​\nIls sont déclinés en deux versions : la première pour les cavaliers confirmés et la seconde pour les cavaliers débutants."
+    },
+    "participantMin": 1,
+    "participantMax": 40,
+    "ageMinParticipant": 8,
+    "ageMaxParticipant": 99,
+    "childUnderOf": 8,
+    "horseDescription": {
+      "fr": "Nous possédons plus de 90 chevaux de races différentes... Vous trouverez à coup sûr étrier à votre pied !\n\nL'ISLANDAIS\n\nL'islandais est un cheval de selle de petite taille qui forme l'unique race de cheval originaire d’Islande. Ces animaux sont vraisemblablement les descendants directs des montures amenées en bateau par les vikings lors de la colonisation de l'Islande. Bien qu'il y ait une relation étroite entre ces chevaux et des poneys, ils ont gardé le nom de « cheval ». Leur particularité est de posséder fréquemment cinq allures : le tölt et l'amble en plus des trois allures habituelles du cheval (le pas, trot et galop) ce qui en font des chevaux très confortables !!\n\nLE FJORD\n\nLe Fjord est un petit cheval venu de Norvège. Ses origines sont anciennes et il a peu connu de croisements ; c'est pourquoi le Fjord est considéré comme très pur, descendant de chevaux asiatiques primitifs arrivés en Norvège par l'Est.\nLe Fjord possède une couleur de robe très caractéristique nommée isabelle, plus rarement souris. Grâce à sa robe, ses marques primitives telles que la raie de mulet et les zébrures sur les membres, et sa crinière bicolore, le Fjord peut-être reconnu sans ambiguïté.\n\nC'est un très bon cheval de balade calme et au pied sûr.\n\nLE PUR SANG ARABE\n\nLe pur-sang arabe, lignée pure élevée principalement par les bédouins, est une race chevaline de selle originaire du Moyen-Orient. Avec sa tête très typée et son port de queue relevé, l'arabe fait partie des races les plus facilement identifiables. Au cours de l'histoire, les chevaux arabes ont quitté leur Moyen-Orient natal pour gagner d'autres régions à l'occasion de guerres ou d'échanges commerciaux. Ils sont utilisés en croisement pour apporter de la vitesse, de l'endurance, de l'élégance et des os solides aux autres races de chevaux. On trouve désormais des arabes dans la plupart des élevages modernes de chevaux de selle.\n\nLe cheval arabe est réputé être l'une des meilleures montures en compétition d'endurance, mais aussi un excellent cheval de randonnée pour nos cavaliers confirmés!\n\n\nLE PUR SANG ANGLAIS\n\nLe pur-sang anglais est une race très connue puisque c'est celle qui court sur les pistes d'hippodromes lors des courses de galop.\nIl est le résultat d'un élevage sélectif commencé aux XVIIe et XVIIIe siècles en Angleterre, lorsque des juments locales furent croisées avec des étalons étrangers, principalement arabes.\n\nIls vous accompagneront lors de nos randonnées pour les cavaliers confirmés.\n\nLE PURE RACE ESPAGNOLE\n\nLe Pure race espagnole ou PRE est une race de cheval de selle de souche ancienne, d'origine principalement andalouse. Ces chevaux ont été utilisés comme chevaux de prestige dans de nombreuses cours européennes et comme montures pour les gardiens de troupeaux.\n\nActuellement, ils excellent en dressage. Ils ont également la faveur des écuyers de cirque et de spectacle. Ils servent souvent de monture au cinéma pour leur allure et leur bon tempérament.\n\nL'IRISH COB\n\nLe Gypsy Cob, Irish cob ou Tinker est une race chevaline de type cob, provenant d'Irlande et d'Angleterre. Il est à l'origine sélectionné par les nomades des îles britanniques, notamment les Travellers d'Irlande, à partir de chevaux de races diverses. Cette race a été créée pour tracter leurs lourdes roulottes, les verdines.\n\nLe Gypsy Cob est reconnaissables grâce à sa robe généralement pie, son port de tête relevé et fier, sa ligne du dessus et surtout ses crins et ses fanons, très abondants.\nSon domaine d'excellence est l'attelage mais c'est également un très bon cheval de randonnée calme et au pied sur.\n\nLE SHETLAND\n\nLe Shetland est une race de poney britannique originaire des îles Shetland, au Nord de l'Écosse. C'est l'un des plus petits équidés du monde, particularité qu'il doit à son adaptation au biotope rigoureux de son île originelle. Le Shetland connaît un grand succès dès les années 1850 grâce à sa taille réduite, qui lui permet de se faufiler dans les étroites galeries minières pour porter du charbon ou des métaux. Il est exporté partout dans les îles Britanniques.\n\nLe shetland est donc un poney pour les enfants lors de vos balades à la longe et aussi un excellent poney d'attelage.\n \nL'ISLAND COB\n\nUne race que nous avons \"créée\" ici en croisant des chevaux islandais avec des Irish Cob.\nCe qui donne de gentils petit chevaux de robe noire ou pie, porteur, calme et au pied sur.\n \n\n"
+    },
+    "saddleryDescription": {
+      "fr": "Nous avons tous types de selles : anglais, western ou randonnée"
+    },
+    "supervisingDescription": {
+      "fr": "L'équipe des ATE se compose de Marco, Jessica, Julie, Séverine & Léa"
+    },
+    "mealDescription": {
+      "fr": "La restauration se fait sous forme de table d’hôte. Vous pourrez vous régaler de spécialités alsaciennes et d'ailleurs... Nous essayons de travailler essentiellement avec des producteurs locaux et avec des produits \"Bio\"."
+    },
+    "howToGoTo": {
+      "fr": "Nous nous trouvons au Champ du Feu, point culminant du Bas-Rhin situé à 1100m d'altitude, et notre centre de tourisme équestre se situe juste à côté "
+    },
+    "id_user": {
+      "$oid": "5e8ad2b423f97a001eb4117f"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 2,
+          "nbNights": 2
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-01T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-11-30T11:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "bookingsByDay": null,
+        "promotion": null
+      }
+    ],
+    "highlights": [],
+    "__v": 0,
+    "days": [
+      {
+        "day": 1,
+        "title": {"fr": "Premier jour", "en": ""},
+        "description": {
+          "fr": "Arrivée à 9h. Après avoir fait connaissance avec notre équipe et nos infrastructures, nous nous rendrons aux écuries, où vous pourrez choisir notre monture parmi les chevaux de race. Nous partirons pour une première balade à travers la forêt, où de grandes pistes de galop nous attendent. Nous nous arrêtons à un point de vue sur tout le Val de Villé ! Déjeuner au centre équestre. L'après- midi, nous passons par les plateaux du Haut Lachamp et Bas Lachamp, depuis lesquels se dévoile un large panorama. Nous traverserons les petits villages typiques avant d'arriver au col de la Perheux. Nous attaquons l'ascension du Mont St Jean au galop, en haut duquel une vie à 360° vous attendra ! Dîner et nuit au centre équestre.",
+          "en": ""
+        },
+        "accommodation": {"fr": "", "en": ""},
+        "nbHoursEqui": ""
+      },
+      {
+        "day": 2,
+        "title": {"fr": "Seconde journée", "en": ""},
+        "description": {
+          "fr": "Jour 2 Après le petit-déjeuner, nous partirons pour une journée complète de randonnée. Nous nous dirigerons vers la cascade du Hohwald, l'une des plus belles d'Alsace. Déjeuner sous forme de pique-nique champêtre, puis retour vers le centre équestre par de jolis chemins de sous-bois où de beaux galops nous attendent encore. Fin du séjour vers 18h-18h30.",
+          "en": ""
+        },
+        "accommodation": {"fr": "", "en": ""},
+        "nbHoursEqui": ""
+      }
+    ],
+    "included": {
+      "fr": "- La randonnée avec un accompagnateur\n- L'hébergement\n- La restauration\n- Les boissons pendant les repas"
+    },
+    "priceAccompagnateur": 115,
+    "priceAdulte": 330,
+    "priceChild": 300,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T09:04:25.012Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5e9821b89e2e6a001f840498"
+    },
+    "score": 4,
+    "nbDays": "n",
+    "nbNights": "n-1",
+    "frenchLevel": 4,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 1,
+    "comfortLevel": 3,
+    "physicalLevel": 1,
+    "haveGuide": null,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-04-15T09:17:57.310Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "Séjour équitation sur les hauteurs d'Ajaccio  - stage de perfectionnement à la journée"
+    },
+    "description": {
+      "fr": "test pour taille des images "
+    },
+    "destination": ["france", "corse"],
+    "city": "ajaccio",
+    "postalCode": "20000",
+    "position": {"lat": 0, "lng": 0},
+    "category": "perfectTrip",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 2
+        },
+        "bookingsByDay": [
+          {
+            "day": {
+              "$date": "2020-07-01T00:00:00Z"
+            },
+            "bookings": {
+              "0": 0,
+              "1": 2,
+              "2": 0
+            }
+          }
+        ],
+        "period": {
+          "dateStart": {
+            "$date": "2020-07-01T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-08-31T10:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      }
+    ],
+    "participantMin": 1,
+    "participantMax": 16,
+    "ageMinParticipant": 7,
+    "ageMaxParticipant": 18,
+    "childUnderOf": 7,
+    "priceAdulte": 60,
+    "priceChild": 60,
+    "priceAccompagnateur": 35,
+    "id_user": {
+      "$oid": "5e981ea89e2e6a001f840497"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Flex_Flex",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T08:37:09.395Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "62f3c3756839f4001e3640dc"
+    },
+    "score": 4,
+    "nbDays": 5,
+    "nbNights": 5,
+    "frenchLevel": 4,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": false,
+    "devise": "€",
+    "equestrianLevel": 3,
+    "comfortLevel": 1,
+    "physicalLevel": 4,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-11-25T11:05:34.506Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "date libre - duree fixe"
+    },
+    "description": {
+      "fr": "toto"
+    },
+    "destination": ["france", "occitanie"],
+    "city": "pechmerlez",
+    "postalCode": "46230",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 5,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2022-08-10T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-25T10:00:00Z"
+          }
+        },
+        "bookings": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 5,
+          "nbNights": 5
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": "2022-10-10T10:00:00.000+00:00",
+          "dateEnd": "2022-11-10T10:00:00.000+00:00"
+        },
+        "bookings": 0,
+        "promotion": "20"
+      }
+    ],
+    "typicalDay": {
+      "fr": "blablabla"
+    },
+    "participantMax": 4,
+    "participantMin": 10,
+    "ageMinParticipant": 14,
+    "ageMaxParticipant": 120,
+    "childUnderOf": 16,
+    "horseDescription": {
+      "fr": "gggggggggggg"
+    },
+    "saddleryDescription": {
+      "fr": "ggggggggggggg"
+    },
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "priceAdulte": 600,
+    "priceChild": 550,
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Flex_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-09T09:04:25.012Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5f92a2dc9377893a98ef22c5"
+    },
+    "score": 4,
+    "nbDays": 1,
+    "nbNights": 0,
+    "frenchLevel": 0,
+    "englishLevel": 0,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 4,
+    "comfortLevel": 2,
+    "physicalLevel": 3,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-10-23T09:28:18.636Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "testing images"
+    },
+    "description": {
+      "fr": "testing images "
+    },
+    "destination": ["europe", "england"],
+    "city": "Londre",
+    "postalCode": "44000",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 1,
+          "nbNights": 0
+        },
+        "bookingsByDay": null,
+        "period": {
+          "dateStart": {
+            "$date": "2020-10-24T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2020-10-25T11:00:00Z"
+          }
+        },
+        "bookings": 0,
+        "promotion": null
+      }
+    ],
+    "participantMax": 1,
+    "participantMin": 1,
+    "ageMinParticipant": 1,
+    "ageMaxParticipant": 1,
+    "childUnderOf": 1,
+    "priceAdulte": 123,
+    "id_user": {
+      "$oid": "5e71dfe9b6855d3e29a84205"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Fixed_Fixed",
+    "discountAmount": 0,
+    "updatedAt": {
+      "$date": "2022-09-06T15:48:15.628Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "62f3c6816839f4001e3640dd"
+    },
+    "score": 4,
+    "nbDays": "n",
+    "nbNights": 0,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 1,
+    "comfortLevel": 3,
+    "physicalLevel": 2,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-11-25T11:05:34.506Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "date libre - duree libre"
+    },
+    "description": {
+      "fr": "ffffffffff"
+    },
+    "destination": ["france", "bretagne"],
+    "city": "merville",
+    "postalCode": "31330",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 3,
+          "nbNights": 0
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-08-10T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-02T10:00:00Z"
+          }
+        },
+        "bookings": null,
+        "bookingsByDay": null,
+        "promotion": null
+      }
+    ],
+    "participantMax": 1,
+    "participantMin": 10,
+    "ageMinParticipant": 8,
+    "ageMaxParticipant": 100,
+    "childUnderOf": 8,
+    "priceAdulte": 100,
+    "priceChild": 90,
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "status": "brouillon",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Flex_Flex",
+    "discountAmount": 0
+  },
+  {
+    "_id": {
+      "$oid": "62f3c6836839f4001e3640de"
+    },
+    "score": 4,
+    "nbDays": "n",
+    "nbNights": 0,
+    "frenchLevel": 4,
+    "englishLevel": 3,
+    "germanLevel": 0,
+    "spanishLevel": 0,
+    "openToNonRiders": true,
+    "devise": "€",
+    "equestrianLevel": 1,
+    "comfortLevel": 3,
+    "physicalLevel": 2,
+    "haveGuide": false,
+    "guaranteedDeparture": true,
+    "archived": false,
+    "noteMoy": 0,
+    "horseAroundNote": 0,
+    "environmentLandscapeNote": 0,
+    "cavalryNote": 0,
+    "qualityPriceNote": 0,
+    "receptionNote": 0,
+    "numberRatings": 0,
+    "discount": false,
+    "creationDate": {
+      "$date": "2020-11-25T11:05:34.506Z"
+    },
+    "hidden": false,
+    "title": {
+      "fr": "date libre-duree libre",
+      "en": "Free dates - Free duration"
+    },
+    "description": {
+      "fr": "ffffffffff"
+    },
+    "destination": ["france", "occitanie"],
+    "city": "merville",
+    "postalCode": "31330",
+    "position": {"lat": 0, "lng": 0},
+    "category": "accompaniedHike",
+    "dates": [
+      {
+        "duration": {
+          "nbDays": 1,
+          "nbNights": 0
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-08-10T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-02T10:00:00Z"
+          }
+        },
+        "bookings": null,
+        "bookingsByDay": null,
+        "promotion": null
+      },
+      {
+        "duration": {
+          "nbDays": 1,
+          "nbNights": 0
+        },
+        "period": {
+          "dateStart": {
+            "$date": "2022-09-10T10:00:00Z"
+          },
+          "dateEnd": {
+            "$date": "2022-09-20T10:00:00Z"
+          }
+        },
+        "promotion": null,
+        "bookings": null,
+        "bookingsByDay": null
+      }
+    ],
+    "participantMax": 1,
+    "participantMin": 10,
+    "ageMinParticipant": 8,
+    "ageMaxParticipant": 100,
+    "childUnderOf": 8,
+    "priceAdulte": 100,
+    "priceChild": 90,
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "status": "publique",
+    "log": {
+      "status": [
+        [
+          "publique",
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ],
+      "archived": [
+        [
+          false,
+          {
+            "$date": "2022-09-09T06:56:07.707Z"
+          }
+        ]
+      ]
+    },
+    "highlights": [],
+    "__v": 0,
+    "datesType": "Flex_Flex",
+    "discountAmount": 0
+  }
+]

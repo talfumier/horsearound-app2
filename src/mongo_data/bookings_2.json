@@ -1,0 +1,1000 @@
+[
+  {
+    "_id": {
+      "$oid": "5e72338eec893222b93a6c5a"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-03-18T10:18:27.447Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e71e494b6855d3e29a84206"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": {
+        "$date": "2020-07-02T10:00:00Z"
+      },
+      "dateEnd": {
+        "$date": "2020-07-04T10:00:00Z"
+      }
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-03-18T10:18:27.446Z"
+      },
+      "status": "Paiement total en attente de validation",
+      "amount": 1549,
+      "billingFirstName": "Ounissa",
+      "billingLastName": "Sellou",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "31200",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e73a8f2d9e764001ef1654b"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-03-09T10:30:27.579Z"
+    },
+    "resaStatus": "validated",
+    "options": [],
+    "byPro": true,
+    "id_user": {
+      "$oid": "5e738886d9e764001ef16548"
+    },
+    "id_announce": {
+      "$oid": "5e739d61d9e764001ef1654a"
+    },
+    "adults": {
+      "nb": 3,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-05-31T10:00:00.000Z",
+      "dateEnd": "2020-06-05T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-03-09T10:30:27.579Z"
+      },
+      "status": "Paiement total validé",
+      "billingFirstName": "Réservation externe à Horse Around",
+      "billingLastName": null,
+      "amount": 0
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e848bb3d9e764001ef1655b"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-03-09T10:30:27.579Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e71e494b6855d3e29a84206"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-11-04T11:00:00.000Z",
+      "dateEnd": "2020-11-07T11:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-03-09T10:30:27.579Z"
+      },
+      "status": "Acompte total de 30% en attente de validation",
+      "amount": 1549,
+      "billingFirstName": "Ounissa",
+      "billingLastName": "Sellou",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "31200",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e849d9555139322cbf2b949"
+    },
+    "complementaryInfos": {
+      "participants": [],
+      "birthdate": "12/12/13",
+      "birthplace": "toulouse",
+      "diet": "oui",
+      "treatment": "non"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-04-01T13:54:11.940Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e71e494b6855d3e29a84206"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-11-04T11:00:00.000Z",
+      "dateEnd": "2020-11-07T11:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-04-01T13:54:11.939Z"
+      },
+      "status": "Acompte total de 30% en attente de validation",
+      "amount": 1239.2,
+      "billingFirstName": "Ounissa",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingLastName": "Sellou",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "31200",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e875ebd23f97a001eb4117c"
+    },
+    "complementaryInfos": {
+      "participants": []
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-04-03T14:39:28.674Z"
+    },
+    "resaStatus": "validated",
+    "options": [],
+    "byPro": true,
+    "id_user": {
+      "$oid": "5e694ca1d9e764001ef16543"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "adults": {
+      "nb": 4,
+      "price": 0
+    },
+    "children": {
+      "nb": 1,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-05-10T10:00:00.000Z",
+      "dateEnd": "2020-05-15T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-04-03T14:39:28.673Z"
+      },
+      "status": "Paiement total validé",
+      "billingFirstName": "Test",
+      "billingLastName": "bernard",
+      "amount": 0
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e87621f23f97a001eb4117e"
+    },
+    "complementaryInfos": {
+      "birthdate": "27/03/1978",
+      "participants": [
+        {
+          "name": "Paul",
+          "age": "16"
+        }
+      ],
+      "birthplace": "CAHORS"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-04-03T14:39:28.674Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e81b244d9e764001ef16556"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 1,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-07-12T10:00:00.000Z",
+      "dateEnd": "2020-07-17T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-04-03T14:39:28.673Z"
+      },
+      "status": "Acompte total de 30% en attente de validation",
+      "amount": 2380,
+      "billingFirstName": "Dupont",
+      "billingLastName": "Nicolas",
+      "billingEmail": "cav2@horse-around.com",
+      "billingAddress": "32, rue d'orditour",
+      "billingCity": "toulouse",
+      "billingPostCode": "31000",
+      "billingCountry": "france"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f68b46cc0ce8e5548fa86dd"
+    },
+    "complementaryInfos": {
+      "participants": [],
+      "birthdate": "28/08/1991",
+      "birthplace": "Test"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-05-10T10:00:00.000Z",
+      "dateEnd": "2020-05-15T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-09-21T10:11:37.856Z"
+      },
+      "status": "Paiement total en attente de validation",
+      "amount": 1011.5,
+      "billingFirstName": "Ounissa",
+      "billingLastName": "Sellou",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "312000",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f68b4c8c0ce8e5548fa86de"
+    },
+    "complementaryInfos": {
+      "birthdate": "28/08/1991",
+      "participants": [],
+      "birthplace": "Test"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e7b1013d9e764001ef16553"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-07-05T10:00:00.000Z",
+      "dateEnd": "2020-07-10T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-09-21T10:11:37.856Z"
+      },
+      "status": "Paiement total en attente de validation",
+      "amount": 1190,
+      "billingFirstName": "Ounissa",
+      "billingLastName": "Sellou",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "312000",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f68b545c0ce8e5548fa86df"
+    },
+    "complementaryInfos": {
+      "participants": [
+        {
+          "name": "Paul",
+          "age": "12"
+        }
+      ],
+      "birthdate": "28/08/1991",
+      "birthplace": "Test",
+      "diet": "veggie",
+      "treatment": "meds"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e9ddff99e2e6a001f8404a4"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-06-28T10:00:00.000Z",
+      "dateEnd": "2020-07-04T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-09-21T10:11:37.856Z"
+      },
+      "status": "Paiement total en attente de validation",
+      "amount": 700,
+      "billingFirstName": "Ounissa",
+      "billingLastName": "Sellou",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "312000",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5facf97e7bb1170a0cd01ee7"
+    },
+    "complementaryInfos": {
+      "participants": []
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-11-12T08:15:46.140Z"
+    },
+    "resaStatus": "validated",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e71e494b6855d3e29a84206"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 1,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-11-04T11:00:00.000Z",
+      "dateEnd": "2020-11-30T11:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-11-12T08:15:46.140Z"
+      },
+      "status": "Paiement en attente de validation",
+      "amount": 570.4,
+      "billingFirstName": "Ounissa",
+      "billingLastName": "Sellou",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "312000",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "5facf97e7bb1170a0cd01ee8"
+    },
+    "complementaryInfos": {
+      "participants": []
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-11-12T08:15:46.140Z"
+    },
+    "resaStatus": "validated",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e68a89cd9e764001ef16542"
+    },
+    "id_announce": {
+      "$oid": "5e71e494b6855d3e29a84206"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 1,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": {
+        "$date": "2020-11-04T11:00:00Z"
+      },
+      "dateEnd": {
+        "$date": "2020-11-30T11:00:00Z"
+      }
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-11-12T08:15:46.140Z"
+      },
+      "status": "Paiement en attente",
+      "amount": 570.4
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "61b212946839f4001e3640ce"
+    },
+    "complementaryInfos": {
+      "participants": []
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-11-25T11:05:34.004Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5e7653fbd9e764001ef1654e"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 1,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2022-08-22T10:00:00.000Z",
+      "dateEnd": "2022-08-27T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-11-25T11:05:34.003Z"
+      },
+      "status": "Paiement en attente",
+      "amount": 1880
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6281ed166839f4001e3640d9"
+    },
+    "complementaryInfos": {
+      "participants": [],
+      "birthdate": "21/05/1962",
+      "birthplace": "Pris"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-11-25T11:05:34.004Z"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "62550fb66839f4001e3640cf"
+    },
+    "id_announce": {
+      "$oid": "5e7b1013d9e764001ef16553"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2021-10-10T10:00:00.000Z",
+      "dateEnd": "2021-10-15T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-11-25T11:05:34.003Z"
+      },
+      "status": "Paiement total en attente de validation",
+      "amount": 1190,
+      "billingFirstName": "Henri",
+      "billingLastName": "TALFUMIER",
+      "billingEmail": "henri.talfumier@wanadoo.fr",
+      "billingAddress": "4 impasse du pigeonnier",
+      "billingCity": "LARRA",
+      "billingPostCode": "31330",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "62dfee3908c31295d74effdb"
+    },
+    "id_user": {
+      "$oid": "62dfdf0403c4b5ade42d23a0"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "dateBook": {
+      "$date": "2022-07-26T13:34:01.034Z"
+    },
+    "date": {
+      "dateStart": {
+        "$date": "2020-04-12T10:00:00Z"
+      },
+      "dateEnd": {
+        "$date": "2020-04-17T10:00:00Z"
+      }
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "62fd04738c20c58435f66e20"
+    },
+    "complementaryInfos": {
+      "participants": [],
+      "birthdate": "28/08/1991",
+      "birthplace": "Test"
+    },
+    "paymentStatus": {
+      "deposit": "received",
+      "balance": "notReceived",
+      "total": "notReceived"
+    },
+    "dateBook": {
+      "$date": "2020-09-21T10:11:37.856Z"
+    },
+    "resaStatus": "validated",
+    "options": [],
+    "byPro": false,
+    "id_user": {
+      "$oid": "5d1b9971ffb6ee0025cc1f79"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "adults": {
+      "nb": 1,
+      "price": 0
+    },
+    "children": {
+      "nb": 0,
+      "price": 0
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0
+    },
+    "date": {
+      "dateStart": "2020-05-10T10:00:00.000Z",
+      "dateEnd": "2020-05-15T10:00:00.000Z"
+    },
+    "paymentInfo": {
+      "datePayment": {
+        "$date": "2020-09-21T10:11:37.856Z"
+      },
+      "status": "Paiement total en attente de validation",
+      "amount": 1011.5,
+      "billingFirstName": "Ounissa",
+      "billingLastName": "Sellou",
+      "billingEmail": "ounissa.sellou@strateg.in",
+      "billingAddress": "abc",
+      "billingCity": "def",
+      "billingPostCode": "31200",
+      "billingCountry": "France"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63b858bbaa0e2baa4b3732d9"
+    },
+    "id_user": {
+      "$oid": "62dfdf0403c4b5ade42d23a0"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "date": {
+      "dateStart": {
+        "$date": "2022-10-23T22:00:00Z"
+      },
+      "dateEnd": {
+        "$date": "2022-10-28T22:00:00Z"
+      }
+    },
+    "adults": {
+      "nb": 1,
+      "price": 1190,
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732da"
+      }
+    },
+    "children": {
+      "nb": 0,
+      "price": 0,
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732db"
+      }
+    },
+    "companions": {
+      "nb": 0,
+      "price": 0,
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732dc"
+      }
+    },
+    "paymentInfo": {
+      "billingFirstName": "Henri",
+      "billingLastName": "TALFUMIER",
+      "billingAddress": "4 impasse du pigeonnier",
+      "billingCity": "LARRA",
+      "billingPostCode": "31330",
+      "billingCountry": "France",
+      "billingConditionsAccepted": true,
+      "billingPaymentMeans": "bank transfer",
+      "status": "Paiement en attente"
+    },
+    "paymentStatus": {
+      "deposit": "notReceived",
+      "balance": "notReceived",
+      "total": "notReceived",
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732dd"
+      }
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "log": {
+      "paymentStatus": {
+        "deposit": ["notReceived", "2023-01-06T17:22:03.423Z"],
+        "balance": ["notReceived", "2023-01-06T17:22:03.423Z"],
+        "total": ["notReceived", "2023-01-06T17:22:03.423Z"]
+      },
+      "resaStatus": [
+        [
+          "submitted",
+          {
+            "$date": "2023-01-06T17:22:03.423Z"
+          }
+        ]
+      ]
+    },
+    "createdAt": {
+      "$date": "2023-01-06T17:22:03.440Z"
+    },
+    "updatedAt": {
+      "$date": "2023-01-06T17:22:03.440Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "63b858bbaa0e2baa4b3732df"
+    },
+    "id_user": {
+      "$oid": "62dfdf0403c4b5ade42d23a0"
+    },
+    "id_announce": {
+      "$oid": "5e694fe7d9e764001ef16544"
+    },
+    "date": {
+      "dateStart": {
+        "$date": "2023-03-06T23:00:00Z"
+      },
+      "dateEnd": {
+        "$date": "2023-03-11T23:00:00Z"
+      }
+    },
+    "adults": {
+      "nb": 0,
+      "price": 0,
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732e0"
+      }
+    },
+    "children": {
+      "nb": 0,
+      "price": 0,
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732e1"
+      }
+    },
+    "companions": {
+      "nb": 1,
+      "price": 690,
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732e2"
+      }
+    },
+    "paymentInfo": {
+      "billingFirstName": "Henri",
+      "billingLastName": "TALFUMIER",
+      "billingAddress": "4 impasse du pigeonnier",
+      "billingCity": "LARRA",
+      "billingPostCode": "31330",
+      "billingCountry": "France",
+      "billingConditionsAccepted": true,
+      "billingPaymentMeans": "bank transfer",
+      "status": "Paiement en attente"
+    },
+    "paymentStatus": {
+      "deposit": "notReceived",
+      "balance": "notReceived",
+      "total": "notReceived",
+      "_id": {
+        "$oid": "63b858bbaa0e2baa4b3732e3"
+      }
+    },
+    "resaStatus": "submitted",
+    "options": [],
+    "byPro": false,
+    "log": {
+      "paymentStatus": {
+        "deposit": ["notReceived", "2023-01-06T17:22:03.423Z"],
+        "balance": ["notReceived", "2023-01-06T17:22:03.423Z"],
+        "total": ["notReceived", "2023-01-06T17:22:03.423Z"]
+      },
+      "resaStatus": [
+        [
+          "submitted",
+          {
+            "$date": "2023-01-06T17:22:03.423Z"
+          }
+        ]
+      ]
+    },
+    "createdAt": {
+      "$date": "2023-01-06T17:22:03.445Z"
+    },
+    "updatedAt": {
+      "$date": "2023-01-06T17:22:03.445Z"
+    },
+    "__v": 0
+  }
+]

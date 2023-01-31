@@ -1,0 +1,58 @@
+{
+  "_id": {"name": "_id", "data": {"default": "", "saved": ""}},
+  "lastName": {
+    "name": "lastName",
+    "data": {"default": "", "saved": ""}
+  },
+  "firstName": {
+    "name": "firstName",
+    "data": {"default": "", "saved": ""}
+  },
+  "phone": {
+    "name": "phone",
+    "data": {"default": "", "saved": ""}
+  },
+  "email": {
+    "name": "email",
+    "data": {"default": "", "saved": ""}
+  },
+  "type": {
+    "name": "type",
+    "data": {"default": "", "saved": ""}
+  },
+  "status": {
+    "name": "status",
+    "data": {"default": "", "saved": ""}
+  },
+  "role": {
+    "name": "role",
+    "data": {"default": "", "saved": ""}
+  },
+  "eula": {
+    "name": "eula",
+    "data": {"default": false, "saved": ""}
+  },
+  "address": {
+    "name": "address",
+    "data": {
+      "default": {"address": "", "postcode": "", "city": "", "country": ""},
+      "saved": {"address": "", "postcode": "", "city": "", "country": ""}
+    }
+  },
+  "registration_date": {
+    "name": "registration_date",
+    "data": {"default": "", "saved": ""}
+  },
+  "last_login_date": {
+    "name": "registration_date",
+    "data": {"default": "", "saved": ""}
+  },
+  "aboNewsletter": {
+    "name": "aboNewsletter",
+    "data": {"default": false, "saved": ""}
+  },
+  "code_parrainage_used": {
+    "name": "code_parrainage_used",
+    "data": {"default": "", "saved": ""}
+  }
+}

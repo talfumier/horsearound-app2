@@ -1,0 +1,23 @@
+{
+  "tour_package":[
+    "priceChild", "priceAdulte", "dates"],
+  "announce":[
+    "_id",
+    "images",
+    "dates",
+    "priceChild",
+    "priceAdulte",
+    "priceAccompagnateur",
+    "devise",
+    "participantMax",
+    "title",
+    "description",
+    "environmentLandscapeNote",
+    "numberRatings",
+    "cavalryNote",
+    "qualityPriceNote",
+    "receptionNote",
+    "horseAroundNote",
+    "destination",
+    "nbDays"]
+}

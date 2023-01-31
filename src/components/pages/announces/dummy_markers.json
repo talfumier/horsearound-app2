@@ -1,0 +1,23 @@
+[
+  {
+    "active": false,
+    "dummy": true,
+    "id": 0,
+    "name": "Paris, France",
+    "position": {"lat": 48.856614, "lng": 2.3522219}
+  },
+  {
+    "active": false,
+    "dummy": true,
+    "id": 1,
+    "name": "Marseille, France",
+    "position": {"lat": 43.296482, "lng": 5.36978}
+  },
+  {
+    "active": false,
+    "dummy": true,
+    "id": 2,
+    "name": "Toulouse, France",
+    "position": {"lat": 43.604652, "lng": 1.444209}
+  }
+]

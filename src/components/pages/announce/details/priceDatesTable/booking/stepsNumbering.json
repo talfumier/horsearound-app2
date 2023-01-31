@@ -1,0 +1,28 @@
+{
+  "saved": "0",
+  "submit": "1",
+  "submitted": "1",
+  "sendDeposit": "2a",
+  "depositSent": "2a",
+  "depositReceived": "3a",
+  "sendTotal": "2b",
+  "totalSent": "2b",
+  "totalReceived": "3b",
+  "validate": "4",
+  "validated": "4",
+  "sendBalance": "5a",
+  "balanceSent": "5a",
+  "balanceReceived": "6a",
+  "cancelRequest": "C0",
+  "cancelRequestReceived": "C1",
+  "waitRefundDecision": "C2",
+  "refundAccepted": "C3a",
+  "refundRejected": "C3b",
+  "sendRefund": "C4",
+  "akn": {
+    "depositSent": "3a",
+    "totalSent": "3b",
+    "balanceSent": "6a",
+    "cancelRequest": "C1"
+  }
+}

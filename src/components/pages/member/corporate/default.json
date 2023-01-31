@@ -1,0 +1,50 @@
+{
+  "_id": {"name": "_id", "data": {"default": "", "saved": ""}},
+  "id_user": {"name": "id_user", "data": {"default": "", "saved": ""}},
+  "corpName": {"name": "corpName", "data": {"default": "", "saved": ""}},
+  "address": {
+    "name": "address",
+    "data": {
+      "default": {"address": "", "postcode": "", "city": "", "country": ""},
+      "saved": {"address": "", "postcode": "", "city": "", "country": ""}
+    }
+  },
+  "siret": {"name": "siret", "data": {"default": "", "saved": ""}},
+  "siren": {"name": "siren", "data": {"default": "", "saved": ""}},
+  "assuranceNumber": {
+    "name": "assuranceNumber",
+    "data": {"default": "", "saved": ""}
+  },
+  "bankCode": {"name": "bankCode", "data": {"default": "", "saved": ""}},
+  "guichetCode": {"name": "guichetCode", "data": {"default": "", "saved": ""}},
+  "numberAccount": {
+    "name": "numberAccount",
+    "data": {"default": "", "saved": ""}
+  },
+  "keyAccount": {
+    "name": "keyAccount",
+    "data": {"default": "", "saved": ""}
+  },
+  "deviseAccount": {
+    "name": "deviseAccount",
+    "data": {"default": "EUR", "saved": ""}
+  },
+  "domiciliation": {
+    "name": "domiciliation",
+    "data": {"default": "", "saved": ""}
+  },
+  "iban": {"name": "iban", "data": {"default": "", "saved": ""}},
+  "bic": {"name": "bic", "data": {"default": "", "saved": ""}},
+  "checkOrder": {"name": "checkOrder", "data": {"default": "", "saved": ""}},
+  "checkAdress": {"name": "checkAdress", "data": {"default": "", "saved": ""}},
+  "code_parrainage": {
+    "name": "code_parrainage",
+    "data": {"default": "", "saved": ""}
+  },
+  "code_parrainage_used": {
+    "name": "code_parrainage_used",
+    "data": {"default": "", "saved": ""}
+  },
+  "penalty": {"name": "penalty", "data": {"default": 0, "saved": ""}},
+  "tarif": {"name": "tarif", "data": {"default": 10, "saved": ""}}
+}

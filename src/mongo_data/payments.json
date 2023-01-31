@@ -1,0 +1,61 @@
+[{
+  "_id": {
+    "$oid": "62eca65c3b836f9634b31d67"
+  },
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_booking": {
+    "$oid": "5e72338eec893222b93a6c5a"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "successful": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62eca72ada640421b471b942"
+  },
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_booking": {
+    "$oid": "5e72338eec893222b93a6c5a"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "successful": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62eca7493dde5f239e836303"
+  },
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_booking": {
+    "$oid": "5e72338eec893222b93a6c5a"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "successful": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62eca7d166425df1a262d628"
+  },
+  "id_user": {
+    "$oid": "5e68a89cd9e764001ef16542"
+  },
+  "id_booking": {
+    "$oid": "5e72338eec893222b93a6c5a"
+  },
+  "id_announce": {
+    "$oid": "5e71e494b6855d3e29a84206"
+  },
+  "successful": false,
+  "__v": 0
+}]
