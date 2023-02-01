@@ -259,9 +259,24 @@ function MemberPage({
                 ann_date_start = null,
                 ann_date_end = null,
                 bbd = null,
-                i = null;
+                i = null,
+                j = null;
               switch (cs) {
                 case "change":
+                  switch (currentUser.type) {
+                    case "particulier": //a 'particulier' can only accomplish 'particulier' steps
+                      if (Object.keys(bkg.steps[key].next)[0] === "pro") return;
+                      break;
+                    case "pro": //a 'pro' can declare some 'particulier' steps accomplished  when he got the evidence that the money is in its hands
+                      if (
+                        bkg.steps[key].by === "particulier" &&
+                        Object.keys(bkg.steps[key])[0] === null &&
+                        ["depositSent", "balanceSent", "totalSent"].indexOf(
+                          etid
+                        ) === -1
+                      )
+                        return;
+                  }
                   result = await SwalOkCancel(
                     formatMessage,
                     "src.components.memberPage.tabs.MyReservation.bookingNext"
@@ -382,7 +397,10 @@ function MemberPage({
                   );
                   if (result === "cancel") return;
                   setSpinner({bookings: true});
-                  if (parseInt(key) <= 1) {
+                  if (
+                    parseInt(key) <= 1 &&
+                    currentUser.type === "particulier"
+                  ) {
                     //delete booking if it is in an early stage ('saved' or 'submitted'), at this stage announce.dates.bookings are not affected
                     res = await deleteBooking(
                       id,
@@ -405,14 +423,18 @@ function MemberPage({
                       "UpdateBooking"
                     );
                   } else {
-                    //raise a cancel request at step 15
+                    //raise a cancel request at step 15 (particulier) or cancel booking at step 25 (pro)
                     originalBookings[usr].data[idx].steps[key].active = false;
                     bkgs[usr].data[idx].steps[key].active = false;
-                    originalBookings[usr].data[idx].steps["15"].cancelRequest =
+                    j =
+                      currentUser.type === "particulier"
+                        ? ["15", "cancelRequest"]
+                        : ["25", "cancel"];
+                    originalBookings[usr].data[idx].steps[j[0]][j[1]] =
                       new Date();
-                    bkgs[usr].data[idx].steps["15"].cancelRequest = new Date();
-                    originalBookings[usr].data[idx].steps["15"].active = true;
-                    bkgs[usr].data[idx].steps["15"].active = true;
+                    bkgs[usr].data[idx].steps[j[0]][j[1]] = new Date();
+                    originalBookings[usr].data[idx].steps[j[0]].active = true;
+                    bkgs[usr].data[idx].steps[j[0]].active = true;
                   }
               }
               setSpinner({bookings: false});

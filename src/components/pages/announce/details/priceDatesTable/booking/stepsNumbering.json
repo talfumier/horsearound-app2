@@ -13,6 +13,7 @@
   "sendBalance": "5a",
   "balanceSent": "5a",
   "balanceReceived": "6a",
+  "cancel": "C0",
   "cancelRequest": "C0",
   "cancelRequestReceived": "C1",
   "waitRefundDecision": "C2",

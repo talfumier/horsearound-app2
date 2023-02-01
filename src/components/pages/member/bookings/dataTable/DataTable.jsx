@@ -109,7 +109,7 @@ export function getCompletedSteps(steps, txt, taskNbr, formatMessage) {
     if (step && step[txt])
       return (
         <div
-          className="d-flex justify-content-left ml-1 py-1"
+          className="d-flex justify-content-left ml-1 my-0 py-1"
           key={key}
           style={{
             color: "dark green",
@@ -117,13 +117,13 @@ export function getCompletedSteps(steps, txt, taskNbr, formatMessage) {
           }}
         >
           <div
-            className="badge badge-light mr-2"
+            className="badge badge-light my-0 mr-2"
             style={{
               backgroundColor: step.by === "pro" ? "yellow" : "#4472C4",
               color: step.by === "pro" ? "#305496" : "white",
               fontWeight: "normal",
               width: "30px",
-              height: "20px",
+              height: "19px",
               border: "solid 1px",
               paddingLeft: 0,
               paddingRight: 0,
@@ -523,6 +523,7 @@ function DataTable({
                               }}
                               key={idx}
                               align={headCells[idx].align}
+                              width={headCells[idx].width}
                               hidden={headCells[idx].hidden ? true : false}
                               style={{
                                 color:

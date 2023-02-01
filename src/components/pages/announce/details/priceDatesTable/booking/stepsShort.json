@@ -74,5 +74,17 @@
     "completed": null,
     "by": "admin",
     "active": false
+  },
+  "25": {
+    "cancel": null,
+    "by": "pro",
+    "active": false,
+    "next": {"pro": {"sendRefund": null}}
+  },
+  "26": {
+    "refundSent": null,
+    "by": "pro",
+    "active": false,
+    "next": {"particulier": {"seeYouSoon": null}}
   }
 }

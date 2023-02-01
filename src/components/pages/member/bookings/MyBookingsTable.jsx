@@ -66,7 +66,7 @@ function MyBookingsTable({bookings, selected, spinner, onHandleBookingChange}) {
       label: (
         <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnStepsComplete" />
       ),
-      align: "center",
+      align: "left",
     },
     {
       name: "steps_todo",
