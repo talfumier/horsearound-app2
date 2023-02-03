@@ -1,0 +1,77 @@
+[{
+  "_id": {
+    "$oid": "5fc4b4906839f4001e3640c8"
+  },
+  "id_company": {
+    "$oid": "63ceb717d8e654ff88ead762"
+  },
+  "penalty": false,
+  "penaltyAmount": 0,
+  "id_booking": [
+    {
+      "$oid": "63da70e36adb55b89847b3c1"
+    }
+  ],
+  "amount": 57.04,
+  "period": {
+    "dateStart": {
+      "$date": "2020-11-01T11:00:00Z"
+    },
+    "dateEnd": {
+      "$date": "2020-11-30T11:00:00Z"
+    }
+  },
+  "steps": {
+    "0": {
+      "saved": "2023-01-06T17:22:03.423Z",
+      "by": "admin",
+      "active": false,
+      "next": {
+        "admin": {
+          "submit": null
+        }
+      }
+    },
+    "1": {
+      "submitted": "2023-01-06T17:22:03.423Z",
+      "by": "admin",
+      "active": true,
+      "next": {
+        "pro": {
+          "payInvoice": null
+        }
+      }
+    },
+    "2": {
+      "invoicePaid": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "admin": {
+          "akn": null
+        }
+      }
+    },
+    "3": {
+      "paymentReceived": null,
+      "by": "admin",
+      "active": false,
+      "next": {
+        "admin": {
+          "paid": null
+        }
+      }
+    },
+    "15": {
+      "cancel": null,
+      "by": "admin",
+      "active": false,
+      "next": {
+        "admin": {
+          "cancelled": null
+        }
+      }
+    }
+  },
+  "__v": 0
+}]

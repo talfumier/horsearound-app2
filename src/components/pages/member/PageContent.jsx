@@ -6,6 +6,7 @@ import _ from "lodash";
 import {decodeJWT} from "../../../services/httpUsers.js";
 import MyAnnounces from "./announces/MyAnnounces.jsx";
 import MyBookings from "./bookings/MyBookings.jsx";
+import MyInvoices from "./invoices/MyInvoices";
 import MyProfile from "./profile/MyProfile.jsx";
 import CorporateData from "./corporate/CorporateData.jsx";
 import {SwalOkCancel} from "../common/toastSwal/SwalOkCancel.jsx";
@@ -196,7 +197,15 @@ function PageContent({
         ></MyBookings>
       )}
       {tab === 4 && <div>444444444444444444444</div>}
-      {tab === 5 && <div>55555555555555555555</div>}
+      {tab === 5 && (
+        <MyInvoices
+          bookings={bookings}
+          announces={announces}
+          selected={selected.bookings}
+          spinner={spinner.bookings}
+          onHandleBookingChange={onHandleBookingChange}
+        ></MyInvoices>
+      )}
       {tab === 6 && <div>66666666666666666666</div>}
       {tab === 7 && (
         <CorporateData

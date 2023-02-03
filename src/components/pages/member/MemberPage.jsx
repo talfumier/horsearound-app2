@@ -85,13 +85,14 @@ function MemberPage({
       pmt = {};
     let res = null;
     usrs.map(async (usr, idx) => {
-      res = await getInvoicesByUser(usr._id, cookies.user, signal);
+      console.log(usr);
+      pmt[usr._id] = {data: [], nbPayments: 0};
+      /* res = await getInvoicesByUser(usr._id, cookies.user, signal);
       if (!(await errorHandlingToast(res, locale, false))) {
-        pmt[usr._id] = {data: res.data, nbPayments: res.data.length};
-        if (idx === n - 1) {
-          originalPayments = pmt;
-          setPayments(pmt);
-        }
+        pmt[usr._id] = {data: res.data, nbPayments: res.data.length}; */
+      if (idx === n - 1) {
+        originalPayments = pmt;
+        setPayments(pmt);
       }
     });
   }

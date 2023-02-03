@@ -1360,7 +1360,8 @@
             "link4": "Mes annonces",
             "link4a": "Annonces",
             "link5": "Entreprise",
-            "link6": "Prix & paiement",
+            "link6": "Mes factures",
+            "link6a": "Factures",
             "link7": "Agenda",
             "link8": "Messagerie"
           }
@@ -3925,7 +3926,8 @@
             "link4": "My announces",
             "link4a": "Announces",
             "link5": "Corporate data",
-            "link6": "Price & payment",
+            "link6": "My invoices",
+            "link6a": "Invoices",
             "link7": "Agenda",
             "link8": "Messaging"
           }

@@ -117,18 +117,22 @@ function NavBar({type, role, initTab, dirty, onHandleToggle, onHandleDirty}) {
                     <FormattedMessage id="src.components.memberPage.DashboardMenu.link7" />
                   </a>
                 </li>
-                {type === "pro" ? (
+                {type === "pro" || role === "ADMIN" ? (
                   <li>
                     <a
                       className={classnames({
-                        active: tab === 5, //Tariff&Payment
+                        active: tab === 5, //Invoices
                       })}
                       onClick={() => {
                         toggle(5);
                       }}
                     >
                       <i className="fa fa-money" aria-hidden="true" />
-                      <FormattedMessage id="src.components.memberPage.DashboardMenu.link6" />
+                      {role === "ADMIN" ? (
+                        <FormattedMessage id="src.components.memberPage.DashboardMenu.link6a" />
+                      ) : (
+                        <FormattedMessage id="src.components.memberPage.DashboardMenu.link6" />
+                      )}
                     </a>
                   </li>
                 ) : null}

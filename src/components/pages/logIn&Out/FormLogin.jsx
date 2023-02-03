@@ -278,7 +278,6 @@ function FormLogin({onClose}) {
       } else {
         let bl = true;
         if (state.$data.type === "pro") {
-          console.log(res);
           await postCompany(
             {
               id_user: res.data.data[0]._id,

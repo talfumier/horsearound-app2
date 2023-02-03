@@ -1,0 +1,11 @@
+{
+  "saved": "0",
+  "submit": "1",
+  "submitted": "1",
+  "payInvoice": "2",
+  "invoicePaid": "3",
+  "cancel": "C0",
+  "akn": {
+    "invoicePaid": "3"
+  }
+}

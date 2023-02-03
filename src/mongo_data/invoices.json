@@ -1,125 +1,59 @@
-[{
-  "_id": {
-    "$oid": "5fc4b4906839f4001e3640c8"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 0,
-  "id_user": {
-    "$oid": "5e71dfe9b6855d3e29a84205"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "amount": 57.04,
-  "concernedDate": {
-    "dateStart": {
-      "$date": "2020-11-04T11:00:00Z"
+[
+  {
+    "_id": {
+      "$oid": "5fc4b4906839f4001e3640c8"
     },
-    "dateEnd": {
-      "$date": "2020-11-30T11:00:00Z"
-    }
-  },
-  "dueDate": {
-    "$date": "2020-12-30T00:00:00Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "62ea8dff3557ea4898761692"
-  },
-  "id_user": {
-    "$oid": "62550fb66839f4001e3640cf"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 0,
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "62ea9127b3322620bab83abf"
-  },
-  "id_user": {
-    "$oid": "62550fb66839f4001e3640cf"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 0,
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "62ea9174756028acf1da13cf"
-  },
-  "id_user": {
-    "$oid": "62550fb66839f4001e3640cf"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 0,
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "62ea91bdea0b60d09004dffa"
-  },
-  "id_user": {
-    "$oid": "62550fb66839f4001e3640cf"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 0,
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "62ea93800a1983c8cca6efc7"
-  },
-  "id_user": {
-    "$oid": "62550fb66839f4001e3640cf"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 0,
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "62ea93cb7edbee736716b475"
-  },
-  "id_user": {
-    "$oid": "62550fb66839f4001e3640cf"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 200,
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "62ea952418fd856308ba9abb"
-  },
-  "id_user": {
-    "$oid": "62550fb66839f4001e3640cf"
-  },
-  "id_announce": {
-    "$oid": "5e71e494b6855d3e29a84206"
-  },
-  "status": "Facture en attente de paiement",
-  "penalty": false,
-  "penaltyAmount": 0,
-  "__v": 0
-}]
+    "id_company": {
+      "$oid": "63ceb717d8e654ff88ead762"
+    },
+    "penalty": false,
+    "penaltyAmount": 0,
+    "id_booking": [
+      {
+        "$oid": "63da70e36adb55b89847b3c1"
+      }
+    ],
+    "amount": 57.04,
+    "period": {
+      "dateStart": {
+        "$date": "2020-11-01T11:00:00Z"
+      },
+      "dateEnd": {
+        "$date": "2020-11-30T11:00:00Z"
+      }
+    },
+    "steps": {
+      "0": {
+        "saved": "2023-01-06T17:22:03.423Z",
+        "by": "admin",
+        "active": false,
+        "next": {"admin": {"submit": null}}
+      },
+      "1": {
+        "submitted": "2023-01-06T17:22:03.423Z",
+        "by": "admin",
+        "active": true,
+        "next": {"pro": {"payInvoice": null}}
+      },
+      "2": {
+        "invoicePaid": null,
+        "by": "pro",
+        "active": false,
+        "next": {"admin": {"akn": null}}
+      },
+      "3": {
+        "paymentReceived": null,
+        "by": "admin",
+        "active": false,
+        "next": {"admin": {"paid": null}}
+      },
+      "15": {
+        "cancel": null,
+        "by": "admin",
+        "active": false,
+        "next": {"admin": {"cancelled": null}}
+      }
+    },
+    "__v": 0
+  }
+]

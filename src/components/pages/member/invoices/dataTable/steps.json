@@ -1,0 +1,32 @@
+{
+  "0": {
+    "saved": null,
+    "by": "admin",
+    "active": true,
+    "next": {"admin": {"submit": null}}
+  },
+  "1": {
+    "submitted": null,
+    "by": "admin",
+    "active": false,
+    "next": {"pro": {"payInvoice": null}}
+  },
+  "2": {
+    "invoicePaid": null,
+    "by": "pro",
+    "active": false,
+    "next": {"admin": {"akn": null}}
+  },
+  "3": {
+    "paymentReceived": null,
+    "by": "admin",
+    "active": false,
+    "next": {"admin": {"paid": null}}
+  },
+  "15": {
+    "cancel": null,
+    "by": "admin",
+    "active": false,
+    "next": {"admin": {"cancelled": null}}
+  }
+}
