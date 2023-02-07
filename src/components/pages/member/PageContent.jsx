@@ -22,7 +22,7 @@ function PageContent({
   announces,
   users: usrs,
   bookings,
-  payments,
+  invoices,
   selected,
   tab,
   spinner,
@@ -30,6 +30,7 @@ function PageContent({
   onHandleSaveDelete,
   onHandleDirty,
   onHandleBookingChange,
+  onHandleInvoiceChange,
 }) {
   window.scrollTo(0, 0);
   const {locale, formatMessage} = useIntl();
@@ -170,7 +171,7 @@ function PageContent({
                       : announces
                   }
                   bookings={bookings[usr._id]}
-                  payments={payments[usr._id]}
+                  invoices={invoices[usr._id]}
                   user={usr}
                   onHandleToggle={onHandleToggle}
                   style={{margin: 0}}
@@ -199,11 +200,10 @@ function PageContent({
       {tab === 4 && <div>444444444444444444444</div>}
       {tab === 5 && (
         <MyInvoices
-          bookings={bookings}
+          invoices={invoices}
           announces={announces}
-          selected={selected.bookings}
-          spinner={spinner.bookings}
-          onHandleBookingChange={onHandleBookingChange}
+          spinner={spinner.invoices}
+          onHandleInvoiceChange={onHandleInvoiceChange}
         ></MyInvoices>
       )}
       {tab === 6 && <div>66666666666666666666</div>}

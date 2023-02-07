@@ -1,0 +1,5 @@
+header.invoice { border-radius: 0.5em;background: #7aa095; margin: 0 0 1em; }
+h1.invoice { font-weight:bolder;font-size: 125%;text-align:center; color: #ffffff; margin: 4rem 0 0.5rem; padding: 0.5em 0; }
+address.invoice p.invoice { font-size: 15; font-style: normal; line-height: 1.25; margin: 0 1em 1em 0; }
+table.invoice{width:100%;}
+th.invoice,td.invoice {border: 1px solid;border-color:black;padding:4;text-align: center;vertical-align: text-top;}

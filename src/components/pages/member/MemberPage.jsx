@@ -23,7 +23,7 @@ import ContainerToast from "../common/toastSwal/ContainerToast.jsx";
 import {SwalOkCancel} from "../common/toastSwal/SwalOkCancel.jsx";
 
 let originalBookings = {},
-  originalPayments = {};
+  originalInvoices = {};
 function MemberPage({
   announces: allAnnounces,
   onHandleSaveDelete,
@@ -39,10 +39,10 @@ function MemberPage({
   const [flg, setFlag] = useState(false); // data loading complete indicator;
   const [proUsers, setProUsers] = useState([]);
   const [bookings, setBookings] = useState({});
-  const [payments, setPayments] = useState({});
+  const [invoices, setInvoices] = useState({});
   const [selected, setSelected] = useState(null);
   const [dirty, setDirty] = useState(null);
-  const [spin, setSpinner] = useState({bookings: false});
+  const [spin, setSpinner] = useState({bookings: false, invoices: false});
   async function loadProUsers(signal) {
     if (currentUser.role === "ADMIN") {
       const res = await getUsers("pro", cookies.user, signal);
@@ -65,34 +65,36 @@ function MemberPage({
     let res = null;
     usrs.map(async (usr, idx) => {
       res = await getProBookings(usr._id, cookies.user, signal);
-      if (!(await errorHandlingToast(res, locale, false))) {
+      if (!(await errorHandlingToast(res, locale, false)))
         bkg[usr._id] = {
           data: res.data,
           nbBookings: res.data.length,
           nbSaved: res.data.filter((item) => item.steps["0"].saved !== null)
             .length,
         };
-        if (idx === n - 1) {
-          originalBookings = bkg;
-          setBookings(bkg);
-        }
+      if (idx === n - 1) {
+        originalBookings = bkg;
+        setBookings(bkg);
       }
     });
   }
-  async function loadProPayments(usrs, signal) {
-    //includes bookings done by the pro (byPro=true)
+  async function loadProInvoices(usrs, signal) {
     const n = usrs.length,
       pmt = {};
     let res = null;
     usrs.map(async (usr, idx) => {
-      console.log(usr);
-      pmt[usr._id] = {data: [], nbPayments: 0};
-      /* res = await getInvoicesByUser(usr._id, cookies.user, signal);
-      if (!(await errorHandlingToast(res, locale, false))) {
-        pmt[usr._id] = {data: res.data, nbPayments: res.data.length}; */
+      res = await getInvoicesByUser(usr._id, cookies.user, signal);
+      if (!(await errorHandlingToast(res, locale, false)))
+        pmt[usr._id] = {
+          data: res.data,
+          nbInvoices: res.data[0].invoice.length,
+          nbPending: _.filter(res.data[0].invoice, (inv) => {
+            return inv.steps["3"].paymentReceived === null;
+          }).length,
+        };
       if (idx === n - 1) {
-        originalPayments = pmt;
-        setPayments(pmt);
+        originalInvoices = pmt;
+        setInvoices(pmt);
       }
     });
   }
@@ -115,7 +117,7 @@ function MemberPage({
     const abortController = new AbortController(), //ADMIN case
       signal = abortController.signal;
     loadProBookings(proUsers, signal);
-    loadProPayments(proUsers, signal);
+    loadProInvoices(proUsers, signal);
     return () => {
       if (flg) abortController.abort(); //clean-up code after component has unmounted
     };
@@ -126,19 +128,18 @@ function MemberPage({
       signal = abortController.signal;
     if (currentUser.type === "pro") {
       loadProBookings([currentUser], signal);
-      loadProPayments([currentUser], signal);
+      loadProInvoices([currentUser], signal);
     } else loadUserBookings(currentUser, signal);
     return () => {
       abortController.abort(); //clean-up code after component has unmounted
     };
   }, []);
   useEffect(() => {
-    let bl = false;
-    bl = Object.keys(bookings).length > 0;
+    let bl = Object.keys(bookings).length > 0;
     if (bl && (currentUser.type === "pro" || currentUser.role === "ADMIN"))
-      bl = Object.keys(payments).length > 0;
+      bl = Object.keys(invoices).length > 0;
     setFlag(bl);
-  }, [bookings, payments]);
+  }, [proUsers, bookings, invoices]);
   const queryParams = [];
   const uRLSearch = new URLSearchParams(location.search);
   for (let item of uRLSearch) {
@@ -446,12 +447,15 @@ function MemberPage({
       });
     });
   }
+  function handleInvoiceChange(id, etid, cs = "change") {
+    console.log(id, etid);
+  }
   try {
     async function handleToggle(idx, user) {
       switch (idx) {
         case 1: //dashboard
           setBookings(originalBookings);
-          setPayments(originalPayments);
+          setInvoices(originalInvoices);
           break;
         case 2: //announces
           if (user && user.type === "pro")
@@ -473,11 +477,15 @@ function MemberPage({
             setBookings(bkg);
           } else setBookings(originalBookings);
           break;
-        case 5: ////Tariff&Payments
+        case 5: //Invoices
           if (user) {
-            const pmt = _.cloneDeep(payments);
-            setPayments(pmt[user._id]);
-          } else setPayments(originalPayments);
+            const pmt = {};
+            Object.keys(invoices).map((key) => {
+              if (key === user._id)
+                pmt[user._id] = _.cloneDeep(invoices[user._id]);
+            });
+            setInvoices(pmt);
+          } else setInvoices(originalInvoices);
       }
       setTab(idx);
     }
@@ -518,7 +526,7 @@ function MemberPage({
               announces={announces}
               users={proUsers.length > 0 ? proUsers : [currentUser]}
               bookings={bookings}
-              payments={payments}
+              invoices={invoices}
               selected={selected}
               tab={tab}
               spinner={spin}
@@ -529,6 +537,7 @@ function MemberPage({
                 onHandleDirty(bl);
               }}
               onHandleBookingChange={handleBookingChange}
+              onHandleInvoiceChange={handleInvoiceChange}
             />
           </div>
         </>

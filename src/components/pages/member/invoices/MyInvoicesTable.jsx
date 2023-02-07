@@ -2,83 +2,62 @@ import {FormattedMessage, useIntl} from "react-intl";
 import {getMuiThemes} from "../../common/mui/MuiThemes.js";
 import DataTable from "./dataTable/DataTable.jsx";
 
-function MyBookingsTable({bookings, selected, spinner, onHandleBookingChange}) {
+function MyInvoicesTable({invoices, spinner, onHandleInvoiceChange}) {
   const {locale} = useIntl();
   const cols = [
     {
-      name: "reference-booked by",
+      name: "reference",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnRef" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.column0" />
       ),
       align: "center",
     },
     {
-      name: "activity-organizer",
+      name: "period",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnTitle" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.column2" />
       ),
       align: "center",
     },
     {
-      name: "date",
+      name: "announce_bookings",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnDate" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.column1" />
       ),
       align: "center",
     },
     {
-      name: "days-nights",
+      name: "amount",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnDaysNights" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.column3" />
       ),
       align: "center",
     },
     {
-      name: "participants",
+      name: "deadline",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnNumber" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.column4" />
       ),
       align: "center",
     },
-    {
-      name: "options",
-      label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnOption" />
-      ),
-      align: "center",
-    },
-    {
-      name: "price",
-      label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnPrice" />
-      ),
-      align: "center",
-    },
-    /* {
-      name: "peopleCapacity",
-      label: (
-        <FormattedMessage id="src.components.announcePage.announceDetailTab.moreInfoTable.peopleCapacity" />
-      ),
-      align: "center",
-    }, */
     {
       name: "steps_completed",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnStepsComplete" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.ColumnStepsComplete" />
       ),
       align: "left",
     },
     {
       name: "steps_todo",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnStepsToDo" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.ColumnStepsToDo" />
       ),
       align: "center",
     },
     {
       name: "cancel",
       label: (
-        <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnCancel" />
+        <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.ColumnCancel" />
       ),
       align: "center",
     },
@@ -87,28 +66,17 @@ function MyBookingsTable({bookings, selected, spinner, onHandleBookingChange}) {
       label: "id",
       hidden: true,
     },
-    {
-      name: "user_id",
-      label: "user_id",
-      hidden: true,
-    },
-    {
-      name: "announce_id",
-      label: "announce_id",
-      hidden: true,
-    },
   ];
 
   return (
     <DataTable
-      bookings={bookings}
-      selected={selected}
+      invoices={invoices}
       headCells={cols}
-      themes={getMuiThemes("MyBookingsTable", locale)}
+      themes={getMuiThemes("MyInvoicesTable", locale)}
       spinner={spinner}
-      onHandleBookingChange={onHandleBookingChange}
+      onHandleInvoiceChange={onHandleInvoiceChange}
     />
   );
 }
 
-export default MyBookingsTable;
+export default MyInvoicesTable;

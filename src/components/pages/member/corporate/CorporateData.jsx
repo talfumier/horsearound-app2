@@ -125,7 +125,6 @@ function CorporateData({user, onHandleDirty}) {
   async function setParrainageCounters(dataIn, signal) {
     let bl = false,
       res = null;
-    console.log(dataIn.code_parrainage.data.saved.toString());
     if (typeof dataIn.code_parrainage.data.saved !== "object") {
       res = await getParrainageCounters(
         dataIn.code_parrainage.data.saved,
@@ -167,7 +166,6 @@ function CorporateData({user, onHandleDirty}) {
       onHandleDirty(
         Object.keys(prepareBody(globals)).length >= 0 ? true : false
       );
-      //console.log("globals", globals);
     }
     if (cs === "valid") {
       const valide = {...valid};

@@ -1,331 +1,276 @@
-import {useState, useEffect} from "react";
-import {FormattedMessage, useIntl} from "react-intl";
-import {Row, Col} from "react-bootstrap";
+import {useIntl} from "react-intl";
 import {getFormattedDate} from "../../../../utils/utilityFunctions.js";
-import {Card} from "@mui/material";
 import "../../../bookings/dataTable/summary/styles.css";
 import stepsNumbering from "../../../../announce/details/priceDatesTable/booking/stepsNumbering.json";
-import {getCompletedSteps} from "../DataTable.jsx";
-import {getNextSteps} from "../DataTable.jsx";
+import {
+  getCompletedSteps,
+  getNextSteps,
+} from "../../../bookings/dataTable/DataTable.jsx";
+import "./styles.css";
+import logo from "../../../../../../images/logo-icon.png";
 
-function InvoiceSummary({data: data_arr}) {
+function InvoiceSummary({data: dta}) {
   const {locale, formatMessage} = useIntl();
-  const [bookings, setBookings] = useState([]);
-  useEffect(() => {
-    if (typeof data_arr.then === "function")
-      data_arr.then((resolve, reject) => {
-        if (resolve) setBookings(resolve);
-      });
-    else setBookings(data_arr);
-  }, []);
-  function getParticipants(data) {
-    let txt = [],
+  const {invoice, data} = dta;
+  function prepareDetails() {
+    const inv = {
+      _id: invoice._id,
+      anns: data.announce,
+      booking_ids: invoice.id_booking,
+      bookings: data.booking,
+    };
+    const details = [];
+    let obj = {},
+      n = 0,
+      part = null,
+      keys = [],
+      keys_part = [],
+      price = 0,
       total = 0;
-    ["adults", "children", "companions"].map((item, idx) => {
-      if (data[item]?.nb > 0)
-        txt.push(
-          `${txt.length > 0 ? ", " : ""}${data[item].nb} ${formatMessage({
-            id: "src.components.bookingPage.BookDetailInfo." + item,
-          })}`
+    inv.anns.map((ann) => {
+      n = 0;
+      inv.bookings.map((bkg) => {
+        if (
+          bkg.id_announce === ann._id &&
+          inv.booking_ids.indexOf(bkg._id) !== -1
+        ) {
+          part = {};
+          n += 1;
+          ["adults", "children", "companions"].map((item) => {
+            if (bkg[item].nb !== 0) part[item] = bkg[item];
+          });
+          obj[bkg.ref] = {
+            date: bkg.date,
+            participants: part,
+          };
+        }
+      });
+      details.push({
+        title: ann.title,
+        devise: ann.devise,
+        rate: data.tarif,
+        penalty: data.penalty,
+        bookings: obj,
+        nbRows: n,
+      });
+    });
+    n = details.length;
+    let i = 0,
+      j = 0,
+      td = [];
+    const tr = [];
+    for (i = 0; i < n; i++) {
+      if (i === 0)
+        td.push(
+          <td
+            className="invoice"
+            key={`title_${locale}${i}`}
+            rowSpan={details[i].nbRows}
+          >
+            {details[i].title[locale]}
+          </td>
         );
-      total += data[item].price;
-    });
-    return [txt, total];
-  }
-  function getOptions(data) {
-    let txt = [];
-    if (!data.options) return null;
-    Object.keys(data.options).map((key) => {
-      txt.push(
-        <p className="summary normal my-0 py-0" key={key}>
-          <span
-            style={{
-              textDecoration: !data.options[key] ? "line-through" : null,
-            }}
-          >
-            {`${data.announce.options[key - 1].description[locale]}`}
-          </span>
-          {data.options[key] ? (
-            <span style={{paddingLeft: 5}}> &#x2714;</span>
-          ) : null}
-        </p>
-      );
-    });
-    return txt;
-  }
-  let participants = null;
-  return bookings.map((data, idx) => {
-    participants = getParticipants(data);
-    return (
-      <Card
-        key={idx}
-        variant="outlined"
-        className="summary card"
-        style={{
-          marginTop: "20px",
-          marginLeft: "10px",
-          marginRight: "10px",
-          paddingBottom: "40px",
-          width: "75%",
-          borderWidth: "1px",
-        }}
-      >
-        <Row key={1} className="justify-content-md-left ">
-          <Col className="d-flex justify-content-left summary title ml-4 pl-4 ">
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.bookingRef" />
-              {` ${data.ref}`}
-            </span>
-            <span className="summary normal ml-2">
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.bookingOwner" />
-              {`${data.paymentInfo.billingFirstName} ${data.paymentInfo.billingLastName}`}
-            </span>
-          </Col>
-        </Row>
-        <Row key={2} className="justify-content-md-left ">
-          <Col className="summary title ml-4 ">
-            <i className="fas fa-horse-head pr-3"></i>
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.activity" />
-            </span>
-            <span className="summary normal">
-              {data.announce.title[locale]}
-            </span>
-          </Col>
-        </Row>
-        <Row key={3} className="justify-content-md-left ">
-          <Col className="summary title ml-4">
-            <i className="fas fa-house-user mr-1 pr-2" />
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.organizer" />
-            </span>
-            <span className="summary normal">{data.company.corpName}</span>
-            <p className="summary normal ml-4 pl-3">{`${data.pro.firstName} ${data.pro.lastName} - ${data.pro.email}`}</p>
-          </Col>
-        </Row>
-        <Row key={4} className="justify-content-md-left ">
-          <Col className="summary title ml-4">
-            <i className="fa fa-calendar pr-3" />
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.from" />
-            </span>
-            <span className="summary normal">
-              {getFormattedDate(data.date.dateStart, "dd.MM.yyyy")}
-            </span>
-            <i className="fa fa-calendar pr-3" />
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.to" />
-            </span>
-            <span className="summary normal">
-              {getFormattedDate(data.date.dateEnd, "dd.MM.yyyy")}
-            </span>
-          </Col>
-        </Row>
-        <Row key={5} className="justify-content-md-left ">
-          <Col className="summary title ml-4">
-            <i className="fa fa-user pl-1 pr-3" />
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.participants" />
-            </span>
-            <span className="summary normal">
-              {` ${participants[1]} ${data.announce.devise}`}
-            </span>
-            <div
-              className="d-flex summary normal ml-3 pl-4"
-              style={{whiteSpace: "nowrap"}}
-            >
-              {participants[0]}
-            </div>
-          </Col>
-        </Row>
-        {data.paymentRecap.options && (
-          <Row key={6} className="justify-content-md-left ">
-            <Col className="summary title ml-4">
-              <i className="fa fa-shopping-cart pl-1 pr-3" />
-              <span>
-                <FormattedMessage id="src.components.bookingPage.BookDetailInfo.options" />
-              </span>
-              <span className="summary normal">
-                {` ${data.paymentRecap.options.amount} ${data.announce.devise}`}
-              </span>
-              <div
-                className="summary normal ml-3 pl-4"
-                style={{whiteSpace: "nowrap"}}
-              >
-                {getOptions(data)}
-              </div>
-            </Col>
-          </Row>
-        )}
-        <Row key={7} className="justify-content-md-left ">
-          <Col
-            className="summary title ml-4"
-            style={{fontSize: 20, color: "red"}}
-          >
-            <i className="fa fa-money pl-1 pr-2" />
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.totalAccount" />
-            </span>
-            <span>{` : ${data.paymentRecap.total.amount} ${data.announce.devise}`}</span>
-            {typeof data.paymentRecap.deposit === "undefined" && (
-              <span
-                className="text-lowercase pt-2"
-                style={{fontWeight: "normal", lineHeight: "20px"}}
-              >
-                <FormattedMessage id="src.components.bookingPage.BookDetailInfo.whenToPay2" />
-              </span>
-            )}
-          </Col>
-        </Row>
-        {typeof data.paymentRecap.deposit !== "undefined" ? (
+      for (j = 0; j < details[i].nbRows; j++) {
+        keys = Object.keys(details[i].bookings); //Booking ref
+        part = details[i].bookings[keys[j]].participants;
+        keys_part = Object.keys(part);
+        price = 0;
+        td.push(
           <>
-            <Row key={8} className="justify-content-md-left ">
-              <Col className="summary title ml-4" style={{color: "blue"}}>
-                <span className="summary title deposit-balance">
-                  <FormattedMessage id="src.components.bookingPage.BookDetailInfo.deposit" />
-                </span>
-                <span>{`: ${Math.round(data.paymentRecap.deposit.amount)} ${
-                  data.announce.devise
-                }`}</span>{" "}
-                <span
-                  className="text-lowercase pt-2"
-                  style={{fontWeight: "normal", lineHeight: "20px"}}
-                >
-                  <FormattedMessage id="src.components.bookingPage.BookDetailInfo.whenToPay2" />
-                </span>
-              </Col>
-            </Row>
-            <Row key={9} className="justify-content-md-left ">
-              <Col className="summary title ml-4" style={{color: "blue"}}>
-                <span className="summary title deposit-balance">
-                  <FormattedMessage id="src.components.bookingPage.BookDetailInfo.balance" />
-                </span>
-                <span>{`: ${Math.round(data.paymentRecap.balance.amount)} ${
-                  data.announce.devise
-                }`}</span>{" "}
-                <span
-                  className="text-lowercase pt-2"
-                  style={{fontWeight: "normal", lineHeight: "20px"}}
-                >
-                  {`${formatMessage({
-                    id: "src.components.bookingPage.BookDetailInfo.whenToPay1",
-                  })}${getFormattedDate(
-                    data.paymentRecap.balance.due,
-                    "dd.MM.yyyy"
-                  )})`}
-                </span>
-              </Col>
-            </Row>
-          </>
-        ) : null}
-        <Row key={10} className="justify-content-md-left ">
-          <Col className="summary title payment-means">
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.paymentMeans" />
-            </span>
-            <span className="summary normal">
-              {data.paymentInfo.billingPaymentMeans}
-            </span>
-          </Col>
-        </Row>
-        {data.paymentInfo.billingPaymentMeans === "bank transfer" && (
-          <>
-            <Row key={"10a"} className="justify-content-md-left ">
-              <Col className="summary title rib">
-                <label style={{width: "7%"}}>{"RIB"}</label>
-                <input
-                  type="text"
-                  disabled={true}
-                  value={`${data.company.bankCode}  ${data.company.guichetCode}  ${data.company.numberAccount}  ${data.company.keyAccount}`}
-                  className="summary normal text-center"
-                  style={{width: "60%"}}
-                ></input>
-              </Col>
-            </Row>
-            <Row key={"10b"} className="justify-content-md-left ">
-              <Col className="summary title rib">
-                <label style={{width: "7%"}}>{"IBAN"}</label>
-                <input
-                  type="text"
-                  disabled={true}
-                  value={`${data.company.iban}`}
-                  className="summary normal text-center"
-                  style={{width: "60%"}}
-                ></input>
-                <label style={{width: "5%"}}>{"BIC"}</label>
-                <input
-                  type="text"
-                  disabled={true}
-                  value={`${data.company.bic}`}
-                  className="summary normal text-center"
-                  style={{width: "20%"}}
-                ></input>
-              </Col>
-            </Row>
-          </>
-        )}
-        {data.paymentInfo.billingPaymentMeans === "check" && (
-          <Row key={"10c"} className="justify-content-md-left ">
-            <Col className="summary title rib ">
-              <label>
-                <FormattedMessage id="src.components.bookingPage.StepThreeForm.chequeOrder" />
-              </label>
-              <textarea
-                disabled={true}
-                value={`${data.company.checkOrder}`}
-                className="form-control "
-                rows="5"
-                cols="20"
-              ></textarea>
-            </Col>
-            <Col className="summary title rib ">
-              <label>
-                <FormattedMessage id="src.components.bookingPage.StepThreeForm.dispatchAddress" />
-              </label>
-              <textarea
-                disabled={true}
-                value={`${data.company.checkAdress}`}
-                className="form-control "
-                rows="5"
-                cols="25"
-              ></textarea>
-            </Col>
-          </Row>
-        )}
-        <Row key={12} className="justify-content-md-center ">
-          <Col className="summary title text-center">
-            <span>
-              <FormattedMessage id="src.components.bookingPage.BookDetailInfo.status" />
-            </span>
-            <span className="summary normal">
-              {getFormattedDate(new Date())}
-            </span>
-            <div
-              className="summary normal ml-1 mt-2 "
-              style={{fontSize: "13px"}}
-            >
-              {Object.keys(stepsNumbering).map((txt) => {
-                return getCompletedSteps(
-                  data.steps,
-                  txt,
-                  stepsNumbering[txt],
-                  formatMessage
+            <td className="invoice" key={`ref${i}${j}`}>
+              {keys[j]}
+            </td>
+            <td className="invoice" key={`date${i}${j}`}>
+              {`${getFormattedDate(
+                details[i].bookings[keys[j]].date.dateStart,
+                "dd.MM.yyyy"
+              )}`}
+              <br></br>
+              {`${getFormattedDate(
+                details[i].bookings[keys[j]].date.dateEnd,
+                "dd.MM.yyyy"
+              )}`}
+            </td>
+            <td className="invoice" key={`price${i}${j}`}>
+              {keys_part.map((key, idx) => {
+                price += details[i].bookings[keys[j]].participants[key].price;
+                return (
+                  <div>{`${formatMessage({
+                    id: `src.components.announcePage.booking.${key}`,
+                  })}: ${details[i].bookings[keys[j]].participants[key].nb} - ${
+                    details[i].bookings[keys[j]].participants[key].price
+                  } ${details[i].devise}`}</div>
                 );
               })}
-            </div>
-          </Col>
-          <Col className="summary title text-center">
-            <span>
-              <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnStepsToDo" />
+            </td>
+            <td
+              className="invoice"
+              key={`rate${i}${j}`}
+            >{`${details[i].rate} %`}</td>
+            {details[i].penalty !== 0 && (
+              <td
+                className="invoice"
+                key={`penalty${i}${j}`}
+              >{`${details[i].penalty} %`}</td>
+            )}
+            <td className="invoice" key={`totalrow${i}${j}`}>{`${
+              ((details[i].rate + details[i].penalty) * price) / 100
+            } ${details[i].devise}`}</td>
+          </>
+        );
+        total += price;
+        tr.push(<tr key={`row${i}${j}`}>{td}</tr>);
+        td = [];
+      }
+    }
+    return {tr, total};
+  }
+  const details = prepareDetails();
+  return (
+    <div className="mx-4 my-3">
+      <header className="invoice">
+        <h1 className="invoice">
+          {`${formatMessage({
+            id: "src.components.memberPage.tabs.price.MyPrice.invoice",
+          })} # ${invoice.ref}`}
+        </h1>
+      </header>
+      <div className="mx-4">
+        <address className="invoice pl-3">
+          <p className="invoice">
+            <span style={{fontWeight: "bold"}}>
+              Horse-around.com
+              <img
+                src={logo}
+                style={{
+                  width: "2.5%",
+                  position: "absolute",
+                  top: 87,
+                  left: 190,
+                }}
+              ></img>
             </span>
-            <div className="d-flex flex-column justify-content-center summary normal ml-4 mt-2 ">
-              {getNextSteps(data.steps, data._id, formatMessage, null)}
-            </div>
-          </Col>
-        </Row>
-      </Card>
-    );
-  });
+            <br></br>
+            62, rue de Guinot
+            <br></br>31130 MERVILLE - FRANCE
+            <br></br>
+            <i className="mr-2 fa fa-phone" aria-hidden="true" />
+            {"+33 6 03 96 71 58"}
+            <br></br>
+            <i className="mr-2 fa fa-envelope-o" aria-hidden="true" />
+            {formatMessage({id: "global.email"})}
+          </p>
+        </address>
+        <table className="invoice">
+          <thead>
+            <tr>
+              <th className="invoice" style={{border: 0}}></th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.invoice",
+              })} #`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.created",
+              })}`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.period",
+              })}`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.amountDue",
+              })}`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.dueDate",
+              })}`}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="invoice">
+                <address className="invoice px-2" style={{textAlign: "left"}}>
+                  <p className="invoice">
+                    <span style={{fontWeight: "bold"}}> {data.corpName}</span>
+                    <br></br>
+                    {data.address.address}
+                    <br></br>
+                    {`${data.address.postcode} ${data.address.city} - ${data.address.country}`}
+                    <br></br>
+                  </p>
+                </address>
+              </td>
+              <td className="invoice">{invoice.ref}</td>
+              <td className="invoice">
+                {getFormattedDate(invoice.steps["1"].submitted, "dd.MM.yyyy")}
+              </td>
+              <td className="invoice">
+                {`${getFormattedDate(invoice.period.dateStart, "dd.MM.yyyy")}`}
+                <br />
+                ---
+                <br />
+                {`${getFormattedDate(invoice.period.dateEnd, "dd.MM.yyyy")}`}
+              </td>
+              <td
+                className="invoice"
+                style={{color: "red"}}
+              >{`${invoice.amount} ${data.announce[0].devise}`}</td>
+              <td
+                className="invoice"
+                style={{color: "red"}}
+              >{`${getFormattedDate(
+                invoice.steps["1"].next.pro.payInvoice,
+                "dd.MM.yyyy"
+              )}`}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <br />
+        <table className="invoice">
+          <thead>
+            <tr>
+              <th className="invoice" colSpan={"8"}>{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.details",
+              })}`}</th>
+            </tr>
+            <tr>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.announce",
+              })}`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.bookings",
+              })}`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.dates",
+              })}`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.participants",
+              })}`}</th>
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.rate",
+              })}`}</th>
+              {data.penalty !== 0 && (
+                <th className="invoice">{`${formatMessage({
+                  id: "src.components.memberPage.tabs.price.MyPrice.penalty",
+                })}`}</th>
+              )}
+              <th className="invoice">{`${formatMessage({
+                id: "src.components.memberPage.tabs.price.MyPrice.total",
+              })}`}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {details.tr.map((row, idx) => {
+              return row;
+            })}
+          </tbody>
+        </table>
+        {/* <div
+          className="mr-4 pr-4"
+          style={{float: "right", color: "red", fontWeight: "bolder"}}
+        >
+          {(details.total * (data.tarif + data.penalty)) / 100}
+        </div> */}
+      </div>
+    </div>
+  );
 }
 
 export default InvoiceSummary;

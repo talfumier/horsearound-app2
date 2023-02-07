@@ -125,3 +125,8 @@ export function sumOfPropsValues(obj) {
 export function padToNDigits(num, n) {
   return num.toString().padStart(n, "0");
 }
+export function scrollToBottom(id) {
+  const elemt = document.getElementById(id);
+  if (!elemt) return;
+  elemt.scrollTop = elemt.scrollHeight;
+}

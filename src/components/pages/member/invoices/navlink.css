@@ -1,0 +1,11 @@
+.nav-tabs .nav-link.active.inv{
+  border-radius: 5px; 
+  background-color:#F2F2F2;
+  color:black;
+  font-weight: 500;
+}
+.nav-tabs .nav-link.inv{
+  border-radius: 5px;   
+  background-color:#FFFFFF;
+  color:black;
+  font-weight: 500;}

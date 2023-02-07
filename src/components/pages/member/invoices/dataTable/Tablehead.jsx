@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import {RenderInWindow} from "../../../common/RenderInWindow.jsx";
 import ViewerPage from "../../../common/viewer/ViewerPage.jsx";
-import {resaProcessImg} from "../../../../../static_data/resaProcessImg.js";
+import {invoiceProcessImg} from "../../../../../static_data/invoiceProcessImg.js";
 import {toastInfo} from "../../../common/toastSwal/ToastMessages.js";
 
 function Tablehead({
@@ -32,11 +32,7 @@ function Tablehead({
               key={name}
               comp={
                 <ViewerPage
-                  data={
-                    resaProcessImg[name === "steps_todo" ? "resa" : "cancel"][
-                      locale
-                    ]
-                  }
+                  data={invoiceProcessImg[locale]}
                   prt={false}
                 ></ViewerPage>
               }
@@ -63,14 +59,12 @@ function Tablehead({
                 key={headCell.name}
                 align="center"
                 hidden={headCell.hidden ? true : false}
-                padding="normal"
               >
                 {headCell.label}
-                {headCell.name === "steps_todo" ||
-                headCell.name === "cancel" ? (
+                {headCell.name === "steps_todo" ? (
                   <Tooltip
                     title={formatMessage({
-                      id: `src.components.memberPage.tabs.MyReservation.rColumn${headCell.name}TT`,
+                      id: `src.components.memberPage.tabs.price.MyPrice.Column${headCell.name}TT`,
                     })}
                     arrow
                   >

@@ -23,8 +23,15 @@ import stepsNumbering from "../../../announce/details/priceDatesTable/booking/st
 import {RenderInWindow} from "../../../common/RenderInWindow.jsx";
 import BookingSummary from "./summary/BookingSummary.jsx";
 import {toastInfo} from "../../../common/toastSwal/ToastMessages.js";
+import {scrollToBottom} from "../../../utils/utilityFunctions.js";
 
-export function getNextSteps(steps, id, formatMessage, onHandleBookingChange) {
+export function getNextSteps(
+  steps,
+  id,
+  formatMessage,
+  formatRoot,
+  onHandleChange
+) {
   function getButton(step, by, txt, idx, id) {
     const key = Object.keys(step)[0];
     return (
@@ -48,10 +55,11 @@ export function getNextSteps(steps, id, formatMessage, onHandleBookingChange) {
                 "seeYouSoon",
                 "informRejected",
                 "completed",
+                "paid",
               ].indexOf(e.target.id) !== -1
             )
               return;
-            if (onHandleBookingChange) onHandleBookingChange(id, e.target.id);
+            if (onHandleChange) onHandleChange(id, e.target.id);
           }}
         >
           {stepsNumbering[txt] !== undefined &&
@@ -59,7 +67,7 @@ export function getNextSteps(steps, id, formatMessage, onHandleBookingChange) {
               txt === "akn" ? stepsNumbering["akn"][key] : stepsNumbering[txt]
             } - `}
           {`${formatMessage({
-            id: `src.components.memberPage.tabs.MyReservation.${txt}`,
+            id: `${formatRoot}.${txt}`,
           })}`}
           {txt === "completed" && <span className="ml-2">&#x2714;</span>}
           {`${
@@ -102,7 +110,13 @@ export function getNextSteps(steps, id, formatMessage, onHandleBookingChange) {
     }
   });
 }
-export function getCompletedSteps(steps, txt, taskNbr, formatMessage) {
+export function getCompletedSteps(
+  steps,
+  txt,
+  taskNbr,
+  formatMessage,
+  formatRoot
+) {
   let step = null;
   return Object.keys(steps).map((key) => {
     step = steps[key];
@@ -119,8 +133,13 @@ export function getCompletedSteps(steps, txt, taskNbr, formatMessage) {
           <div
             className="badge badge-light my-0 mr-2"
             style={{
-              backgroundColor: step.by === "pro" ? "yellow" : "#4472C4",
-              color: step.by === "pro" ? "#305496" : "white",
+              backgroundColor:
+                step.by === "pro"
+                  ? "yellow"
+                  : step.by === "particulier"
+                  ? "#4472C4"
+                  : "#7aa095",
+              color: step.by === "pro" ? "#305496" : "#ffffff",
               fontWeight: "normal",
               width: "30px",
               height: "19px",
@@ -133,7 +152,7 @@ export function getCompletedSteps(steps, txt, taskNbr, formatMessage) {
           </div>
           <div>
             {`${formatMessage({
-              id: `src.components.memberPage.tabs.MyReservation.${txt}`,
+              id: `${formatRoot}.${txt}`,
             })} ${getFormattedDate(step[txt], "dd.MM.yyyy")} `}
             &#x2714;
           </div>
@@ -164,11 +183,6 @@ function DataTable({
   const [dense, setDense] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [open, setOpen] = useState(false);
-  function scrollToBottom(id) {
-    const elemt = document.getElementById(id);
-    if (!elemt) return;
-    elemt.scrollTop = elemt.scrollHeight;
-  }
   function prepareData(headCells, bkgs, past = true) {
     let data = [];
     Object.keys(bkgs).map((key) => {
@@ -326,7 +340,8 @@ function DataTable({
                         rec.steps,
                         txt,
                         stepsNumbering[txt],
-                        formatMessage
+                        formatMessage,
+                        "src.components.memberPage.tabs.MyReservation"
                       );
                     })}
                   </div>
@@ -342,6 +357,7 @@ function DataTable({
                       rec.steps,
                       rec._id,
                       formatMessage,
+                      "src.components.memberPage.tabs.MyReservation",
                       onHandleBookingChange
                     )}
                   </div>

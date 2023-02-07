@@ -19,365 +19,196 @@ import {
   getFormattedDate,
   sumOfPropsValues,
 } from "../../../utils/utilityFunctions.js";
-import stepsNumbering from "../../../announce/details/priceDatesTable/booking/stepsNumbering.json";
+import stepsNumbering from "./stepsNumbering.json";
+import {
+  getCompletedSteps,
+  getNextSteps,
+} from "../../bookings/dataTable/DataTable.jsx";
 import {RenderInWindow} from "../../../common/RenderInWindow.jsx";
 import InvoiceSummary from "./summary/InvoiceSummary.jsx";
 import {toastInfo} from "../../../common/toastSwal/ToastMessages.js";
-
-export function getNextSteps(steps, id, formatMessage, onHandleBookingChange) {
-  function getButton(step, by, txt, idx, id) {
-    const key = Object.keys(step)[0];
-    return (
-      <ul key={idx}>
-        <button
-          id={txt}
-          className="btn btn-warning my-2 px-2 py-1"
-          style={{
-            fontSize: "1.2rem",
-            fontWeight: "500",
-            paddingRight: "5px",
-            color: by === "pro" ? "#305496" : "#ffffff",
-            backgroundColor:
-              by === "pro" ? "yellow" : by === "admin" ? "#7aa095" : "#4472C4",
-          }}
-          onClick={(e) => {
-            if (
-              [
-                "waitRefundDecision",
-                "seeYou",
-                "seeYouSoon",
-                "informRejected",
-                "completed",
-              ].indexOf(e.target.id) !== -1
-            )
-              return;
-            if (onHandleBookingChange) onHandleBookingChange(id, e.target.id);
-          }}
-        >
-          {stepsNumbering[txt] !== undefined &&
-            ` ${
-              txt === "akn" ? stepsNumbering["akn"][key] : stepsNumbering[txt]
-            } - `}
-          {`${formatMessage({
-            id: `src.components.memberPage.tabs.MyReservation.${txt}`,
-          })}`}
-          {txt === "completed" && <span className="ml-2">&#x2714;</span>}
-          {`${
-            txt === "seeYou"
-              ? getFormattedDate(step.next[by][txt], "dd.MM.yyyy")
-              : ""
-          }`}
-        </button>
-      </ul>
-    );
-  }
-  let step = null,
-    txt = null;
-  return Object.keys(steps).map((key) => {
-    step = steps[key];
-    if (step && step.active) {
-      if (step.next)
-        return (
-          <div
-            className="mx-1 px-1"
-            key={key}
-            style={{color: "red", fontWeight: "bolder"}}
-          >
-            {Object.keys(step.next).map((by, idx) => {
-              txt = Object.keys(step.next[by])[0];
-              if (txt !== "multiple") return getButton(step, by, txt, idx, id);
-              else {
-                return (
-                  <div className="my-0 py-0" key={idx}>
-                    {Object.keys(step.next[by].multiple).map((tx, i) => {
-                      return getButton(step, by, tx, i + 10, id);
-                    })}
-                  </div>
-                );
-              }
-            })}
-          </div>
-        );
-      else return getButton(step, "admin", "completed", 22, id); //'completed', next=undefined
-    }
-  });
-}
-export function getCompletedSteps(steps, txt, taskNbr, formatMessage) {
-  let step = null;
-  return Object.keys(steps).map((key) => {
-    step = steps[key];
-    if (step && step[txt])
-      return (
-        <div
-          className="d-flex justify-content-left ml-1 my-0 py-1"
-          key={key}
-          style={{
-            color: "dark green",
-            fontWeight: "600",
-          }}
-        >
-          <div
-            className="badge badge-light my-0 mr-2"
-            style={{
-              backgroundColor: step.by === "pro" ? "yellow" : "#4472C4",
-              color: step.by === "pro" ? "#305496" : "white",
-              fontWeight: "normal",
-              width: "30px",
-              height: "19px",
-              border: "solid 1px",
-              paddingLeft: 0,
-              paddingRight: 0,
-            }}
-          >
-            {taskNbr}
-          </div>
-          <div>
-            {`${formatMessage({
-              id: `src.components.memberPage.tabs.MyReservation.${txt}`,
-            })} ${getFormattedDate(step[txt], "dd.MM.yyyy")} `}
-            &#x2714;
-          </div>
-        </div>
-      );
-  });
-}
+import {scrollToBottom} from "../../../utils/utilityFunctions.js";
 
 let original = [],
   firstSel = null;
 function DataTable({
   headCells,
-  bookings,
-  selected: sel,
+  invoices,
   themes,
   spinner,
-  onHandleBookingChange,
+  onHandleInvoiceChange,
 }) {
   const {locale, formatMessage} = useIntl();
   const [rows, setRows] = useState([]);
   useEffect(() => {
-    original = prepareData(headCells, bookings); //default past parameter=true (i.e. includes dates in the past)
+    original = prepareData(headCells, invoices); //default closed parameter=true (i.e. includes invoices that have been paid)
     setRows(original);
-  }, [bookings]);
-  const [selected, setSelected] = useState(sel);
+  }, [invoices]);
+  const [selected, setSelected] = useState({});
   const [numFiltered, setNumFiltered] = useState(0);
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [open, setOpen] = useState(false);
-  function scrollToBottom(id) {
-    const elemt = document.getElementById(id);
-    if (!elemt) return;
-    elemt.scrollTop = elemt.scrollHeight;
-  }
-  function prepareData(headCells, bkgs, past = true) {
-    let data = [];
-    Object.keys(bkgs).map((key) => {
-      if (bkgs[key].nbBookings > 0) data = data.concat(bkgs[key].data);
+  function getRelatedBookingsByAnn(ids, bkgs, anns) {
+    let result = [];
+    anns.map((ann) => {
+      result.push({[ann._id]: {title: ann.title, bookings: []}});
     });
+    bkgs.map((bkg) => {
+      if (ids.indexOf(bkg._id) !== -1) {
+        result.map((ann, idx) => {
+          if (Object.keys(ann)[0] === bkg.id_announce)
+            result[idx][
+              bkg.id_announce
+            ].bookings = `${result.bookings}, ${bkg.ref}`;
+        });
+      }
+    });
+    return result;
+  }
+  function prepareData(headCells, data, closed = false) {
     const rows = [],
-      n = headCells.length,
-      now = new Date().setHours(0, 0, 0, 0);
-    let obj = {};
-    data.map((rec) => {
-      if (
-        past ||
-        (!past &&
-          ((parseISO(rec.date.dateStart).setHours(0, 0, 0, 0) < now &&
-            parseISO(rec.date.dateEnd).setHours(0, 0, 0, 0) >= now) ||
-            parseISO(rec.date.dateStart).setHours(0, 0, 0, 0) >= now))
-      ) {
-        obj = {};
-        for (let i = 0; i < n; i++) {
-          {
-            switch (i) {
-              case 0: //reference-booked by
-                obj[headCells[i].name] = (
-                  <>
-                    {`${rec.ref}`}
-                    <br />
-                    {`${rec.user.email}`}
-                  </>
-                );
-                break;
-              case 1: //activity - organizer
-                obj[headCells[i].name] = (
-                  <>
-                    {`${rec.announce.title[locale]}`}
-                    <br />
-                    {`${rec.company.corpName}`}
-                  </>
-                );
-                break;
-              case 2: //date
-                obj[headCells[i].name] = (
-                  <>
-                    {`${getFormattedDate(rec.date.dateStart, "dd.MM.yyyy")}`}
-                    <br />
-                    {`${getFormattedDate(rec.date.dateEnd, "dd.MM.yyyy")}`}
-                  </>
-                );
-                break;
-              case 3: //days/nights
-                obj[headCells[i].name] = rec.daysNights;
-                break;
-              case 4: //participants
-                obj[headCells[i].name] = (
-                  <>
-                    {rec.adults && rec.adults.nb > 0
-                      ? `${formatMessage({
-                          id: "src.components.announcePage.booking.adults",
-                        })} : ${rec.adults.nb}`
-                      : ""}
-                    {rec.adults && rec.adults.nb > 0 ? <br /> : ""}
-                    {rec.children && rec.children.nb > 0
-                      ? `${formatMessage({
-                          id: "src.components.announcePage.booking.children",
-                        })} : ${rec.children.nb}`
-                      : ""}
-                    {rec.children && rec.children.nb > 0 ? <br /> : ""}
-                    {rec.companions && rec.companions.nb > 0
-                      ? `${formatMessage({
-                          id: "src.components.announcePage.booking.accompanying",
-                        })} : ${rec.companions.nb}`
-                      : ""}
-                  </>
-                );
-                break;
-              case 5: //options
-                obj[headCells[i].name] = rec.options && (
-                  <div>
-                    {Object.keys(rec.options).map((option) => {
-                      return (
-                        rec.options[option] && (
-                          <ul key={option}>{`Option ${option} `}&#x2714;</ul>
-                        )
-                      );
-                    })}
-                  </div>
-                );
-
-                break;
-              case 6: //price
-                if (!rec.paymentRecap)
-                  obj[headCells[i].name] = `${
-                    rec.adults
-                      ? rec.adults.price
-                      : 0 + rec.children
-                      ? rec.children.price
-                      : 0 + rec.companions
-                      ? rec.companions.price
-                      : 0
-                  } ${rec.announce.devise}`;
-                else {
-                  if (rec.paymentRecap.deposit)
-                    obj[headCells[i].name] = (
-                      <div className="d-flex flex-column mx-3">
-                        <div className="d-flex justify-content-left ml-3">
-                          {`${formatMessage({
-                            id: "src.components.bookingPage.BookDetailInfo.deposit",
-                          })} : ${rec.paymentRecap.deposit.amount} ${
-                            rec.announce.devise
-                          } - ${formatMessage({
-                            id: "src.components.bookingPage.BookDetailInfo.asap",
-                          })}
-                        `}
-                        </div>
-                        <div className="d-flex justify-content-left ml-3">
-                          {`${formatMessage({
-                            id: "src.components.bookingPage.BookDetailInfo.balance",
-                          })} : ${rec.paymentRecap.balance.amount} ${
-                            rec.announce.devise
-                          } - ${getFormattedDate(
-                            rec.paymentRecap.balance.due,
-                            "dd.MM.yyyy"
-                          )}`}
-                        </div>
-                      </div>
-                    );
-                  else
-                    obj[headCells[i].name] = (
-                      <div className="d-flex flex-column mx-3">
-                        <div className="d-flex justify-content-left ml-3">
-                          {`${formatMessage({
-                            id: "src.components.bookingPage.BookDetailInfo.totalAccount",
-                          })}: ${rec.paymentRecap.total.amount} ${
-                            rec.announce.devise
-                          } - ${formatMessage({
-                            id: "src.components.bookingPage.BookDetailInfo.asap",
-                          })}
-                    `}
-                        </div>
-                      </div>
-                    );
-                }
-                break;
-              case 7: //steps completed
-                obj[headCells[i].name] = (
-                  <div
-                    id={rec._id}
-                    className="d-flex flex-column mx-0 px-0 my-2"
-                    style={{
-                      maxHeight: "70px",
-                      overflowY: "scroll",
-                    }}
-                  >
-                    {Object.keys(stepsNumbering).map((txt) => {
-                      return getCompletedSteps(
-                        rec.steps,
-                        txt,
-                        stepsNumbering[txt],
-                        formatMessage
-                      );
-                    })}
-                  </div>
-                );
-                setTimeout(() => {
-                  scrollToBottom(rec._id);
-                }, 500);
-                break;
-              case 8: //steps to be done
-                obj[headCells[i].name] = (
-                  <div className="justify-content-left mx-1 px-1">
-                    {getNextSteps(
-                      rec.steps,
-                      rec._id,
-                      formatMessage,
-                      onHandleBookingChange
-                    )}
-                  </div>
-                );
-                break;
-              case 9: //cancel
-                obj[headCells[i].name] = (
-                  <>
-                    <button
-                      className="fa fa-trash mx-4"
+      n = headCells.length;
+    let company = null,
+      obj = {},
+      key = null;
+    Object.keys(data).map((proId) => {
+      company = data[proId].data[0];
+      company.invoice.map((invoice) => {
+        if (closed || (!closed && invoice.steps[3].paymentReceived === null)) {
+          //filter out paid invoices (closed=false)
+          obj = {};
+          for (let i = 0; i < n; i++) {
+            {
+              switch (i) {
+                case 0: //reference-company
+                  obj[headCells[i].name] = (
+                    <>
+                      {`${invoice.ref}`}
+                      <br />
+                      {`${company.corpName}`}
+                    </>
+                  );
+                  break;
+                case 1: //period
+                  obj[headCells[i].name] = (
+                    <>
+                      {`${getFormattedDate(
+                        invoice.period.dateStart,
+                        "dd.MM.yyyy"
+                      )} - ${getFormattedDate(
+                        invoice.period.dateEnd,
+                        "dd.MM.yyyy"
+                      )}`}
+                    </>
+                  );
+                  break;
+                case 2: //related announces & bookings
+                  obj[headCells[i].name] = (
+                    <>
+                      {getRelatedBookingsByAnn(
+                        invoice.id_booking,
+                        company.booking,
+                        company.announce
+                      ).map((item, idx) => {
+                        key = Object.keys(item)[0];
+                        return (
+                          <ul key={idx}>
+                            {`${formatMessage({
+                              id: "src.components.memberPage.tabs.price.MyPrice.relatedAnn",
+                            })}: ${item[key].title[locale]}`}
+                            <br></br>
+                            {`${formatMessage({
+                              id: "src.components.memberPage.tabs.price.MyPrice.relatedBook",
+                            })}: ${item[key].bookings}`}
+                          </ul>
+                        );
+                      })}
+                    </>
+                  );
+                  break;
+                case 3: //amount
+                  obj[headCells[i].name] = (
+                    <>{`${invoice.amount + invoice.penaltyAmount} ${
+                      company.announce[0].devise
+                    }`}</>
+                  );
+                  break;
+                case 4: //deadline
+                  obj[headCells[i].name] = getFormattedDate(
+                    invoice.steps["1"].next.pro.payInvoice,
+                    "dd.MM.yyyy"
+                  );
+                  break;
+                case 5: //steps completed
+                  obj[headCells[i].name] = (
+                    <div
+                      id={invoice._id}
+                      className="d-flex flex-column mx-0 px-0 my-2"
                       style={{
-                        color: "#7aa095",
-                        border: "0",
-                        fontSize: "20px",
+                        maxHeight: "70px",
+                        overflowY: "scroll",
                       }}
-                      onClick={(e) => {
-                        onHandleBookingChange(rec._id, e.target.id, "cancel");
-                      }}
-                    ></button>
-                  </>
-                );
-                break;
-              case 10: //booking _id
-                obj[headCells[i].name] = rec._id;
-                break;
-              case 11: //id_user
-                obj[headCells[i].name] = rec.id_user;
-                break;
-              case 12: //announce_id
-                obj[headCells[i].name] = rec.announce._id;
-                break;
+                    >
+                      {Object.keys(stepsNumbering).map((txt) => {
+                        return getCompletedSteps(
+                          invoice.steps,
+                          txt,
+                          stepsNumbering[txt],
+                          formatMessage,
+                          "src.components.memberPage.tabs.price.MyPrice"
+                        );
+                      })}
+                    </div>
+                  );
+                  setTimeout(() => {
+                    scrollToBottom(invoice._id);
+                  }, 500);
+                  break;
+                case 6: //steps to be done
+                  obj[headCells[i].name] = (
+                    <div className="justify-content-left mx-1 px-1">
+                      {getNextSteps(
+                        invoice.steps,
+                        invoice._id,
+                        formatMessage,
+                        "src.components.memberPage.tabs.price.MyPrice",
+                        onHandleInvoiceChange
+                      )}
+                    </div>
+                  );
+                  break;
+                case 7: //cancel
+                  obj[headCells[i].name] = (
+                    <>
+                      <button
+                        className="fa fa-trash mx-4"
+                        style={{
+                          color: "#7aa095",
+                          border: "0",
+                          fontSize: "20px",
+                        }}
+                        onClick={(e) => {
+                          onHandleInvoiceChange(
+                            invoice._id,
+                            e.target.id,
+                            "cancel"
+                          );
+                        }}
+                      ></button>
+                    </>
+                  );
+                  break;
+                case 8: //id
+                  obj[headCells[i].name] = invoice._id;
+                  break;
+              }
             }
           }
+          rows.push(obj);
         }
-        rows.push(obj);
-      }
+      });
     });
     return rows;
   }
@@ -390,9 +221,9 @@ function DataTable({
     firstSel = null;
     Object.keys(selected).map((id) => {
       if (selected[id] === 1 && firstSel === null) {
-        Object.keys(bookings).map((usr) => {
-          bookings[usr].data.map((bkg, idx) => {
-            if (firstSel === null && bkg._id === id) {
+        Object.keys(invoices).map((usr) => {
+          invoices[usr].data[0].invoice.map((invoice, idx) => {
+            if (firstSel === null && invoice._id === id) {
               firstSel = [usr, idx];
             }
           });
@@ -422,8 +253,8 @@ function DataTable({
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
   };
-  const handlePast = (past) => {
-    original = prepareData(headCells, bookings, !past); //past parameter is the opposite of past slider position
+  const handleClosed = (closed) => {
+    original = prepareData(headCells, invoices, !closed); //closed parameter is the opposite of closed slider position
     setRows(original);
   };
   const isSelected = (id) => {
@@ -451,7 +282,10 @@ function DataTable({
         <RenderInWindow
           comp={
             <InvoiceSummary
-              data={[bookings[firstSel[0]].data[firstSel[1]]]}
+              data={{
+                invoice: invoices[firstSel[0]].data[0].invoice[firstSel[1]],
+                data: invoices[firstSel[0]].data[0],
+              }}
             ></InvoiceSummary>
           }
           size={{width: 900, height: 500, x: 400, y: 200}}
@@ -460,7 +294,7 @@ function DataTable({
           }}
         ></RenderInWindow>
       )}
-      <Paper sx={{width: "120%"}}>
+      <Paper sx={{width: "110%"}}>
         <TableToolbar
           numSelected={sumOfPropsValues(selected)}
           selected={selected}
@@ -468,7 +302,7 @@ function DataTable({
           theme={themes.toolbar}
           spinner={spinner}
           onFilter={filterData}
-          onHandlePast={handlePast}
+          onHandleClosed={handleClosed}
           onHandleSummary={handleSummary}
         />
         <TableContainer>

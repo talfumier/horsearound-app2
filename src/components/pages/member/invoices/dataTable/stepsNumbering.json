@@ -6,6 +6,6 @@
   "invoicePaid": "3",
   "cancel": "C0",
   "akn": {
-    "invoicePaid": "3"
+    "paymentReceived": "4"
   }
 }

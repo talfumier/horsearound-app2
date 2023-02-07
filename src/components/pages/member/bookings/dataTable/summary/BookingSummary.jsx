@@ -309,7 +309,8 @@ function BookingSummary({data: data_arr}) {
                   data.steps,
                   txt,
                   stepsNumbering[txt],
-                  formatMessage
+                  formatMessage,
+                  "src.components.memberPage.tabs.MyReservation"
                 );
               })}
             </div>
@@ -319,7 +320,13 @@ function BookingSummary({data: data_arr}) {
               <FormattedMessage id="src.components.memberPage.tabs.MyReservation.rColumnStepsToDo" />
             </span>
             <div className="d-flex flex-column justify-content-center summary normal ml-4 mt-2 ">
-              {getNextSteps(data.steps, data._id, formatMessage, null)}
+              {getNextSteps(
+                data.steps,
+                data._id,
+                formatMessage,
+                "src.components.memberPage.tabs.MyReservation",
+                null
+              )}
             </div>
           </Col>
         </Row>

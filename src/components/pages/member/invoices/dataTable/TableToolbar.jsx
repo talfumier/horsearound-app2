@@ -21,7 +21,7 @@ function TableToolbar({
   theme,
   onFilter,
   spinner,
-  onHandlePast,
+  onHandleClosed,
   onHandleSummary,
 }) {
   const {locale, formatMessage} = useIntl();
@@ -70,7 +70,7 @@ function TableToolbar({
           {getLabel()}
           <Tooltip
             title={formatMessage({
-              id: "src.components.memberPage.tabs.MyReservation.summaryButtonTT",
+              id: "src.components.memberPage.tabs.price.MyPrice.summaryButtonTT",
             })}
             arrow
           >
@@ -80,7 +80,7 @@ function TableToolbar({
               onClick={onHandleSummary}
             >
               {formatMessage({
-                id: "src.components.memberPage.tabs.MyReservation.summaryButton",
+                id: "src.components.memberPage.tabs.price.MyPrice.summaryButton",
               })}
             </Link>
           </Tooltip>
@@ -106,15 +106,16 @@ function TableToolbar({
                 )}
               </h3>
               <p>
-                <FormattedMessage id="src.components.memberPage.tabs.annonces.MyAnnonces.slider2" />
+                <FormattedMessage id="src.components.memberPage.tabs.price.MyPrice.slider" />
               </p>
               <label className="switch ml-2">
                 <input
-                  id="bkgPastSlider"
+                  id="paidInvoiceSlider"
                   type="checkbox"
+                  defaultChecked={true}
                   onChange={() => {
-                    onHandlePast(
-                      document.getElementById("bkgPastSlider").checked
+                    onHandleClosed(
+                      document.getElementById("paidInvoiceSlider").checked
                     );
                   }}
                 />
@@ -125,7 +126,7 @@ function TableToolbar({
         </Typography>
 
         <IconButton
-          id="MyAnnouncesTabFilter"
+          id="MyInvoicesTabFilter"
           onClick={() => {
             handleFilter(true);
           }}

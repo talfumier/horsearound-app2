@@ -194,6 +194,7 @@ export function getMuiThemes(compName, lang) {
           locales[locale_idx]
         ),
       };
+    case "MyInvoicesTable":
     case "MyBookingsTable":
       return {
         toolbar: createTheme(
