@@ -1099,6 +1099,11 @@
                   "success1": "Réservation mise à jour avec succès !",
                   "success2": "Réservation créée avec succès !",
                   "success3": "Réservation supprimée avec succès !"
+                },
+                "UpdateInvoice": {
+                  "success1": "Facture mise à jour avec succès !",
+                  "success2": "Facture créée avec succès !",
+                  "success3": "Facture supprimée avec succès !"
                 }
               },
               "MyAnnonces": {
@@ -1171,6 +1176,8 @@
                 "akn": "Accuser réception",
                 "paymentReceived": "Paiement reçu",
                 "paid": "Facture payée",
+                "notAuthorized": "Vous n'êtes pas autorisé à modifier ou supprimer une facture, merci de prendre contact avec Horse-around pour toute question ! ",
+                "invoiceDelete": "Merci de confirmer suppression !",
                 "invoice": "Facture",
                 "created": "Publiée le",
                 "period": "Période",
@@ -3700,6 +3707,11 @@
                   "success1": "Booking successfully updated !",
                   "success2": "Booking successfully created !",
                   "success3": "Booking successfully deleted !"
+                },
+                "UpdateInvoice": {
+                  "success1": "Invoice successfully updated !",
+                  "success2": "Invoice successfully created !",
+                  "success3": "Invoice successfully deleted !"
                 }
               },
               "MyAnnonces": {
@@ -3772,6 +3784,8 @@
                 "akn": "Acknowledge",
                 "paymentReceived": "Payment received",
                 "paid": "Invoice paid",
+                "notAuthorized": "You are not authorized to delete or change any invoice, please reach out to Horse-around for any query ! ",
+                "invoiceDelete": "Please confirm invoice deletion !",
                 "invoice": "Invoice",
                 "created": "Published on",
                 "period": "Period",

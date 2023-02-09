@@ -5,15 +5,20 @@ import {FormattedMessage, useIntl} from "react-intl";
 import {Helmet} from "react-helmet";
 import _ from "lodash";
 import {parseISO, isWithinInterval, eachDayOfInterval} from "date-fns";
+import {toastError} from "../common/toastSwal/ToastMessages.js";
 import {getUsers} from "../../../services/httpUsers.js";
 import {
   getUserBookings,
   getProBookings,
-  getInvoicesByUser,
   patchBooking,
   patchAnnounceDates,
   deleteBooking,
 } from "../../../services/httpBookings.js";
+import {
+  getInvoicesByUser,
+  patchInvoice,
+  deleteInvoice,
+} from "../../../services/httpInvoices.js";
 import {successFailure} from "./announces/form/AnnounceForm.jsx";
 import {errorHandlingToast} from "../../../services/utilsFunctions.js";
 import NavBar from "./NavBar.jsx";
@@ -63,39 +68,41 @@ function MemberPage({
     const n = usrs.length,
       bkg = {};
     let res = null;
-    usrs.map(async (usr, idx) => {
-      res = await getProBookings(usr._id, cookies.user, signal);
-      if (!(await errorHandlingToast(res, locale, false)))
-        bkg[usr._id] = {
-          data: res.data,
-          nbBookings: res.data.length,
-          nbSaved: res.data.filter((item) => item.steps["0"].saved !== null)
-            .length,
-        };
-      if (idx === n - 1) {
-        originalBookings = bkg;
-        setBookings(bkg);
-      }
+    await Promise.all(
+      usrs.map(async (usr, idx) => {
+        res = await getProBookings(usr._id, cookies.user, signal);
+        if (!(await errorHandlingToast(res, locale, false)))
+          bkg[usr._id] = {
+            data: res.data,
+            nbBookings: res.data.length,
+            nbSaved: res.data.filter((item) => item.steps["0"].saved !== null)
+              .length,
+          };
+      })
+    ).then(() => {
+      originalBookings = bkg;
+      setBookings(bkg);
     });
   }
   async function loadProInvoices(usrs, signal) {
     const n = usrs.length,
       pmt = {};
     let res = null;
-    usrs.map(async (usr, idx) => {
-      res = await getInvoicesByUser(usr._id, cookies.user, signal);
-      if (!(await errorHandlingToast(res, locale, false)))
-        pmt[usr._id] = {
-          data: res.data,
-          nbInvoices: res.data[0].invoice.length,
-          nbPending: _.filter(res.data[0].invoice, (inv) => {
-            return inv.steps["3"].paymentReceived === null;
-          }).length,
-        };
-      if (idx === n - 1) {
-        originalInvoices = pmt;
-        setInvoices(pmt);
-      }
+    await Promise.all(
+      usrs.map(async (usr, idx) => {
+        res = await getInvoicesByUser(usr._id, cookies.user, signal);
+        if (!(await errorHandlingToast(res, locale, false)))
+          pmt[usr._id] = {
+            data: res.data,
+            nbInvoices: res.data[0].invoice.length,
+            nbPending: _.filter(res.data[0].invoice, (inv) => {
+              return inv.steps["3"].paymentReceived === null;
+            }).length,
+          };
+      })
+    ).then(() => {
+      originalInvoices = pmt;
+      setInvoices(pmt);
     });
   }
   async function loadUserBookings(usr, signal) {
@@ -242,6 +249,95 @@ function MemberPage({
     setSelected({...selected, bookings: sel});
     if (cs === -2) setTab(3); //MyBookings tab
   }, [flg]);
+  function handleInvoiceChange(id, etid, cs = "change") {
+    if (cs === "cancel" && currentUser.role !== "ADMIN") {
+      toastError(
+        formatMessage({
+          id: "src.components.memberPage.tabs.price.MyPrice.notAuthorized",
+        })
+      );
+      return;
+    }
+    const invcs = _.cloneDeep(invoices);
+    Object.keys(invoices).map((usr) => {
+      invoices[usr].data[0].invoice.map((inv, idx) => {
+        if (inv._id === id) {
+          Object.keys(inv.steps).map(async (key) => {
+            if (inv.steps[key].active) {
+              let result = null,
+                body_inv = _.cloneDeep(inv.steps),
+                stepKeys = null,
+                res = null,
+                bl = [];
+              switch (cs) {
+                case "change":
+                  switch (currentUser.type) {
+                    case "pro": //a 'pro' can only accomplish 'pro' steps
+                      if (Object.keys(inv.steps[key].next)[0] === "admin")
+                        return;
+                      break;
+                  }
+                  result = await SwalOkCancel(
+                    formatMessage,
+                    "src.components.memberPage.tabs.MyReservation.bookingNext"
+                  );
+                  if (result === "cancel") return;
+                  setSpinner({invoices: true});
+                  body_inv[key].active = false;
+                  stepKeys = Object.keys(inv.steps[parseInt(key) + 1]);
+                  body_inv[parseInt(key) + 1][stepKeys[0]] = new Date();
+                  body_inv[parseInt(key) + 1].active = true;
+                  console.log("body invoice step", body_inv);
+                  res = await patchInvoice(
+                    id,
+                    {steps: body_inv},
+                    cookies.user,
+                    abortController.signal
+                  );
+                  bl[0] = !(await errorHandlingToast(res, locale, false));
+                  if (bl.indexOf(false) === -1) {
+                    originalInvoices[usr].data[0].invoice[idx].steps = body_inv;
+                    invcs[usr].data[0].invoice[idx].steps = body_inv;
+                    if (body_inv["3"].active) {
+                      originalInvoices[usr].nbPending += -1;
+                      invcs[usr].nbPending += -1;
+                    }
+                  }
+                  successFailure("PATCH", bl, formatMessage, "UpdateInvoice");
+                  break;
+                case "cancel":
+                  result = await SwalOkCancel(
+                    formatMessage,
+                    "src.components.memberPage.tabs.price.MyPrice.invoiceDelete"
+                  );
+                  if (result === "cancel") return; //invoice deletion by ADMIN only >>> refer to 1st line of this function
+                  setSpinner({invoices: true});
+                  res = await deleteInvoice(
+                    id,
+                    cookies.user,
+                    abortController.signal
+                  );
+                  bl[0] = !(await errorHandlingToast(res, locale, false));
+                  if (bl[0]) {
+                    originalInvoices[usr].data[0].invoice.splice(idx, 1);
+                    invcs[usr].data[0].invoice.splice(idx, 1);
+                    originalInvoices[usr].nbInvoices += -1;
+                    invcs[usr].nbInvoices += -1;
+                    if (inv.steps["3"].paymentReceived === null) {
+                      originalInvoices[usr].nbPending += -1;
+                      invcs[usr].nbPending += -1;
+                    }
+                  }
+                  successFailure("DELETE", bl, formatMessage, "UpdateInvoice");
+              }
+              setSpinner({invoices: false});
+              setInvoices(invcs);
+            }
+          });
+        }
+      });
+    });
+  }
   function handleBookingChange(id, etid, cs = "change") {
     const bkgs = _.cloneDeep(bookings);
     Object.keys(bookings).map((usr) => {
@@ -366,7 +462,6 @@ function MemberPage({
                     });
                   }
                   console.log("body booking step", body_bkg);
-                  //break;
                   res = await patchBooking(
                     id,
                     {steps: body_bkg},
@@ -446,9 +541,6 @@ function MemberPage({
         }
       });
     });
-  }
-  function handleInvoiceChange(id, etid, cs = "change") {
-    console.log(id, etid);
   }
   try {
     async function handleToggle(idx, user) {

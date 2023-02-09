@@ -28,6 +28,7 @@ import {scrollToBottom} from "../../../utils/utilityFunctions.js";
 export function getNextSteps(
   steps,
   id,
+  stepsNumbering,
   formatMessage,
   formatRoot,
   onHandleChange
@@ -69,7 +70,9 @@ export function getNextSteps(
           {`${formatMessage({
             id: `${formatRoot}.${txt}`,
           })}`}
-          {txt === "completed" && <span className="ml-2">&#x2714;</span>}
+          {(txt === "completed" || txt === "paid") && (
+            <span className="ml-2">&#x2714;</span>
+          )}
           {`${
             txt === "seeYou"
               ? getFormattedDate(step.next[by][txt], "dd.MM.yyyy")
@@ -356,6 +359,7 @@ function DataTable({
                     {getNextSteps(
                       rec.steps,
                       rec._id,
+                      stepsNumbering,
                       formatMessage,
                       "src.components.memberPage.tabs.MyReservation",
                       onHandleBookingChange

@@ -1,11 +1,6 @@
 import {useIntl} from "react-intl";
 import {getFormattedDate} from "../../../../utils/utilityFunctions.js";
 import "../../../bookings/dataTable/summary/styles.css";
-import stepsNumbering from "../../../../announce/details/priceDatesTable/booking/stepsNumbering.json";
-import {
-  getCompletedSteps,
-  getNextSteps,
-} from "../../../bookings/dataTable/DataTable.jsx";
 import "./styles.css";
 import logo from "../../../../../../images/logo-icon.png";
 
@@ -62,11 +57,7 @@ function InvoiceSummary({data: dta}) {
     for (i = 0; i < n; i++) {
       if (i === 0)
         td.push(
-          <td
-            className="invoice"
-            key={`title_${locale}${i}`}
-            rowSpan={details[i].nbRows}
-          >
+          <td className="invoice" key={"title"} rowSpan={details[i].nbRows}>
             {details[i].title[locale]}
           </td>
         );
@@ -76,47 +67,54 @@ function InvoiceSummary({data: dta}) {
         keys_part = Object.keys(part);
         price = 0;
         td.push(
-          <>
-            <td className="invoice" key={`ref${i}${j}`}>
-              {keys[j]}
-            </td>
-            <td className="invoice" key={`date${i}${j}`}>
-              {`${getFormattedDate(
-                details[i].bookings[keys[j]].date.dateStart,
-                "dd.MM.yyyy"
-              )}`}
-              <br></br>
-              {`${getFormattedDate(
-                details[i].bookings[keys[j]].date.dateEnd,
-                "dd.MM.yyyy"
-              )}`}
-            </td>
-            <td className="invoice" key={`price${i}${j}`}>
-              {keys_part.map((key, idx) => {
-                price += details[i].bookings[keys[j]].participants[key].price;
-                return (
-                  <div>{`${formatMessage({
-                    id: `src.components.announcePage.booking.${key}`,
-                  })}: ${details[i].bookings[keys[j]].participants[key].nb} - ${
-                    details[i].bookings[keys[j]].participants[key].price
-                  } ${details[i].devise}`}</div>
-                );
-              })}
-            </td>
+          <td className="invoice" key={`ref${i}${j}`}>
+            {keys[j]}
+          </td>
+        );
+        td.push(
+          <td className="invoice" key={`date${i}${j}`}>
+            {`${getFormattedDate(
+              details[i].bookings[keys[j]].date.dateStart,
+              "dd.MM.yyyy"
+            )}`}
+            <br></br>
+            {`${getFormattedDate(
+              details[i].bookings[keys[j]].date.dateEnd,
+              "dd.MM.yyyy"
+            )}`}
+          </td>
+        );
+        td.push(
+          <td className="invoice" key={`price${i}${j}`}>
+            {keys_part.map((key, idx) => {
+              price += details[i].bookings[keys[j]].participants[key].price;
+              return (
+                <div key={`${key}${i}${j}${idx}`}>{`${formatMessage({
+                  id: `src.components.announcePage.booking.${key}`,
+                })}: ${details[i].bookings[keys[j]].participants[key].nb} - ${
+                  details[i].bookings[keys[j]].participants[key].price
+                } ${details[i].devise}`}</div>
+              );
+            })}
+          </td>
+        );
+        td.push(
+          <td
+            className="invoice"
+            key={`rate${i}${j}`}
+          >{`${details[i].rate} %`}</td>
+        );
+        if (details[i].penalty !== 0)
+          td.push(
             <td
               className="invoice"
-              key={`rate${i}${j}`}
-            >{`${details[i].rate} %`}</td>
-            {details[i].penalty !== 0 && (
-              <td
-                className="invoice"
-                key={`penalty${i}${j}`}
-              >{`${details[i].penalty} %`}</td>
-            )}
-            <td className="invoice" key={`totalrow${i}${j}`}>{`${
-              ((details[i].rate + details[i].penalty) * price) / 100
-            } ${details[i].devise}`}</td>
-          </>
+              key={`penalty${i}${j}`}
+            >{`${details[i].penalty} %`}</td>
+          );
+        td.push(
+          <td className="invoice" key={`total${i}${j}`}>{`${
+            ((details[i].rate + details[i].penalty) * price) / 100
+          } ${details[i].devise}`}</td>
         );
         total += price;
         tr.push(<tr key={`row${i}${j}`}>{td}</tr>);
@@ -256,11 +254,7 @@ function InvoiceSummary({data: dta}) {
               })}`}</th>
             </tr>
           </thead>
-          <tbody>
-            {details.tr.map((row, idx) => {
-              return row;
-            })}
-          </tbody>
+          <tbody>{details.tr}</tbody>
         </table>
         {/* <div
           className="mr-4 pr-4"

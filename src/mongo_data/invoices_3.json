@@ -1,0 +1,93 @@
+[{
+  "_id": {
+    "$oid": "63e3c98a800c59a5c2da4415"
+  },
+  "ref": "ead762_2023-2",
+  "id_company": {
+    "$oid": "63ceb717d8e654ff88ead762"
+  },
+  "id_booking": [
+    {
+      "$oid": "63dbefe74daadcc7b4b8f2a4"
+    },
+    {
+      "$oid": "63da70e36adb55b89847b3c1"
+    }
+  ],
+  "period": {
+    "dateStart": {
+      "$date": "2023-01-08T16:10:50.117Z"
+    },
+    "dateEnd": {
+      "$date": "2023-02-07T16:10:50.118Z"
+    }
+  },
+  "amount": 238,
+  "penalty": false,
+  "penaltyAmount": 0,
+  "steps": {
+    "0": {
+      "saved": {
+        "$date": "2023-02-08T16:10:50.119Z"
+      },
+      "by": "admin",
+      "active": false,
+      "next": {
+        "admin": {
+          "submit": null
+        }
+      }
+    },
+    "1": {
+      "submitted": {
+        "$date": "2023-02-08T16:10:50.119Z"
+      },
+      "by": "admin",
+      "active": true,
+      "next": {
+        "pro": {
+          "payInvoice": {
+            "$date": "2023-03-07T16:10:50.119Z"
+          }
+        }
+      }
+    },
+    "2": {
+      "invoicePaid": null,
+      "by": "pro",
+      "active": false,
+      "next": {
+        "admin": {
+          "akn": null
+        }
+      }
+    },
+    "3": {
+      "paymentReceived": null,
+      "by": "admin",
+      "active": false,
+      "next": {
+        "admin": {
+          "paid": null
+        }
+      }
+    },
+    "15": {
+      "cancel": null,
+      "by": "admin",
+      "active": false,
+      "next": {
+        "admin": {
+          "cancelled": null
+        }
+      }
+    }
+  },
+  "createdAt": {
+    "$date": "2023-02-08T16:10:50.134Z"
+  },
+  "updatedAt": {
+    "$date": "2023-02-08T16:10:50.134Z"
+  },
+  "__v": 0
+}]

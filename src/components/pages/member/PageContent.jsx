@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {useCookies} from "react-cookie";
 import {useIntl} from "react-intl";
 import {Tooltip} from "@mui/material";

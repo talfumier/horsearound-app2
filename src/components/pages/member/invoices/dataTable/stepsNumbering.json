@@ -3,9 +3,10 @@
   "submit": "1",
   "submitted": "1",
   "payInvoice": "2",
-  "invoicePaid": "3",
+  "invoicePaid": "2",
+  "paymentReceived": "3",
   "cancel": "C0",
   "akn": {
-    "paymentReceived": "4"
+    "invoicePaid": "3"
   }
 }

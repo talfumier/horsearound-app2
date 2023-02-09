@@ -12,7 +12,6 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import _ from "lodash";
-import {parseISO} from "date-fns";
 import TableToolbar from "./TableToolbar.jsx";
 import Tablehead from "./Tablehead.jsx";
 import {
@@ -67,7 +66,7 @@ function DataTable({
     });
     return result;
   }
-  function prepareData(headCells, data, closed = false) {
+  function prepareData(headCells, data, closed = true) {
     const rows = [],
       n = headCells.length;
     let company = null,
@@ -172,6 +171,7 @@ function DataTable({
                       {getNextSteps(
                         invoice.steps,
                         invoice._id,
+                        stepsNumbering,
                         formatMessage,
                         "src.components.memberPage.tabs.price.MyPrice",
                         onHandleInvoiceChange

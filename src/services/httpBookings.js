@@ -30,13 +30,6 @@ export function getLastBookingRef(proId, token, signal) {
     signal,
   });
 }
-export function getInvoicesByUser(userId, token, signal) {
-  const endpoint = `/invoices/user/${userId}`;
-  return http.get(`${api}${endpoint}`, {
-    headers: {"x-auth-token": token},
-    signal,
-  });
-}
 export function postBooking(data, token, signal) {
   return http.post(`${api}/bookings`, data, {
     headers: {"x-auth-token": token},

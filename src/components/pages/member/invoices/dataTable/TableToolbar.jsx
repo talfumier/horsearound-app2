@@ -112,7 +112,7 @@ function TableToolbar({
                 <input
                   id="paidInvoiceSlider"
                   type="checkbox"
-                  defaultChecked={true}
+                  defaultChecked={false}
                   onChange={() => {
                     onHandleClosed(
                       document.getElementById("paidInvoiceSlider").checked

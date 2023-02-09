@@ -1,13 +1,39 @@
-import {useState} from "react";
-import {FormattedMessage, useIntl} from "react-intl";
+import {useState, useEffect} from "react";
+import {FormattedMessage} from "react-intl";
 import classnames from "classnames";
-import {Card} from "@mui/material";
 import {TabContent, TabPane, Nav, NavItem, NavLink} from "reactstrap";
 import MyInvoicesTable from "./MyInvoicesTable.jsx";
 import "./navlink.css";
 
 function MyInvoices({invoices, spinner, onHandleInvoiceChange}) {
   const [activeTab, setActiveTab] = useState(0);
+  const [padding, setPadding] = useState(null);
+  useEffect(() => {
+    function setPad() {
+      let ni = 0,
+        np = 0;
+      Object.keys(invoices).map((key) => {
+        ni += invoices[key].nbInvoices;
+        np += invoices[key].nbPending;
+      });
+      if (
+        ni === 0 ||
+        (document.getElementById("paidInvoiceSlider").checked && np === 0)
+      )
+        setPadding("4%");
+      else setPadding(0);
+    }
+    document
+      .getElementById("paidInvoiceSlider")
+      .addEventListener("change", setPad);
+    return () => {
+      try {
+        document
+          .getElementById("paidInvoiceSlider")
+          .removeEventListener("change", setPad);
+      } catch {}
+    };
+  }, []);
   return (
     <div className="profile-header-tab nav nav-tabs p-0 m-0 pt-2">
       <Nav>
@@ -39,7 +65,7 @@ function MyInvoices({invoices, spinner, onHandleInvoiceChange}) {
           </NavLink>
         </NavItem>
       </Nav>
-      <TabContent className="d-flex m-0 p-0" activeTab={activeTab}>
+      <TabContent activeTab={activeTab} style={{paddingTop: padding}}>
         <TabPane tabId={0}>
           <MyInvoicesTable
             invoices={invoices}
