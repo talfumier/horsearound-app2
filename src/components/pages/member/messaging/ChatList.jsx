@@ -1,9 +1,8 @@
-import {FormattedMessage, useIntl} from "react-intl";
+import {useIntl} from "react-intl";
 import {Avatar, Card} from "@mui/material";
 import {useCookies} from "react-cookie";
 import {decodeJWT} from "../../../../services/httpUsers.js";
 import {getFormattedDate} from "../../utils/utilityFunctions.js";
-import {light} from "@mui/material/styles/createPalette.js";
 
 function ChatList({messages, onHandleReply, onHandleRead}) {
   const [cookies] = useCookies(["user"]);
@@ -16,8 +15,8 @@ function ChatList({messages, onHandleReply, onHandleRead}) {
   let avatar = [];
   return (
     <div
-      style={{fontSize: "1.2rem", overflowY: "scroll", height: 580}}
-      className="mt-3 px-4"
+      style={{fontSize: "1.2rem", overflowY: "auto", height: 580}}
+      className="mt-3 pt-3 px-4"
     >
       {messages.map((message, idx) => {
         avatar.push(

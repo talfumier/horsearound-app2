@@ -171,7 +171,12 @@ function Messaging() {
               className="form-control "
               value={state.title}
               onChange={(e) => setState({...state, title: e.target.value})}
-              style={{width: "60%", borderRadius: 10}}
+              style={{
+                width: "60%",
+                borderRadius: 10,
+                backgroundColor: "#E9EDF7",
+                color: "#0043C8",
+              }}
             />
             <a
               className="btn btn-success ml-auto"
@@ -202,7 +207,11 @@ function Messaging() {
             rows="6"
             value={state.message}
             onChange={(e) => setState({...state, message: e.target.value})}
-            style={{borderRadius: 10}}
+            style={{
+              borderRadius: 10,
+              backgroundColor: "#E9EDF7",
+              color: "#0043C8",
+            }}
           />
         </div>
         <div className="col-8" style={{marginLeft: 10, marginRight: 10}}>
