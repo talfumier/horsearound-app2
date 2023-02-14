@@ -105,18 +105,35 @@ export function getConversation(id_sender, id_receiver, token, signal) {
     signal,
   });
 }
-export function postConversation(data, token) {
+export function getConversations(id, token, signal) {
+  return http.get(`${api}/conversations/user/${id}`, {
+    headers: {"x-auth-token": token},
+    signal,
+  });
+}
+export function postConversation(data, token, signal) {
   return http.post(`${api}/conversations`, data, {
     headers: {"x-auth-token": token},
+    signal,
   });
 }
-export function patchConversation(id, data, token) {
+export function patchConversation(id, data, token, signal) {
   return http.patch(`${api}/conversations/${id}`, data, {
     headers: {"x-auth-token": token},
+    signal,
   });
 }
-export function postMessage(data, token) {
-  return http.post(`${api}/messages`, data, {headers: {"x-auth-token": token}});
+export function postMessage(data, token, signal) {
+  return http.post(`${api}/messages`, data, {
+    headers: {"x-auth-token": token},
+    signal,
+  });
+}
+export function patchMessage(id, data, token, signal) {
+  return http.patch(`${api}/messages/${id}`, data, {
+    headers: {"x-auth-token": token},
+    signal,
+  });
 }
 export function getMessages(id_sender, id_receiver, token, signal) {
   return http.get(`${api}/messages/user/${id_sender}`, {

@@ -313,7 +313,7 @@
     "_id": {
       "$oid": "62550fb66839f4001e3640cf"
     },
-    "type": "pro",
+    "type": "particulier",
     "img_url": "/img/avatar_anonym.jpg",
     "status": "ACTIVE",
     "role": "ADMIN",

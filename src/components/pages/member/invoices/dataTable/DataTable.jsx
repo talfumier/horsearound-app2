@@ -12,6 +12,8 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import _ from "lodash";
+import {useCookies} from "react-cookie";
+import {decodeJWT} from "../../../../../services/httpUsers.js";
 import TableToolbar from "./TableToolbar.jsx";
 import Tablehead from "./Tablehead.jsx";
 import {
@@ -38,6 +40,8 @@ function DataTable({
   onHandleInvoiceChange,
 }) {
   const {locale, formatMessage} = useIntl();
+  const [cookies, setCookie] = useCookies(["user"]);
+  const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
   const [rows, setRows] = useState([]);
   useEffect(() => {
     original = prepareData(headCells, invoices); //default closed parameter=true (i.e. includes invoices that have been paid)
@@ -73,142 +77,148 @@ function DataTable({
       obj = {},
       key = null;
     Object.keys(data).map((proId) => {
-      company = data[proId].data[0];
-      company.invoice.map((invoice) => {
-        if (closed || (!closed && invoice.steps[3].paymentReceived === null)) {
-          //filter out paid invoices (closed=false)
-          obj = {};
-          for (let i = 0; i < n; i++) {
-            {
-              switch (i) {
-                case 0: //reference-company
-                  obj[headCells[i].name] = (
-                    <>
-                      {`${invoice.ref}`}
-                      <br />
-                      {`${company.corpName}`}
-                    </>
-                  );
-                  break;
-                case 1: //period
-                  obj[headCells[i].name] = (
-                    <>
-                      {`${getFormattedDate(
-                        invoice.period.dateStart,
-                        "dd.MM.yyyy"
-                      )} - ${getFormattedDate(
-                        invoice.period.dateEnd,
-                        "dd.MM.yyyy"
-                      )}`}
-                    </>
-                  );
-                  break;
-                case 2: //related announces & bookings
-                  obj[headCells[i].name] = (
-                    <>
-                      {getRelatedBookingsByAnn(
-                        invoice.id_booking,
-                        company.booking,
-                        company.announce
-                      ).map((item, idx) => {
-                        key = Object.keys(item)[0];
-                        return (
-                          <ul key={idx}>
-                            {`${formatMessage({
-                              id: "src.components.memberPage.tabs.price.MyPrice.relatedAnn",
-                            })}: ${item[key].title[locale]}`}
-                            <br></br>
-                            {`${formatMessage({
-                              id: "src.components.memberPage.tabs.price.MyPrice.relatedBook",
-                            })}: ${item[key].bookings}`}
-                          </ul>
-                        );
-                      })}
-                    </>
-                  );
-                  break;
-                case 3: //amount
-                  obj[headCells[i].name] = (
-                    <>{`${invoice.amount + invoice.penaltyAmount} ${
-                      company.announce[0].devise
-                    }`}</>
-                  );
-                  break;
-                case 4: //deadline
-                  obj[headCells[i].name] = getFormattedDate(
-                    invoice.steps["1"].next.pro.payInvoice,
-                    "dd.MM.yyyy"
-                  );
-                  break;
-                case 5: //steps completed
-                  obj[headCells[i].name] = (
-                    <div
-                      id={invoice._id}
-                      className="d-flex flex-column mx-0 px-0 my-2"
-                      style={{
-                        maxHeight: "70px",
-                        overflowY: "scroll",
-                      }}
-                    >
-                      {Object.keys(stepsNumbering).map((txt) => {
-                        return getCompletedSteps(
-                          invoice.steps,
-                          txt,
-                          stepsNumbering[txt],
-                          formatMessage,
-                          "src.components.memberPage.tabs.price.MyPrice"
-                        );
-                      })}
-                    </div>
-                  );
-                  setTimeout(() => {
-                    scrollToBottom(invoice._id);
-                  }, 500);
-                  break;
-                case 6: //steps to be done
-                  obj[headCells[i].name] = (
-                    <div className="justify-content-left mx-1 px-1">
-                      {getNextSteps(
-                        invoice.steps,
-                        invoice._id,
-                        stepsNumbering,
-                        formatMessage,
-                        "src.components.memberPage.tabs.price.MyPrice",
-                        onHandleInvoiceChange
-                      )}
-                    </div>
-                  );
-                  break;
-                case 7: //cancel
-                  obj[headCells[i].name] = (
-                    <>
-                      <button
-                        className="fa fa-trash mx-4"
-                        style={{
-                          color: "#7aa095",
-                          border: "0",
-                          fontSize: "20px",
-                        }}
-                        onClick={(e) => {
-                          onHandleInvoiceChange(
-                            invoice._id,
-                            e.target.id,
-                            "cancel"
+      try {
+        company = data[proId].data[0];
+        company.invoice.map((invoice) => {
+          if (
+            closed ||
+            (!closed && invoice.steps[3].paymentReceived === null)
+          ) {
+            //filter out paid invoices (closed=false)
+            obj = {};
+            for (let i = 0; i < n; i++) {
+              {
+                switch (i) {
+                  case 0: //reference-company
+                    obj[headCells[i].name] = (
+                      <>
+                        {`${invoice.ref}`}
+                        <br />
+                        {`${company.corpName}`}
+                      </>
+                    );
+                    break;
+                  case 1: //period
+                    obj[headCells[i].name] = (
+                      <>
+                        {`${getFormattedDate(
+                          invoice.period.dateStart,
+                          "dd.MM.yyyy"
+                        )} - ${getFormattedDate(
+                          invoice.period.dateEnd,
+                          "dd.MM.yyyy"
+                        )}`}
+                      </>
+                    );
+                    break;
+                  case 2: //related announces & bookings
+                    obj[headCells[i].name] = (
+                      <>
+                        {getRelatedBookingsByAnn(
+                          invoice.id_booking,
+                          company.booking,
+                          company.announce
+                        ).map((item, idx) => {
+                          key = Object.keys(item)[0];
+                          return (
+                            <ul key={idx}>
+                              {`${formatMessage({
+                                id: "src.components.memberPage.tabs.price.MyPrice.relatedAnn",
+                              })}: ${item[key].title[locale]}`}
+                              <br></br>
+                              {`${formatMessage({
+                                id: "src.components.memberPage.tabs.price.MyPrice.relatedBook",
+                              })}: ${item[key].bookings}`}
+                            </ul>
                           );
+                        })}
+                      </>
+                    );
+                    break;
+                  case 3: //amount
+                    obj[headCells[i].name] = (
+                      <>{`${invoice.amount + invoice.penaltyAmount} ${
+                        company.announce[0].devise
+                      }`}</>
+                    );
+                    break;
+                  case 4: //deadline
+                    obj[headCells[i].name] = getFormattedDate(
+                      invoice.steps["1"].next.pro.payInvoice,
+                      "dd.MM.yyyy"
+                    );
+                    break;
+                  case 5: //steps completed
+                    obj[headCells[i].name] = (
+                      <div
+                        id={invoice._id}
+                        className="d-flex flex-column mx-0 px-0 my-2"
+                        style={{
+                          maxHeight: "70px",
+                          overflowY: "scroll",
                         }}
-                      ></button>
-                    </>
-                  );
-                  break;
-                case 8: //id
-                  obj[headCells[i].name] = invoice._id;
-                  break;
+                      >
+                        {Object.keys(stepsNumbering).map((txt) => {
+                          return getCompletedSteps(
+                            invoice.steps,
+                            txt,
+                            stepsNumbering[txt],
+                            formatMessage,
+                            "src.components.memberPage.tabs.price.MyPrice"
+                          );
+                        })}
+                      </div>
+                    );
+                    setTimeout(() => {
+                      scrollToBottom(invoice._id);
+                    }, 500);
+                    break;
+                  case 6: //steps to be done
+                    obj[headCells[i].name] = (
+                      <div className="justify-content-left mx-1 px-1">
+                        {getNextSteps(
+                          invoice.steps,
+                          invoice._id,
+                          stepsNumbering,
+                          formatMessage,
+                          "src.components.memberPage.tabs.price.MyPrice",
+                          onHandleInvoiceChange
+                        )}
+                      </div>
+                    );
+                    break;
+                  case 7: //cancel
+                    obj[headCells[i].name] = (
+                      <>
+                        <button
+                          className="fa fa-trash mx-4"
+                          style={{
+                            color:
+                              currentUser.role !== "ADMIN" ? "#ccc" : "#7aa095",
+                            border: "0",
+                            fontSize: "20px",
+                          }}
+                          onClick={(e) => {
+                            onHandleInvoiceChange(
+                              invoice._id,
+                              e.target.id,
+                              "cancel"
+                            );
+                          }}
+                        ></button>
+                      </>
+                    );
+                    break;
+                  case 8: //id
+                    obj[headCells[i].name] = invoice._id;
+                    break;
+                }
               }
             }
+            rows.push(obj);
           }
-          rows.push(obj);
-        }
-      });
+        });
+      } catch (error) {} //pro with a 'PENDING' status
     });
     return rows;
   }
@@ -294,7 +304,7 @@ function DataTable({
           }}
         ></RenderInWindow>
       )}
-      <Paper sx={{width: "110%"}}>
+      <Paper sx={{width: "100%"}}>
         <TableToolbar
           numSelected={sumOfPropsValues(selected)}
           selected={selected}

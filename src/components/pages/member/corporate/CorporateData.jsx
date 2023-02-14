@@ -392,7 +392,14 @@ function CorporateData({user, onHandleDirty}) {
       </div>
       {Object.keys(values).length > 0 &&
         Object.keys(valid.current).length > 0 && (
-          <Container style={{minWidth: "200%"}}>
+          <Container
+            style={{
+              minWidth: "170%",
+              overflowY: "auto",
+              overflowX: "hidden",
+              height: "530px",
+            }}
+          >
             <Row className="justify-content-md-left pl-1 mt-4 pt-0">
               <label className="ml-2 mr-2">
                 <h5 style={{fontSize: "1.6rem", fontWeight: "bolder"}}>
@@ -459,7 +466,7 @@ function CorporateData({user, onHandleDirty}) {
                 onHandleGlobals={handleGlobals}
               ></SponsoredBy>
             </Row>
-            <Row className="justify-content-md-left pl-1 mt-4 pt-4">
+            <Row className="justify-content-md-left pl-1 ">
               <label className="ml-2 mr-2">
                 <h5 style={{fontSize: "1.6rem", fontWeight: "bolder"}}>
                   <FormattedMessage id="src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.bankLabel" />

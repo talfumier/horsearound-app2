@@ -17,6 +17,7 @@ import DashBoard from "./Dashboard.jsx";
 import {RenderInWindow} from "../common/RenderInWindow.jsx";
 import CorporateSummary from "./corporate/CorporateSummary.jsx";
 import {toastInfo} from "../common/toastSwal/ToastMessages.js";
+import Messaging from "./messaging/Messaging.jsx";
 
 function PageContent({
   announces,
@@ -31,6 +32,7 @@ function PageContent({
   onHandleDirty,
   onHandleBookingChange,
   onHandleInvoiceChange,
+  onHandleConditionsChange,
 }) {
   window.scrollTo(0, 0);
   const {locale, formatMessage} = useIntl();
@@ -45,7 +47,8 @@ function PageContent({
       marginTop: 160,
       marginLeft: "auto",
       width: "100%",
-      //maxHeight: 800, style={styles.container}
+      height: 800,
+      //overFlowY: "auto",
     },
   };
   async function handleProValidation(id) {
@@ -81,6 +84,110 @@ function PageContent({
       setUsers(usrs); //style={styles.container}
     }
   }
+  let usr_details = null;
+  function getuserDetails(usr) {
+    return `${usr.firstName ? usr.firstName : ``} ${
+      usr.lastName ? usr.lastName : ``
+    }${usr.firstName || usr.lastName ? ` - ` : ``}${usr.email}${
+      usr.status === "PENDING"
+        ? formatMessage({
+            id: "src.components.memberPage.DashBoard.pendingValid",
+          })
+        : ""
+    }`;
+  }
+  function getTab1Content() {
+    return users.map((usr, idx) => {
+      usr_details = getuserDetails(usr);
+      return (
+        <div className="d-flex justify-content-center mr-4 pr-4" key={idx}>
+          <ul key={idx}>
+            <div className="d-flex flex-column mt-4">
+              {currentUser.role === "ADMIN" ? (
+                <Tooltip
+                  title={formatMessage({
+                    id: "src.components.memberPage.DashBoard.summaryTT",
+                  })}
+                  arrow
+                >
+                  <h5
+                    id={usr._id}
+                    style={{
+                      color: usr.status !== "PENDING" ? "blue" : "orange",
+                      fontWeight: "bold",
+                      width: usr.status !== "PENDING" ? null : "100%",
+                      height: "5%",
+                      cursor: "pointer",
+                    }}
+                    onClick={(e) => {
+                      if (open !== null) {
+                        toastInfo(
+                          formatMessage({
+                            id: "user_msg.standard.errors.windowOpen",
+                          })
+                        );
+                        return;
+                      }
+                      setOpen(e.target.id);
+                    }}
+                  >
+                    {usr_details}
+                  </h5>
+                </Tooltip>
+              ) : usr.status === "PENDING" ? (
+                <h5
+                  style={{
+                    color: "orange",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {usr_details}
+                </h5>
+              ) : null}
+              {currentUser.role === "ADMIN" && usr.status === "PENDING" && (
+                <div className="d-flex justify-content-center mt-4 mr-4 pr-4">
+                  <textarea
+                    value={value}
+                    className="form-control ml-4 pl-4"
+                    cols="10"
+                    rows="4"
+                    onChange={(e) => {
+                      setValue(e.target.value);
+                    }}
+                  ></textarea>
+                  <button
+                    className="dropdown singleDrop btn btn-success p-2 pl-3 ml-5 mr-4 pr-3 "
+                    style={{height: "40%"}}
+                    onClick={() => {
+                      handleProValidation(usr._id);
+                    }}
+                  >
+                    {formatMessage({
+                      id: "buttons.valid",
+                    })}
+                  </button>
+                </div>
+              )}
+            </div>
+            <DashBoard
+              announces={
+                currentUser.role === "ADMIN"
+                  ? _.filter(announces, (ann) => {
+                      return ann.id_user._id === usr._id;
+                    })
+                  : announces
+              }
+              bookings={bookings[usr._id]}
+              invoices={invoices[usr._id]}
+              user={usr}
+              onHandleToggle={onHandleToggle}
+              style={{margin: 0}}
+            />
+          </ul>
+        </div>
+      );
+    });
+  }
   return (
     <div className="container p-0 " style={styles.container}>
       {open !== null && (
@@ -92,94 +199,18 @@ function PageContent({
           }}
         ></RenderInWindow>
       )}
-      {tab === 1 &&
-        users.map((usr, idx) => {
-          return (
-            <div className="m-0 p-0" key={idx}>
-              <ul key={idx}>
-                <div className="d-flex mt-4 ">
-                  <Tooltip
-                    title={formatMessage({
-                      id: "src.components.memberPage.DashBoard.summaryTT",
-                    })}
-                    arrow
-                  >
-                    <h5
-                      id={usr._id}
-                      style={{
-                        color: usr.status !== "PENDING" ? "blue" : "orange",
-                        fontWeight: "bold",
-                        width: usr.status !== "PENDING" ? null : "100%",
-                        height: "5%",
-                        cursor: "pointer",
-                      }}
-                      onClick={(e) => {
-                        if (open !== null) {
-                          toastInfo(
-                            formatMessage({
-                              id: "user_msg.standard.errors.windowOpen",
-                            })
-                          );
-                          return;
-                        }
-                        setOpen(e.target.id);
-                      }}
-                    >
-                      {`${usr.firstName ? usr.firstName : ``} ${
-                        usr.lastName ? usr.lastName : ``
-                      }${usr.firstName || usr.lastName ? ` - ` : ``}${
-                        usr.email
-                      }${
-                        usr.status === "PENDING"
-                          ? formatMessage({
-                              id: "src.components.memberPage.DashBoard.pendingValid",
-                            })
-                          : ""
-                      }`}
-                    </h5>
-                  </Tooltip>
-                  {currentUser.role === "ADMIN" && usr.status === "PENDING" && (
-                    <>
-                      <textarea
-                        value={value}
-                        className="form-control"
-                        rows="4"
-                        onChange={(e) => {
-                          setValue(e.target.value);
-                        }}
-                      ></textarea>
-                      <button
-                        className="dropdown singleDrop btn btn-success p-2 pl-3 ml-5 mr-4 pr-3 "
-                        style={{height: "10%"}}
-                        onClick={() => {
-                          handleProValidation(usr._id);
-                        }}
-                      >
-                        {formatMessage({
-                          id: "buttons.valid",
-                        })}
-                      </button>
-                    </>
-                  )}
-                </div>
-                <DashBoard
-                  announces={
-                    currentUser.role === "ADMIN"
-                      ? _.filter(announces, (ann) => {
-                          return ann.id_user._id === usr._id;
-                        })
-                      : announces
-                  }
-                  bookings={bookings[usr._id]}
-                  invoices={invoices[usr._id]}
-                  user={usr}
-                  onHandleToggle={onHandleToggle}
-                  style={{margin: 0}}
-                />
-              </ul>
-            </div>
-          );
-        })}
+      {tab === 1 && (
+        <div
+          className="d-flex flex-column ml-0 pl-0 mr-4 pr-4"
+          style={{
+            overflow: "auto",
+            height: 550,
+            width: "110%",
+          }}
+        >
+          {getTab1Content()}
+        </div>
+      )}
       {tab === 2 && (
         <MyAnnounces
           announces={announces}
@@ -204,9 +235,21 @@ function PageContent({
           announces={announces}
           spinner={spinner.invoices}
           onHandleInvoiceChange={onHandleInvoiceChange}
+          onHandleConditionsChange={onHandleConditionsChange}
+          onHandleSummary={(id) => {
+            if (open !== null) {
+              toastInfo(
+                formatMessage({
+                  id: "user_msg.standard.errors.windowOpen",
+                })
+              );
+              return;
+            }
+            setOpen(id);
+          }}
         ></MyInvoices>
       )}
-      {tab === 6 && <div>66666666666666666666</div>}
+      {tab === 6 && <Messaging></Messaging>}
       {tab === 7 && (
         <CorporateData
           user={currentUser}

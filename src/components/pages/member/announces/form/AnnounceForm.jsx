@@ -101,7 +101,7 @@ async function deleteConditionsSatisfiedRR(id, token, formatMessage) {
   let bl = null;
   const abortController = new AbortController(),
     signal = abortController.signal,
-    models = ["comments", "bookings", "payments", "invoices"],
+    models = ["comments", "bookings"],
     n = models.length;
   for (let i = 0; i < n; i++) {
     bl = await checkAnnounceDelete(id, models[i], token, signal);
@@ -854,7 +854,6 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
     Object.keys(valid.current).length > 0 && (
       <>
         <ContainerToast></ContainerToast>
-
         <div
           className="d-flex justify-content-between mx-0 w-100"
           style={{

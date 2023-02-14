@@ -21,6 +21,8 @@ export const validate = (field, val) => {
     case "priceAdulte":
     case "priceChild":
     case "priceAccompagnateur":
+    case "tarif":
+    case "annual":
       return positiveValid(val, false, true, "int"); //int >= 0
     case "lat":
       return positionValid("lat", val);

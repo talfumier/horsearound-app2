@@ -3,9 +3,16 @@ import {FormattedMessage} from "react-intl";
 import classnames from "classnames";
 import {TabContent, TabPane, Nav, NavItem, NavLink} from "reactstrap";
 import MyInvoicesTable from "./MyInvoicesTable.jsx";
+import MyConditions from "./MyConditions.jsx";
 import "./navlink.css";
 
-function MyInvoices({invoices, spinner, onHandleInvoiceChange}) {
+function MyInvoices({
+  invoices,
+  spinner,
+  onHandleInvoiceChange,
+  onHandleConditionsChange,
+  onHandleSummary,
+}) {
   const [activeTab, setActiveTab] = useState(0);
   const [padding, setPadding] = useState(null);
   useEffect(() => {
@@ -65,13 +72,36 @@ function MyInvoices({invoices, spinner, onHandleInvoiceChange}) {
           </NavLink>
         </NavItem>
       </Nav>
-      <TabContent activeTab={activeTab} style={{paddingTop: padding}}>
-        <TabPane tabId={0}>
+      <TabContent
+        activeTab={activeTab}
+        style={{paddingTop: padding, width: "100%"}}
+      >
+        <TabPane
+          tabId={0}
+          style={{
+            backgroundColor: "#F2F2F2",
+          }}
+        >
           <MyInvoicesTable
             invoices={invoices}
             spinner={spinner}
             onHandleInvoiceChange={onHandleInvoiceChange}
           ></MyInvoicesTable>
+        </TabPane>
+        <TabPane
+          tabId={1}
+          style={{
+            backgroundColor: "#F2F2F2",
+            overflowY: "auto",
+            height: 550,
+            marginBottom: 10,
+          }}
+        >
+          <MyConditions
+            data={invoices}
+            onHandleSummary={onHandleSummary}
+            onHandleConditionsChange={onHandleConditionsChange}
+          ></MyConditions>
         </TabPane>
       </TabContent>
     </div>

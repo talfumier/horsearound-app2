@@ -2,45 +2,47 @@ import {FormattedMessage} from "react-intl";
 
 function DashBoard({announces, bookings, invoices, user, onHandleToggle}) {
   return (
-    <div className="w-100" id="parent">
+    <div className="w-100 mr-4 pr-4" id="parent">
       <section className="blockSection">
         <div className="container">
           <div className="row justify-content-center">
-            <div
-              className="col-md-4 col-sm-6 col-xs-12"
-              style={{cursor: "pointer"}}
-              onClick={() => {
-                onHandleToggle(3, user); //Bookings
-              }}
-            >
+            {user.status !== "PENDING" ? (
               <div
-                className="content-block"
-                style={{backgroundColor: "#8caa7b"}}
+                className="col-md-4 col-sm-6 col-xs-12"
+                style={{cursor: "pointer"}}
+                onClick={() => {
+                  onHandleToggle(3, user); //Bookings
+                }}
               >
                 <div
-                  className="media bg-blue-c"
+                  className="content-block"
                   style={{backgroundColor: "#8caa7b"}}
                 >
-                  <div className="media-body ">
-                    <h4 className="media-heading">{bookings.nbBookings}</h4>
-                    <p>
-                      <FormattedMessage id="src.components.memberPage.DashBoard.phrase1" />
-                    </p>
-                  </div>
-                  <div className="media-right ">
-                    <div
-                      className="icon bg-blue-b"
-                      style={{backgroundColor: "#8caa7b"}}
-                    >
-                      <i
-                        className="fa fa-calendar-check-o"
-                        aria-hidden="true"
-                      />
+                  <div
+                    className="media bg-blue-c"
+                    style={{backgroundColor: "#8caa7b"}}
+                  >
+                    <div className="media-body ">
+                      <h4 className="media-heading">{bookings.nbBookings}</h4>
+                      <p>
+                        <FormattedMessage id="src.components.memberPage.DashBoard.phrase1" />
+                      </p>
+                    </div>
+                    <div className="media-right ">
+                      <div
+                        className="icon bg-blue-b"
+                        style={{backgroundColor: "#8caa7b"}}
+                      >
+                        <i
+                          className="fa fa-calendar-check-o"
+                          aria-hidden="true"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ) : null}
             {user.type === "pro" ? (
               <div
                 className="col-md-4 col-sm-6 col-xs-12"
@@ -75,7 +77,7 @@ function DashBoard({announces, bookings, invoices, user, onHandleToggle}) {
                 </div>
               </div>
             ) : null}
-            {user.type === "pro" ? (
+            {user.type === "pro" && user.status !== "PENDING" ? (
               <div
                 className="col-md-4 col-sm-6 col-xs-12"
                 style={{cursor: "pointer"}}

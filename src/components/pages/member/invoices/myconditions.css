@@ -1,0 +1,29 @@
+thead.conditions {
+  background-color: #7aa095;
+  border-color: #7aa095;
+}
+
+th.conditions,
+td.conditions {
+  padding: 5px !important;
+}
+
+th.conditions {
+  color:#fff;
+  font-weight:500;
+  font-size: 1.1em;
+}
+
+table.conditions {
+  margin-bottom: 20px !important;
+}
+
+tr.conditions,
+td.conditions {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.table-responsive.conditions{
+  border: none;
+}

@@ -6,7 +6,7 @@ import {Helmet} from "react-helmet";
 import _ from "lodash";
 import {parseISO, isWithinInterval, eachDayOfInterval} from "date-fns";
 import {toastError} from "../common/toastSwal/ToastMessages.js";
-import {getUsers} from "../../../services/httpUsers.js";
+import {getUsers, getCompany} from "../../../services/httpUsers.js";
 import {
   getUserBookings,
   getProBookings,
@@ -55,6 +55,7 @@ function MemberPage({
         setProUsers(res.data);
       }
     }
+    if (currentUser.type === "pro") setProUsers([currentUser]);
   }
   const abortController = new AbortController();
   useEffect(() => {
@@ -65,18 +66,24 @@ function MemberPage({
     };
   }, []);
   async function loadProBookings(usrs, signal) {
-    const n = usrs.length,
-      bkg = {};
+    const bkg = {};
     let res = null;
     await Promise.all(
-      usrs.map(async (usr, idx) => {
-        res = await getProBookings(usr._id, cookies.user, signal);
-        if (!(await errorHandlingToast(res, locale, false)))
+      usrs.map(async (usr) => {
+        if (usr.status !== "PENDING") {
+          res = await getProBookings(usr._id, cookies.user, signal);
+          if (!(await errorHandlingToast(res, locale, false)))
+            bkg[usr._id] = {
+              data: res.data,
+              nbBookings: res.data.length,
+              nbSaved: res.data.filter((item) => item.steps["0"].saved !== null)
+                .length,
+            };
+        } else
           bkg[usr._id] = {
-            data: res.data,
-            nbBookings: res.data.length,
-            nbSaved: res.data.filter((item) => item.steps["0"].saved !== null)
-              .length,
+            data: [],
+            nbBookings: 0,
+            nbSaved: 0,
           };
       })
     ).then(() => {
@@ -85,20 +92,29 @@ function MemberPage({
     });
   }
   async function loadProInvoices(usrs, signal) {
-    const n = usrs.length,
-      pmt = {};
+    const pmt = {};
     let res = null;
     await Promise.all(
-      usrs.map(async (usr, idx) => {
-        res = await getInvoicesByUser(usr._id, cookies.user, signal);
-        if (!(await errorHandlingToast(res, locale, false)))
-          pmt[usr._id] = {
-            data: res.data,
-            nbInvoices: res.data[0].invoice.length,
-            nbPending: _.filter(res.data[0].invoice, (inv) => {
-              return inv.steps["3"].paymentReceived === null;
-            }).length,
-          };
+      usrs.map(async (usr) => {
+        if (usr.status !== "PENDING") {
+          res = await getInvoicesByUser(usr._id, cookies.user, signal);
+          if (!(await errorHandlingToast(res, locale, false)))
+            pmt[usr._id] = {
+              data: res.data,
+              nbInvoices: res.data[0].invoice.length,
+              nbPending: _.filter(res.data[0].invoice, (inv) => {
+                return inv.steps["3"].paymentReceived === null;
+              }).length,
+            };
+        } else {
+          res = await getCompany(usr._id, signal);
+          if (!(await errorHandlingToast(res, locale, false)))
+            pmt[usr._id] = {
+              data: [res.data],
+              nbInvoices: 0,
+              nbPending: 0,
+            };
+        }
       })
     ).then(() => {
       originalInvoices = pmt;
@@ -249,6 +265,18 @@ function MemberPage({
     setSelected({...selected, bookings: sel});
     if (cs === -2) setTab(3); //MyBookings tab
   }, [flg]);
+  function handleConditionsChange(id, data) {
+    const invcs = _.cloneDeep(invoices);
+    Object.keys(invoices).map((userId) => {
+      if (userId === id) {
+        Object.keys(data).map((key) => {
+          invcs[userId].data[0][key] = data[key];
+          originalInvoices[userId].data[0][key] = data[key];
+        });
+      }
+    });
+    setInvoices(invcs);
+  }
   function handleInvoiceChange(id, etid, cs = "change") {
     if (cs === "cancel" && currentUser.role !== "ADMIN") {
       toastError(
@@ -560,6 +588,7 @@ function MemberPage({
             setAnnounces(allAnnounces.data);
           break;
         case 3: //bookings
+          if (currentUser.status === "PENDING") return;
           if (user) {
             const bkg = {};
             Object.keys(bookings).map((key) => {
@@ -569,7 +598,11 @@ function MemberPage({
             setBookings(bkg);
           } else setBookings(originalBookings);
           break;
+        case 4: //agenda
+          if (currentUser.status === "PENDING") return;
+          break;
         case 5: //Invoices
+          if (currentUser.status === "PENDING") return;
           if (user) {
             const pmt = {};
             Object.keys(invoices).map((key) => {
@@ -585,7 +618,7 @@ function MemberPage({
       flg && (
         <>
           <ContainerToast></ContainerToast>
-          <div>
+          <div style={{maxHeight: 800, overflow: "hidden"}}>
             <FormattedMessage id="metaData.memberSpace.title">
               {(text) => (
                 <Helmet>
@@ -630,6 +663,7 @@ function MemberPage({
               }}
               onHandleBookingChange={handleBookingChange}
               onHandleInvoiceChange={handleInvoiceChange}
+              onHandleConditionsChange={handleConditionsChange}
             />
           </div>
         </>

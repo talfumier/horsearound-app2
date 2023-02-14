@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import {FormattedMessage, useIntl} from "react-intl";
 import _ from "lodash";
+import {parseISO} from "date-fns";
 import {useCookies} from "react-cookie";
 import {
   getConversation,
@@ -23,19 +24,32 @@ function ContactMessaging({proId}) {
     conversation: {},
   });
   function sortMessages(conv) {
-    const ordered = _.orderBy(conv.messages, (msg) => msg.sendDate, ["desc"]);
+    const ordered = _.orderBy(
+      conv.messages,
+      (msg) => parseISO(msg.sendDate).getTime(),
+      ["desc"]
+    );
     return {...conv, messages: ordered};
   }
   useEffect(() => {
-    async function loadData() {
-      const res = await getConversation(currentUser._id, proId, cookies.user);
+    async function loadData(signal) {
+      const res = await getConversation(
+        currentUser._id,
+        proId,
+        cookies.user,
+        signal
+      );
       if (await errorHandlingToast(res, lang, false)) return;
       if (res.data.length !== 0) {
         //There is an existing conversation
         setState({...state, conversation: sortMessages(res.data[0])});
       }
     }
-    loadData();
+    const abortController = new AbortController();
+    loadData(abortController.signal);
+    return () => {
+      abortController.abort(); //clean-up code after component has unmounted
+    };
   }, []);
   function getIdArray(msgs) {
     const lst = [];
@@ -45,15 +59,21 @@ function ContactMessaging({proId}) {
     return lst;
   }
   async function createConversation(msg) {
+    const abortController = new AbortController();
     const res = await postConversation(
       {users: [currentUser._id, proId], messages: [msg._id]},
-      cookies.user
+      cookies.user,
+      abortController.signal
     );
-    if (await errorHandlingToast(res, lang)) return null;
+    if (await errorHandlingToast(res, lang)) {
+      abortController.abort();
+      return;
+    }
     res.data.data.messages = [msg];
     return res.data.data;
   }
   async function sendMessage() {
+    const abortController = new AbortController();
     let res = await postMessage(
       {
         id_sender: currentUser._id,
@@ -61,9 +81,13 @@ function ContactMessaging({proId}) {
         title: state.title,
         message: state.message,
       },
-      cookies.user
+      cookies.user,
+      abortController.signal
     );
-    if (await errorHandlingToast(res, lang)) return;
+    if (await errorHandlingToast(res, lang)) {
+      abortController.abort();
+      return;
+    }
     let conv = null;
     if (Object.keys(state.conversation).length > 0) {
       conv = {...state.conversation};
@@ -74,9 +98,13 @@ function ContactMessaging({proId}) {
         {
           messages: getIdArray(conv.messages),
         },
-        cookies.user
+        cookies.user,
+        abortController.signal
       );
-      if (await errorHandlingToast(res, lang)) return;
+      if (await errorHandlingToast(res, lang)) {
+        abortController.abort();
+        return;
+      }
     } else {
       //create conversation
       conv = await createConversation(res.data.data);

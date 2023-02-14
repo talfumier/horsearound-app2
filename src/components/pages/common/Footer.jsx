@@ -31,9 +31,9 @@ function Footer({noLink}) {
         height: "-200%",
       }}
     >
-      <div className="footer clearfix m-0 p-0">
+      <div className="footer clearfix m-0 p-1">
         <div className="container">
-          <div className="row ">
+          <div className="row">
             <div className="col-xl-4 col-lg-6 col-sm-9 col-xs-12">
               <div className="footerContent ">
                 {noLink ? null : (
@@ -45,69 +45,9 @@ function Footer({noLink}) {
                     />
                   </Link>
                 )}
-                <p>
+                <p className="mt-1">
                   <FormattedMessage id="src.components.allPages.Footer.desHorseAround" />
                 </p>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6 col-sm-9 col-xs-12">
-              <div className="footerContent">
-                <h5>
-                  <FormattedMessage id="src.components.allPages.Footer.supportHorseAround" />
-                </h5>
-                <p>
-                  <FormattedMessage id="src.components.allPages.Footer.contactText" />
-                </p>
-                <ul className="list-unstyled">
-                  <li>
-                    <i className="fa fa-home" aria-hidden="true" />
-                    <FormattedMessage id="global.address" />
-                  </li>
-                  <li>
-                    <i className="fa fa-phone" aria-hidden="true" />
-                    <FormattedMessage id="global.phone" />
-                  </li>
-                  <li>
-                    <i className="fa fa-envelope-o" aria-hidden="true" />
-                    <a href="mailTo:info@horse-around.com">
-                      <FormattedMessage id="global.email" />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6 col-sm-9 col-xs-12">
-              <div className="footerContent">
-                <h5>newsletter</h5>
-                <p>
-                  <FormattedMessage id="src.components.allPages.Footer.desNewsletter" />
-                </p>
-                <div className="input-group">
-                  <FormattedMessage id="src.components.allPages.Menu.userSpace.email">
-                    {(text) => (
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder={text}
-                        id="emailhome"
-                        aria-describedby="basic-addon21"
-                        onChange={(e) => {
-                          setState({email: e.target.value});
-                        }}
-                      />
-                    )}
-                  </FormattedMessage>
-                  <span className="input-group-addon" id="basic-addon21">
-                    <i
-                      className="fa fa-long-arrow-right"
-                      aria-hidden="true"
-                      style={{cursor: "pointer", marginLeft: "-5px"}}
-                      onClick={() => {
-                        handleNewsLetter(state.email, lang);
-                      }}
-                    />
-                  </span>
-                </div>
                 <ul className="list-inline">
                   <li>
                     <a
@@ -139,10 +79,70 @@ function Footer({noLink}) {
                 </ul>
               </div>
             </div>
+            <div className="col-xl-4 col-lg-6 col-sm-9 col-xs-12 ">
+              <div className="footerContent px-4">
+                <h5 className="mb-3">
+                  <FormattedMessage id="src.components.allPages.Footer.supportHorseAround" />
+                </h5>
+                <p className="mt-2 pt-2">
+                  <FormattedMessage id="src.components.allPages.Footer.contactText" />
+                </p>
+                <ul className="list-unstyled">
+                  <li className="my-0 py-0">
+                    <i className="fa fa-home" aria-hidden="true" />
+                    <FormattedMessage id="global.address" />
+                  </li>
+                  <li className="my-0 py-0">
+                    <i className="fa fa-phone" aria-hidden="true" />
+                    <FormattedMessage id="global.phone" />
+                  </li>
+                  <li>
+                    <i className="fa fa-envelope-o" aria-hidden="true" />
+                    <a href="mailTo:info@horse-around.com">
+                      <FormattedMessage id="global.email" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-xl-4 col-lg-6 col-sm-9 col-xs-12">
+              <div className="footerContent">
+                <h5 className="mb-3">newsletter</h5>
+                <p className="mt-2 pt-2">
+                  <FormattedMessage id="src.components.allPages.Footer.desNewsletter" />
+                </p>
+                <div className="input-group">
+                  <FormattedMessage id="src.components.allPages.Menu.userSpace.email">
+                    {(text) => (
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder={text}
+                        id="emailhome"
+                        aria-describedby="basic-addon21"
+                        onChange={(e) => {
+                          setState({email: e.target.value});
+                        }}
+                      />
+                    )}
+                  </FormattedMessage>
+                  <span className="input-group-addon" id="basic-addon21">
+                    <i
+                      className="fa fa-long-arrow-right"
+                      aria-hidden="true"
+                      style={{cursor: "pointer", marginLeft: "-5px"}}
+                      onClick={() => {
+                        handleNewsLetter(state.email, lang);
+                      }}
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="copyRight clearfix">
+      <div className="copyRight clearfix p-3">
         <div className="container">
           <div className="row">
             <div className="col-sm-6 col-sm-push-6 col-xs-12">

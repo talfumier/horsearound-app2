@@ -1,10 +1,11 @@
-import {FormattedMessage} from "react-intl";
+import {FormattedMessage, useIntl} from "react-intl";
 import {Avatar, Card} from "@mui/material";
 import {useCookies} from "react-cookie";
 import {decodeJWT} from "../../../../../services/httpUsers.js";
 import {getFormattedDate} from "../../../utils/utilityFunctions.js";
 
 function ChatList({messages, onHandleReply}) {
+  const {formatMessage} = useIntl();
   const [cookies] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
   function checkSource(id_sender) {
@@ -71,25 +72,20 @@ function ChatList({messages, onHandleReply}) {
                       <div className="p-2">
                         {getFormattedDate(message.sendDate)}
                         {checkSource(message.id_sender._id) ? (
-                          message.isRead ? (
-                            <span
-                              style={{
-                                color: "green",
-                                paddingLeft: 30,
-                              }}
-                            >
-                              <FormattedMessage id="src.components.bookingPage.StepTwoContent.read" />
-                            </span>
-                          ) : (
-                            <span
-                              style={{
-                                color: "orange",
-                                paddingLeft: 30,
-                              }}
-                            >
-                              <FormattedMessage id="src.components.bookingPage.StepTwoContent.unread" />
-                            </span>
-                          )
+                          <span
+                            style={{
+                              color: message.isRead ? "green" : "orange",
+                              paddingLeft: 30,
+                              fontWeight: 800,
+                              cursor: "pointer",
+                            }}
+                          >
+                            {formatMessage({
+                              id: `src.components.bookingPage.StepTwoContent.${
+                                message.isRead ? "read" : "unread"
+                              }`,
+                            })}
+                          </span>
                         ) : null}
                       </div>
                     </div>

@@ -47,11 +47,8 @@ export async function deleteConditionsSatisfied(
         ? ["announces", "companies"]
         : []),
       ...(cs === "profile" ? ["comments"] : []),
-      "bills",
       "bookings",
       ...(cs === "profile" ? ["conversations"] : []),
-      "payments",
-      "invoices",
       // "newsletters",  user deletion authorised if the only user related record is the newsletter subscription
     ],
     n = models.length;

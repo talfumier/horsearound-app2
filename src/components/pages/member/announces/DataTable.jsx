@@ -36,8 +36,7 @@ import {deleteConditionsSatisfied} from "./form/AnnounceForm.jsx";
 import {toastError} from "../../common/toastSwal/ToastMessages.js";
 import {sumOfPropsValues} from "../../utils/utilityFunctions.js";
 
-let edit = {},
-  firstSelected = -1;
+let firstSelected = -1;
 function EnhancedTableHead({
   headCells,
   numSelected,
@@ -77,6 +76,7 @@ const EnhancedTableToolbar = ({
   numSelected,
   rows,
   selected,
+  edit,
   numFiltered,
   theme,
   onFilter,
@@ -107,7 +107,7 @@ const EnhancedTableToolbar = ({
     if (numSelected === 0 || numSelected > 1)
       setTrashConditions({cond: [false, ""], color: "#ccc"});
     else setConditions(); //clean-up code in deleteConditionsSatisfiedRR()
-  }, [selected]);
+  }, [edit]);
   function handleFilter(cond) {
     onFilter(cond);
     setFilterStatus(cond);
@@ -417,6 +417,7 @@ export default function DataTable({
     } */
     setSelected(sel);
   }, [sel]);
+  const [edit, setEdit] = useState({});
   useEffect(() => {
     function getFirstSelected(obj) {
       let ids = Object.keys(obj),
@@ -426,10 +427,11 @@ export default function DataTable({
       }
     }
     firstSelected = getFirstSelected(selected);
-    edit =
+    setEdit(
       sumOfPropsValues(selected) > 0
         ? _.filter(announces, {_id: firstSelected})[0]
-        : {};
+        : {}
+    );
   }, [selected]);
   const [numFiltered, setNumFiltered] = useState(0);
   const [page, setPage] = useState(0);
@@ -605,7 +607,7 @@ export default function DataTable({
         numSelected={sumOfPropsValues(selected)}
         rows={rows}
         selected={selected}
-        // edit={edit}
+        edit={edit}
         numFiltered={numFiltered}
         theme={themes.toolbar}
         onFilter={filterData}
