@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {useResizeDetector} from "react-resize-detector";
 import {FormattedMessage, useIntl} from "react-intl";
 import {Col} from "react-bootstrap";
+import InputMask from "react-input-mask";
 import {alert} from "../../validation.js";
 import {isEven} from "../../../utils/utilityFunctions.js";
 
@@ -11,6 +12,7 @@ function SimpleText({
   required,
   disabled = false,
   type = "text",
+  options = [],
   label = true,
   valid = null,
   col = 2,
@@ -19,9 +21,11 @@ function SimpleText({
   w = null,
   mleft = null,
   wl = null,
+  wl_max = null,
   lt = false,
   ph = null,
   rows = "3",
+  mask = null,
   onHandleGlobals,
 }) {
   const {width, height, ref} = useResizeDetector();
@@ -78,6 +82,7 @@ function SimpleText({
               style={{
                 whiteSpace: "pre-wrap",
                 minWidth: wl,
+                maxWidth: wl_max,
                 color: !required ? "green" : color,
               }}
             >
@@ -91,7 +96,7 @@ function SimpleText({
       )}
       <Col md={col}>
         <div className="m-0">
-          {type === "text" ? (
+          {type === "text" && (
             <input
               id={id ? `AnnounceForm${name}` : null}
               type="text"
@@ -113,7 +118,8 @@ function SimpleText({
                 borderRadius: "5px",
               }}
             ></input>
-          ) : (
+          )}
+          {type === "textarea" && (
             <textarea
               id={id ? `AnnounceForm${name}` : null}
               type="text"
@@ -124,6 +130,7 @@ function SimpleText({
               }}
               value={value}
               disabled={lineThrough || disabled}
+              placeholder={ph}
               style={{
                 border: "solid 1px",
                 borderColor: !required ? "green" : color,
@@ -135,6 +142,49 @@ function SimpleText({
               }}
               rows={rows}
             ></textarea>
+          )}
+          {type === "select" && (
+            <select
+              id={id ? `AnnounceForm${name}` : null}
+              ref={ref}
+              className="form-control mt-2" //"ml-0 mr-3 px-0 mt-2"
+              style={{
+                cursor: "pointer",
+                border: "solid 1px",
+                borderColor: "green",
+                height: "35px",
+                width: w,
+                borderRadius: "5px",
+              }}
+              onChange={(e) => {
+                handleChange(e.target.value);
+              }}
+              value={value}
+            >
+              {options.map((option, idx) => {
+                return (
+                  <option key={idx} value={option[0]}>
+                    {option[1]}
+                  </option>
+                );
+              })}
+            </select>
+          )}
+          {type === "inputMask" && (
+            <InputMask
+              id={id ? `AnnounceForm${name}` : null}
+              //ref={ref}
+              type="text"
+              className="form-control"
+              disabled={disabled}
+              onChange={(e) => {
+                handleChange(e.target.value);
+              }}
+              placeholder={ph}
+              mask={mask.mask}
+              maskChar={mask.maskChar}
+              value={value}
+            ></InputMask>
           )}
           {trash && (
             <i

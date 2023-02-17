@@ -16,6 +16,38 @@
     "name": "email",
     "data": {"default": "", "saved": ""}
   },
+  "birthdate": {
+    "name": "birthdate",
+    "data": {"default": "", "saved": ""}
+  },
+  "birthplace": {
+    "name": "birthplace",
+    "data": {"default": "", "saved": ""}
+  },
+  "sex": {
+    "name": "sex",
+    "data": {"default": "", "saved": ""}
+  },
+  "height": {
+    "name": "height",
+    "data": {"default": "", "saved": ""}
+  },
+  "weight": {
+    "name": "weight",
+    "data": {"default": "", "saved": ""}
+  },
+  "occupation": {
+    "name": "occupation",
+    "data": {"default": "", "saved": ""}
+  },
+  "diet": {
+    "name": "diet",
+    "data": {"default": "", "saved": ""}
+  },
+  "treatment": {
+    "name": "treatment",
+    "data": {"default": "", "saved": ""}
+  },
   "type": {
     "name": "type",
     "data": {"default": "", "saved": ""}
