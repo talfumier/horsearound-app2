@@ -175,8 +175,17 @@ function SimpleText({
               id={id ? `AnnounceForm${name}` : null}
               //ref={ref}
               type="text"
-              className="form-control"
+              className="form-control mt-1"
               disabled={disabled}
+              style={{
+                border: "solid 1px",
+                borderColor: !required ? "green" : color,
+                height: 35,
+                width: w,
+                textAlign: trash ? "left" : "center",
+                textDecorationLine: lineThrough ? "line-through" : null,
+                borderRadius: "5px",
+              }}
               onChange={(e) => {
                 handleChange(e.target.value);
               }}
