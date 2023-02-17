@@ -4,6 +4,7 @@ import {
   positiveValid,
   emailValid,
   positionValid,
+  dateValid,
 } from "../common/validation/Validators.js";
 
 export const validate = (field, val) => {
@@ -24,6 +25,11 @@ export const validate = (field, val) => {
     case "tarif":
     case "annual":
       return positiveValid(val, false, true, "int"); //int >= 0
+    case "birthdate":
+      return dateValid(val);
+    case "weight":
+    case "height":
+      return positiveValid(val, true, true, "float"); //float > 0
     case "lat":
       return positionValid("lat", val);
     case "lng":

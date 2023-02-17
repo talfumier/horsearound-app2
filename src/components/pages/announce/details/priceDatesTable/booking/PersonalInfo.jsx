@@ -4,6 +4,7 @@ import {Card, Tooltip} from "@mui/material";
 import {useCookies} from "react-cookie";
 import InputMask from "react-input-mask";
 import _ from "lodash";
+import {parse} from "date-fns";
 import {
   requiredValid,
   emailValid,
@@ -79,8 +80,9 @@ function PersonalInfo({
             body.phone = value.telephone;
             break;
           case "birthdate":
-          case "birthplace":
+            body[field] = parse(value[field], "dd.MM.yyyy", new Date());
             break;
+          case "birthplace":
           default:
             body[field] = value[field];
         }

@@ -10,7 +10,10 @@ import {
   CalendarRangeFlexFixed_Flex2,
 } from "../../../../common/datepicker/CalendarRange";
 import CountersTable from "./CountersTable";
-import {sumOfPropsValues} from "../../../../utils/utilityFunctions.js";
+import {
+  getFormattedDate,
+  sumOfPropsValues,
+} from "../../../../utils/utilityFunctions.js";
 import {getNRandomColors} from "../../../../utils/utilityFunctions";
 import TabsBar from "./TabsBar";
 import Options from "../option/Options.jsx";
@@ -105,9 +108,15 @@ function FormBooking({announce, data, onClose}) {
               typeof user.phone !== "undefined" ? user.phone : "";
             break;
           case "birthdate":
+            if (item === 1) break;
+            data[item][key] =
+              typeof user[key] !== "undefined"
+                ? getFormattedDate(user[key])
+                : "";
+            break;
           case "birthplace":
             if (item === 1) break;
-            data[item][key] = "";
+            data[item][key] = typeof user[key] !== "undefined" ? user[key] : "";
             break;
           case "email":
             if (item === 1) break;

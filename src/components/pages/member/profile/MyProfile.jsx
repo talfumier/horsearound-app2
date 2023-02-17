@@ -2,6 +2,7 @@ import {useState, useEffect, useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import {Tooltip} from "@mui/material";
 import {Container, Row} from "react-bootstrap";
+import {parse} from "date-fns";
 import ContainerToast from "../../common/toastSwal/ContainerToast.jsx";
 import {FormattedMessage, useIntl} from "react-intl";
 import _ from "lodash";
@@ -109,7 +110,8 @@ function MyProfile({user, onHandleDirty}) {
     async function loadData(signal) {
       dataIn = _.cloneDeep(empty);
       let res = null,
-        bl = null;
+        bl = null,
+        date = null;
       if (Object.keys(userContext.user).length > 0) {
         res = {data: [userContext.user]};
         bl = true;
@@ -130,6 +132,15 @@ function MyProfile({user, onHandleDirty}) {
                 )[0];
               });
               break;
+            case "birthdate":
+              if (user.type === "pro" || user.role === "ADMIN") {
+                valide[key] = true;
+                break;
+              }
+              date = getFormattedDate(dataIn[key].data.saved, "dd.MM.yyyy");
+              dataIn[key].data.saved =
+                typeof date !== "undefined" ? date : dataIn[key].data.default; //'undefined' returned from getFormattedDate() when birthdate missing
+
             default:
               valide[key] = !valide[key]
                 ? validate(key, dataIn[key].data.saved)[0]
@@ -163,7 +174,10 @@ function MyProfile({user, onHandleDirty}) {
         if (!_.isEqual(values[key].data.saved, values[key].data.default))
           globals[key] = values[key].data.default;
       });
-    } else rst += isEven(rst) ? 1 : 2; //odd number, undo >>> saved values
+    } else {
+      rst += isEven(rst) ? 1 : 2; //odd number, undo >>> saved values
+      onHandleDirty(false);
+    }
 
     const valide = {...valid}; //resets valid after clear or restore all
     valide.current = _.cloneDeep(isEven(rst) ? valide.default : valide.saved);
@@ -175,7 +189,7 @@ function MyProfile({user, onHandleDirty}) {
       delete globals[val[0]].init;
       globals[val[0]] = val[1];
       onHandleDirty(
-        Object.keys(prepareBody(globals)).length >= 0 ? true : false
+        Object.keys(prepareBody(globals, false)).length > 0 ? true : false
       );
       //    console.log("globals", globals);
     }
@@ -186,18 +200,25 @@ function MyProfile({user, onHandleDirty}) {
       setFormValid(JSON.stringify(valide.current).indexOf(false) === -1);
     }
   }
-  function prepareBody(modified) {
+  function prepareBody(modified, prt = true) {
     let body = {}, //compares saved data (dataIn) vs modified (changes made by user)
-      flg = null;
+      flg = null,
+      date = null;
     keys.map((key) => {
       switch (key) {
         default:
           flg = Object.keys(modified[key]);
           if (flg.length === 1 && flg.indexOf("init") === 0) break;
-          if (modified[key] != dataIn[key]) body[key] = modified[key];
+          if (modified[key] != dataIn[key]) {
+            if (key !== "birthdate") body[key] = modified[key];
+            else {
+              date = parse(modified[key], "dd.MM.yyyy", new Date());
+              if (!isNaN(date.getTime())) body[key] = date;
+            }
+          }
       }
     });
-    console.log("body", body);
+    if (prt) console.log("body", body);
     return body;
   }
   async function handleSave() {
@@ -213,46 +234,59 @@ function MyProfile({user, onHandleDirty}) {
       actualChange += 1;
       res = await patchUser(userId, body, cookies.user, abortController.signal);
       bl[0] = !(await errorHandlingToast(res, locale, false));
-      let cs = -1;
-      switch (body.aboNewsletter) {
-        case true: //changed from false to true >>> create newsletter
-          res = await postNewsLetter(
-            keys.indexOf("email") !== -1 ? body.email : values.email.data.saved,
-            abortController.signal
-          );
-          cs += 1;
-          break;
-        case false: //changed from true to false >>> delete newsletter
-          res = await deleteNewsLetter(
-            values.email.data.saved, //email currently in the newsletter document (database)
-            cookies.user,
-            abortController.signal
-          );
-          cs += 1;
-          break;
-        default: //no change (undefined) >>> update newsletter in case of email change when 'aboNewsletter'=true
-          if (values.aboNewsletter.data.saved && keys.indexOf("email") !== -1) {
-            res = await patchNewsLetter(
-              values.email.data.saved, //old email currently in the newsletter
-              {email: body.email}, //updated email
+      if (bl[0]) {
+        let cs = -1;
+        switch (body.aboNewsletter) {
+          case true: //changed from false to true >>> create newsletter
+            res = await postNewsLetter(
+              keys.indexOf("email") !== -1
+                ? body.email
+                : values.email.data.saved,
+              abortController.signal
+            );
+            cs += 1;
+            break;
+          case false: //changed from true to false >>> delete newsletter
+            res = await deleteNewsLetter(
+              values.email.data.saved, //email currently in the newsletter document (database)
               cookies.user,
               abortController.signal
             );
             cs += 1;
-          }
+            break;
+          default: //no change (undefined) >>> update newsletter in case of email change when 'aboNewsletter'=true
+            if (
+              values.aboNewsletter.data.saved &&
+              keys.indexOf("email") !== -1
+            ) {
+              res = await patchNewsLetter(
+                values.email.data.saved, //old email currently in the newsletter
+                {email: body.email}, //updated email
+                cookies.user,
+                abortController.signal
+              );
+              cs += 1;
+            }
+        }
+        if (cs >= 0) bl[1] = !(await errorHandlingToast(res, locale, false));
+        else bl[1] = true;
+        const user = userContext.user;
+        if (Object.keys(user).length > 0) {
+          keys.map((key) => {
+            user[key] = body[key]; //update user context
+          });
+          userContext.onHandleUser(user);
+        }
       }
-      if (cs >= 0) bl[1] = !(await errorHandlingToast(res, locale, false));
-      else bl[1] = true;
-      const user = userContext.user;
-      keys.map((key) => {
-        user[key] = body[key]; //update user context
-      });
-      userContext.onHandleUser(user);
     } else bl[1] = true;
     if (bl.indexOf(false) === -1) {
       const data = _.cloneDeep(values); //update values state properties with saved data
       Object.keys(body).map((key) => {
-        data[key].data.saved = _.clone(body[key]);
+        data[key].data.saved = _.clone(
+          key !== "birthdate"
+            ? body[key]
+            : getFormattedDate(body[key], "dd.MM.yyyy")
+        );
       });
       setValues(data);
       setDeleteConditions(); //update delete conditions following save operation
@@ -261,9 +295,10 @@ function MyProfile({user, onHandleDirty}) {
     }
     if (actualChange >= 0) {
       successFailure("PATCH", bl, formatMessage, "UpdateProfile");
-      handleClearAllUndo(1); //set reset to odd number to display saved data
+      if (bl.indexOf(false) === -1) handleClearAllUndo(1); //set reset to odd number to display saved data
     }
     setSpinner2(false);
+    abortController.abort();
   }
   async function handleDelete(id, email) {
     const result = await SwalOkCancel(
@@ -284,6 +319,7 @@ function MyProfile({user, onHandleDirty}) {
         handleLogOut(removeCookie, navigate, userContext);
       }, 3000);
     }
+    abortController.abort();
   }
   function handleChange() {
     const bl = _.clone(aboNL);
@@ -532,6 +568,154 @@ function MyProfile({user, onHandleDirty}) {
                 }}
               ></Address>
             </Row>
+            {user.type !== "pro" && user.role !== "ADMIN" && (
+              <>
+                <Row className="justify-content-md-left pl-1 mt-4 pt-2">
+                  <SimpleText
+                    reset={reset}
+                    type="inputMask"
+                    mask={{mask: "99.99.9999", maskChar: "_"}}
+                    ph={formatMessage({
+                      id: "src.components.bookingPage.StepTwoContent.dateformat",
+                    })}
+                    trash={false}
+                    dataIn={values.birthdate}
+                    required={true}
+                    valid={valid.current.birthdate}
+                    onHandleGlobals={handleGlobals}
+                    col="1"
+                    w="95%"
+                    wl="90px"
+                    wl_max="60px"
+                  ></SimpleText>
+                  <SimpleText
+                    reset={reset}
+                    dataIn={values.birthplace}
+                    required={false}
+                    valid={valid.current.birthplace}
+                    onHandleGlobals={handleGlobals}
+                    w="90%"
+                    wl="40px"
+                  ></SimpleText>
+                  <SimpleText
+                    reset={reset}
+                    dataIn={values.occupation}
+                    required={false}
+                    valid={valid.current.occupation}
+                    onHandleGlobals={handleGlobals}
+                    w="90%"
+                  ></SimpleText>
+                </Row>
+                <Row className="justify-content-md-left pl-1 mt-4 pt-2">
+                  <SimpleText
+                    type="select"
+                    options={[
+                      [
+                        "M",
+                        formatMessage({
+                          id: "src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.male",
+                        }),
+                      ],
+                      [
+                        "F",
+                        formatMessage({
+                          id: "src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.female",
+                        }),
+                      ],
+                      ["", ""],
+                    ]}
+                    reset={reset}
+                    trash={false}
+                    dataIn={values.sex}
+                    required={false}
+                    valid={valid.current.sex}
+                    onHandleGlobals={handleGlobals}
+                    col="1"
+                    w="95%"
+                    wl="90px"
+                  ></SimpleText>
+                  <SimpleText
+                    reset={reset}
+                    dataIn={values.height}
+                    required={false}
+                    valid={valid.current.height}
+                    onHandleGlobals={handleGlobals}
+                    col="1"
+                    w="60%"
+                    wl="75px"
+                  ></SimpleText>
+                  <label className="mt-2 ml-0 pl-0 mr-0">
+                    <h5
+                      style={{
+                        color: "black",
+                        fontWeight: 500,
+                        marginLeft: -50,
+                      }}
+                    >
+                      {"cm"}
+                    </h5>
+                  </label>
+                  <SimpleText
+                    reset={reset}
+                    dataIn={values.weight}
+                    required={false}
+                    valid={valid.current.weight}
+                    onHandleGlobals={handleGlobals}
+                    col="1"
+                    w="60%"
+                    wl="75px"
+                  ></SimpleText>
+                  <label className="mt-2 ml-0 pl-0 mr-0">
+                    <h5
+                      style={{
+                        color: "black",
+                        fontWeight: 500,
+                        marginLeft: -50,
+                      }}
+                    >
+                      {"Kg"}
+                    </h5>
+                  </label>{" "}
+                  <SimpleText
+                    type="textarea"
+                    reset={reset}
+                    dataIn={values.diet}
+                    required={false}
+                    w="120%"
+                    wl_max="80px"
+                    valid={valid.current.diet}
+                    ph={formatMessage({
+                      id: "src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.dietPH",
+                    })}
+                    onHandleGlobals={handleGlobals}
+                  ></SimpleText>
+                  <SimpleText
+                    type="textarea"
+                    reset={reset}
+                    dataIn={values.treatment}
+                    required={false}
+                    mleft="3.5%"
+                    w="120%"
+                    wl_max="80px"
+                    valid={valid.current.treatment}
+                    ph={formatMessage({
+                      id: "src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.treatmentPH",
+                    })}
+                    onHandleGlobals={handleGlobals}
+                  ></SimpleText>
+                </Row>
+              </>
+            )}
+            <hr
+              style={{
+                position: "relative",
+                top: "10px",
+                width: "90%",
+                align: "center",
+                height: "1px",
+                backgroundColor: "black",
+              }}
+            ></hr>
             <Row className="justify-content-md-left pl-1 mt-4 pt-4">
               <label className="ml-4 mr-3">
                 <h5 style={{color: "green", minWidth: "95px"}}>
