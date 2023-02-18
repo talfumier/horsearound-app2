@@ -48,6 +48,7 @@ export function getRefreshTime(source) {
   }
 }
 export function getApiUrl() {
+  console.log(process.env);
   switch (process.env.NODE_ENV) {
     case "development":
       return config.api_url_dev;
