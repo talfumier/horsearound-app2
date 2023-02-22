@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Node assets
         env:
-          CI: true
+          CI: false
           NODE_ENV: prod
           SITE_URL: ${{ inputs.site-url }}
         run: |
