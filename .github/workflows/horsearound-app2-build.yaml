@@ -1,0 +1,60 @@
+# To better understand this file read this:
+# https://docs.ionos.space/docs/github-actions-customization/
+
+name: "Deploy Now: Execute Build"
+
+on:
+  workflow_call:
+    inputs:
+      site-url:
+        required: true
+        type: string
+      branch-id:
+        required: true
+        type: string
+
+env:
+  DEPLOYMENT_FOLDER: public
+
+jobs:
+# Please do not rename this job
+  build-project:
+    name: build horsearound-app2
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: v18.13.0
+
+      - name: Build Node assets
+        env:
+          CI: true
+          horsearound_google_api_key: AIzaSyDNVOsN1SDFpbD0Sf7DygwVHM_JPiJ2ULM
+          horsearound_mailjet_api_key: ae81ebd222246a36c020862296ae4b88
+          horsearound_mailjet_api_secret: 0629d74a7acd0c388d05677eb227b813
+          horsearound_sha256: 606A5AD9B1D3FE8FB6F18F5EF678CACA91968A51AE904166584DE2D91031CF83
+          horsearound_test_database_url: mongodb+srv://Henri:Ht037401@cluster0.zbsiyvf.mongodb.net/test?authSource=admin&replicaSet=atlas-67su96-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true
+          REACT_APP_NODE_ENV: test
+          SITE_URL: ${{ inputs.site-url }}
+        run: |
+          npm ci
+          npm run build
+
+# Please do not touch the following action
+      - name: Store deployment content
+        uses: ionos-deploy-now/artifact-action@v1
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-eu.ionos.space
+          project-id: d7b52bd7-659d-4851-b294-8c6d1009995d
+          branch-id: ${{ inputs.branch-id }}
+          version: ${{ github.sha }}
+          folder: ${{ env.DEPLOYMENT_FOLDER }}
+          config-file: .deploy-now/horsearound-app2/config.yaml
+          action: upload
