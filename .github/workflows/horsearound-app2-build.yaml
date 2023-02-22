@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Node assets
         env:
-          CI: true
+          CI: false
           horsearound_google_api_key: AIzaSyDNVOsN1SDFpbD0Sf7DygwVHM_JPiJ2ULM
           horsearound_mailjet_api_key: ae81ebd222246a36c020862296ae4b88
           horsearound_mailjet_api_secret: 0629d74a7acd0c388d05677eb227b813
