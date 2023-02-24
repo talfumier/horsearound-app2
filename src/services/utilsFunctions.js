@@ -34,7 +34,7 @@ export async function simpleToast(msg, lang) {
   toastError(lang === "en" ? msg : await translate({text: msg, lang}));
 }
 export function getRefreshTime(source) {
-  switch (process.env.NODE_ENV) {
+  switch (process.env.REACT_APP_NODE_ENV) {
     case "production":
       return {
         staleTime: config[`${source}_staleTime`].prod * 60 * 1000, //time set in config.json file is in minutes
@@ -48,7 +48,7 @@ export function getRefreshTime(source) {
   }
 }
 export function getApiUrl() {
-  switch (process.env.NODE_ENV) {
+  switch (process.env.REACT_APP_NODE_ENV) {
     case "development":
       return config.api_url_dev;
     case "test":

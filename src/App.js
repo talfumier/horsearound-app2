@@ -302,19 +302,19 @@ function App() {
     );
   }
   return (
-    Object.keys(anns).length > 0 && (
-      <ThemeProvider theme={getMuiTheme()}>
-        <UserContext.Provider value={{user, onHandleUser: handleUser}}>
-          <ProContext.Provider value={{pro, onHandlePro: handlePro}}>
-            <ImagesContext.Provider value={state}>
-              <RouterProvider router={router}>
-                <ContainerToast></ContainerToast>
-              </RouterProvider>
-            </ImagesContext.Provider>
-          </ProContext.Provider>
-        </UserContext.Provider>
-      </ThemeProvider>
-    )
+    //  Object.keys(anns).length > 0 && (
+    <ThemeProvider theme={getMuiTheme()}>
+      <UserContext.Provider value={{user, onHandleUser: handleUser}}>
+        <ProContext.Provider value={{pro, onHandlePro: handlePro}}>
+          <ImagesContext.Provider value={state}>
+            <RouterProvider router={router}>
+              <ContainerToast></ContainerToast>
+            </RouterProvider>
+          </ImagesContext.Provider>
+        </ProContext.Provider>
+      </UserContext.Provider>
+    </ThemeProvider>
+    //  )
   );
 }
 export default App;

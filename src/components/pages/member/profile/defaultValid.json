@@ -25,5 +25,6 @@
   "registration_date": false,
   "last_login_date": true,
   "aboNewsletter": false,
-  "code_parrainage_used": true
+  "code_parrainage_used": true,
+  "participantsInfo": true
 }

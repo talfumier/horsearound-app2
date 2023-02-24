@@ -32,6 +32,7 @@ import {getFormattedDate} from "../../utils/utilityFunctions.js";
 import {handleLogOut} from "../../logIn&Out/FormLogin.jsx";
 import SponsoredBy from "../corporate/SponsoredBy.jsx";
 import UserContext from "../../common/context/UserContext.js";
+import ParticipantsInfo from "./participants/ParticipantsInfo.jsx";
 
 export async function deleteConditionsSatisfied(
   userType,
@@ -113,7 +114,7 @@ function MyProfile({user, onHandleDirty}) {
         bl = null,
         date = null;
       if (Object.keys(userContext.user).length > 0) {
-        res = {data: [userContext.user]};
+        res = {data: userContext.user};
         bl = true;
       } else {
         res = await getUser(userId, cookies.user, signal);
@@ -122,7 +123,7 @@ function MyProfile({user, onHandleDirty}) {
       if (bl) {
         keys.map((key) => {
           dataIn[key].data.saved =
-            typeof res.data[0][key] !== "undefined" ? res.data[0][key] : {};
+            typeof res.data[key] !== "undefined" ? res.data[key] : {};
           switch (key) {
             case "address":
               ["address", "postcode", "city", "country"].map((item) => {
@@ -131,6 +132,21 @@ function MyProfile({user, onHandleDirty}) {
                   dataIn[key].data.saved[item]
                 )[0];
               });
+              break;
+            case "participantsInfo":
+              if (user.type !== "pro" && user.role !== "ADMIN") {
+                if (res.data[key].length === 0) dataIn[key].data.saved = [];
+                //participantsInfo default value >>> [null]
+                else {
+                  res.data[key].map((info, idx) => {
+                    dataIn[key].data.saved[idx] = {
+                      ...info,
+                      birthdate: getFormattedDate(info.birthdate, "dd.MM.yyyy"),
+                    };
+                  });
+                }
+              }
+              valide[key] = true;
               break;
             case "birthdate":
               if (user.type === "pro" || user.role === "ADMIN") {
@@ -176,6 +192,7 @@ function MyProfile({user, onHandleDirty}) {
       });
     } else {
       rst += isEven(rst) ? 1 : 2; //odd number, undo >>> saved values
+      setValues(dataIn);
       onHandleDirty(false);
     }
 
@@ -191,7 +208,7 @@ function MyProfile({user, onHandleDirty}) {
       onHandleDirty(
         Object.keys(prepareBody(globals, false)).length > 0 ? true : false
       );
-      //    console.log("globals", globals);
+      // console.log("globals", globals);
     }
     if (cs === "valid") {
       const valide = {...valid};
@@ -200,22 +217,33 @@ function MyProfile({user, onHandleDirty}) {
       setFormValid(JSON.stringify(valide.current).indexOf(false) === -1);
     }
   }
-  function prepareBody(modified, prt = true) {
-    let body = {}, //compares saved data (dataIn) vs modified (changes made by user)
+  function prepareBody(modified, prt) {
+    let body = {}, //compares saved data (dataIn.data.saved) vs modified (changes made by user)
       flg = null,
       date = null;
     keys.map((key) => {
-      switch (key) {
-        default:
-          flg = Object.keys(modified[key]);
-          if (flg.length === 1 && flg.indexOf("init") === 0) break;
-          if (modified[key] != dataIn[key]) {
-            if (key !== "birthdate") body[key] = modified[key];
-            else {
-              date = parse(modified[key], "dd.MM.yyyy", new Date());
-              if (!isNaN(date.getTime())) body[key] = date;
+      flg = Object.keys(modified[key]);
+      if (flg.length === 1 && flg.indexOf("init") === 0) {
+        //do nothing
+      } else {
+        switch (key) {
+          case "participantsInfo":
+            modified[key].map((part, idx) => {
+              date = parse(part.birthdate, "dd.MM.yyyy", new Date());
+              if (!isNaN(date.getTime())) modified[key][idx].birthdate = date;
+            });
+            if (!_.isEqual(modified[key], dataIn[key].data.saved))
+              body[key] = modified[key];
+            break;
+          default:
+            if (modified[key] != dataIn[key].data.saved) {
+              if (key !== "birthdate") body[key] = modified[key];
+              else {
+                date = parse(modified[key], "dd.MM.yyyy", new Date());
+                if (!isNaN(date.getTime())) body[key] = date;
+              }
             }
-          }
+        }
       }
     });
     if (prt) console.log("body", body);
@@ -228,7 +256,7 @@ function MyProfile({user, onHandleDirty}) {
     let modified = _.cloneDeep(globals), //current user's modified values
       res = null,
       actualChange = -1;
-    const body = prepareBody(modified),
+    const body = prepareBody(modified, true),
       keys = Object.keys(body);
     if (keys.length > 0) {
       actualChange += 1;
@@ -281,12 +309,20 @@ function MyProfile({user, onHandleDirty}) {
     } else bl[1] = true;
     if (bl.indexOf(false) === -1) {
       const data = _.cloneDeep(values); //update values state properties with saved data
+      const keys = Object.keys(body);
+      if (keys.indexOf("birthdate") !== -1)
+        body.birthdate = getFormattedDate(body.birthdate, "dd.MM.yyyy");
+      if (keys.indexOf("participantsInfo") !== -1) {
+        body.participantsInfo.map((part, idx) => {
+          body.participantsInfo[idx].birthdate = getFormattedDate(
+            part.birthdate,
+            "dd.MM.yyyy"
+          );
+        });
+      }
       Object.keys(body).map((key) => {
-        data[key].data.saved = _.clone(
-          key !== "birthdate"
-            ? body[key]
-            : getFormattedDate(body[key], "dd.MM.yyyy")
-        );
+        data[key].data.saved = _.clone(body[key]);
+        dataIn[key].data.saved = data[key].data.saved; //update dataIn properties with saved data
       });
       setValues(data);
       setDeleteConditions(); //update delete conditions following save operation
@@ -343,7 +379,6 @@ function MyProfile({user, onHandleDirty}) {
           top: "17.2%",
           minWidth: "100%",
           zIndex: 2,
-          // marginTop: 0,
           backgroundColor: "#F3F3F3",
           border: "1px solid",
           borderColor: "green",
@@ -379,6 +414,35 @@ function MyProfile({user, onHandleDirty}) {
                   wl="80px"
                   col="3"
                 ></SimpleText>
+                <div
+                  className="mt-2 pt-4"
+                  style={{
+                    maxHeight: 80,
+                    position: "fixed",
+                    left: "28%",
+                  }}
+                >
+                  <button
+                    className="btn btn-success btn-default"
+                    onClick={async () => {
+                      setPwdAlert(
+                        await processPwdReset(
+                          window.location.origin,
+                          values.email.data.saved,
+                          locale
+                        )
+                      );
+                      setTimeout(() => {
+                        setPwdAlert(null);
+                      }, 3000);
+                    }}
+                  >
+                    <FormattedMessage id="src.components.memberPage.tabs.annonces.details.AddAnnounceForm.passwordChange" />
+                  </button>
+                  <div className={{maxHeight: 20, overflow: "visible"}}>
+                    {pwdAlert ? pwdAlert : null}
+                  </div>
+                </div>
               </div>
               <div className="d-flex ml-4">
                 <SimpleText
@@ -517,7 +581,11 @@ function MyProfile({user, onHandleDirty}) {
       {Object.keys(values).length > 0 &&
         Object.keys(valid.current).length > 0 && (
           <Container style={{minWidth: "200%"}}>
-            <Row className="justify-content-md-left pl-1 mt-4 pt-2">
+            <Row
+              className={`justify-content-md-left pl-1 ${
+                user.type !== "pro" && user.role !== "ADMIN" ? "mt-2" : "mt-4"
+              } pt-2`}
+            >
               <SimpleText
                 reset={reset}
                 dataIn={values.lastName}
@@ -554,7 +622,11 @@ function MyProfile({user, onHandleDirty}) {
                 wl="90px"
               ></SimpleText>
             </Row>
-            <Row className="justify-content-md-left pl-1 mt-4 pt-4">
+            <Row
+              className={`justify-content-md-left pl-1 ${
+                user.type !== "pro" && user.role !== "ADMIN" ? "mt-2" : "mt-4"
+              } pt-2`}
+            >
               <Address
                 reset={reset}
                 dataIn={values.address}
@@ -570,7 +642,7 @@ function MyProfile({user, onHandleDirty}) {
             </Row>
             {user.type !== "pro" && user.role !== "ADMIN" && (
               <>
-                <Row className="justify-content-md-left pl-1 mt-4 pt-2">
+                <Row className="justify-content-md-left pl-1 mt-2 pt-2">
                   <SimpleText
                     reset={reset}
                     type="inputMask"
@@ -606,7 +678,7 @@ function MyProfile({user, onHandleDirty}) {
                     w="90%"
                   ></SimpleText>
                 </Row>
-                <Row className="justify-content-md-left pl-1 mt-4 pt-2">
+                <Row className="justify-content-md-left pl-1 mt-2 pt-2">
                   <SimpleText
                     type="select"
                     options={[
@@ -704,65 +776,76 @@ function MyProfile({user, onHandleDirty}) {
                     onHandleGlobals={handleGlobals}
                   ></SimpleText>
                 </Row>
+                <hr
+                  style={{
+                    position: "relative",
+                    top: "-5px",
+                    width: "90.5%",
+                    align: "center",
+                    height: "1px",
+                    backgroundColor: "black",
+                    marginBottom: 4,
+                  }}
+                ></hr>
+                <Row
+                  className="justify-content-md-left pl-1 mt-0 pt-0 "
+                  style={{height: 30}}
+                >
+                  {userType === "particulier" ? (
+                    <div className="d-flex justify-content-md-left pl-1 mt-1">
+                      <SponsoredBy
+                        reset={reset}
+                        dataIn={values.code_parrainage_used}
+                        valid={valid.current.code_parrainage_used}
+                        onHandleGlobals={handleGlobals}
+                      ></SponsoredBy>
+                    </div>
+                  ) : null}
+                  <div
+                    className="justify-content-md-left"
+                    style={{marginLeft: 150}}
+                  >
+                    <label className="mt-1 mr-3 pr-1">
+                      <h5
+                        style={{
+                          color: "green",
+                          minWidth: "10%",
+                        }}
+                      >
+                        <FormattedMessage id="src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.aboNewsletter" />
+                      </h5>
+                    </label>
+                    <input
+                      type="checkbox"
+                      className="ml-0 pl-0 mr-4 mb-3 pt-4"
+                      style={{
+                        width: 15,
+                        height: 15,
+                        marginTop: 15,
+                        cursor: "pointer",
+                      }}
+                      checked={aboNL}
+                      onChange={handleChange}
+                    ></input>
+                  </div>
+                </Row>
+                <hr
+                  style={{
+                    position: "relative",
+                    top: "5px",
+                    width: "90.5%",
+                    align: "center",
+                    height: "1px",
+                    backgroundColor: "black",
+                  }}
+                ></hr>
+                <ParticipantsInfo
+                  reset={reset}
+                  dataIn={values.participantsInfo}
+                  onHandleGlobals={handleGlobals}
+                ></ParticipantsInfo>
               </>
             )}
-            <hr
-              style={{
-                position: "relative",
-                top: "10px",
-                width: "90%",
-                align: "center",
-                height: "1px",
-                backgroundColor: "black",
-              }}
-            ></hr>
-            <Row className="justify-content-md-left pl-1 mt-4 pt-4">
-              <label className="ml-4 mr-3">
-                <h5 style={{color: "green", minWidth: "95px"}}>
-                  <FormattedMessage id="src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.aboNewsletter" />
-                </h5>
-              </label>
-              <input
-                type="checkbox"
-                className="mb-3 mt-2"
-                style={{minWidth: "20px", cursor: "pointer"}}
-                checked={aboNL}
-                onChange={handleChange}
-              ></input>
-            </Row>
-            {userType === "particulier" ? (
-              <Row className="justify-content-md-left pl-1 mt-4 pt-4">
-                <SponsoredBy
-                  reset={reset}
-                  dataIn={values.code_parrainage_used}
-                  valid={valid.current.code_parrainage_used}
-                  onHandleGlobals={handleGlobals}
-                ></SponsoredBy>
-              </Row>
-            ) : null}
-            <Row className="justify-content-md-left pl-1 mt-4 pt-4">
-              <label className="ml-4 mr-2">
-                <h5 style={{color: "green", width: "100px"}}>
-                  <FormattedMessage id="src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.password" />
-                </h5>
-              </label>
-              <div className="form-group  ml-5 mt-1 ">
-                <button
-                  className="btn btn-success btn-default"
-                  onClick={async () => {
-                    setPwdAlert(
-                      await processPwdReset(values.email.data.saved, locale)
-                    );
-                    setTimeout(() => {
-                      setPwdAlert(null);
-                    }, 3000);
-                  }}
-                >
-                  <FormattedMessage id="src.components.memberPage.tabs.annonces.details.AddAnnounceForm.passwordChange" />
-                </button>
-                {pwdAlert ? pwdAlert : null}
-              </div>
-            </Row>
           </Container>
         )}
     </div>

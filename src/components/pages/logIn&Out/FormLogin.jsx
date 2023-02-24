@@ -22,9 +22,9 @@ import UserContext from "../common/context/UserContext.js";
 import {getUser} from "../../../services/httpUsers.js";
 import {errorHandlingToast} from "../../../services/utilsFunctions.js";
 
-export async function processPwdReset(userId, locale) {
+export async function processPwdReset(url, userId, locale) {
   let msg = null;
-  const res = await forgotPassword(userId);
+  const res = await forgotPassword(url, userId);
   if (res.data.statusCode >= 400 && res.data.statusCode <= 500) {
     msg = (
       <div className="alert alert-danger">
@@ -68,8 +68,8 @@ export async function loadUserdata(userContext, id, token, locale) {
   const abortController = new AbortController();
   const res = await getUser(id, token, abortController.signal);
   if (!(await errorHandlingToast(res, locale, false))) {
-    userContext.onHandleUser(res.data[0]); //update UserContext at login time
-    return res.data[0];
+    userContext.onHandleUser(res.data); //update UserContext at login time
+    return res.data;
   } else abortController.abort();
 }
 export function setLoginTimeOut(
@@ -341,7 +341,9 @@ function FormLogin({onClose}) {
       ...data,
       forgotPwd: true,
     }));
-    setAlert(await processPwdReset(state.$data.userID, locale));
+    setAlert(
+      await processPwdReset(window.location.origin, state.$data.userID, locale)
+    );
   }
   function handleCreateAccount() {
     setDisabled(null);

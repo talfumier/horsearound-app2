@@ -86,5 +86,9 @@
   "code_parrainage_used": {
     "name": "code_parrainage_used",
     "data": {"default": "", "saved": ""}
+  },
+  "participantsInfo": {
+    "name": "participantsInfo",
+    "data": {"default": [], "saved": []}
   }
 }

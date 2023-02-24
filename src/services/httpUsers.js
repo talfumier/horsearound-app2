@@ -28,8 +28,8 @@ export function login(email, password) {
 export function register(email, type, password) {
   return http.post(`${api}/users`, {email, type, password});
 }
-export function forgotPassword(email) {
-  return http.post(`${api}/users/forgotPassword`, {email});
+export function forgotPassword(url, email) {
+  return http.post(`${api}/users/forgotPassword`, {url, email});
 }
 export function resetPassword(id, resetToken, password) {
   return http.patch(`${api}/users/forgotPassword/${id}/${resetToken}`, {
