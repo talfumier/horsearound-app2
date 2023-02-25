@@ -7,7 +7,7 @@ import _ from "lodash";
 import {useCookies} from "react-cookie";
 import TabContainer from "./common/TabContainer";
 import AnnounceProgram from "./AnnounceProgram";
-import EquestrianPhysicalInfo from "./EquestrianPhysicalInfo";
+import EquestrianPhysicalInfo from "./EquestrianPhysicalInfo.jsx";
 import PriceDatesTable from "./priceDatesTable/PriceDatesTable";
 import StandardInfo from "./common/StandardInfo";
 import AccomodationInfo from "./AccomodationInfo";
