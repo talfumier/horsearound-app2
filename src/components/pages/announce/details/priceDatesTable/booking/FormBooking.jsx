@@ -25,6 +25,7 @@ import UserContext from "../../../../common/context/UserContext.js";
 import {loadUserdata} from "../../../../logIn&Out/FormLogin.jsx";
 import jwtDecode from "jwt-decode";
 import {getDaysNights} from "./CountersTable";
+import {daDK} from "@mui/material/locale";
 
 let date_id = null;
 function FormBooking({announce, data, onClose}) {
@@ -111,7 +112,7 @@ function FormBooking({announce, data, onClose}) {
             if (item === 1) break;
             data[item][key] =
               typeof user[key] !== "undefined"
-                ? getFormattedDate(user[key])
+                ? getFormattedDate(user[key], "dd.MM.yyyy")
                 : "";
             break;
           case "birthplace":

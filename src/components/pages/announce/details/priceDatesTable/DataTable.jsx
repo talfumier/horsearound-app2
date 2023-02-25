@@ -118,7 +118,7 @@ function EnhancedTableHead({
 }
 const EnhancedTableToolbar = ({
   announce,
-  intl,
+  formatMessage,
   rows,
   selected,
   numSelected,
@@ -142,10 +142,10 @@ const EnhancedTableToolbar = ({
       txt = "";
     if (numFiltered > 0) {
       num = numFiltered;
-      txt = intl.formatMessage({id: "user_msg.standard.filtered"});
+      txt = formatMessage({id: "user_msg.standard.filtered"});
     } else if (numSelected > 0) {
       num = numSelected;
-      txt = intl.formatMessage({id: "user_msg.standard.selected"});
+      txt = formatMessage({id: "user_msg.standard.selected"});
     }
     return (
       <div className="d-inline-flex align-items-center ">
@@ -170,7 +170,7 @@ const EnhancedTableToolbar = ({
             );
           }}
         >
-          {intl.formatMessage({
+          {formatMessage({
             id: "src.components.announcePage.booking.bookButton",
           })}
         </div>
@@ -265,8 +265,7 @@ export default function DataTable({
   themes,
   onHandleFormBooking,
 }) {
-  const intl = useIntl();
-  const lang = intl.locale;
+  const {locale, formatMessage} = useIntl();
   const [rows, setRows] = useState([]);
   useEffect(() => {
     original = prepareData(headCells, announce);
@@ -281,6 +280,42 @@ export default function DataTable({
   const [rowsPerPage, setRowsPerPage] = useState(5);
   function formatDate(date) {
     return _.isString(date) ? parseISO(date) : date;
+  }
+  function getPriceRecap(promo) {
+    return (
+      <div>
+        {announce.priceAdulte
+          ? `${formatMessage({
+              id: "src.components.announcePage.booking.adult",
+            })}
+          : ${getPrice(announce.priceAdulte, promo)}`
+          : null}
+        {announce.priceAdulte ? <br></br> : null}
+        {announce.priceChild
+          ? `${formatMessage({
+              id: "src.components.announcePage.booking.child",
+            })}
+           : ${getPrice(announce.priceChild, promo)}`
+          : null}
+        {announce.priceChild ? <br></br> : null}
+        {announce.priceAccompagnateur
+          ? `${formatMessage({
+              id: "src.components.announcePage.booking.companion",
+            })}
+            : ${getPrice(announce.priceAccompagnateur, promo)}`
+          : null}
+      </div>
+    );
+  }
+  function getPrice(price, promo) {
+    return (
+      (promo
+        ? Math.round((price - (price * promo) / 100) * 100 + Number.EPSILON) /
+          100
+        : price) +
+      " " +
+      announce.devise
+    );
   }
   function getPriceDatesData(announce) {
     if (announce.dates) {
@@ -310,7 +345,7 @@ export default function DataTable({
                 : 0 + //sum up object's props values for the 1st day (in Fixed_Fixed case, bookings for each day of the period is the same)
                     "/" +
                     announce.participantMax,
-              intl.formatMessage({
+              formatMessage({
                 id: testGuaranteedDeparture(
                   [announce.dates[idx]],
                   announce.participantMin,
@@ -323,17 +358,8 @@ export default function DataTable({
             rowData.push(announce.nbDays); //stay duration=announce nbDays
         }
         rowData.push(
-          date.comments ? date.comments[lang] : null,
-          date.promotion
-            ? Math.round(
-                (announce.priceAdulte -
-                  (announce.priceAdulte * date.promotion) / 100) *
-                  100 +
-                  Number.EPSILON
-              ) /
-                100 +
-                announce.devise
-            : announce.priceAdulte + announce.devise,
+          date.comments ? date.comments[locale] : null,
+          getPriceRecap(date.promotion),
           date.promotion ? "-" + date.promotion + "%" : "",
           idx,
           date.promotion,
@@ -453,7 +479,7 @@ export default function DataTable({
       <Paper sx={{width: "100%", mb: 2}}>
         <EnhancedTableToolbar
           announce={announce}
-          intl={intl}
+          formatMessage={formatMessage}
           rows={rows}
           selected={selected}
           numSelected={selected.length}

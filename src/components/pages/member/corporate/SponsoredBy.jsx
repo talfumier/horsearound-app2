@@ -54,7 +54,7 @@ function SponsoredBy({reset, dataIn, valid, onHandleGlobals}) {
     onHandleGlobals(cs, val);
   }
   return (
-    <>
+    <div className="d-flex justify-content-left">
       <SimpleText
         reset={reset}
         dataIn={dataIn}
@@ -64,17 +64,17 @@ function SponsoredBy({reset, dataIn, valid, onHandleGlobals}) {
         })}
         valid={valid}
         onHandleGlobals={handleGlobals}
-        w="110%"
-        wl="120px"
+        w="350px"
+        wl="100px"
       ></SimpleText>
-      <Col>
+      <div style={{marginLeft: "50%"}}>
         <PopperInfo
           data={state}
           idTT="src.components.memberPage.tabs.annonces.details.AddAnnounceForm.labels.code_parrainage_usedTT"
           icon="fa fa-info-circle fa-2x mx-0 px-0 mt-2 pt-1"
         ></PopperInfo>
-      </Col>
-    </>
+      </div>
+    </div>
   );
 }
 

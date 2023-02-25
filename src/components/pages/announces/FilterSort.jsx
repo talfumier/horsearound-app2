@@ -568,6 +568,7 @@ function FilterSort({onFilter, onSort, presetFilter}) {
                   className="btn btn-success mx-3"
                   id="filterReset"
                   type="reset"
+                  onClick={handleReset}
                 >
                   <FormattedMessage id="src.components.annoncesPage.searchbar.reset"></FormattedMessage>
                 </button>

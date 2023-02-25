@@ -4,7 +4,7 @@ function AnnounceProgram({announce}) {
   const lang = useIntl().locale;
   return (
     <div className="information-aria m-0 p-4">
-      {announce.typicalDay ? (
+      {announce.typicalDay && announce.days.length === 0 ? (
         typeof announce.typicalDay[lang] !== "undefined" ? (
           <div className="singleContent ">
             <div className="media" style={{padding: "10px 10px 0 10px"}}>

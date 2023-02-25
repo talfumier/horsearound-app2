@@ -8,7 +8,7 @@
   "saddleryDescription": {"en": true, "fr": true},
   "supervisingDescription": {"en": true, "fr": true},
   "mealDescription": {"en": true, "fr": true},
-  "howToGoTo": {"en": false, "fr": false},
+  "howToGoTo": {"en": true, "fr": true},
   "accommodationDescription": {"en": true, "fr": true},
   "included": {"en": true, "fr": true},
   "notIncluded": {"en": true, "fr": true},

@@ -774,6 +774,20 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
     }
     if (announceUnsavedChanges()) return; //save announce before publishing or reverting to draft, archiving or restoring
     if (imagesUnsavedChanges()) return;
+    if (
+      type === 1 &&
+      values.priceAdulte.data.saved +
+        values.priceChild.data.saved +
+        values.priceAccompagnateur.data.saved <=
+        0
+    ) {
+      toastWarning(
+        formatMessage({
+          id: "src.components.memberPage.tabs.annonces.MyAnnonces.toast9",
+        })
+      ); //user profile must be approved before publishing
+      return;
+    }
 
     if (type == -1 || type === 2) {
       //status change 'publique' to 'brouillon', archived change false to true only possible if no dates in future
@@ -1156,13 +1170,14 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
                     color:
                       values.status.data[
                         isEven(reset) ? "default" : "saved"
-                      ] !== "publique"
+                      ] !== "publique" && currentUser.status !== "PENDING"
                         ? "#7AA095"
                         : "#ccc",
                     border: "0",
                     cursor: "pointer",
                   }}
                   onClick={() => {
+                    if (currentUser.status === "PENDING") return;
                     if (
                       values.status.data[
                         isEven(reset) ? "default" : "saved"
@@ -1256,7 +1271,7 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
               type="textarea"
               reset={reset}
               dataIn={values.howToGoTo}
-              required={true}
+              required={false}
               valid={valid.current.howToGoTo}
               onHandleGlobals={handleGlobals}
             ></LanguageBlock>

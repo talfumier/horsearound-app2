@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "63f24ff84dda4e7c369af84a"
+  },
+  "lastName": "TALFUMIER",
+  "phone": "+33616096567",
+  "birthdate": {
+    "$date": {
+      "$numberLong": "-240368400000"
+    }
+  },
+  "birthplace": "Paris",
+  "firstName": "Henri",
+  "email": "henri@horse-around.com"
+}]

@@ -175,7 +175,7 @@ function SimpleText({
               id={id ? `AnnounceForm${name}` : null}
               //ref={ref}
               type="text"
-              className="form-control mt-1"
+              className="form-control mt-2"
               disabled={disabled}
               style={{
                 border: "solid 1px",

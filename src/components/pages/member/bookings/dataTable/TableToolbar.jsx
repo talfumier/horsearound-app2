@@ -77,7 +77,10 @@ function TableToolbar({
             <Link
               className="dropdown singleDrop btn btn-success p-2 pl-3 pr-3 ml-5"
               disabled={numSelected === 0}
-              onClick={onHandleSummary}
+              onClick={() => {
+                if (numSelected === 0) return;
+                onHandleSummary();
+              }}
             >
               {formatMessage({
                 id: "src.components.memberPage.tabs.MyReservation.summaryButton",

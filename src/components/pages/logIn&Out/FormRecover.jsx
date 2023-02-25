@@ -124,7 +124,7 @@ function FormRecover() {
             <FormattedMessage id="src.components.reglog.LogForm.pleaseEnterPassword" />
           </p>
           <label className="text-muted" htmlFor="signupInputEmail1">
-            Password
+            <FormattedMessage id="src.components.reglog.LogForm.password" />
           </label>
           <div className="input-group with-focus">
             <input
@@ -141,7 +141,7 @@ function FormRecover() {
             </div>
           ) : null}
           <label className="text-muted mt-3" htmlFor="signupInputEmail1">
-            Retype Password
+            <FormattedMessage id="src.components.reglog.LogForm.checkPassword" />
           </label>
           <div className="input-group with-focus">
             <input
