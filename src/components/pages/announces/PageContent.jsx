@@ -227,7 +227,13 @@ function PageContent({announces, presetFilter}) {
   }
   function isFilteredPrice(ann, price) {
     if (price.length === 0) return true; //no price req, returns true whatever ann
-    if (ann.priceAdulte >= price[0] && ann.priceAdulte <= price[1]) return true;
+    if (
+      (ann.priceAdulte >= price[0] && ann.priceAdulte <= price[1]) ||
+      (ann.priceChild >= price[0] && ann.priceChild <= price[1]) ||
+      (ann.priceAccompagnateur >= price[0] &&
+        ann.priceAccompagnateur <= price[1])
+    )
+      return true;
     return false;
   }
   function isFilteredNote(ann, note) {

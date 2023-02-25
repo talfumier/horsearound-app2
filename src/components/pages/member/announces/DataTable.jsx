@@ -94,6 +94,7 @@ const EnhancedTableToolbar = ({
     color: "#ccc",
   });
   useEffect(() => {
+    if (!edit) return;
     async function setConditions() {
       const result = await deleteConditionsSatisfied(
         edit._id,

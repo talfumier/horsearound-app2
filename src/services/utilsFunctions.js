@@ -40,6 +40,11 @@ export function getRefreshTime(source) {
         staleTime: config[`${source}_staleTime`].prod * 60 * 1000, //time set in config.json file is in minutes
         cacheTime: config[`${source}_cacheTime`].prod * 60 * 1000,
       };
+    case "test":
+      return {
+        staleTime: config[`${source}_staleTime`].test * 60 * 1000, //time set in config.json file is in minutes
+        cacheTime: config[`${source}_cacheTime`].test * 60 * 1000,
+      };
     default:
       return {
         staleTime: config[`${source}_staleTime`].dev * 60 * 1000,

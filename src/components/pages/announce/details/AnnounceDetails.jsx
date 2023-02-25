@@ -7,8 +7,7 @@ import _ from "lodash";
 import {useCookies} from "react-cookie";
 import TabContainer from "./common/TabContainer";
 import AnnounceProgram from "./AnnounceProgram";
-import EquestrianInfo from "./EquestrianInfo";
-import PhysicalInfo from "./PhysicalInfo";
+import EquestrianPhysicalInfo from "./EquestrianPhysicalInfo";
 import PriceDatesTable from "./priceDatesTable/PriceDatesTable";
 import StandardInfo from "./common/StandardInfo";
 import AccomodationInfo from "./AccomodationInfo";
@@ -34,11 +33,11 @@ function AnnounceDetails({
   let tab = 0;
   try {
     if (queryParams[1][0].includes("MyBookings")) {
-      tab = 3; //return on PriceDatesTable (i.e 3rd tab) when coming back from MemberPage Bookings tab (ref. to DataTable.jsx >>> EnhancedTableToolbar)
+      tab = 2; //return on PriceDatesTable (i.e 2nd tab) when coming back from MemberPage Bookings tab (ref. to DataTable.jsx >>> EnhancedTableToolbar)
     }
   } catch (error) {}
   useEffect(() => {
-    if (tab === 3)
+    if (tab === 2)
       navigate(
         `${location.pathname}?${queryParams[0][0]}=${queryParams[0][1]}`, //remove 'MyBookings_ids, MyBookings_ann_id' parameter from url
         {replace: true, state: location.state}
@@ -62,7 +61,7 @@ function AnnounceDetails({
       <div className="justify-content-center w-100">
         <AppBar position="static" color="default" elevation={0}>
           <Tabs
-            value={!cookies.user && state === 7 ? state - 1 : state}
+            value={!cookies.user && state === 6 ? state - 1 : state}
             onChange={handleChange}
             variant="fullWidth"
           >
@@ -74,11 +73,6 @@ function AnnounceDetails({
             <Tab
               label={
                 <FormattedMessage id="src.components.announcePage.announceDetailTab.labels.equestrianInfo" />
-              }
-            />
-            <Tab
-              label={
-                <FormattedMessage id="src.components.announcePage.announceDetailTab.labels.physicalLevel" />
               }
             />
             <Tab
@@ -118,10 +112,7 @@ function AnnounceDetails({
             <AnnounceProgram announce={announce} />
           </TabContainer>
           <TabContainer>
-            <EquestrianInfo announce={announce} full={true} />
-          </TabContainer>
-          <TabContainer>
-            <PhysicalInfo announce={announce} />
+            <EquestrianPhysicalInfo announce={announce} full={true} />
           </TabContainer>
           <TabContainer>
             <PriceDatesTable

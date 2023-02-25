@@ -250,7 +250,7 @@ export function CalendarRangePro({
         if (disabled) return;
         const date0 = item[Object.keys(item)[0]].startDate;
         const date1 =
-          type === "Fixed_Fixed" || type === "Flex_Fixed"
+          type === "Fixed_Fixed"
             ? addDays(date0, duration - 1)
             : item[Object.keys(item)[0]].endDate;
         const color = len + 1 <= 10 ? colors[len] : getNRandomColors(1)[0];
