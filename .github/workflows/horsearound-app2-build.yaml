@@ -41,6 +41,7 @@ jobs:
           horsearound_sha256: 606A5AD9B1D3FE8FB6F18F5EF678CACA91968A51AE904166584DE2D91031CF83
           horsearound_test_database_url: mongodb+srv://Henri:Ht037401@cluster0.zbsiyvf.mongodb.net/test?authSource=admin&replicaSet=atlas-67su96-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true
           REACT_APP_NODE_ENV: test
+          PUBLIC_URL: https://home-5012094063.app-ionos.space/public/
           SITE_URL: ${{ inputs.site-url }}
         run: |
           npm ci
