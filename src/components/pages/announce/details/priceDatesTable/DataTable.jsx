@@ -198,7 +198,9 @@ const EnhancedTableToolbar = ({
             </div>
             <div
               className="dropdown singleDrop btn btn-success"
+              disabled={currentUser.status === "PENDING"}
               onClick={() => {
+                if (currentUser.status === "PENDING") return;
                 navigate(
                   `${location.pathname}${location.search}&MyBookings_ann_id=${announce._id}`, //add 'MyBookings' parameter in url to be able to come back on tab3 when using browser back button
                   {
