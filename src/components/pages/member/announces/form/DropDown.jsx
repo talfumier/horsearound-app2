@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {useIntl} from "react-intl";
 import {useResizeDetector} from "react-resize-detector";
 import NavBarPopper from "../../../common/NavBarPopper.jsx";
+import {getSubToType} from "../../../announce/PageContent.jsx";
 
 function DropDown({id, intlId, ul, name, value: val, color, onHandleChange}) {
   const {width, height, ref} = useResizeDetector();
@@ -16,10 +17,26 @@ function DropDown({id, intlId, ul, name, value: val, color, onHandleChange}) {
   }
   function handleClose(e) {
     if (e.target.id !== "") {
-      setValue(e.target.id.split("/"));
-      onHandleChange(e.target.id.split("/"));
+      const arr = e.target.id.split("/");
+      setValue(id !== "activities" ? arr : arr[1]);
+      onHandleChange(id !== "activities" ? arr : arr[1]);
     }
     setOpen(false);
+  }
+  function formatValue(value) {
+    if (value.length === 0 || typeof value === "undefined") return value;
+    if (id === "activities")
+      return `${formatMessage({
+        id: `src.components.allPages.Menu.navbar.activities.types.${
+          getSubToType()[value]
+        }.subactivities.${value}`,
+      })}`;
+    else
+      return `${formatMessage({
+        id: `src.components.allPages.Menu.navbar.destinations.continents.${value[0]}.continentName`,
+      })} - ${formatMessage({
+        id: `src.components.allPages.Menu.navbar.destinations.continents.${value[0]}.countries.${value[1]}`,
+      })}`;
   }
   return (
     <div className="dropdown megaDropMenu">
@@ -31,7 +48,7 @@ function DropDown({id, intlId, ul, name, value: val, color, onHandleChange}) {
           className="form-control mt-2"
           onClick={handleToggle}
           readOnly={true}
-          value={value}
+          value={formatValue(value)}
           style={{
             cursor: "pointer",
             border: "solid 1px",

@@ -16,16 +16,21 @@ import {getAnnounceBookings} from "../../../services/httpBookings.js";
 import ProContext from "../common/context/ProContext.js";
 
 let subToType = {};
+export function getSubToType() {
+  const types =
+      intlData["en-EN"].src.components.allPages.Menu.navbar.activities.types,
+    subToTyp = {};
+  Object.keys(types).map((type) => {
+    Object.keys(types[type].subactivities).map((sub) => {
+      subToTyp[sub] = type;
+    });
+  });
+  return subToTyp;
+}
 function PageContent({announce, images, comments}) {
   const proContext = useContext(ProContext);
   const lang = useIntl().locale;
-  const types =
-    intlData["en-EN"].src.components.allPages.Menu.navbar.activities.types;
-  Object.keys(types).map((type) => {
-    Object.keys(types[type].subactivities).map((sub) => {
-      subToType[sub] = type;
-    });
-  });
+  subToType = getSubToType();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
   const [pro, setPro] = useState(null);
