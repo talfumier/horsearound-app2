@@ -68,7 +68,7 @@
   },
   "category": {
     "name": "category",
-    "data": {"default": "", "saved": ""}
+    "data": {"default": [], "saved": ""}
   },
   "nbDays": {"name": "nbDays", "data": {"default": "3", "saved": ""}},
   "nbNights": {"name": "nbNights", "data": {"default": "0", "saved": ""}},

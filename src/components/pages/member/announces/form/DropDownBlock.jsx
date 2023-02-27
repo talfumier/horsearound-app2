@@ -23,8 +23,7 @@ function DropDownBlock({cs, reset, dataIn, valid, onHandleGlobals}) {
     const result = alert(name, null, val, true);
     if (cs === 0) setWarning(result);
     onHandleGlobals("valid", result.props.obj);
-    if (cs === 0)
-      onHandleGlobals("value", [name, name === "category" ? val[1] : val]);
+    if (cs === 0) onHandleGlobals("value", [name, val]);
   }
   return (
     <>
