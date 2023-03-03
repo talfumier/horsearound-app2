@@ -197,6 +197,32 @@ export function getMuiThemes(compName, lang) {
     case "MyInvoicesTable":
     case "MyBookingsTable":
       return {
+        infos: createTheme(
+          {
+            components: {
+              MuiTooltip: {
+                styleOverrides: {
+                  tooltip: {
+                    fontSize: "1.3rem",
+                    fontFamily: "calibri",
+                    padding: "5px",
+                    backgroundColor: "#4472C4",
+                    color: "#ffffff",
+                    border: "solid 1px ",
+                    borderColor: "yellow",
+                  },
+                  arrow: {
+                    backgroundColor: "transparent",
+                    color: "#4472C4",
+                    border: "solid 1px ",
+                    borderColor: "yellow",
+                  },
+                },
+              },
+            },
+          },
+          locales[locale_idx]
+        ),
         toolbar: createTheme(
           {
             components: {

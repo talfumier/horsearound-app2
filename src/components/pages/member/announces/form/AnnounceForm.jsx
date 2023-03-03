@@ -47,6 +47,7 @@ import {
   toastSuccess,
   toastError,
   toastWarning,
+  toastInfo,
 } from "../../../common/toastSwal/ToastMessages";
 import {decodeJWT} from "../../../../../services/httpUsers.js";
 import {isEven} from "../../../utils/utilityFunctions.js";
@@ -55,6 +56,7 @@ import Position from "./Position.jsx";
 import {getMarkers} from "../../../../../services/httpGoogleServices.js";
 import {checkAnnounceDelete} from "../../../../../services/httpAnnounces.js";
 import {getFormattedDate} from "../../../utils/utilityFunctions.js";
+import {getRefreshTime} from "../../../../../services/utilsFunctions.js";
 
 function getEmptyImage(image) {
   return {
@@ -722,6 +724,7 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
     dirty = false;
     onHandleDirty(false);
     setSpinner2(false);
+    return bl.indexOf(false) === -1 ? true : false;
   }
   function imagesUnsavedChanges(msg = true) {
     let flg = Object.keys(globals.images);
@@ -826,7 +829,13 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
       }
     }
     globals[Math.abs(type) === 1 ? "status" : "archived"] = getStatusArchived(); //update globals since it is not changed by user's input
-    await handleSave(); //update status or archived change in database
+    const result = await handleSave(); //update status or archived change in database
+    if (result && type === 1)
+      toastInfo(
+        `${formatMessage({
+          id: "src.components.memberPage.tabs.annonces.MyAnnonces.toast10",
+        })} ${getRefreshTime("App.js").staleTime / 60000} mns`
+      );
     /* const vals = _.cloneDeep(values);
     vals[Math.abs(type) === 1 ? "status" : "archived"].data.saved =
       getStatusArchived(); //update saved values state properties

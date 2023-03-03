@@ -73,6 +73,13 @@ export function checkUserDelete(id, model, token, signal) {
     signal,
   });
 }
+export function checkParticipantDelete(userId, partId, token, signal) {
+  //id=email for model 'newsletters'
+  return http.get(`${api}/bookings/participant_checkDel/${userId}/${partId}`, {
+    headers: {"x-auth-token": token},
+    signal,
+  });
+}
 export function getCompany(id, signal) {
   return http.get(`${api}/companies/user/${id}`, {
     signal,

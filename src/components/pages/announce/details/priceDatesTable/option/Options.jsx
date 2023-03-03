@@ -10,8 +10,11 @@ import BookingRecap from "../booking/payment/BookingRecap.jsx";
 
 function Options({dataIn, recap, locks, onHandleOptions}) {
   const {locale, formatMessage} = useIntl();
-  const {options, devise} = dataIn.announce;
-  const {dates, dateParticipants} = dataIn;
+  const {datesType, options, devise} = dataIn.announce;
+  const {dateParticipants} = dataIn;
+  let dates = null;
+  if (datesType === "Fixed_Fixed") dates = dataIn.dates;
+  else dates = dataIn.selection;
   const [dateOptions, setDateOptions] = useState({});
   useEffect(() => {
     const dt_opts = {};

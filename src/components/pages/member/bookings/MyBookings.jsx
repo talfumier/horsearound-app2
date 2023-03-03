@@ -1,6 +1,13 @@
 import MyBookingsTable from "./MyBookingsTable.jsx";
 
-function MyBookings({bookings, selected, spinner, onHandleBookingChange}) {
+function MyBookings({
+  bookings,
+  selected,
+  spinner,
+  onHandleBookingChange,
+  onHandleParticipantsChange,
+  onHandleToggle,
+}) {
   return (
     <>
       <MyBookingsTable
@@ -8,6 +15,8 @@ function MyBookings({bookings, selected, spinner, onHandleBookingChange}) {
         selected={selected}
         spinner={spinner}
         onHandleBookingChange={onHandleBookingChange}
+        onHandleParticipantsChange={onHandleParticipantsChange}
+        onHandleToggle={onHandleToggle}
       ></MyBookingsTable>
     </>
   );

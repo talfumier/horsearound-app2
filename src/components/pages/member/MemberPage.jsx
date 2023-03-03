@@ -48,6 +48,7 @@ function MemberPage({
   const [selected, setSelected] = useState(null);
   const [dirty, setDirty] = useState(null);
   const [spin, setSpinner] = useState({bookings: false, invoices: false});
+  const [refresh, setRefresh] = useState(0);
   async function loadProUsers(signal) {
     if (currentUser.role === "ADMIN") {
       const res = await getUsers("pro", cookies.user, signal);
@@ -58,6 +59,9 @@ function MemberPage({
     if (currentUser.type === "pro") setProUsers([currentUser]);
   }
   const abortController = new AbortController();
+  function handleRefresh(int) {
+    setRefresh(int);
+  }
   useEffect(() => {
     setDirty(false);
     loadProUsers(abortController.signal);
@@ -156,7 +160,7 @@ function MemberPage({
     return () => {
       abortController.abort(); //clean-up code after component has unmounted
     };
-  }, []);
+  }, [refresh]);
   useEffect(() => {
     let bl = Object.keys(bookings).length > 0;
     if (bl && (currentUser.type === "pro" || currentUser.role === "ADMIN"))
@@ -570,6 +574,16 @@ function MemberPage({
       });
     });
   }
+  function handleParticipantsChange(userId, bookingId, participantsInfos) {
+    const bkgs = _.cloneDeep(bookings);
+    bkgs[userId].data.map((bkg, idx) => {
+      if (bkg._id === bookingId) {
+        bkgs[userId].data[idx].participantsInfos = participantsInfos;
+        originalBookings = bkgs;
+        setBookings(bkgs);
+      }
+    });
+  }
   try {
     async function handleToggle(idx, user) {
       switch (idx) {
@@ -662,8 +676,10 @@ function MemberPage({
                 onHandleDirty(bl);
               }}
               onHandleBookingChange={handleBookingChange}
+              onHandleParticipantsChange={handleParticipantsChange}
               onHandleInvoiceChange={handleInvoiceChange}
               onHandleConditionsChange={handleConditionsChange}
+              onHandleRefresh={handleRefresh}
             />
           </div>
         </>

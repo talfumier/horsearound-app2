@@ -300,15 +300,20 @@ function FormBooking({announce, data, onClose}) {
     if (date_id === null || dates.length === 0) return;
     //update recap each time there are changes in participants or options selection for a given date
     const rec = _.cloneDeep(recap);
-    const date = _.filter(dates, (date) => {
-      return date.id === date_id;
-    })[0];
+    const date = _.filter(
+      announce.datesType === "Fixed_Fixed" ? dates : selection,
+      (date) => {
+        return date.id === date_id;
+      }
+    )[0];
     const lastDate = addDays(date.startDate, -40),
-      totalOptions = getDateOptionsCost(
-        date,
-        dateParticipants[date_id],
-        dateOptions[date_id]
-      ),
+      totalOptions = dateOptions[date_id]
+        ? getDateOptionsCost(
+            date,
+            dateParticipants[date_id],
+            dateOptions[date_id]
+          )
+        : 0,
       total = sumOfPropsValues(cost[date_id]) + totalOptions;
     if (total > 0) {
       rec[date_id] = {
@@ -454,7 +459,11 @@ function FormBooking({announce, data, onClose}) {
               <div className="d-flex justify-content-center">
                 {state === 1 && ( //lazy loading
                   <Options
-                    dataIn={{announce, dates, dateParticipants}}
+                    dataIn={
+                      announce.datesType === "Fixed_Fixed"
+                        ? {announce, dates, dateParticipants}
+                        : {announce, selection, dateParticipants}
+                    }
                     recap={recap}
                     locks={locks}
                     onHandleOptions={handleOptions}

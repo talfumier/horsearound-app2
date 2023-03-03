@@ -6,9 +6,14 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import {useIntl} from "react-intl";
 import {Container, Row} from "react-bootstrap";
+import {useCookies} from "react-cookie";
+import {decodeJWT} from "../../../../../services/httpUsers.js";
 import SimpleText from "../../announces/form/SimpleText.jsx";
 import {isEven} from "../../../utils/utilityFunctions.js";
 import {SwalOkCancel} from "../../../common/toastSwal/SwalOkCancel.jsx";
+import {checkParticipantDelete} from "../../../../../services/httpUsers.js";
+import {errorHandlingToast} from "../../../../../services/utilsFunctions.js";
+import {toastError} from "../../../common/toastSwal/ToastMessages.js";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -57,6 +62,8 @@ function ParticipantDetails({
   onHandleParticipant,
 }) {
   const {locale, formatMessage} = useIntl();
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
   const [expanded, setExpanded] = useState(
     expd === null ? false : expd[id] ? expd[id] : false
   );
@@ -65,6 +72,25 @@ function ParticipantDetails({
   }
   function handleGlobals(cs, val) {
     onHandleGlobals(cs, val, id);
+  }
+  async function deleteConditionsSatisfied(partId) {
+    const abortController = new AbortController();
+    const res = await checkParticipantDelete(
+      currentUser._id,
+      partId,
+      cookies.user,
+      abortController.signal
+    );
+    if (!(await errorHandlingToast(res, locale, false))) {
+      if (!res.data) {
+        const msg = `${formatMessage({
+          id: `src.components.memberPage.tabs.annonces.details.AddAnnounceForm.bookingsByDayFailure`,
+        })}`;
+        return [res.data, msg];
+      }
+      return [true];
+    }
+    abortController.abort();
   }
   return (
     <Accordion
@@ -89,7 +115,12 @@ function ParticipantDetails({
               color: "#7aa095",
             }}
             onClick={async (e) => {
-              const result = await SwalOkCancel(
+              let result = await deleteConditionsSatisfied(id);
+              if (!result[0]) {
+                toastError(result[1]);
+                return;
+              }
+              result = await SwalOkCancel(
                 formatMessage,
                 "src.components.memberPage.tabs.annonces.MyAnnonces.delete"
               );
