@@ -111,6 +111,7 @@ function DaysNights({reset, data, onHandleWarning, onHandleGlobals}) {
               value={values.nbNights}
             >
               <option>0</option>
+              <option>n</option>
               <option>n-1</option>
               <option>n+1</option>
             </select>

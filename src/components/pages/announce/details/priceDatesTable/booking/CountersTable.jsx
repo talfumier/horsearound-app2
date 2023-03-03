@@ -35,6 +35,8 @@ export function getDaysNights(nbDays, nbNights, duration) {
       return `${duration}/${duration + nights.slice(-1)}`; //Flex_Flex 'n/n+x'
     case "-":
       return `${duration}/${duration - nights.slice(-1)}`; //Flex_Flex 'n/n-x'
+    case "n":
+      return `${duration}/${duration}`; //Flex_Flex 'n/n'
   }
 }
 function CountersTable({
