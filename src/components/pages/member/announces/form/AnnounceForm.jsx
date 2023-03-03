@@ -257,8 +257,9 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
   const location = useLocation();
   const [cookies, setCookie] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
-  if (id_ann === 0) {
-    dataIn = location.state.announce; //announce edit (announce is provided, may contain missing fields) and announce creation case ({} is provided)
+
+  if (id_ann === 0 || location.state.announce._id === -1) {
+    dataIn = location.state.announce; //announce edit (announce is provided, may contain missing fields) and announce creation case ({_id:-1} is provided)
     selected = location.state.selected;
     userId = location.state.userId;
     id_ann = dataIn._id;
