@@ -323,6 +323,7 @@ function BookingSummary({data: data_arr}) {
               {getNextSteps(
                 data.steps,
                 data._id,
+                stepsNumbering,
                 formatMessage,
                 "src.components.memberPage.tabs.MyReservation",
                 null

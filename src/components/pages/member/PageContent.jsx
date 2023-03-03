@@ -31,8 +31,10 @@ function PageContent({
   onHandleSaveDelete,
   onHandleDirty,
   onHandleBookingChange,
+  onHandleParticipantsChange,
   onHandleInvoiceChange,
   onHandleConditionsChange,
+  onHandleRefresh,
 }) {
   window.scrollTo(0, 0);
   const {locale, formatMessage} = useIntl();
@@ -226,6 +228,8 @@ function PageContent({
           selected={selected.bookings}
           spinner={spinner.bookings}
           onHandleBookingChange={onHandleBookingChange}
+          onHandleParticipantsChange={onHandleParticipantsChange}
+          onHandleToggle={onHandleToggle}
         ></MyBookings>
       )}
       {tab === 4 && <div>444444444444444444444</div>}
@@ -257,7 +261,11 @@ function PageContent({
         ></CorporateData>
       )}
       {tab === 8 && (
-        <MyProfile user={currentUser} onHandleDirty={onHandleDirty}></MyProfile>
+        <MyProfile
+          user={currentUser}
+          onHandleDirty={onHandleDirty}
+          onHandleRefresh={onHandleRefresh}
+        ></MyProfile>
       )}
     </div>
   );

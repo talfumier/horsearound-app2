@@ -2,7 +2,14 @@ import {FormattedMessage, useIntl} from "react-intl";
 import {getMuiThemes} from "../../common/mui/MuiThemes.js";
 import DataTable from "./dataTable/DataTable.jsx";
 
-function MyBookingsTable({bookings, selected, spinner, onHandleBookingChange}) {
+function MyBookingsTable({
+  bookings,
+  selected,
+  spinner,
+  onHandleBookingChange,
+  onHandleParticipantsChange,
+  onHandleToggle,
+}) {
   const {locale} = useIntl();
   const cols = [
     {
@@ -107,6 +114,8 @@ function MyBookingsTable({bookings, selected, spinner, onHandleBookingChange}) {
       themes={getMuiThemes("MyBookingsTable", locale)}
       spinner={spinner}
       onHandleBookingChange={onHandleBookingChange}
+      onHandleParticipantsChange={onHandleParticipantsChange}
+      onHandleToggle={onHandleToggle}
     />
   );
 }

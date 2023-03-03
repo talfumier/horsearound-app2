@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import {FormattedMessage, useIntl} from "react-intl";
 import _ from "lodash";
-import {getTime, parseISO, setHours} from "date-fns";
+import {parseISO} from "date-fns";
 import {useCookies} from "react-cookie";
 import Meta from "../common/Meta";
 import Banner from "../common/Banner";
@@ -65,7 +65,7 @@ function PageContent({announces, presetFilter}) {
   }, [presetFilter]);
   function split(anns) {
     let annsSplit = [],
-      chunk = 3;
+      chunk = 5;
     for (let i = 0; i < anns.length; i += chunk) {
       annsSplit.push(anns.slice(i, i + chunk));
     }
@@ -318,36 +318,24 @@ function PageContent({announces, presetFilter}) {
   function handleSort(id, order) {
     setSort({id, order});
   }
+  function getMaxPrice(ann) {
+    return Math.max(
+      ann.priceAdulte ? ann.priceAdulte : 0,
+      ann.priceChild ? ann.priceChild : 0
+    );
+  }
   function getFilteredDataSorted(sort, rawData) {
     let orderedData = null;
     switch (sort.id) {
       case "Prix":
-        orderedData = rawData.sort((ann1, ann2) =>
-          ann1.priceChild && ann2.priceChild
-            ? ann1.priceAdulte < ann1.priceChild &&
-              ann2.priceAdulte < ann2.priceChild
-              ? (ann2.priceAdulte - ann1.priceAdulte) * sort.order === "asc"
-                ? -1
-                : 1
-              : ann1.priceChild < ann1.priceAdulte &&
-                ann2.priceChild < ann2.priceAdulte
-              ? (ann2.priceChild - ann1.priceChild) * sort.order === "asc"
-                ? -1
-                : 1
-              : ann1.priceAdulte < ann1.priceChild &&
-                ann2.priceAdulte > ann2.priceChild
-              ? (ann2.priceChild - ann1.priceAdulte) * sort.order === "asc"
-                ? -1
-                : 1
-              : ann1.priceAdulte > ann1.priceChild &&
-                ann2.priceAdulte < ann2.priceChild
-              ? (ann2.priceAdulte - ann1.priceChild) * sort.order === "asc"
-                ? -1
-                : 1
-              : null
-            : (ann2.priceAdulte - ann1.priceAdulte) * sort.order === "asc"
-            ? -1
-            : 1
+        orderedData = _.orderBy(
+          rawData,
+          [
+            (ann) => {
+              return getMaxPrice(ann);
+            },
+          ],
+          [sort.order]
         );
         break;
       case "Avis":

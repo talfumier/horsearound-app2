@@ -10,6 +10,7 @@ import {
   Paper,
   Checkbox,
   ThemeProvider,
+  Tooltip,
 } from "@mui/material";
 import _ from "lodash";
 import {parseISO} from "date-fns";
@@ -22,6 +23,7 @@ import {
 import stepsNumbering from "../../../announce/details/priceDatesTable/booking/stepsNumbering.json";
 import {RenderInWindow} from "../../../common/RenderInWindow.jsx";
 import BookingSummary from "./summary/BookingSummary.jsx";
+import ParticipantsList from "./participants/ParticipantsList.jsx";
 import {toastInfo} from "../../../common/toastSwal/ToastMessages.js";
 import {scrollToBottom} from "../../../utils/utilityFunctions.js";
 
@@ -164,8 +166,7 @@ export function getCompletedSteps(
   });
 }
 
-let original = [],
-  firstSel = null;
+let original = [];
 function DataTable({
   headCells,
   bookings,
@@ -173,6 +174,8 @@ function DataTable({
   themes,
   spinner,
   onHandleBookingChange,
+  onHandleParticipantsChange,
+  onHandleToggle,
 }) {
   const {locale, formatMessage} = useIntl();
   const [rows, setRows] = useState([]);
@@ -180,12 +183,32 @@ function DataTable({
     original = prepareData(headCells, bookings); //default past parameter=true (i.e. includes dates in the past)
     setRows(original);
   }, [bookings]);
+  const [firstSel, setFirstSel] = useState(null);
+  useEffect(() => {
+    if (open.infos) setOpen({...open, infos: false});
+  }, [firstSel]);
   const [selected, setSelected] = useState(sel);
+  useEffect(() => {
+    let flg = -1;
+    Object.keys(selected).map((id) => {
+      if (selected[id] === 1 && flg === -1) {
+        Object.keys(bookings).map((usr) => {
+          bookings[usr].data.map((bkg, idx) => {
+            if (flg === -1 && bkg._id === id) {
+              flg += 1;
+              setFirstSel([usr, idx]);
+            }
+          });
+        });
+      }
+    });
+    if (flg === -1) setFirstSel(null);
+  }, [selected]);
   const [numFiltered, setNumFiltered] = useState(0);
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState({summary: false, infos: false});
   function prepareData(headCells, bkgs, past = true) {
     let data = [];
     Object.keys(bkgs).map((key) => {
@@ -239,7 +262,7 @@ function DataTable({
                 break;
               case 4: //participants
                 obj[headCells[i].name] = (
-                  <>
+                  <div style={{textAlign: "right"}}>
                     {rec.adults && rec.adults.nb > 0
                       ? `${formatMessage({
                           id: "src.components.announcePage.booking.adults",
@@ -257,7 +280,7 @@ function DataTable({
                           id: "src.components.announcePage.booking.accompanying",
                         })} : ${rec.companions.nb}`
                       : ""}
-                  </>
+                  </div>
                 );
                 break;
               case 5: //options
@@ -401,25 +424,76 @@ function DataTable({
     });
     return rows;
   }
-  function handleSummary() {
-    if (!selected) return;
-    if (open) {
+  function getParticipantsButton(id) {
+    let allSet = false,
+      na = 0,
+      nc = 0,
+      ncp = 0;
+    Object.keys(bookings).map((usr) => {
+      bookings[usr].data.map((bkg) => {
+        if (bkg._id === id) {
+          try {
+            bkg.participantsInfo.map((part) => {
+              if (part) {
+                na += part.as === "adult" ? 1 : 0;
+                nc += part.as === "child" ? 1 : 0;
+                ncp += part.as === "companion" ? 1 : 0;
+              }
+            });
+          } catch (error) {}
+          if (
+            na === bkg.adults.nb &&
+            nc === bkg.children.nb &&
+            ncp === bkg.companions.nb
+          )
+            allSet = true;
+        }
+      });
+    });
+    return (
+      <ThemeProvider theme={themes.infos}>
+        <Tooltip
+          title={formatMessage({
+            id: "src.components.memberPage.tabs.MyReservation.infos",
+          })}
+          arrow
+        >
+          <button
+            className="btn btn-warning ml-2 px-2 py-0"
+            style={{
+              fontSize: "1.2rem",
+              fontWeight: "500",
+              color: "#ffffff",
+              backgroundColor:
+                firstSel !== null &&
+                id === bookings[firstSel[0]].data[firstSel[1]]._id
+                  ? "#4472C4"
+                  : "#A5BBE3",
+              marginTop: 0,
+              height: 25,
+              width: 50,
+            }}
+            onClick={() => {
+              if (
+                firstSel === null ||
+                id !== bookings[firstSel[0]].data[firstSel[1]]._id
+              )
+                return;
+              handleSummaryParticipants("infos");
+            }}
+          >
+            <span>infos</span> {allSet ? <span> &#x2714;</span> : null}
+          </button>
+        </Tooltip>
+      </ThemeProvider>
+    );
+  }
+  function handleSummaryParticipants(cs) {
+    if (open[cs]) {
       toastInfo(formatMessage({id: "user_msg.standard.errors.windowOpen"}));
       return;
     }
-    firstSel = null;
-    Object.keys(selected).map((id) => {
-      if (selected[id] === 1 && firstSel === null) {
-        Object.keys(bookings).map((usr) => {
-          bookings[usr].data.map((bkg, idx) => {
-            if (firstSel === null && bkg._id === id) {
-              firstSel = [usr, idx];
-            }
-          });
-        });
-      }
-    });
-    setOpen(true);
+    setOpen({...open, [cs]: true});
   }
   const handleSelectAllClick = (event) => {
     const newSelecteds = {};
@@ -465,126 +539,166 @@ function DataTable({
     }
     setPage(0);
   };
-  return (
-    <>
-      {open && (
-        <RenderInWindow
-          comp={
-            <BookingSummary
-              data={[bookings[firstSel[0]].data[firstSel[1]]]}
-            ></BookingSummary>
-          }
-          size={{width: 900, height: 500, x: 400, y: 200}}
-          onClose={() => {
-            setOpen(false);
-          }}
-        ></RenderInWindow>
-      )}
-      <Paper sx={{width: "120%"}}>
-        <TableToolbar
-          numSelected={sumOfPropsValues(selected)}
-          selected={selected}
-          numFiltered={numFiltered}
-          theme={themes.toolbar}
-          spinner={spinner}
-          onFilter={filterData}
-          onHandlePast={handlePast}
-          onHandleSummary={handleSummary}
-        />
-        <TableContainer>
-          <Table
-            stickyHeader
-            aria-label="sticky table"
-            aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
-          >
-            <Tablehead
-              headCells={headCells}
-              numSelected={sumOfPropsValues(selected)}
-              onSelectAllClick={handleSelectAllClick}
-              rowCount={rows.length}
-              theme={themes.header}
-            />
-            <ThemeProvider theme={themes.body}>
-              <TableBody>
-                {rows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index) => {
-                    const isItemSelected = isSelected(row.id);
-                    const labelId = `enhanced-table-checkbox-${index}`;
-                    return (
-                      <TableRow
-                        hover
-                        onClick={() => handleClick(row.id)}
-                        role="checkbox"
-                        aria-checked={isItemSelected}
-                        tabIndex={-1}
-                        key={index}
-                        selected={isItemSelected}
-                      >
-                        <TableCell padding="checkbox">
-                          <Checkbox
-                            color="primary"
-                            checked={isItemSelected}
-                            inputProps={{
-                              "aria-labelledby": labelId,
-                            }}
-                          />
-                        </TableCell>
-                        {Object.keys(row).map((item, idx) => {
-                          return (
-                            <TableCell
-                              onClick={(e) => {
-                                if (e.target.cellIndex === undefined) {
-                                  //prevents row selection when clicking buttons inside cell >>> cell click behaviour unchanged (i.e row selection)
-                                  e.stopPropagation();
-                                  e.preventDefault();
-                                }
-                              }}
-                              key={idx}
-                              align={headCells[idx].align}
-                              width={headCells[idx].width}
-                              hidden={headCells[idx].hidden ? true : false}
-                              style={{
-                                color:
-                                  idx === 8
-                                    ? row[headCells[idx].name] === "false"
-                                      ? "black"
-                                      : "red"
-                                    : "black",
-                              }}
-                            >
-                              {row[headCells[idx].name]}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-                {emptyRows > 0 && (
-                  <TableRow
-                    style={{
-                      height: (dense ? 33 : 53) * emptyRows,
-                    }}
-                  ></TableRow>
-                )}
-              </TableBody>
-            </ThemeProvider>
-          </Table>
-        </TableContainer>
-        <ThemeProvider theme={themes.footer}>
-          <TablePagination
-            rowsPerPageOptions={[]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            labelRowsPerPage={null}
+  try {
+    return (
+      <>
+        {open.summary && (
+          <RenderInWindow
+            comp={
+              <BookingSummary
+                data={[bookings[firstSel[0]].data[firstSel[1]]]}
+              ></BookingSummary>
+            }
+            size={{width: 900, height: 500, x: 400, y: 200}}
+            onClose={() => {
+              setOpen({...open, summary: false});
+            }}
+          ></RenderInWindow>
+        )}
+        {open.infos && (
+          <RenderInWindow
+            comp={
+              <ParticipantsList
+                data={[bookings[firstSel[0]].data[firstSel[1]]]}
+                onHandleToggle={onHandleToggle}
+                onHandleSave={(data) => {
+                  bookings[data.userId].data.map((bkg, idx) => {
+                    if (bkg._id === data._id) {
+                      bookings[data.userId].data[idx].participantsInfo =
+                        data.ticked;
+                      onHandleParticipantsChange(
+                        data.userId,
+                        data._id,
+                        data.ticked
+                      );
+                    }
+                  });
+                }}
+              ></ParticipantsList>
+            }
+            size={{width: 900, height: 500, x: 400, y: 200}}
+            onClose={() => {
+              setOpen({...open, infos: false});
+            }}
+          ></RenderInWindow>
+        )}
+        <Paper sx={{width: "120%"}}>
+          <TableToolbar
+            numSelected={sumOfPropsValues(selected)}
+            selected={selected}
+            numFiltered={numFiltered}
+            theme={themes.toolbar}
+            spinner={spinner}
+            onFilter={filterData}
+            onHandlePast={handlePast}
+            onHandleSummary={() => {
+              handleSummaryParticipants("summary");
+            }}
           />
-        </ThemeProvider>
-      </Paper>
-    </>
-  );
+          <TableContainer>
+            <Table
+              stickyHeader
+              aria-label="sticky table"
+              aria-labelledby="tableTitle"
+              size={dense ? "small" : "medium"}
+            >
+              <Tablehead
+                headCells={headCells}
+                numSelected={sumOfPropsValues(selected)}
+                onSelectAllClick={handleSelectAllClick}
+                rowCount={rows.length}
+                theme={themes.header}
+              />
+              <ThemeProvider theme={themes.body}>
+                <TableBody>
+                  {rows
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => {
+                      const isItemSelected = isSelected(row.id);
+                      const labelId = `enhanced-table-checkbox-${index}`;
+                      return (
+                        <TableRow
+                          onClick={() => handleClick(row.id)}
+                          role="checkbox"
+                          aria-checked={isItemSelected}
+                          tabIndex={-1}
+                          key={index}
+                          selected={isItemSelected}
+                        >
+                          <TableCell padding="checkbox">
+                            <Checkbox
+                              color="primary"
+                              checked={isItemSelected}
+                              inputProps={{
+                                "aria-labelledby": labelId,
+                              }}
+                            />
+                          </TableCell>
+                          {Object.keys(row).map((item, idx) => {
+                            return (
+                              <TableCell
+                                onClick={(e) => {
+                                  if (e.target.cellIndex === undefined) {
+                                    //prevents row selection when clicking buttons inside cell >>> cell click behaviour unchanged (i.e row selection)
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                  }
+                                }}
+                                key={idx}
+                                align={headCells[idx].align}
+                                width={headCells[idx].width}
+                                hidden={headCells[idx].hidden ? true : false}
+                                style={{
+                                  color:
+                                    idx === 8
+                                      ? row[headCells[idx].name] === "false"
+                                        ? "black"
+                                        : "red"
+                                      : "black",
+                                }}
+                              >
+                                {idx === 4 ? (
+                                  <div className="d-flex justify-content-center">
+                                    {row[headCells[idx].name]}
+                                    {getParticipantsButton(row.id)}
+                                  </div>
+                                ) : (
+                                  row[headCells[idx].name]
+                                )}
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
+                      );
+                    })}
+                  {emptyRows > 0 && (
+                    <TableRow
+                      style={{
+                        height: (dense ? 33 : 53) * emptyRows,
+                      }}
+                    ></TableRow>
+                  )}
+                </TableBody>
+              </ThemeProvider>
+            </Table>
+          </TableContainer>
+          <ThemeProvider theme={themes.footer}>
+            <TablePagination
+              rowsPerPageOptions={[]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              labelRowsPerPage={null}
+            />
+          </ThemeProvider>
+        </Paper>
+      </>
+    );
+  } catch (error) {
+    console.log("error in MemberPage bookings tab >>> DataTable.jsx ", error);
+    return null;
+  }
 }
 export default DataTable;

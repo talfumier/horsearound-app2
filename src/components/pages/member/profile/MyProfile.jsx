@@ -33,6 +33,7 @@ import {handleLogOut} from "../../logIn&Out/FormLogin.jsx";
 import SponsoredBy from "../corporate/SponsoredBy.jsx";
 import UserContext from "../../common/context/UserContext.js";
 import ParticipantsInfo from "./participants/ParticipantsInfo.jsx";
+import {randomInteger} from "../../utils/utilityFunctions.js";
 
 export async function deleteConditionsSatisfied(
   userType,
@@ -66,7 +67,7 @@ export async function deleteConditionsSatisfied(
 }
 let globals = {},
   dataIn = {};
-function MyProfile({user, onHandleDirty}) {
+function MyProfile({user, onHandleDirty, onHandleRefresh}) {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const {_id: userId, type: userType, email: userEmail} = user;
@@ -320,7 +321,14 @@ function MyProfile({user, onHandleDirty}) {
           );
         });
       }
+      let refresh = false;
       Object.keys(body).map((key) => {
+        if (
+          key === "lasName" ||
+          key === "firstName" ||
+          key === "participantsInfo"
+        )
+          refresh = true;
         data[key].data.saved = _.clone(body[key]);
         dataIn[key].data.saved = data[key].data.saved; //update dataIn properties with saved data
       });
@@ -328,6 +336,7 @@ function MyProfile({user, onHandleDirty}) {
       setDeleteConditions(); //update delete conditions following save operation
       onHandleDirty(false);
       initGlobals();
+      if (refresh && userType !== "pro") onHandleRefresh(randomInteger(1000)); //refresh last&firstName, participantsInfo data in MemberPage user bookings data to ensure Bookings Infos modal is up to date
     }
     if (actualChange >= 0) {
       successFailure("PATCH", bl, formatMessage, "UpdateProfile");

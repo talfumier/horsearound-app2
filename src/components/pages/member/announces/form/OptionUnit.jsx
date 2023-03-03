@@ -8,6 +8,9 @@ function OptionUnit({dataIn, onHandleDelete, onHandleGlobals}) {
   const {formatMessage} = useIntl();
   const keys = Object.keys(dataIn);
   const [value, setValue] = useState("All");
+  useEffect(() => {
+    setValue(dataIn.type);
+  }, [dataIn]);
   const [currency, setCurrency] = useState(null);
   useEffect(() => {
     function changeEvent() {

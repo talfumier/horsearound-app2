@@ -3,9 +3,11 @@ import {WithContext as ReactTags} from "react-tag-input";
 import {FormattedMessage, useIntl} from "react-intl";
 import "../../../css/searchInput.css";
 import "../../../css/button.css";
+import {toastError} from "./toastSwal/ToastMessages.js";
+import {ToastContainer} from "react-toastify";
 
 function SearchInput({tags, onHandleChange}) {
-  const intl = useIntl();
+  const {formatMessage} = useIntl();
   const [state, setState] = useState({tags: tags});
   const RemoveComponent = ({index}) => {
     return (
@@ -37,41 +39,49 @@ function SearchInput({tags, onHandleChange}) {
     onHandleChange([]);
   }
   function handleSearch() {
+    if (state.tags.length === 0)
+      toastError(
+        formatMessage({
+          id: "src.components.annoncesPage.searchbar.searchTagMissing",
+        })
+      );
     onHandleChange(state.tags);
   }
   return (
-    <div className="row col-10 align-items-center">
-      <ReactTags
-        removeComponent={RemoveComponent}
-        allowDragDrop={false}
-        handleDelete={handleDelete}
-        handleAddition={handleAddition}
-        delimiters={[13]}
-        onClearAll={handleClearAll}
-        placeholder={intl.formatMessage({
-          id: "src.components.annoncesPage.searchbar.searchPlaceHolder",
-        })}
-        minQueryLength={2}
-        maxLength={150}
-        autofocus={false}
-        allowDeleteFromEmptyInput={true}
-        allowUnique={true}
-        inline={true}
-        allowAdditionFromPaste={true}
-        tags={state.tags}
-      ></ReactTags>
-
-      <button className="btn btn-success ml-5" onClick={handleSearch}>
-        <FormattedMessage id="src.components.annoncesPage.searchbar.searchButton"></FormattedMessage>
-      </button>
-      <button
-        id="clearAll"
-        className="btn btn-success ml-1"
-        onClick={handleClearAll}
-      >
-        <FormattedMessage id="src.components.annoncesPage.searchbar.clearSearchButton"></FormattedMessage>
-      </button>
-    </div>
+    <>
+      <ToastContainer></ToastContainer>
+      <div className="row col-10 align-items-center">
+        <ReactTags
+          removeComponent={RemoveComponent}
+          allowDragDrop={false}
+          handleDelete={handleDelete}
+          handleAddition={handleAddition}
+          delimiters={[13]}
+          onClearAll={handleClearAll}
+          placeholder={formatMessage({
+            id: "src.components.annoncesPage.searchbar.searchPlaceHolder",
+          })}
+          minQueryLength={2}
+          maxLength={150}
+          autofocus={false}
+          allowDeleteFromEmptyInput={true}
+          allowUnique={true}
+          inline={true}
+          allowAdditionFromPaste={true}
+          tags={state.tags}
+        ></ReactTags>
+        <button className="btn btn-success ml-5" onClick={handleSearch}>
+          <FormattedMessage id="src.components.annoncesPage.searchbar.searchButton"></FormattedMessage>
+        </button>
+        <button
+          id="clearAll"
+          className="btn btn-success ml-1"
+          onClick={handleClearAll}
+        >
+          <FormattedMessage id="src.components.annoncesPage.searchbar.clearSearchButton"></FormattedMessage>
+        </button>
+      </div>
+    </>
   );
 }
 

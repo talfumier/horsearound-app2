@@ -118,27 +118,41 @@ function NavBar({dirty, onHandleDirty}) {
                 </ul>
               </div>
             </div>
-            <div className="row align-items-center dropdown singleDrop ml-4 pb-4 w100 ">
-              <Tooltip
-                title={
-                  <FormattedMessage id="src.components.allPages.Menu.userSpace.tooltip"></FormattedMessage>
-                }
-                arrow
-              >
-                <Link to={"/member"} style={{fontSize: "1.5rem"}}>
-                  {cookies.user ? currentUser.email : null}
-                </Link>
-              </Tooltip>
-              <h5
-                id="horseAround_navbar_timer"
-                className="mt-3 pt-1 mx-2"
-                style={{
-                  color: `rgb(255, 102, 0)`,
-                  fontWeight: "bolder",
-                  width: "50px",
-                }}
-              ></h5>
-            </div>
+            {cookies.user && (
+              <div className="row align-items-center dropdown singleDrop ml-4 pb-4 w100 ">
+                <Tooltip
+                  title={
+                    <FormattedMessage id="src.components.allPages.Menu.userSpace.tooltip"></FormattedMessage>
+                  }
+                  arrow
+                >
+                  <Link
+                    className="ml-4 pl-4 fa fa-user fa-2x "
+                    to={"/member"}
+                    style={{
+                      border: "0",
+                      cursor: "pointer",
+                    }}
+                  ></Link>
+                </Tooltip>
+                <h5 className="ml-4" style={{fontSize: "1.8rem"}}>
+                  {currentUser.firstName
+                    ? currentUser.firstName.toLowerCase()
+                    : currentUser.email
+                    ? currentUser.email
+                    : null}
+                </h5>
+                <h5
+                  id="horseAround_navbar_timer"
+                  className="mt-3 pt-1 mx-2"
+                  style={{
+                    color: `rgb(255, 102, 0)`,
+                    fontWeight: "bolder",
+                    width: "50px",
+                  }}
+                ></h5>
+              </div>
+            )}
           </div>
         </nav>
       </div>
