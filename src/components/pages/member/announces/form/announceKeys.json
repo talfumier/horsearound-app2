@@ -3,7 +3,7 @@
   "id_user": false,
   "title": true,
   "description": true,
-  "typicalDay": false,
+  "typicalDay": true,
   "horseDescription": true,
   "saddleryDescription": true,
   "supervisingDescription": true,

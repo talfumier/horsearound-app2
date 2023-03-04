@@ -49,6 +49,7 @@ function MemberPage({
   const [dirty, setDirty] = useState(null);
   const [spin, setSpinner] = useState({bookings: false, invoices: false});
   const [refresh, setRefresh] = useState(0);
+  const [badges, setBadges] = useState({});
   async function loadProUsers(signal) {
     if (currentUser.role === "ADMIN") {
       const res = await getUsers("pro", cookies.user, signal);
@@ -628,6 +629,9 @@ function MemberPage({
       }
       setTab(idx);
     }
+    function handleBadges(item) {
+      setBadges({...badges, ...item});
+    }
     return (
       flg && (
         <>
@@ -655,6 +659,7 @@ function MemberPage({
               role={currentUser.role}
               initTab={tab}
               dirty={dirty}
+              badges={badges}
               onHandleToggle={handleToggle}
               onHandleDirty={(bl) => {
                 setDirty(bl);
@@ -680,6 +685,7 @@ function MemberPage({
               onHandleInvoiceChange={handleInvoiceChange}
               onHandleConditionsChange={handleConditionsChange}
               onHandleRefresh={handleRefresh}
+              onHandleBadges={handleBadges}
             />
           </div>
         </>

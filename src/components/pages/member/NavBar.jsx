@@ -4,13 +4,24 @@ import classnames from "classnames";
 import "./style.css";
 import {SwalOkCancel} from "../common/toastSwal/SwalOkCancel.jsx";
 
-function NavBar({type, role, initTab, dirty, onHandleToggle, onHandleDirty}) {
+function NavBar({
+  type,
+  role,
+  initTab,
+  dirty,
+  badges,
+  onHandleToggle,
+  onHandleDirty,
+}) {
   const {formatMessage} = useIntl();
   const [tab, setTab] = useState(1);
-  const [count, setCount] = useState(null);
   useEffect(() => {
     setTab(initTab);
   }, [initTab]);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    setCount(badges["unread"]);
+  }, [badges]);
   async function toggle(idx) {
     if (tab !== idx) {
       if (dirty) {
@@ -150,8 +161,11 @@ function NavBar({type, role, initTab, dirty, onHandleToggle, onHandleDirty}) {
                     <span className="notification">
                       <FormattedMessage id="src.components.memberPage.DashboardMenu.link8" />
                     </span>
-                    <span className="badge">
-                      {count !== null && count !== 0 ? count : ""}
+                    <span
+                      className="badge rounded-pill badge-notification bg-danger ml-2"
+                      style={{marginTop: -10}}
+                    >
+                      {count !== 0 ? count : ""}
                     </span>
                   </a>
                 </li>

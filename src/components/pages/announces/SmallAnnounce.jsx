@@ -242,7 +242,8 @@ function SmallAnnounce({announce, images}) {
                   : announce.priceAdulte}
                 €
                 {announce.dates.length > 0 &&
-                  announce.dates[0].bookingsByDay && (
+                  announce.dates[0].bookingsByDay &&
+                  announce.datesType === "Flex_Flex" && (
                     <FormattedMessage id="src.components.homePage.ActivityBox.day" />
                   )}
               </p>
