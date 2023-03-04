@@ -35,6 +35,7 @@ function PageContent({
   onHandleInvoiceChange,
   onHandleConditionsChange,
   onHandleRefresh,
+  onHandleBadges,
 }) {
   window.scrollTo(0, 0);
   const {locale, formatMessage} = useIntl();
@@ -253,7 +254,7 @@ function PageContent({
           }}
         ></MyInvoices>
       )}
-      {tab === 6 && <Messaging></Messaging>}
+      {tab === 6 && <Messaging onHandleBadges={onHandleBadges}></Messaging>}
       {tab === 7 && (
         <CorporateData
           user={currentUser}

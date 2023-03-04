@@ -13,7 +13,7 @@ import {decodeJWT} from "../../../../services/httpUsers.js";
 import {errorHandlingToast} from "../../../../services/utilsFunctions.js";
 import ChatList from "./ChatList.jsx";
 
-function Messaging() {
+function Messaging({onHandleBadges}) {
   const {locale} = useIntl();
   const [cookies] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
@@ -65,6 +65,14 @@ function Messaging() {
       abortController.abort(); //clean-up code after component has unmounted
     };
   }, []);
+  useEffect(() => {
+    const msgs = _.cloneDeep(messages);
+    onHandleBadges({
+      unread: _.filter(msgs, (msg) => {
+        return msg.msg.isRead === false;
+      }).length,
+    });
+  }, [messages]);
   async function sendMessage() {
     const abortController = new AbortController();
     let res = await postMessage(
