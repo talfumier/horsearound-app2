@@ -22,7 +22,7 @@ import GuideAdultChildRider from "./GuideAdultChildRider.jsx";
 import Participants from "./Participants.jsx";
 import Price from "./Price.jsx";
 import LevelRating from "./LevelRating";
-import {range, sumOfPropsValues} from "../../../utils/utilityFunctions.js";
+import {range} from "../../../utils/utilityFunctions.js";
 import LanguageRating from "./LanguageRating";
 import france from "../../../../intl/flags/france.png";
 import uk from "../../../../intl/flags/uk.png";
@@ -257,8 +257,10 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
   const location = useLocation();
   const [cookies, setCookie] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
-
-  if (id_ann === 0 || location.state.announce._id === -1) {
+  let cond = false;
+  if (id_ann === 0) cond = true;
+  if (!cond && location.state) cond = location.state.announce._id === -1;
+  if (cond) {
     dataIn = location.state.announce; //announce edit (announce is provided, may contain missing fields) and announce creation case ({_id:-1} is provided)
     selected = location.state.selected;
     userId = location.state.userId;
@@ -643,7 +645,10 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
       bl[0] = !(await errorHandlingToast(res, locale, false));
       if (bl[0]) {
         const data = _.cloneDeep(values); //update values state properties with saved data
-        if (cs === "POST") data._id.data.saved = id_ann;
+        if (cs === "POST") {
+          data._id.data.saved = id_ann;
+          selected[id_ann] = 1;
+        }
         Object.keys(body).map((key) => {
           data[key].data.saved = _.clone(body[key]);
         });

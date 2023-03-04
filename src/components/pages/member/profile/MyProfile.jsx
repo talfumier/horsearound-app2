@@ -70,7 +70,7 @@ let globals = {},
 function MyProfile({user, onHandleDirty, onHandleRefresh}) {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  const {_id: userId, type: userType, email: userEmail} = user;
+  const {_id: userId, type: userType, role: userRole, email: userEmail} = user;
   const {locale, formatMessage} = useIntl();
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [spin1, setSpinner1] = useState(false);
@@ -371,6 +371,7 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
     setAboNL(!bl);
     handleGlobals("value", ["aboNewsletter", !bl]);
   }
+  const cond = userType === "pro" || userRole === "ADMIN";
   return (
     <div
       className="d-flex justify-content-center "
@@ -392,43 +393,47 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
           border: "1px solid",
           borderColor: "green",
           borderRadius: "10px",
-          height: "80px",
+          height: cond ? 80 : 60,
         }}
       >
         {Object.keys(values).length > 0 &&
           Object.keys(valid.current).length > 0 && (
             <div>
               <div className="d-flex ml-4 pt-1">
-                <SimpleText
-                  dataIn={{
-                    name: "type",
-                    data: values.type.data.saved,
-                  }}
-                  required={false}
-                  disabled={true}
-                  trash={false}
-                  valid={valid.current.type}
-                  wl="50px"
-                  col="3"
-                ></SimpleText>
-                <SimpleText
-                  dataIn={{
-                    name: "role",
-                    data: values.role.data.saved,
-                  }}
-                  required={false}
-                  disabled={true}
-                  trash={false}
-                  valid={valid.current.role}
-                  wl="80px"
-                  col="3"
-                ></SimpleText>
+                {cond && (
+                  <>
+                    <SimpleText
+                      dataIn={{
+                        name: "type",
+                        data: values.type.data.saved,
+                      }}
+                      required={false}
+                      disabled={true}
+                      trash={false}
+                      valid={valid.current.type}
+                      wl="50px"
+                      col="3"
+                    ></SimpleText>
+                    <SimpleText
+                      dataIn={{
+                        name: "role",
+                        data: values.role.data.saved,
+                      }}
+                      required={false}
+                      disabled={true}
+                      trash={false}
+                      valid={valid.current.role}
+                      wl="80px"
+                      col="3"
+                    ></SimpleText>
+                  </>
+                )}
                 <div
-                  className="mt-2 pt-4"
+                  className={`mt-2 ${cond ? "pt-4" : "pt-2"}`}
                   style={{
-                    maxHeight: 80,
+                    maxHeight: cond ? 80 : 50,
                     position: "fixed",
-                    left: "28%",
+                    left: cond ? "28%" : "15%",
                   }}
                 >
                   <button
@@ -453,19 +458,21 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
                   </div>
                 </div>
               </div>
-              <div className="d-flex ml-4">
-                <SimpleText
-                  dataIn={{
-                    name: "status",
-                    data: values.status.data.saved,
-                  }}
-                  required={false}
-                  disabled={true}
-                  trash={false}
-                  valid={valid.current.status}
-                  wl="50px"
-                  col="3"
-                ></SimpleText>
+              <div className={`d-flex ml-4 ${!cond ? "mt-3" : "mt-0"}`}>
+                {cond && (
+                  <SimpleText
+                    dataIn={{
+                      name: "status",
+                      data: values.status.data.saved,
+                    }}
+                    required={false}
+                    disabled={true}
+                    trash={false}
+                    valid={valid.current.status}
+                    wl="50px"
+                    col="3"
+                  ></SimpleText>
+                )}
                 <SimpleText
                   dataIn={{
                     name: "registration_date",
@@ -479,13 +486,13 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
                   trash={false}
                   valid={valid.current.registration_date}
                   wl="80px"
-                  col="3"
+                  col={cond ? "3" : "5"}
                 ></SimpleText>
               </div>
             </div>
           )}
         <div className="mt-0 mb-3" style={{marginRight: "15%"}}>
-          <div className="my-3 mx-0 p-0">
+          <div className={`${cond ? "my-3" : "my-1"} mx-0 p-0`}>
             {!formValid ? alert("form") : null}
           </div>
         </div>
