@@ -10,7 +10,7 @@ import {getAnnounceRating} from "../utils/Ratings";
 import Announces from "./Announces";
 
 function PageContent({announces, presetFilter}) {
-  const lang = useIntl().locale;
+  const {locale, formatMessage} = useIntl();
   const [cookies, setCookie] = useCookies(["filter"]);
   const [sort, setSort] = useState({});
   useEffect(() => {
@@ -287,7 +287,7 @@ function PageContent({announces, presetFilter}) {
     let regex = null;
     for (let i = 0; i < n; i++) {
       regex = new RegExp(".*" + searches[i] + ".*", "i"); //not case sensitive
-      if (regex.test(ann.title[lang]) || regex.test(ann.description[lang]))
+      if (regex.test(ann.title[locale]) || regex.test(ann.description[locale]))
         return true;
     }
     return false;
@@ -384,9 +384,9 @@ function PageContent({announces, presetFilter}) {
     <div>
       <Meta id="announces"></Meta>
       <Banner
-        title={
-          <FormattedMessage id="src.components.annoncesPage.annonces.title" />
-        }
+        title={`${formatMessage({
+          id: "src.components.annoncesPage.annonces.title",
+        })} : ${filteredData.length} / ${state.length}`}
       />
       {
         <>

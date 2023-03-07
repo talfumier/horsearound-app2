@@ -17,6 +17,9 @@ export const validate = (field, val) => {
     case "ageMinParticipant":
     case "ageMaxParticipant":
     case "childUnderOf":
+    case "price":
+    case "nbHoursEqui":
+    case "nbKmsEqui":
       return positiveValid(val, true, true, "int"); //int > 0
     case "nbNights":
     case "priceAdulte":

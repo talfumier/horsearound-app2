@@ -315,9 +315,9 @@ function DataTable({
                         <div className="d-flex justify-content-left ml-3">
                           {`${formatMessage({
                             id: "src.components.bookingPage.BookDetailInfo.deposit",
-                          })} : ${rec.paymentRecap.deposit.amount} ${
-                            rec.announce.devise
-                          } - ${formatMessage({
+                          })} : ${Math.round(
+                            rec.paymentRecap.deposit.amount
+                          )} ${rec.announce.devise} - ${formatMessage({
                             id: "src.components.bookingPage.BookDetailInfo.asap",
                           })}
                         `}
@@ -325,9 +325,9 @@ function DataTable({
                         <div className="d-flex justify-content-left ml-3">
                           {`${formatMessage({
                             id: "src.components.bookingPage.BookDetailInfo.balance",
-                          })} : ${rec.paymentRecap.balance.amount} ${
-                            rec.announce.devise
-                          } - ${getFormattedDate(
+                          })} : ${Math.round(
+                            rec.paymentRecap.balance.amount
+                          )} ${rec.announce.devise} - ${getFormattedDate(
                             rec.paymentRecap.balance.due,
                             "dd.MM.yyyy"
                           )}`}
@@ -340,7 +340,7 @@ function DataTable({
                         <div className="d-flex justify-content-left ml-3">
                           {`${formatMessage({
                             id: "src.components.bookingPage.BookDetailInfo.totalAccount",
-                          })}: ${rec.paymentRecap.total.amount} ${
+                          })}: ${Math.round(rec.paymentRecap.total.amount)} ${
                             rec.announce.devise
                           } - ${formatMessage({
                             id: "src.components.bookingPage.BookDetailInfo.asap",

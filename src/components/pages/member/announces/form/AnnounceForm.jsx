@@ -261,10 +261,14 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
   if (id_ann === 0) cond = true;
   if (!cond && location.state) cond = location.state.announce._id === -1;
   if (cond) {
-    dataIn = location.state.announce; //announce edit (announce is provided, may contain missing fields) and announce creation case ({_id:-1} is provided)
-    selected = location.state.selected;
-    userId = location.state.userId;
-    id_ann = dataIn._id;
+    try {
+      dataIn = location.state.announce; //announce edit (announce is provided, may contain missing fields) and announce creation case ({_id:-1} is provided)
+      selected = location.state.selected;
+      userId = location.state.userId;
+      id_ann = dataIn._id;
+    } catch (error) {
+      navigate("/member"); //location.state=null
+    }
   }
   dataIn.dates?.map((date, idx) => {
     dataIn.dates[idx].period.dateStart = _.isString(date.period.dateStart)
@@ -379,6 +383,11 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
                     lat: validate("lat", result[key].data.saved.lat)[0],
                     lng: validate("lng", result[key].data.saved.lng)[0],
                   };
+                if (
+                  (key === "nbDays" || key === "nbNights") &&
+                  dataIn.datesType === "Flex_Flex"
+                )
+                  valide[key] = true; //nbdays='n'
             }
         }
       });
@@ -459,6 +468,17 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
     valide.current = _.cloneDeep(isEven(rst) ? valide.default : valide.saved);
     setValid(valide);
     setReset(rst);
+    setDirty();
+  }
+  function setDirty() {
+    dirty = announceUnsavedChanges(false);
+    if (!dirty) {
+      dirty = imagesUnsavedChanges(false);
+    }
+    if (dirty) {
+      onHandleDirty(dirty);
+      navigate(null);
+    }
   }
   function handleGlobals(cs, val) {
     const len = val.length;
@@ -471,14 +491,7 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
         case 3:
           globals[val[0]][val[1]] = val[2]; // en-fr
       }
-      dirty = announceUnsavedChanges(false);
-      if (!dirty) {
-        dirty = imagesUnsavedChanges(false);
-      }
-      if (dirty) {
-        onHandleDirty(dirty);
-        navigate(null);
-      }
+      setDirty();
       console.log("globals", globals);
     }
     if (cs === "valid") {
@@ -498,7 +511,8 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
     const keys = Object.keys(annKeys);
     keys.splice(0, cs === "POST" ? 1 : 2); //removes _id, id_user (PATCH only)
     let body = {},
-      flg = null;
+      flg = null,
+      cond = null;
     switch (cs) {
       case "POST": //body = empty + globals (user modified inputs)
         const data = _.cloneDeep(empty);
@@ -537,10 +551,18 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
       case "PATCH": //compares saved data (dataIn) vs modified (changes made by user)
         body = {};
         keys.map((key) => {
+          flg = Object.keys(modified[key]);
+          cond = flg.length === 1 && flg.indexOf("init") === 0;
           switch (key) {
+            case "options":
+            case "days":
+              if (cond) break;
+              if (!_.isEqual(modified[key], dataIn[key]))
+                body[key] = modified[key];
+              else if (body[key]) delete body[key]; //no change but modified[key] may have been created before (changes and come back to saved values)
+              break;
             default:
-              flg = Object.keys(modified[key]);
-              if (flg.length === 1 && flg.indexOf("init") === 0) break;
+              if (cond) break;
               flg = [];
               switch (annKeys[key]) {
                 case true: //en, fr
@@ -558,9 +580,11 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
                     body[key].fr = modified[key].fr;
                   else flg.push("fr"); //nochange fr
                   if (flg.length === 1) body[key][flg[0]] = dataIn[key][flg[0]];
+                  if (flg.length === 2 && body[key]) delete body[key]; //no change in both en fr, but modified[key] may have been created before (changes and come back to saved values)
                   break;
                 case false:
                   if (modified[key] != dataIn[key]) body[key] = modified[key];
+                  else if (body[key]) delete body[key]; //no change but modified[key] may have been created before (changes and come back to saved values)
               }
           }
         });
@@ -981,6 +1005,14 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
                   }}
                   onClick={() => {
                     if (values.archived.data.saved) return; //no fields change in archived announce, therefore no need to save
+                    if (values.status.data.saved === "publique" && !formValid) {
+                      toastError(
+                        formatMessage({
+                          id: "src.components.memberPage.tabs.annonces.details.AddAnnounceForm.warning4",
+                        })
+                      );
+                      return;
+                    }
                     handleSave();
                   }}
                 ></i>

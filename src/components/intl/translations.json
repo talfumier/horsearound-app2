@@ -486,7 +486,8 @@
               "option": "Option",
               "noInfos": "AUCUNE INFORMATION DU PROGRAMME N'EST PRÉCISÉE",
               "accomodation": "Hébergement : ",
-              "nbHoursRiding": "Nombre d'heures d'équitation : "
+              "nbHoursRiding": "Nombre d'heures d'équitation : ",
+              "nbKmsRiding": "Distance en kms  : "
             }
           },
           "moreInfos": {
@@ -893,7 +894,8 @@
                     "spokenLanguages": "Langues parlées",
                     "days": "Programme",
                     "daysPH": "Description détaillée jour par jour (facultatif) >>> cliquer sur le bouton 'Ajouter' pour créer des jours supplémentaires.",
-                    "nbHoursEqui": "Temps d'équitation (heures) - Distance (kms)",
+                    "nbHoursEqui": "Temps d'équitation (heures)",
+                    "nbKmsEqui": "Distance (kms)",
                     "options": "Options",
                     "optionsPH": "Décrire les options payantes pour des prestations additionnelles (facultatif) >>> cliquer sur le bouton 'Ajouter' pour créer des options supplémentaires.",
                     "images": "Images",
@@ -986,6 +988,7 @@
                   "warning1": "Modification impossible car il y a des enregistrements associés !",
                   "warning2": "Suppression impossible car il y a des enregistrements associés !",
                   "warning3": "Suppression impossible car il y a des enregistrements associés dans ",
+                  "warning4": "Modification impossible à cause de champ(s) obligatoire(s) non renseigné(s) !",
                   "bookingsByDayFailure": "Suppression impossible car il y a des réservations associées !",
                   "datesInFutureFailure": "Suppression impossible car il y a des dates de réservation dans le futur !",
                   "passwordChange": "Changer mot de passe",
@@ -3123,7 +3126,8 @@
               "option": "Option",
               "noInfos": " NO DETAILED INFORMATION AVAILABLE ",
               "accomodation": "Accomodation : ",
-              "nbHoursRiding": "Duration of the ride : "
+              "nbHoursRiding": "Duration of the ride (hours) : ",
+              "nbKmsRiding": "Distance (kms)  : "
             }
           },
           "moreInfos": {
@@ -3530,7 +3534,8 @@
                     "spokenLanguages": "Spoken languages",
                     "days": "Programme",
                     "daysPH": "Detailed description of day by day programme (optional) >>> click on 'Add' button to create additional days.",
-                    "nbHoursEqui": "Horse riding time (hours) - Distance (kms)",
+                    "nbHoursEqui": "Horse riding time (hours)",
+                    "nbKmsEqui": "Distance (kms)",
                     "options": "Options",
                     "optionsPH": "Describe chargeable options for additional services (optional) >>> click on 'Add' button to create additional options.",
                     "images": "Images",
@@ -3623,6 +3628,7 @@
                   "warning1": "Update operation not possible due to related records !",
                   "warning2": "Delete operation not possible due to related records !",
                   "warning3": "Delete operation not possible due to related records in ",
+                  "warning4": "Update operation not possible due to missing mandatory input(s) !",
                   "bookingsByDayFailure": "Delete operation not possible due to related bookings !",
                   "datesInFutureFailure": "Delete operation not possible due to booking slots in future !",
                   "passwordChange": "Password reset",

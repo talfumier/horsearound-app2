@@ -3,13 +3,9 @@ import {useIntl} from "react-intl";
 import LanguageBlock from "./LanguageBlock.jsx";
 import SimpleText from "./SimpleText.jsx";
 
-function DayUnit({dataIn, onHandleDelete, onHandleGlobals}) {
+function DayUnit({dataIn, valid, onHandleDelete, onHandleGlobals}) {
   const {formatMessage} = useIntl();
   const keys = Object.keys(dataIn);
-  function handleGlobals(cs, val, day) {
-    if (cs === "valid") return; //no validation at all since it is optional
-    onHandleGlobals(cs, val, day);
-  }
   return keys.map((key, idx) => {
     return (
       <div key={idx}>
@@ -31,29 +27,40 @@ function DayUnit({dataIn, onHandleDelete, onHandleGlobals}) {
             ></i>
           </button>
         )}
-        {key !== "day" && key !== "nbHoursEqui" && (
+        {key !== "day" && key !== "nbHoursEqui" && key !== "nbKmsEqui" && (
           <LanguageBlock
             key={idx}
             type={`${idx === 1 ? "text" : "textarea"}`}
             nested={true}
             dataIn={{name: key, data: dataIn[key]}}
-            required={false}
-            valid={{[key]: true}}
+            required={key === "title" ? true : false}
+            valid={valid[key]}
             onHandleGlobals={(cs, val) => {
-              handleGlobals(cs, val, dataIn.day);
+              onHandleGlobals(cs, val, dataIn.day);
             }}
           ></LanguageBlock>
         )}
         {key === "nbHoursEqui" && (
           <Row className="justify-content-md-center mt-4">
-            <SimpleText
-              dataIn={{name: key, data: dataIn[key]}}
-              required={false}
-              valid={{[key]: true}}
-              onHandleGlobals={(cs, val) => {
-                handleGlobals(cs, val, dataIn.day);
-              }}
-            ></SimpleText>
+            <div
+              className="d-flex justify-content-center mt-4"
+              style={{width: "50%"}}
+            >
+              {["nbHoursEqui", "nbKmsEqui"].map((ky) => {
+                return (
+                  <SimpleText
+                    key={ky}
+                    dataIn={{name: ky, data: dataIn[ky]}}
+                    w="70px"
+                    required={false}
+                    valid={true}
+                    onHandleGlobals={(cs, val) => {
+                      onHandleGlobals(cs, val, dataIn.day);
+                    }}
+                  ></SimpleText>
+                );
+              })}
+            </div>
           </Row>
         )}
       </div>

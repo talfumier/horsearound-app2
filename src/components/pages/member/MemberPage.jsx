@@ -226,7 +226,16 @@ function MemberPage({
     anns.map((ann) => {
       if (typeof sel[ann._id] === "undefined") sel[ann._id] = 0; //init selected items that are not already set by queryParams
     });
-    setSelected({...selected, announces: sel});
+    const newSel = {};
+    if (anns.length !== Object.keys(sel))
+      //deletion in announce form case
+      anns.map((ann) => {
+        newSel[ann._id] = sel[ann._id];
+      });
+    setSelected({
+      ...selected,
+      announces: Object.keys(newSel).length > 0 ? newSel : sel,
+    });
     if (cs === -1) {
       setTab(2);
       setTimeout(() => {

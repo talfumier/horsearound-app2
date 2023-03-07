@@ -151,6 +151,9 @@ function Rib({
               onHandleCbPayment("1", !cbPayment1);
             }}
             checked={cbPayment1}
+            style={{
+              cursor: "pointer",
+            }}
           ></input>
           <label htmlFor="payment1">
             <h5
@@ -159,6 +162,7 @@ function Rib({
                 marginBottom: "0",
                 paddingBottom: 0,
                 color: cbPayment1 ? "green" : null,
+                cursor: "pointer",
               }}
             >
               {formatMessage({

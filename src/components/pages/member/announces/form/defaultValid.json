@@ -46,8 +46,8 @@
   "englishLevel": true,
   "germanLevel": true,
   "spanishLevel": true,
-  "days": true,
-  "options": true,
+  "days": false,
+  "options": false,
   "highlights": {"en": true, "fr": true},
   "guaranteedDeparture": true,
   "images": true
