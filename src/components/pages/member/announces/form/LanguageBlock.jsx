@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {useResizeDetector} from "react-resize-detector";
 import {FormattedMessage, useIntl} from "react-intl";
 import {Row, Col} from "react-bootstrap";
+import _ from "lodash";
 import Translate from "./Translate.jsx";
 import {translate} from "../../../../../services/httpGoogleServices.js";
 import {alert} from "../../validation.js";
@@ -20,17 +21,21 @@ function LanguageBlock({
   const {locale, formatMessage} = useIntl();
   const langs = ["en", "fr"];
   const order = langs.indexOf(locale);
-  const name = dataIn.name;
+  const {name} = dataIn;
   const [start, setStart] = useState({en: 1, fr: 1});
   const [value, setValue] = useState(null);
   const [warning, setWarning] = useState({en: null, fr: null});
   useEffect(() => {
-    let data = null;
-    if (typeof reset !== "undefined")
-      data = isEven(reset) ? dataIn.data.default : dataIn.data.saved;
-    else data = dataIn.data;
+    if (typeof reset !== "undefined") return; //used for days and options in AnnounceForm
+    //setStart({en: 0, fr: 0});
+    setValue(dataIn.data);
+    //setWarning({en: false, fr: false});
+  }, [dataIn]);
+  useEffect(() => {
+    if (typeof reset === "undefined") return;
+    const data = isEven(reset) ? dataIn.data.default : dataIn.data.saved;
     //setValue(data);
-    Object.keys(data).map((lang) => {
+    langs.map((lang) => {
       try {
         handleChange(lang, data[lang], 1); //set value state, update validation & warning upon reset change
         setWarning({en: false, fr: false});
@@ -75,6 +80,7 @@ function LanguageBlock({
       handleChange(lang, translated);
     });
   }
+  //if (nested) console.log("value", value);
   return (
     value && (
       <Row className="justify-content-md-center">

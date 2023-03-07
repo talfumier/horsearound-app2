@@ -73,6 +73,9 @@ function DatesBlock({reset, dataIn, onHandleGlobals}) {
           onHandleGlobals("valid", result.props.obj);
           result = alert("nbNights", null, val[activeType].nbNights, true);
           onHandleGlobals("valid", result.props.obj);
+        } else {
+          onHandleGlobals("valid", ["nbDays", true]);
+          onHandleGlobals("valid", ["nbNights", true]);
         }
         onHandleGlobals("value", ["datesType", e.target.id]);
         onHandleGlobals("value", [

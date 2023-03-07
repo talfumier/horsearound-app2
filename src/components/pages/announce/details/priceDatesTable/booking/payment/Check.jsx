@@ -70,14 +70,18 @@ function Check({
               onHandleCbPayment("2", !cbPayment2);
             }}
             checked={cbPayment2}
+            style={{
+              cursor: "pointer",
+            }}
           ></input>
-          <label htmlFor="payment1">
+          <label htmlFor="payment2">
             <h5
               style={{
                 marginLeft: "20px",
                 marginBottom: "0",
                 paddingBottom: 0,
                 color: cbPayment2 ? "green" : null,
+                cursor: "pointer",
               }}
             >
               {formatMessage({

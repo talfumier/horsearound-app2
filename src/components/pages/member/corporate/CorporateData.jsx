@@ -145,14 +145,22 @@ function CorporateData({user, onHandleDirty}) {
   }
   function handleClearAllUndo(cs) {
     initGlobals(); //resets globals (contains all user's modified data) to empty properties
-    let rst = _.clone(reset);
+    let rst = _.clone(reset),
+      flg = -1;
     if (cs === 0) {
       rst += isEven(rst) ? 2 : 1; //even number, clear all >>> default values
       Object.keys(values).map((key) => {
-        if (!_.isEqual(values[key].data.saved, values[key].data.default))
+        if (!_.isEqual(values[key].data.saved, values[key].data.default)) {
+          flg += 1;
           globals[key] = values[key].data.default;
+        }
       });
-    } else rst += isEven(rst) ? 1 : 2; //odd number, undo >>> saved values
+      if (flg >= 0) onHandleDirty(true);
+    } else {
+      //odd number, undo >>> saved values
+      onHandleDirty(false);
+      rst += isEven(rst) ? 1 : 2;
+    }
 
     const valide = {...valid}; //resets valid after clear or restore all
     valide.current = _.cloneDeep(isEven(rst) ? valide.default : valide.saved);
@@ -183,6 +191,7 @@ function CorporateData({user, onHandleDirty}) {
           flg = Object.keys(modified[key]);
           if (flg.length === 1 && flg.indexOf("init") === 0) break;
           if (modified[key] != dataIn[key]) body[key] = modified[key];
+          else if (body[key]) delete body[key]; //no change but modified[key] may have been created before (changes and come back to saved values)
       }
     });
     console.log("body", body);

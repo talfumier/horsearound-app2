@@ -4,7 +4,7 @@ import {useIntl} from "react-intl";
 import LanguageBlock from "./LanguageBlock.jsx";
 import SimpleText from "./SimpleText.jsx";
 
-function OptionUnit({dataIn, onHandleDelete, onHandleGlobals}) {
+function OptionUnit({dataIn, valid, onHandleDelete, onHandleGlobals}) {
   const {formatMessage} = useIntl();
   const keys = Object.keys(dataIn);
   const [value, setValue] = useState("All");
@@ -32,13 +32,10 @@ function OptionUnit({dataIn, onHandleDelete, onHandleGlobals}) {
   });
   function handleChange(e) {
     setValue(e.target.value);
-    handleGlobals("value", [e.target.id, e.target.value], dataIn.option);
-  }
-  function handleGlobals(cs, val, option) {
-    if (cs === "valid") return; //no validation at all since it is optional
-    onHandleGlobals(cs, val, option);
+    onHandleGlobals("value", [e.target.id, e.target.value], dataIn.option);
   }
   return keys.map((key, idx) => {
+    console.log(keys, key);
     return (
       <div key={idx}>
         {key === "option" && (
@@ -59,16 +56,16 @@ function OptionUnit({dataIn, onHandleDelete, onHandleGlobals}) {
             ></i>
           </button>
         )}
-        {key === "description" && (
+        {(key === "title" || key === "description") && (
           <LanguageBlock
             key={idx}
             type={`${idx === 1 ? "text" : "textarea"}`}
             nested={true}
             dataIn={{name: key, data: dataIn[key]}}
-            required={false}
-            valid={{[key]: true}}
+            required={key === "title" ? true : false}
+            valid={valid[key]}
             onHandleGlobals={(cs, val) => {
-              handleGlobals(cs, val, dataIn.option);
+              onHandleGlobals(cs, val, dataIn.option);
             }}
           ></LanguageBlock>
         )}
@@ -80,10 +77,10 @@ function OptionUnit({dataIn, onHandleDelete, onHandleGlobals}) {
             >
               <SimpleText
                 dataIn={{name: key, data: dataIn[key]}}
-                required={false}
-                valid={{[key]: true}}
+                required={true}
+                valid={valid[key]}
                 onHandleGlobals={(cs, val) => {
-                  handleGlobals(cs, val, dataIn.option);
+                  onHandleGlobals(cs, val, dataIn.option);
                 }}
                 w="100px"
               ></SimpleText>

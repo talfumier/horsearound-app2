@@ -83,6 +83,12 @@ function AnnounceProgram({announce}) {
                           <span>{day.nbHoursEqui}</span>
                         </span>
                       ) : null}
+                      {day.nbKmsEqui ? (
+                        <span className="ml-4 pl-4">
+                          <FormattedMessage id="src.components.announcePage.announceDetailTab.program.nbKmsRiding" />
+                          <span>{day.nbKmsEqui}</span>
+                        </span>
+                      ) : null}
                     </p>
                   </div>
                   <div className="media-right">

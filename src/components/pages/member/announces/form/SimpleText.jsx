@@ -38,16 +38,20 @@ function SimpleText({
   const [value, setValue] = useState("");
   const [warning, setWarning] = useState(false);
   useEffect(() => {
-    let data = null;
-    if (typeof reset === "undefined") data = dataIn.data;
-    else {
-      data = isEven(reset) ? dataIn.data.default : dataIn.data.saved;
-      if (data instanceof Object) data = dataIn.data.default;
-    }
+    if (typeof reset !== "undefined") return;
+    setValue(dataIn.data);
+    const result = alert(name, null, dataIn.data, required);
+    setWarning(result);
+    setColor(valid ? "green" : "red");
+  }, [dataIn]);
+  useEffect(() => {
+    if (typeof reset === "undefined") return;
+    let data = isEven(reset) ? dataIn.data.default : dataIn.data.saved;
+    if (data instanceof Object) data = dataIn.data.default;
     if (disabled) setValue(data);
     else handleChange(data, 1); //set value state, update validation upon reset change
     setWarning(false);
-  }, [dataIn, reset]);
+  }, [reset]);
   useEffect(() => {
     function changeEvent() {
       setLineThrough(document.getElementById(lt).value == 1 ? false : true);
@@ -65,7 +69,7 @@ function SimpleText({
   function handleChange(val, cs = 0) {
     setStart(0);
     setValue(val);
-    const result = alert(name, null, val, true);
+    const result = alert(name, null, val, required);
     if (cs === 0) setWarning(result);
     if (required) {
       onHandleGlobals("valid", result.props.obj);

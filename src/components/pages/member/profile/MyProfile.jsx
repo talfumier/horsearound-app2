@@ -184,13 +184,17 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
   }, [userId]);
   function handleClearAllUndo(cs) {
     initGlobals(); //resets globals (contains all user's modified data) to empty properties
-    let rst = _.clone(reset);
+    let rst = _.clone(reset),
+      flg = -1;
     if (cs === 0) {
       rst += isEven(rst) ? 2 : 1; //even number, clear all >>> default values
       Object.keys(values).map((key) => {
-        if (!_.isEqual(values[key].data.saved, values[key].data.default))
+        if (!_.isEqual(values[key].data.saved, values[key].data.default)) {
+          flg += 1;
           globals[key] = values[key].data.default;
+        }
       });
+      if (flg >= 0) onHandleDirty(true);
     } else {
       rst += isEven(rst) ? 1 : 2; //odd number, undo >>> saved values
       setValues(dataIn);
@@ -235,6 +239,7 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
             });
             if (!_.isEqual(modified[key], dataIn[key].data.saved))
               body[key] = modified[key];
+            else if (body[key]) delete body[key]; //no change but modified[key] may have been created before (changes and come back to saved values)
             break;
           default:
             if (modified[key] != dataIn[key].data.saved) {
@@ -243,7 +248,7 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
                 date = parse(modified[key], "dd.MM.yyyy", new Date());
                 if (!isNaN(date.getTime())) body[key] = date;
               }
-            }
+            } else if (body[key]) delete body[key]; //no change but modified[key] may have been created before (changes and come back to saved values)
         }
       }
     });
