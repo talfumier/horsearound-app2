@@ -14,6 +14,7 @@ import AccomodationInfo from "./AccomodationInfo";
 import PracticalInfo from "./practicalInfo/PracticalInfo";
 import ProInfo from "./proInfo/ProInfo";
 import ContactMessaging from "./proInfo/ContactMessaging";
+import Options from "./priceDatesTable/option/Options.jsx";
 import "../../../../css/draggable_resizable.css";
 
 function AnnounceDetails({
@@ -33,11 +34,11 @@ function AnnounceDetails({
   let tab = 0;
   try {
     if (queryParams[1][0].includes("MyBookings")) {
-      tab = 2; //return on PriceDatesTable (i.e 2nd tab) when coming back from MemberPage Bookings tab (ref. to DataTable.jsx >>> EnhancedTableToolbar)
+      tab = 3; //return on PriceDatesTable (i.e 3rd tab) when coming back from MemberPage Bookings tab (ref. to DataTable.jsx >>> EnhancedTableToolbar)
     }
   } catch (error) {}
   useEffect(() => {
-    if (tab === 2)
+    if (tab === 3)
       navigate(
         `${location.pathname}?${queryParams[0][0]}=${queryParams[0][1]}`, //remove 'MyBookings_ids, MyBookings_ann_id' parameter from url
         {replace: true, state: location.state}
@@ -59,11 +60,12 @@ function AnnounceDetails({
   return (
     <>
       <div className="justify-content-center w-100">
-        <AppBar position="static" color="default" elevation={0}>
+        <AppBar position="static" color="inherit" elevation={0}>
           <Tabs
-            value={!cookies.user && state === 6 ? state - 1 : state}
+            value={!cookies.user && state === 7 ? state - 1 : state}
             onChange={handleChange}
-            variant="fullWidth"
+            centered={true}
+            //variant="fullWidth"
           >
             <Tab
               label={
@@ -73,6 +75,11 @@ function AnnounceDetails({
             <Tab
               label={
                 <FormattedMessage id="src.components.announcePage.announceDetailTab.labels.equestrianInfo" />
+              }
+            />
+            <Tab
+              label={
+                <FormattedMessage id="src.components.announcePage.announceDetailTab.labels.options" />
               }
             />
             <Tab
@@ -115,6 +122,40 @@ function AnnounceDetails({
             <EquestrianPhysicalInfo announce={announce} full={true} />
           </TabContainer>
           <TabContainer>
+            <div className="d-flex justify-content-between mt-4 ">
+              {((announce.included && announce.included[lang]) ||
+                (announce.notIncluded && announce.notIncluded[lang])) && (
+                <div className="col-5 ">
+                  {announce.included && announce.included[lang] && (
+                    <StandardInfo
+                      field={announce.included}
+                      lang={lang}
+                      id="src.components.announcePage.announceDetailTab.labels.included"
+                    ></StandardInfo>
+                  )}
+                  {announce.notIncluded && announce.notIncluded[lang] && (
+                    <StandardInfo
+                      field={announce.notIncluded}
+                      lang={lang}
+                      id="src.components.announcePage.announceDetailTab.labels.notIncluded"
+                    ></StandardInfo>
+                  )}
+                </div>
+              )}
+              <div className="ml-4 mt-1">
+                <h5 className="media-heading font-weight-bold">Options</h5>
+                {announce.options.length > 0 && (
+                  <Options
+                    dataIn={{announce, dates: [], dateParticipants: {}}}
+                    recap={{}}
+                    locks={false}
+                    mt={10}
+                  ></Options>
+                )}
+              </div>
+            </div>
+          </TabContainer>
+          <TabContainer>
             <PriceDatesTable
               className="m-0 p-0"
               typetable="announce"
@@ -125,20 +166,6 @@ function AnnounceDetails({
               objectDelete
               onHandleFormBooking={onHandleFormModal}
             />
-            {announce.included && announce.included[lang] && (
-              <StandardInfo
-                field={announce.included}
-                lang={lang}
-                id="src.components.announcePage.announceDetailTab.labels.included"
-              ></StandardInfo>
-            )}
-            {announce.notIncluded && announce.notIncluded[lang] && (
-              <StandardInfo
-                field={announce.notIncluded}
-                lang={lang}
-                id="src.components.announcePage.announceDetailTab.labels.notIncluded"
-              ></StandardInfo>
-            )}
           </TabContainer>
           <TabContainer>
             <AccomodationInfo announce={announce}></AccomodationInfo>

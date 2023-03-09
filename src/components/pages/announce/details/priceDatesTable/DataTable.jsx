@@ -122,7 +122,6 @@ const EnhancedTableToolbar = ({
   rows,
   selected,
   numSelected,
-  numFiltered,
   theme,
   onFilter,
   onHandleFormBooking,
@@ -131,11 +130,9 @@ const EnhancedTableToolbar = ({
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
-  const [filter, setFilterStatus] = useState(false);
   //const [open, setOpen] = useState(false);
   function handleFilter(cond) {
     onFilter(cond);
-    setFilterStatus(cond);
   }
   function getLabel() {
     let num = "",
@@ -260,7 +257,8 @@ const EnhancedTableToolbar = ({
     </ThemeProvider>
   );
 };
-let original = [];
+let original = [],
+  numFiltered = 0;
 export default function DataTable({
   headCells,
   announce,
@@ -276,10 +274,9 @@ export default function DataTable({
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState(headCells[0].name);
   const [selected, setSelected] = useState([]);
-  const [numFiltered, setNumFiltered] = useState(0);
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(true);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(4);
   function formatDate(date) {
     return _.isString(date) ? parseISO(date) : date;
   }
@@ -319,6 +316,24 @@ export default function DataTable({
       announce.devise
     );
   }
+  function getOptionRecap(options) {
+    if (options.length === 0) return "";
+    return (
+      <div style={{whiteSpace: "pre"}}>
+        {options.map((option, idx) => {
+          return (
+            <div className="mt-1" key={idx}>
+              {`Option#${option.option}: ${option.price} ${
+                announce.devise
+              } ${formatMessage({
+                id: `src.components.memberPage.tabs.annonces.details.AddOption.option${option.type}`,
+              })}`}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
   function getPriceDatesData(announce) {
     if (announce.dates) {
       const data = [];
@@ -342,11 +357,11 @@ export default function DataTable({
                 formatDate(date.period.dateEnd),
                 formatDate(date.period.dateStart)
               ) + 1, //stay duration
-              bookingsByDay !== null
-                ? sumOfPropsValues(bookingsByDay[0].bookings)
-                : 0 + //sum up object's props values for the 1st day (in Fixed_Fixed case, bookings for each day of the period is the same)
-                    "/" +
-                    announce.participantMax,
+              `${
+                bookingsByDay !== null
+                  ? sumOfPropsValues(bookingsByDay[0].bookings) //sum up object's props values for the 1st day (in Fixed_Fixed case, bookings for each day of the period is the same)
+                  : 0
+              } / ${announce.participantMax}`,
               formatMessage({
                 id: testGuaranteedDeparture(
                   [announce.dates[idx]],
@@ -362,6 +377,7 @@ export default function DataTable({
         rowData.push(
           date.comments ? date.comments[locale] : null,
           getPriceRecap(date.promotion),
+          getOptionRecap(announce.options),
           date.promotion ? "-" + date.promotion + "%" : "",
           idx,
           date.promotion,
@@ -413,14 +429,14 @@ export default function DataTable({
           obj[headCells[idx].name] = item;
         } catch (error) {
           switch (`${idx}-${announce.datesType}`) {
-            case "6-Flex_Flex":
-            case "7-Flex_Fixed":
-            case "9-Fixed_Fixed":
-              obj.promotion = item;
-              break;
             case "7-Flex_Flex":
             case "8-Flex_Fixed":
             case "10-Fixed_Fixed":
+              obj.promotion = item;
+              break;
+            case "8-Flex_Flex":
+            case "9-Flex_Fixed":
+            case "11-Fixed_Fixed":
               obj.bookingsByDay = item;
           }
         }
@@ -469,10 +485,10 @@ export default function DataTable({
         return selected.indexOf(row.id) !== -1;
       });
       setRows(filtered);
-      setNumFiltered(filtered.length);
+      numFiltered = filtered.length;
     } else {
       setRows(original);
-      setNumFiltered(0);
+      numFiltered = 0;
     }
     setPage(0);
   };
@@ -485,7 +501,6 @@ export default function DataTable({
           rows={rows}
           selected={selected}
           numSelected={selected.length}
-          numFiltered={numFiltered}
           theme={themes.toolbar}
           onFilter={filterData}
           onHandleFormBooking={onHandleFormBooking}

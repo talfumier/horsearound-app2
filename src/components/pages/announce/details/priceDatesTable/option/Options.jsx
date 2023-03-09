@@ -8,7 +8,7 @@ import {
 } from "../../../../utils/utilityFunctions.js";
 import BookingRecap from "../booking/payment/BookingRecap.jsx";
 
-function Options({dataIn, recap, locks, onHandleOptions}) {
+function Options({dataIn, recap, locks, mt, onHandleOptions}) {
   const {locale, formatMessage} = useIntl();
   const {datesType, options, devise} = dataIn.announce;
   const {dateParticipants} = dataIn;
@@ -45,7 +45,7 @@ function Options({dataIn, recap, locks, onHandleOptions}) {
       <Card
         variant="outlined"
         style={{
-          marginTop: "20px",
+          marginTop: mt ? mt : 20,
           marginLeft: "10px",
           marginRight: "10px",
           paddingBottom: "40px",
@@ -66,12 +66,11 @@ function Options({dataIn, recap, locks, onHandleOptions}) {
                         })} ${option.option}`}
                       </h6>
                     </label>
-                    <input
-                      type="text"
+                    <textarea
                       className="form-control"
                       disabled={true}
-                      value={option.description[locale]}
-                    ></input>
+                      value={`${option.title[locale]}\n${option.description[locale]}`}
+                    ></textarea>
                   </div>
                   <div className="col-2 mt-4">
                     <label>

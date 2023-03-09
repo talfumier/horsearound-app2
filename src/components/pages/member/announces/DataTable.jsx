@@ -36,7 +36,8 @@ import {deleteConditionsSatisfied} from "./form/AnnounceForm.jsx";
 import {toastError} from "../../common/toastSwal/ToastMessages.js";
 import {sumOfPropsValues} from "../../utils/utilityFunctions.js";
 
-let firstSelected = -1;
+let firstSelected = -1,
+  numFiltered = 0;
 function EnhancedTableHead({
   headCells,
   numSelected,
@@ -77,7 +78,6 @@ const EnhancedTableToolbar = ({
   rows,
   selected,
   edit,
-  numFiltered,
   theme,
   onFilter,
   onHandlePastArchived,
@@ -87,7 +87,6 @@ const EnhancedTableToolbar = ({
   const [cookies, setCookie] = useCookies(["user"]);
   const contextImages = useContext(ImagesContext);
   const navigate = useNavigate();
-  const [filter, setFilterStatus] = useState(false);
   const [spin, setSpinner] = useState(false);
   const [trashConditions, setTrashConditions] = useState({
     cond: [false, ""],
@@ -111,7 +110,6 @@ const EnhancedTableToolbar = ({
   }, [edit]);
   function handleFilter(cond) {
     onFilter(cond);
-    setFilterStatus(cond);
   }
   function getLabel() {
     function getURL() {
@@ -434,7 +432,6 @@ export default function DataTable({
         : {}
     );
   }, [selected]);
-  const [numFiltered, setNumFiltered] = useState(0);
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -583,15 +580,15 @@ export default function DataTable({
         return selected[row.id] === 1;
       });
       setRows(filtered);
-      setNumFiltered(filtered.length);
+      numFiltered = filtered.length;
     } else {
       setRows(original);
-      setNumFiltered(0);
+      numFiltered = 0;
     }
     setPage(0);
   };
   function handleDelete(cs, id) {
-    if (numFiltered > 1) setNumFiltered(numFiltered - 1);
+    if (numFiltered > 1) numFiltered += -1;
     const sl = {...selected};
     delete sl[id];
     setSelected(sl);

@@ -5,7 +5,6 @@ import SimpleText from "../announces/form/SimpleText.jsx";
 import {alert} from "../validation.js";
 
 function Check({reset, dataIn, valid, onHandleGlobals}) {
-  //console.log("dataIn", dataIn);
   const {formatMessage} = useIntl();
   const keys = ["checkOrder", "checkAdress"];
   const [state, setState] = useState({});

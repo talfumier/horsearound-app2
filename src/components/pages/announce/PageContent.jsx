@@ -14,6 +14,7 @@ import {errorHandlingToast} from "../../../services/utilsFunctions.js";
 import {getCompany} from "../../../services/httpUsers.js";
 import {getAnnounceBookings} from "../../../services/httpBookings.js";
 import ProContext from "../common/context/ProContext.js";
+import RatingTable from "../announces/RatingTable.jsx";
 
 let subToType = {};
 export function getSubToType() {
@@ -117,7 +118,7 @@ function PageContent({announce, images, comments}) {
                 }
               />
             </div>
-            <div className="col-4 h-50 m-auto">
+            <div className="col-4 h-50 mx-auto">
               <h3 className="m-auto p-4 text-center" style={{color: "#7AA095"}}>
                 <b>{announce.title[lang]}</b>
               </h3>
@@ -136,6 +137,7 @@ function PageContent({announce, images, comments}) {
                 </b>
               </p>
               <br />
+              <RatingTable announce={announce} format="landscape"></RatingTable>
               <p style={{whiteSpace: "pre-line"}} className="text-justify">
                 {" "}
                 {announce.description && announce.description[lang]}
@@ -183,7 +185,7 @@ function PageContent({announce, images, comments}) {
               </div>
             </div>
           </div>
-          <div className="col-8 m-auto" style={{maxWidth: "80%"}}>
+          <div className="col-8 m-auto" style={{maxWidth: "83%"}}>
             <AnnounceDetails
               announce={announce}
               proId={pro.id_user._id}

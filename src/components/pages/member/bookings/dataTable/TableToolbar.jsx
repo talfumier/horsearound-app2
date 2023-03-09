@@ -11,25 +11,21 @@ import {
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FilterListOffIcon from "@mui/icons-material/FilterListOff";
-import _ from "lodash";
 import FontAwesome from "react-fontawesome";
 
 function TableToolbar({
   numSelected,
-  selected,
   numFiltered,
   theme,
-  onFilter,
+  onHandleFilter,
   spinner,
   onHandlePast,
   onHandleSummary,
 }) {
   const {locale, formatMessage} = useIntl();
-  const [filter, setFilterStatus] = useState(false);
   const [spin, setSpinner] = useState(spinner);
   function handleFilter(cond) {
-    onFilter(cond);
-    setFilterStatus(cond);
+    onHandleFilter(cond);
   }
   function getLabel() {
     let num = "",
@@ -115,7 +111,7 @@ function TableToolbar({
                 <input
                   id="bkgPastSlider"
                   type="checkbox"
-                  onChange={() => {
+                  onChange={(e) => {
                     onHandlePast(
                       document.getElementById("bkgPastSlider").checked
                     );
@@ -128,7 +124,7 @@ function TableToolbar({
         </Typography>
 
         <IconButton
-          id="MyAnnouncesTabFilter"
+          id="MyBookingsTabFilter"
           onClick={() => {
             handleFilter(true);
           }}

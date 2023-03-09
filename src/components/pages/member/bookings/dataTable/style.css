@@ -1,0 +1,10 @@
+
+/* visited link */
+.alink:visited {
+  color: blue;
+}
+
+/* mouse over link */
+.alink:hover {
+  color: hotpink;
+}
