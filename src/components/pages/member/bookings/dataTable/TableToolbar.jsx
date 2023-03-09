@@ -25,7 +25,6 @@ function TableToolbar({
   const {locale, formatMessage} = useIntl();
   const [spin, setSpinner] = useState(spinner);
   function handleFilter(cond) {
-    console.log("handleFilter", cond);
     onHandleFilter(cond);
   }
   function getLabel() {

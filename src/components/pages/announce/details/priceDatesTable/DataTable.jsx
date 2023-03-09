@@ -122,7 +122,6 @@ const EnhancedTableToolbar = ({
   rows,
   selected,
   numSelected,
-  numFiltered,
   theme,
   onFilter,
   onHandleFormBooking,
@@ -131,11 +130,9 @@ const EnhancedTableToolbar = ({
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
-  const [filter, setFilterStatus] = useState(false);
   //const [open, setOpen] = useState(false);
   function handleFilter(cond) {
     onFilter(cond);
-    setFilterStatus(cond);
   }
   function getLabel() {
     let num = "",
@@ -258,7 +255,8 @@ const EnhancedTableToolbar = ({
     </ThemeProvider>
   );
 };
-let original = [];
+let original = [],
+  numFiltered = 0;
 export default function DataTable({
   headCells,
   announce,
@@ -274,7 +272,6 @@ export default function DataTable({
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState(headCells[0].name);
   const [selected, setSelected] = useState([]);
-  const [numFiltered, setNumFiltered] = useState(0);
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(4);
@@ -486,10 +483,10 @@ export default function DataTable({
         return selected.indexOf(row.id) !== -1;
       });
       setRows(filtered);
-      setNumFiltered(filtered.length);
+      numFiltered = filtered.length;
     } else {
       setRows(original);
-      setNumFiltered(0);
+      numFiltered = 0;
     }
     setPage(0);
   };
@@ -502,7 +499,6 @@ export default function DataTable({
           rows={rows}
           selected={selected}
           numSelected={selected.length}
-          numFiltered={numFiltered}
           theme={themes.toolbar}
           onFilter={filterData}
           onHandleFormBooking={onHandleFormBooking}

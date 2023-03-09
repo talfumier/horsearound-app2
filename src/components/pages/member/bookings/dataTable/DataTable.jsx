@@ -169,7 +169,8 @@ export function getCompletedSteps(
   });
 }
 
-let original = [];
+let original = [],
+  numFiltered = 0;
 function DataTable({
   headCells,
   bookings,
@@ -184,12 +185,9 @@ function DataTable({
   const {locale, formatMessage} = useIntl();
   const contextImages = useContext(ImagesContext);
   const [rows, setRows] = useState([]);
-  console.log("DataTable render");
-  const [numFiltered, setNumFiltered] = useState(null);
   useEffect(() => {
     original = prepareData(headCells, bookings); //default past parameter=true (i.e. includes dates in the past)
     setRows(original);
-    setNumFiltered(0);
   }, [bookings]);
   const [firstSel, setFirstSel] = useState(null);
   useEffect(() => {
@@ -216,9 +214,8 @@ function DataTable({
   const [dense, setDense] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [open, setOpen] = useState({summary: false, infos: false});
-  function getURL(id) {
-    let url = `/member?MyBookings_ids=${[id]}`;
-    console.log("numFiltered", numFiltered, selected);
+  function getURL(ids) {
+    let url = `/member?MyBookings_ids=${ids}`;
     if (document.getElementById("bkgPastSlider").checked) url = `${url}&past`;
     if (numFiltered > 0) url = `${url}&filtered`;
     return url;
@@ -256,29 +253,31 @@ function DataTable({
               case 1: //activity - organizer
                 obj[headCells[i].name] = (
                   <>
-                    <a
+                    <Link
                       className="alink"
+                      to={`/announce/details?id=${rec.announce._id}`} //navigate to Announce details page
+                      state={{
+                        images:
+                          contextImages && Object.keys(contextImages).length > 0
+                            ? contextImages[rec.announce._id]
+                            : [],
+                      }}
                       onClick={() => {
+                        /* const ids = [];
+                        console.log(selected);
+                        Object.keys(selected).map((key) => {
+                          if (selected[key] === 1) ids.push(key);
+                        }); */
                         navigate(
-                          getURL(rec._id), //add 'MyBookings' parameter in url to be able to come back on bookings tab when using browser back button
+                          getURL([rec._id]), //add 'MyBookings' parameter in url to be able to come back on bookings tab when using browser back button
                           {
                             replace: true,
                           }
                         );
-                        /* navigate(`/announce/details?id=${rec.announce._id}`,//navigate to Announce details page 
-                        {
-                          state: {
-                            images:
-                              contextImages &&
-                              Object.keys(contextImages).length > 0
-                                ? contextImages[rec.announce._id]
-                                : [],
-                          },
-                        }); */
                       }}
                     >
                       {`${rec.announce.title[locale]}`}
-                    </a>
+                    </Link>
                     <br />
                     {`${rec.company.corpName}`}
                   </>
@@ -563,17 +562,14 @@ function DataTable({
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
   const filterData = (filter) => {
-    console.log("filterData", filter);
     if (filter) {
       const filtered = _.filter(rows, (row, idx) => {
         return selected[row.id] === 1;
       });
       setRows(filtered);
-      console.log("filtered.length", filtered.length);
-      setNumFiltered(filtered.length);
+      numFiltered = filtered.length;
     } else {
-      console.log("xxx 0");
-      setNumFiltered(0);
+      numFiltered = 0;
       setRows(original);
     }
     setPage(0);

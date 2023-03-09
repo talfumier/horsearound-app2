@@ -243,7 +243,7 @@ function MemberPage({
           if (cs1 === -1) document.getElementById("archivedSlider").click();
           if (cs0 === -1)
             document.getElementById("MyAnnouncesTabFilter").click();
-          if (cs2 === -1) document.getElementById("pastSlider").click();
+          if (cs2 === -1) document.getElementById("annPastSlider").click();
         } catch (error) {
           console.log(error);
         }
@@ -294,11 +294,8 @@ function MemberPage({
       setTimeout(() => {
         try {
           if (cs3 !== 0) document.getElementById("bkgPastSlider").click();
-          console.log("cs4", cs4);
           if (cs4 !== 0) document.getElementById("MyBookingsTabFilter").click();
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
       }, 500);
       navigate("/member", {replace: true});
     }
