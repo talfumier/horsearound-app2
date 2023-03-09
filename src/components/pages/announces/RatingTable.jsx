@@ -6,8 +6,8 @@ import {
   BedRating,
 } from "../utils/Ratings";
 
-function RatingTable({announce}) {
-  return (
+function RatingTable({announce, format = "portrait"}) {
+  return format === "portrait" ? (
     <div className="table-responsive">
       <table className="table table-borderless" style={{borderTop: "none"}}>
         <tbody>
@@ -50,6 +50,54 @@ function RatingTable({announce}) {
               </td>
             </tr>
           )}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <div className="table-responsive p-4">
+      <table className="table table-borderless">
+        <tbody>
+          <tr>
+            <td style={{borderTop: "none", color: "#969696"}}>
+              <FormattedMessage id="src.components.rating.Rating.tR1C1" />(
+              {announce.numberRatings}){" "}
+            </td>
+            <td style={{borderTop: "none"}}>
+              <StarRating announce={announce} />
+            </td>
+            {announce.equestrianLevel === 0 ? null : (
+              <>
+                <td style={{borderTop: "none", color: "#969696"}}>
+                  <FormattedMessage id="src.components.rating.Rating.tR2C1" />
+                </td>
+                <td style={{borderTop: "none"}}>
+                  <HorseRating level={announce.equestrianLevel} />
+                </td>
+              </>
+            )}
+          </tr>
+          <tr>
+            {announce.physicalLevel === 0 ? null : (
+              <>
+                <td style={{borderTop: "none", color: "#969696"}}>
+                  <FormattedMessage id="src.components.rating.Rating.tR3C1" />
+                </td>
+                <td style={{borderTop: "none"}}>
+                  <PhysicalRating level={announce.physicalLevel} />
+                </td>
+              </>
+            )}
+            {announce.comfortLevel === 0 ? null : (
+              <>
+                <td style={{borderTop: "none", color: "#969696"}}>
+                  <FormattedMessage id="src.components.rating.Rating.tR4C1" />
+                </td>
+                <td style={{borderTop: "none"}}>
+                  <BedRating level={announce.comfortLevel} />
+                </td>
+              </>
+            )}
+          </tr>
         </tbody>
       </table>
     </div>

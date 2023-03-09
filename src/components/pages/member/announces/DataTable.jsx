@@ -565,6 +565,7 @@ export default function DataTable({
     setDense(event.target.checked);
   };
   const handlePastArchived = (past, archived) => {
+    console.log("handlePastArchived", past, archived);
     original = prepareData(headCells, announces, !past); //past parameter is the opposite of past slider position
     original = _.filter(original, (row) => {
       return archived ? row.archived === "false" : true;

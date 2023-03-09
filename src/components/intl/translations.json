@@ -428,6 +428,7 @@
             "labels": {
               "programme": "Programme",
               "equestrianInfo": "Infos équestres & sportives",
+              "options": "Inclus/non inclus - Options",
               "priceDate": "Prix & dates - Réservation",
               "houseFood": "Hébergement & repas",
               "usefulInfo": "Infos pratiques",
@@ -3068,6 +3069,7 @@
             "labels": {
               "programme": "Programme",
               "equestrianInfo": "Equestrian & physical info",
+              "options": "Included/not included - Options",
               "priceDate": "Price & dates - Booking",
               "houseFood": "Accomodation & meal",
               "usefulInfo": "Practical infos",

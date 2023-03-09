@@ -240,12 +240,13 @@ function MemberPage({
       setTab(2);
       setTimeout(() => {
         try {
-          if (cs1 === -1)
-            document.getElementById("archivedSlider").checked = true;
+          if (cs1 === -1) document.getElementById("archivedSlider").click();
           if (cs0 === -1)
             document.getElementById("MyAnnouncesTabFilter").click();
           if (cs2 === -1) document.getElementById("pastSlider").click();
-        } catch (error) {}
+        } catch (error) {
+          console.log(error);
+        }
       }, 500);
       navigate("/member", {replace: true});
     }
@@ -253,13 +254,24 @@ function MemberPage({
   useEffect(() => {
     if (!flg) return;
     const sel = {};
-    let cs = 0;
+    let cs = 0,
+      cs3 = 0,
+      cs4 = 0;
     if (queryParams && queryParams[0]) {
       switch (queryParams[0][0]) {
         case "MyBookings_ids": //booking._id
           cs = -2;
-          queryParams[0][1].split(",").map((id) => {
-            sel[id] = 1; //id >>> booking _id
+          queryParams.map((param, idx) => {
+            switch (idx) {
+              case 0:
+                param[1].split(",").map((id) => {
+                  sel[id] = 1; //id >>> booking _id
+                });
+                break;
+              default:
+                if (param[0] === "past") cs3 = -1;
+                if (param[0] === "filtered") cs4 = -1;
+            }
           });
           break;
         case "MyBookings_ann_id": //announce._id
@@ -277,7 +289,19 @@ function MemberPage({
       });
     });
     setSelected({...selected, bookings: sel});
-    if (cs === -2) setTab(3); //MyBookings tab
+    if (cs === -2) {
+      setTab(3); //MyBookings tab
+      setTimeout(() => {
+        try {
+          if (cs3 !== 0) document.getElementById("bkgPastSlider").click();
+          console.log("cs4", cs4);
+          if (cs4 !== 0) document.getElementById("MyBookingsTabFilter").click();
+        } catch (error) {
+          console.log(error);
+        }
+      }, 500);
+      navigate("/member", {replace: true});
+    }
   }, [flg]);
   function handleConditionsChange(id, data) {
     const invcs = _.cloneDeep(invoices);

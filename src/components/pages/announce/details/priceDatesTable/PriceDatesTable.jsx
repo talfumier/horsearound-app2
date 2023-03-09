@@ -44,6 +44,11 @@ function PriceDatesTable({announce, onHandleFormBooking}) {
       align: "left",
     },
     {
+      name: "option",
+      label: "Options",
+      align: "left",
+    },
+    {
       name: "promo",
       label: (
         <FormattedMessage id="src.components.announcePage.announceDetailTab.moreInfoTable.promo" />

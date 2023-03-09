@@ -35,7 +35,6 @@ function OptionUnit({dataIn, valid, onHandleDelete, onHandleGlobals}) {
     onHandleGlobals("value", [e.target.id, e.target.value], dataIn.option);
   }
   return keys.map((key, idx) => {
-    console.log(keys, key);
     return (
       <div key={idx}>
         {key === "option" && (

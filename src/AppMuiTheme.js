@@ -55,7 +55,7 @@ export function getMuiTheme() {
             backgroundColor: "#7AA095",
           },
           centered: {
-            backgroundColor: "red",
+            backgroundColor: "#F5F5F5",
           },
         },
       },

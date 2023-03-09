@@ -1,5 +1,6 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import {useIntl} from "react-intl";
+import {Link, useNavigate} from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -26,6 +27,8 @@ import BookingSummary from "./summary/BookingSummary.jsx";
 import ParticipantsList from "./participants/ParticipantsList.jsx";
 import {toastInfo} from "../../../common/toastSwal/ToastMessages.js";
 import {scrollToBottom} from "../../../utils/utilityFunctions.js";
+import ImagesContext from "../../../common/context/ImagesContext.js";
+import "./style.css";
 
 export function getNextSteps(
   steps,
@@ -177,11 +180,16 @@ function DataTable({
   onHandleParticipantsChange,
   onHandleToggle,
 }) {
+  const navigate = useNavigate();
   const {locale, formatMessage} = useIntl();
+  const contextImages = useContext(ImagesContext);
   const [rows, setRows] = useState([]);
+  console.log("DataTable render");
+  const [numFiltered, setNumFiltered] = useState(null);
   useEffect(() => {
     original = prepareData(headCells, bookings); //default past parameter=true (i.e. includes dates in the past)
     setRows(original);
+    setNumFiltered(0);
   }, [bookings]);
   const [firstSel, setFirstSel] = useState(null);
   useEffect(() => {
@@ -204,11 +212,17 @@ function DataTable({
     });
     if (flg === -1) setFirstSel(null);
   }, [selected]);
-  const [numFiltered, setNumFiltered] = useState(0);
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(true);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [open, setOpen] = useState({summary: false, infos: false});
+  function getURL(id) {
+    let url = `/member?MyBookings_ids=${[id]}`;
+    console.log("numFiltered", numFiltered, selected);
+    if (document.getElementById("bkgPastSlider").checked) url = `${url}&past`;
+    if (numFiltered > 0) url = `${url}&filtered`;
+    return url;
+  }
   function prepareData(headCells, bkgs, past = true) {
     let data = [];
     Object.keys(bkgs).map((key) => {
@@ -242,7 +256,29 @@ function DataTable({
               case 1: //activity - organizer
                 obj[headCells[i].name] = (
                   <>
-                    {`${rec.announce.title[locale]}`}
+                    <a
+                      className="alink"
+                      onClick={() => {
+                        navigate(
+                          getURL(rec._id), //add 'MyBookings' parameter in url to be able to come back on bookings tab when using browser back button
+                          {
+                            replace: true,
+                          }
+                        );
+                        /* navigate(`/announce/details?id=${rec.announce._id}`,//navigate to Announce details page 
+                        {
+                          state: {
+                            images:
+                              contextImages &&
+                              Object.keys(contextImages).length > 0
+                                ? contextImages[rec.announce._id]
+                                : [],
+                          },
+                        }); */
+                      }}
+                    >
+                      {`${rec.announce.title[locale]}`}
+                    </a>
                     <br />
                     {`${rec.company.corpName}`}
                   </>
@@ -527,15 +563,18 @@ function DataTable({
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
   const filterData = (filter) => {
+    console.log("filterData", filter);
     if (filter) {
       const filtered = _.filter(rows, (row, idx) => {
         return selected[row.id] === 1;
       });
       setRows(filtered);
+      console.log("filtered.length", filtered.length);
       setNumFiltered(filtered.length);
     } else {
-      setRows(original);
+      console.log("xxx 0");
       setNumFiltered(0);
+      setRows(original);
     }
     setPage(0);
   };
@@ -585,11 +624,10 @@ function DataTable({
         <Paper sx={{width: "120%"}}>
           <TableToolbar
             numSelected={sumOfPropsValues(selected)}
-            selected={selected}
             numFiltered={numFiltered}
             theme={themes.toolbar}
             spinner={spinner}
-            onFilter={filterData}
+            onHandleFilter={filterData}
             onHandlePast={handlePast}
             onHandleSummary={() => {
               handleSummaryParticipants("summary");
@@ -638,7 +676,10 @@ function DataTable({
                             return (
                               <TableCell
                                 onClick={(e) => {
-                                  if (e.target.cellIndex === undefined) {
+                                  if (
+                                    e.target.cellIndex === 2 ||
+                                    e.target.cellIndex === undefined
+                                  ) {
                                     //prevents row selection when clicking buttons inside cell >>> cell click behaviour unchanged (i.e row selection)
                                     e.stopPropagation();
                                     e.preventDefault();
