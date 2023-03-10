@@ -119,7 +119,6 @@ function SmallAnnounce({announce, images}) {
         <FormattedMessage id="src.components.annoncesPage.annonces.smallAnnounces.flex_flex" />
       );
   }
-  const main = images && images.length > 0 ? getMainImage(images).data : img;
   return (
     state.months !== null && (
       <div
@@ -136,7 +135,11 @@ function SmallAnnounce({announce, images}) {
           }}
         >
           <div className="thumbnail deals w-100 m-4">
-            <img className="media-object" src={main} alt="img" />
+            <img
+              className="media-object"
+              src={getMainImage(images)}
+              alt="img"
+            />
             {getGuaranteedDeparture()}
             {testPromo(announce.dates) === "Promo" ? (
               <div className="discountInfo d-flex justify-content-end align-items-start">
