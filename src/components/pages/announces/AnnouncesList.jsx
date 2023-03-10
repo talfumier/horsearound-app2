@@ -29,7 +29,6 @@ function AnnouncesList({announces}) {
                 key={index}
                 announce={announce}
                 images={state[announce._id]}
-                //onUnHover={this.props.onUnHover}
               />
             );
           })}
