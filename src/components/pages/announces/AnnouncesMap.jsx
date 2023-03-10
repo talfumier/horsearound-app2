@@ -30,7 +30,7 @@ function AnnouncesMap({announces}) {
               className="mt-0 pt-0 mb-2"
               style={{color: "#1F4E78", fontWeight: 500}}
             >
-              {`${ann.postalCode} ${ann.city}`}
+              {`${ann.postalCode} ${ann.city.toUpperCase()}`}
               <br></br>
               {formatValue("destinations", ann.destination, formatMessage)}
             </div>
@@ -87,7 +87,6 @@ function AnnouncesMap({announces}) {
     const n = state.length;
     for (let i = 0; i < n; i++) {
       if (!state[i].dummy && state[i].id === id) {
-        console.log(contextImages[state[i].ann_id]);
         data = getMainImage(contextImages[state[i].ann_id]);
         return state[i].active ? (
           <InfoWindow
