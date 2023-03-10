@@ -87,7 +87,8 @@ function AnnouncesMap({announces}) {
     const n = state.length;
     for (let i = 0; i < n; i++) {
       if (!state[i].dummy && state[i].id === id) {
-        data = getMainImage(contextImages[state[i].ann_id]).data;
+        console.log(contextImages[state[i].ann_id]);
+        data = getMainImage(contextImages[state[i].ann_id]);
         return state[i].active ? (
           <InfoWindow
             /*  options={{

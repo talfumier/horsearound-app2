@@ -7,11 +7,12 @@ export function isEven(n) {
 }
 export function getMainImage(images) {
   try {
+    if (!images || images.length === 0) return img;
     let idx = -1;
     images.map((image, i) => {
       if (image.main) idx = i;
     });
-    return idx >= 0 ? images[idx] : images[0];
+    return idx >= 0 ? images[idx].data : images[0].data;
   } catch (error) {
     return img;
   }

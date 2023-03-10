@@ -32,13 +32,7 @@ function HomeTopDeals({top3, images}) {
                 <div className="thumbnail deals w-100">
                   <img
                     className="media-object"
-                    src={
-                      images &&
-                      images[announce._id] &&
-                      images[announce._id].length > 0
-                        ? getMainImage(images[announce._id]).data
-                        : "/img/home/deal/deal-01.jpg"
-                    }
+                    src={getMainImage(images[announce._id])}
                     alt=""
                     style={{height: "240px"}}
                   />
