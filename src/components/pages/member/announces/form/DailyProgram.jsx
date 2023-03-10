@@ -24,8 +24,8 @@ function DailyProgram({reset, dataIn, onHandleGlobals}) {
         },
         description: {en: true, fr: true},
         accommodation: {en: true, fr: true},
-        nbHoursEqui: validate("nbHoursEqui", day["nbHoursEqui"])[0],
-        nbKmsEqui: validate("nbKmsEqui", day["nbKmsEqui"])[0],
+        nbHoursEqui: true,
+        nbKmsEqui: true,
       });
     });
     onHandleGlobals("valid", [
@@ -52,8 +52,8 @@ function DailyProgram({reset, dataIn, onHandleGlobals}) {
       title: {en: false, fr: false},
       description: {en: true, fr: true},
       accommodation: {en: true, fr: true},
-      nbHoursEqui: false,
-      nbKmsEqui: false,
+      nbHoursEqui: true,
+      nbKmsEqui: true,
     });
     setValid(valide);
     onHandleGlobals("valid", [name, false]);
