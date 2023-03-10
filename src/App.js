@@ -302,7 +302,6 @@ function App() {
     );
   }
   return (
-    //  Object.keys(anns).length > 0 && (
     <ThemeProvider theme={getMuiTheme()}>
       <UserContext.Provider value={{user, onHandleUser: handleUser}}>
         <ProContext.Provider value={{pro, onHandlePro: handlePro}}>
@@ -314,7 +313,6 @@ function App() {
         </ProContext.Provider>
       </UserContext.Provider>
     </ThemeProvider>
-    //  )
   );
 }
 export default App;

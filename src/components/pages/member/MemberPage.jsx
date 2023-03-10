@@ -64,6 +64,7 @@ function MemberPage({
     setRefresh(int);
   }
   useEffect(() => {
+    if (!currentUser) return;
     setDirty(false);
     loadProUsers(abortController.signal);
     return () => {
@@ -164,7 +165,11 @@ function MemberPage({
   }, [refresh]);
   useEffect(() => {
     let bl = Object.keys(bookings).length > 0;
-    if (bl && (currentUser.type === "pro" || currentUser.role === "ADMIN"))
+    if (
+      bl &&
+      currentUser &&
+      (currentUser.type === "pro" || currentUser.role === "ADMIN")
+    )
       bl = Object.keys(invoices).length > 0;
     setFlag(bl);
   }, [proUsers, bookings, invoices]);
@@ -174,6 +179,7 @@ function MemberPage({
     queryParams.push(item);
   }
   useEffect(() => {
+    if (!currentUser) return;
     const sel = {};
     let cs = 0,
       cs0 = 0,
@@ -252,7 +258,7 @@ function MemberPage({
     }
   }, []);
   useEffect(() => {
-    if (!flg) return;
+    if (!currentUser || !flg) return;
     const sel = {};
     let cs = 0,
       cs3 = 0,
