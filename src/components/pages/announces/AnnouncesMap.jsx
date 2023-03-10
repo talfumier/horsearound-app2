@@ -1,9 +1,15 @@
-import {useState, useEffect} from "react";
-import {GoogleMap, InfoWindow, Marker} from "@react-google-maps/api";
+import {useState, useEffect, useContext} from "react";
+import {useIntl} from "react-intl";
+import {GoogleMap, InfoWindow, Marker, s} from "@react-google-maps/api";
+import ImagesContext from "../common/context/ImagesContext.js";
 import dummy from "./dummy_markers.json";
+import {formatValue} from "../member/announces/form/DropDown.jsx";
+import {getMainImage} from "../utils/utilityFunctions.js";
 import "../../../css/map.css";
 
 function AnnouncesMap({announces}) {
+  const contextImages = useContext(ImagesContext);
+  const {formatMessage} = useIntl();
   const [state, setState] = useState([]);
   useEffect(() => {
     function getMarkers() {
@@ -19,8 +25,18 @@ function AnnouncesMap({announces}) {
       announces.map((ann) => {
         markers.locations.push({
           id: (id += 1),
-          name: `${ann.postalCode}, ${ann.city}, ${ann.destination}`,
+          name: (
+            <div
+              className="mt-0 pt-0 mb-2"
+              style={{color: "#1F4E78", fontWeight: 500}}
+            >
+              {`${ann.postalCode} ${ann.city}`}
+              <br></br>
+              {formatValue("destinations", ann.destination, formatMessage)}
+            </div>
+          ),
           position: ann.position,
+          ann_id: ann._id,
         });
       });
       setState([...markers.dummy, ...markers.locations]);
@@ -36,15 +52,13 @@ function AnnouncesMap({announces}) {
     }
   }, [map, state]);
   function handleActiveMarker(id) {
-    const n = state.length;
+    const n = state.length,
+      markers = [...state];
     for (let i = 0; i < n; i++) {
-      if (!state[i].dummy && state[i].id === id) {
-        const markers = [...state];
-        markers[i].active = true;
-        setState(markers);
-        break;
-      }
+      if (state[i].dummy) continue;
+      markers[i].active = state[i].id === id ? true : false;
     }
+    setState(markers);
   }
   function handleOnLoad(map) {
     setMap(map);
@@ -69,16 +83,33 @@ function AnnouncesMap({announces}) {
     setState(markers);
   }
   function getInfoWindow(id, name) {
+    let data = null;
     const n = state.length;
     for (let i = 0; i < n; i++) {
       if (!state[i].dummy && state[i].id === id) {
+        data = getMainImage(contextImages[state[i].ann_id]).data;
         return state[i].active ? (
           <InfoWindow
+            /*  options={{
+              disableAutoPan: true,
+            }} */
             onCloseClick={() => {
               handleOnClose(id);
             }}
           >
-            <div className="gm-style-iw">{name}</div>
+            <div className="gm-style-iw">
+              {name}
+              <img
+                src={data}
+                style={{width: 150, cursor: "pointer"}}
+                onClick={() => {
+                  document
+                    .getElementById(`announce_${state[i].ann_id}`)
+                    .scrollIntoView();
+                  window.scrollBy(0, -100);
+                }}
+              ></img>
+            </div>
           </InfoWindow>
         ) : null;
         break;
@@ -109,7 +140,7 @@ function AnnouncesMap({announces}) {
                 <Marker
                   key={id}
                   position={position}
-                  onClick={() => handleActiveMarker(id)}
+                  onMouseOver={() => handleActiveMarker(id)}
                 >
                   {getInfoWindow(id, name)}
                 </Marker>

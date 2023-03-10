@@ -1,15 +1,20 @@
 import {parseISO, format, isDate} from "date-fns";
 import _ from "lodash";
+import img from "../home/img/deal/deal-01.jpg";
 
 export function isEven(n) {
   return n % 2 === 0;
 }
 export function getMainImage(images) {
-  let idx = -1;
-  images.map((image, i) => {
-    if (image.main) idx = i;
-  });
-  return idx >= 0 ? images[idx] : images[0];
+  try {
+    let idx = -1;
+    images.map((image, i) => {
+      if (image.main) idx = i;
+    });
+    return idx >= 0 ? images[idx] : images[0];
+  } catch (error) {
+    return img;
+  }
 }
 export function getDateStatus(date, participantMax, participantMin, type) {
   if (type === "pro") {

@@ -148,7 +148,6 @@ export async function deleteConditionsSatisfied(
   return await deleteConditionsSatisfiedRR(id, token, formatMessage);
 }
 export async function handleDelete(
-  values,
   id,
   lang,
   token,
@@ -259,13 +258,14 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
   let cond = false;
   if (id_ann === 0) cond = true;
-  if (!cond && location.state) cond = location.state.announce._id === -1;
+  if (!cond && location.state) cond = location.state.announce._id !== -1;
   if (cond) {
     try {
       dataIn = location.state.announce; //announce edit (announce is provided, may contain missing fields) and announce creation case ({_id:-1} is provided)
       selected = location.state.selected;
       userId = location.state.userId;
       id_ann = dataIn._id;
+      console.log(location.state);
     } catch (error) {
       navigate("/member"); //location.state=null
     }
@@ -1163,7 +1163,6 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
                     }
                     setSpinner2(true);
                     await handleDelete(
-                      values,
                       id_ann,
                       locale,
                       cookies.user,

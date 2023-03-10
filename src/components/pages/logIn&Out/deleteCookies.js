@@ -6,4 +6,5 @@ export function deleteCookies(
   cookiesTodelete.map((cookie) => {
     removeCookie(cookie, {path: "/"});
   });
+  window.localStorage.removeItem("spareToken");
 }
