@@ -37,8 +37,14 @@ function App() {
     resetpassword: window.location.pathname.includes("resetpassword"),
     viewFile: window.location.pathname.includes("viewFile"),
   };
-  const contextImages = useIntl().formats; //used when switching languages (coming from LanguageSwitch)
-  const {messages} = useIntl();
+  const contextImages = useIntl().formats; //used when switching languages (coming from LanguageSwitch) >>> avoids images reload when switching language
+  const {locale, messages} = useIntl();
+  const [base, setBase] = useState(
+    process.env.REACT_APP_NODE_ENV === "development" ? "" : locale
+  );
+  /*  useEffect(() => {
+    setBase(locale);
+  }, [locale]); */
   const [user, setUser] = useState({});
   const [pro, setPro] = useState({});
   const [anns, setAnns] = useState({});
@@ -201,8 +207,13 @@ function App() {
   }
   let router = null,
     cs = -1;
+  function createRouter(routes) {
+    router = createBrowserRouter(routes, {
+      basename: `/${base}`,
+    });
+  }
   if (reset.resetpassword) {
-    router = createBrowserRouter([
+    createRouter([
       {
         path: "/resetpassword/:id/:token",
         element: wrapElement(<FormRecover />, true),
@@ -211,7 +222,7 @@ function App() {
     cs += 1;
   }
   if (reset.viewFile) {
-    router = createBrowserRouter([
+    createRouter([
       {
         path: "/viewFile",
         element: wrapElement(<ViewerPage params={null} />, true),
@@ -233,7 +244,7 @@ function App() {
         element: wrapElement(<AnnouncesPage announces={anns.announces} />),
       });
     });
-    router = createBrowserRouter([
+    createRouter([
       {
         path: "/",
         element: wrapElement(<HomePage announces={anns.announces} />),
