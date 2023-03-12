@@ -44,6 +44,18 @@ function NavBar({dirty, onHandleDirty}) {
                   await handleDirty(e, "/");
                 }}
               />
+              <button
+                type="button"
+                className="navbar-toggle m-4"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbar-ex1-collapse"
+                style={{position: "relative"}}
+              >
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+                <span className="icon-bar" />
+              </button>
             </div>
             <div className="mx-auto mt-n2">
               <div
@@ -114,45 +126,49 @@ function NavBar({dirty, onHandleDirty}) {
                     dirty={dirty}
                   ></NavBarDropDown>
                   <LogIn></LogIn>
-                  <LanguageSwitch images={contextImages} />
+                  <li className="dropdown megaDropMenu">
+                    <LanguageSwitch images={contextImages} />
+                  </li>
+                  <li className="dropdown megaDropMenu ">
+                    {cookies.user && (
+                      <div className="row align-items-center mt-4 pt-4 ml-4">
+                        <Tooltip
+                          title={
+                            <FormattedMessage id="src.components.allPages.Menu.userSpace.tooltip"></FormattedMessage>
+                          }
+                          arrow
+                        >
+                          <Link
+                            className="ml-4 pl-4 fa fa-user fa-2x "
+                            to={"/member"}
+                            style={{
+                              border: "0",
+                              cursor: "pointer",
+                            }}
+                          ></Link>
+                        </Tooltip>
+                        <h5 className="ml-4" style={{fontSize: "1.8rem"}}>
+                          {currentUser.firstName
+                            ? currentUser.firstName.toLowerCase()
+                            : currentUser.email
+                            ? currentUser.email
+                            : null}
+                        </h5>
+                        <h5
+                          id="horseAround_navbar_timer"
+                          className="mt-3 pt-1 mx-2"
+                          style={{
+                            color: `rgb(255, 102, 0)`,
+                            fontWeight: "bolder",
+                            width: "50px",
+                          }}
+                        ></h5>
+                      </div>
+                    )}
+                  </li>
                 </ul>
               </div>
             </div>
-            {cookies.user && (
-              <div className="row align-items-center dropdown singleDrop ml-4 pb-4 w100 ">
-                <Tooltip
-                  title={
-                    <FormattedMessage id="src.components.allPages.Menu.userSpace.tooltip"></FormattedMessage>
-                  }
-                  arrow
-                >
-                  <Link
-                    className="ml-4 pl-4 fa fa-user fa-2x "
-                    to={"/member"}
-                    style={{
-                      border: "0",
-                      cursor: "pointer",
-                    }}
-                  ></Link>
-                </Tooltip>
-                <h5 className="ml-4" style={{fontSize: "1.8rem"}}>
-                  {currentUser.firstName
-                    ? currentUser.firstName.toLowerCase()
-                    : currentUser.email
-                    ? currentUser.email
-                    : null}
-                </h5>
-                <h5
-                  id="horseAround_navbar_timer"
-                  className="mt-3 pt-1 mx-2"
-                  style={{
-                    color: `rgb(255, 102, 0)`,
-                    fontWeight: "bolder",
-                    width: "50px",
-                  }}
-                ></h5>
-              </div>
-            )}
           </div>
         </nav>
       </div>

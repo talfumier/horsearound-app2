@@ -253,7 +253,6 @@ const EnhancedTableToolbar = ({
                 }
                 setSpinner(true);
                 await handleDelete(
-                  edit,
                   edit._id,
                   locale,
                   cookies.user,

@@ -13,7 +13,7 @@ export function requiredValid(value) {
 }
 export function positiveValid(value, nonZero, pos, type) {
   //type=int, float
-  if (typeof value === "undefined") value = "";
+  if (!value || typeof value === "undefined") value = "";
   if (!value.toString().trim().length) {
     return [
       false,

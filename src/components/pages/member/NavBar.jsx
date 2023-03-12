@@ -36,7 +36,7 @@ function NavBar({
     }
   }
   return (
-    <div className="main-wrapper w-100" style={{position: "fixed", zIndex: 2}}>
+    <div className="main-wrapper w-100" style={{position: "fixed", zIndex: 50}}>
       <section className="dashboardMenu" style={{marginTop: "65px"}}>
         <nav className="navbar dashboradNav">
           <div className="">
@@ -44,8 +44,8 @@ function NavBar({
               <button
                 type="button"
                 className="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1"
+                data-bs-toggle="collapse"
+                data-bs-target="#bs-example-navbar-collapse-1"
                 aria-expanded="false"
               >
                 <span className="sr-only">

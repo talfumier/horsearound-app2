@@ -111,7 +111,6 @@ async function deleteConditionsSatisfiedRR(id, token, formatMessage) {
       const msg = `${formatMessage({
         id: `src.components.memberPage.tabs.annonces.details.AddAnnounceForm.warning3`,
       })}'${models[i]}' !`;
-
       return [bl.data, msg];
     } else if (i === n - 1) return [true];
   }
@@ -265,7 +264,6 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
       selected = location.state.selected;
       userId = location.state.userId;
       id_ann = dataIn._id;
-      console.log(location.state);
     } catch (error) {
       navigate("/member"); //location.state=null
     }

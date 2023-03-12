@@ -1,4 +1,4 @@
-import {useState, useContext} from "react";
+import {useState} from "react";
 import {IntlProvider} from "react-intl";
 import messages from "./translations.json";
 import langs from "./languages.json";
