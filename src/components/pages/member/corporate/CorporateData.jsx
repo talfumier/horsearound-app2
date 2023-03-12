@@ -31,7 +31,7 @@ import ProContext from "../../common/context/ProContext.js";
 
 let globals = {},
   dataIn = {};
-function CorporateData({user, onHandleDirty}) {
+function CorporateData({user, onHandleDirty, onHandleActionRequired}) {
   const {_id: userId, type: userType, email: userEmail} = user;
   const {locale, formatMessage} = useIntl();
   const proContext = useContext(ProContext);
@@ -39,6 +39,9 @@ function CorporateData({user, onHandleDirty}) {
   const [spin1, setSpinner1] = useState(false);
   const [spin2, setSpinner2] = useState(false);
   const [formValid, setFormValid] = useState(false);
+  useEffect(() => {
+    onHandleActionRequired({corporate: !formValid});
+  }, [formValid]);
   const [values, setValues] = useState({});
   const [valid, setValid] = useState({
     current: {},

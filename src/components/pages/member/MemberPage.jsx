@@ -65,6 +65,11 @@ function MemberPage({
   }
   useEffect(() => {
     if (!currentUser) return;
+    setBadges({
+      unread: 0,
+      profile: false,
+      corporate: false,
+    });
     setDirty(false);
     loadProUsers(abortController.signal);
     return () => {
@@ -208,6 +213,10 @@ function MemberPage({
               }
             }
           });
+          break;
+        case "proPENDING":
+          setTab(7);
+          navigate("/member", {replace: true});
       }
     }
     let anns = [];

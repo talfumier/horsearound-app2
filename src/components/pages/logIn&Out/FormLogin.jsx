@@ -318,6 +318,7 @@ function FormLogin({onClose}) {
             </div>
           );
         handleClose();
+        if (bl && state.$data.type === "pro") navigate("/member?proPENDING");
       }
     }
     //sign-out case

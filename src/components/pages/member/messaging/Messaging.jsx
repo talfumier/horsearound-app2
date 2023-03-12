@@ -57,6 +57,11 @@ function Messaging({onHandleBadges}) {
         const data = prepareData(res.data);
         setMessages(data.msgs);
         setConversations(data.convs);
+        let unread = 0;
+        data.msgs.map((msg) => {
+          if (!msg.msg.isRead) unread += 1;
+        });
+        onHandleBadges({unread});
       }
     }
     const abortController = new AbortController();

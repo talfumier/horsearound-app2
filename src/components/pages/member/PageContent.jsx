@@ -259,6 +259,7 @@ function PageContent({
         <CorporateData
           user={currentUser}
           onHandleDirty={onHandleDirty}
+          onHandleActionRequired={onHandleBadges}
         ></CorporateData>
       )}
       {tab === 8 && (
@@ -266,6 +267,7 @@ function PageContent({
           user={currentUser}
           onHandleDirty={onHandleDirty}
           onHandleRefresh={onHandleRefresh}
+          onHandleActionRequired={onHandleBadges}
         ></MyProfile>
       )}
     </div>

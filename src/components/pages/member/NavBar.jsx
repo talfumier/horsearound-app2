@@ -18,9 +18,9 @@ function NavBar({
   useEffect(() => {
     setTab(initTab);
   }, [initTab]);
-  const [count, setCount] = useState(0);
+  const [actionRequired, setActionRequired] = useState({});
   useEffect(() => {
-    setCount(badges["unread"]);
+    setActionRequired(badges);
   }, [badges]);
   async function toggle(idx) {
     if (tab !== idx) {
@@ -165,7 +165,7 @@ function NavBar({
                       className="badge rounded-pill badge-notification bg-danger ml-2"
                       style={{marginTop: -10}}
                     >
-                      {count !== 0 ? count : ""}
+                      {actionRequired.unread !== 0 ? actionRequired.unread : ""}
                     </span>
                   </a>
                 </li>
@@ -181,6 +181,16 @@ function NavBar({
                     >
                       <i className="fa fa-cogs" aria-hidden="true" />
                       <FormattedMessage id="src.components.memberPage.DashboardMenu.link5" />
+                      <span
+                        className="badge rounded-pill badge-notification bg-danger ml-2"
+                        style={{marginTop: -10}}
+                      >
+                        {actionRequired.corporate
+                          ? formatMessage({
+                              id: "src.components.memberPage.DashboardMenu.actionRequired",
+                            })
+                          : ""}
+                      </span>
                     </a>
                   </li>
                 ) : null}
@@ -195,6 +205,16 @@ function NavBar({
                   >
                     <i className="fa fa-user" aria-hidden="true" />
                     <FormattedMessage id="src.components.memberPage.DashboardMenu.link2" />
+                    <span
+                      className="badge rounded-pill badge-notification bg-danger ml-2"
+                      style={{marginTop: -10}}
+                    >
+                      {actionRequired.profile
+                        ? formatMessage({
+                            id: "src.components.memberPage.DashboardMenu.actionRequired",
+                          })
+                        : ""}
+                    </span>
                   </a>
                 </li>
               </ul>

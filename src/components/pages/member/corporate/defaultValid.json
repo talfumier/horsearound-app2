@@ -15,7 +15,7 @@
   "guichetCode": false,
   "numberAccount": false,
   "keyAccount": false,
-  "deviseAccount": false,
+  "deviseAccount": true,
   "domiciliation": false,
   "iban": false,
   "bic": false,
