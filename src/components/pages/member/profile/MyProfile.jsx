@@ -387,7 +387,7 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
     >
       <ContainerToast></ContainerToast>
       <div
-        className="d-flex justify-content-between "
+        className="d-flex justify-content-between"
         style={{
           position: "fixed",
           left: 0,
