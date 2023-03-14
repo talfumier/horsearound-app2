@@ -67,7 +67,12 @@ export async function deleteConditionsSatisfied(
 }
 let globals = {},
   dataIn = {};
-function MyProfile({user, onHandleDirty, onHandleRefresh}) {
+function MyProfile({
+  user,
+  onHandleDirty,
+  onHandleRefresh,
+  onHandleActionRequired,
+}) {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const {_id: userId, type: userType, role: userRole, email: userEmail} = user;
@@ -76,6 +81,9 @@ function MyProfile({user, onHandleDirty, onHandleRefresh}) {
   const [spin1, setSpinner1] = useState(false);
   const [spin2, setSpinner2] = useState(false);
   const [formValid, setFormValid] = useState(false);
+  useEffect(() => {
+    onHandleActionRequired([["profile", !formValid]]);
+  }, [formValid]);
   const [values, setValues] = useState({});
   const [valid, setValid] = useState({
     current: {},

@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import {useNavigate, useLocation} from "react-router-dom";
 import {useCookies} from "react-cookie";
 import {FormattedMessage, useIntl} from "react-intl";
@@ -19,6 +19,7 @@ import {
   patchInvoice,
   deleteInvoice,
 } from "../../../services/httpInvoices.js";
+import {getMessages} from "../../../services/httpAnnounces.js";
 import {successFailure} from "./announces/form/AnnounceForm.jsx";
 import {errorHandlingToast} from "../../../services/utilsFunctions.js";
 import NavBar from "./NavBar.jsx";
@@ -26,9 +27,18 @@ import PageContent from "./PageContent.jsx";
 import {decodeJWT} from "../../../services/httpUsers.js";
 import ContainerToast from "../common/toastSwal/ContainerToast.jsx";
 import {SwalOkCancel} from "../common/toastSwal/SwalOkCancel.jsx";
+import UserContext from "../common/context/UserContext.js";
+import {flattenMessages} from "../../intl/messagesActions.js";
 
 let originalBookings = {},
-  originalInvoices = {};
+  originalInvoices = {},
+  bdgs = {
+    unread: {othersToMe: 0, meToOthers: 0},
+    profile: false,
+    corporate: false,
+    admin: false,
+    bookings: false,
+  };
 function MemberPage({
   announces: allAnnounces,
   onHandleSaveDelete,
@@ -40,6 +50,7 @@ function MemberPage({
   const [tab, setTab] = useState(1);
   const [cookies, setCookie] = useCookies(["user"]);
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
+  const userContext = useContext(UserContext);
   const [announces, setAnnounces] = useState([]);
   const [flg, setFlag] = useState(false); // data loading complete indicator;
   const [proUsers, setProUsers] = useState([]);
@@ -63,14 +74,120 @@ function MemberPage({
   function handleRefresh(int) {
     setRefresh(int);
   }
+  async function setInitialBadges1(signal) {
+    let res = null,
+      othersToMe = 0,
+      meToOthers = 0;
+    if (currentUser.status !== "PENDING") {
+      res = await getMessages(currentUser._id, cookies.user, signal);
+      if (
+        !(await errorHandlingToast(res, locale, false)) &&
+        typeof res.data !== "string"
+      ) {
+        res.data.map((msg) => {
+          if (msg.id_sender._id === currentUser._id)
+            meToOthers += !msg.isRead ? 1 : 0;
+          else othersToMe += !msg.isRead ? 1 : 0;
+        });
+      }
+      bdgs.unread = {othersToMe, meToOthers};
+    }
+    let obj = flattenMessages(userContext.user),
+      blp = false,
+      blc = false;
+    const keys = [
+      //mandatory keys
+      "lastName",
+      "firstName",
+      "email",
+      "phone",
+      "address.address",
+      "address.postcode",
+      "address.city",
+      "address.country",
+    ];
+    if (currentUser.type === "particulier" && currentUser.role !== "ADMIN")
+      keys.push("birthdate");
+    try {
+      keys.map((key) => {
+        if (!blp && obj[key].length === 0) blp = true;
+      });
+    } catch (error) {
+      //userContext empty
+      blp = true;
+    }
+    bdgs.profile = blp;
+    if (currentUser.type !== "particulier" || currentUser.role === "ADMIN") {
+      res = await getCompany(currentUser._id, signal);
+      if (!(await errorHandlingToast(res, locale, false))) {
+        obj = flattenMessages(res.data);
+        Object.keys(obj).map((key) => {
+          console.log(key, obj[key]);
+          if (
+            !blc &&
+            key !== "code_parrainage_used" &&
+            key !== "admin_validation" &&
+            !key.includes("id_user") &&
+            obj[key].length === 0
+          )
+            blc = true;
+        });
+        bdgs.corporate = blc;
+      }
+    }
+    handleBadges([
+      ["othersToMe", othersToMe],
+      ["meToOthers", meToOthers],
+      ["profile", blp],
+      ["corporate", blc],
+    ]);
+  }
   useEffect(() => {
     if (!currentUser) return;
     setDirty(false);
     loadProUsers(abortController.signal);
+    setInitialBadges1(abortController.signal);
     return () => {
       abortController.abort(); //clean-up code after component has unmounted
     };
   }, []);
+  function setInitialBadges2() {
+    let bla = false;
+    if (currentUser.role === "ADMIN") {
+      proUsers.map((usr) => {
+        if (!bla && usr.status === "PENDING") bla = true;
+      });
+    }
+    bdgs.admin = bla;
+    handleBadges([["admin", bla]]);
+  }
+  useEffect(() => {
+    setInitialBadges2();
+  }, [proUsers]);
+  function setInitialBadges3() {
+    let blb = false;
+    bookings[Object.keys(bookings)[0]].data.map((bkg) => {
+      if (!blb && bkg.steps)
+        Object.keys(bkg.steps).map((key) => {
+          if (
+            bkg.steps[key] &&
+            bkg.steps[key].active &&
+            bkg.steps[key].next &&
+            JSON.stringify(bkg.steps[key].next).indexOf(currentUser.type) !== -1
+          ) {
+            blb = true;
+          }
+        });
+    });
+    bdgs.bookings = blb;
+    handleBadges([["bookings", blb]]);
+    // setBadges(bdgs);
+  }
+  useEffect(() => {
+    if (currentUser.role === "ADMIN" || Object.keys(bookings).length === 0)
+      return;
+    setInitialBadges3();
+  }, [bookings]);
   async function loadProBookings(usrs, signal) {
     const bkg = {};
     let res = null;
@@ -107,10 +224,13 @@ function MemberPage({
           if (!(await errorHandlingToast(res, locale, false)))
             pmt[usr._id] = {
               data: res.data,
-              nbInvoices: res.data[0].invoice.length,
-              nbPending: _.filter(res.data[0].invoice, (inv) => {
-                return inv.steps["3"].paymentReceived === null;
-              }).length,
+              nbInvoices: res.data.length > 0 ? res.data[0].invoice.length : 0,
+              nbPending:
+                res.data.length > 0
+                  ? _.filter(res.data[0].invoice, (inv) => {
+                      return inv.steps["3"].paymentReceived === null;
+                    }).length
+                  : 0,
             };
         } else {
           res = await getCompany(usr._id, signal);
@@ -208,6 +328,10 @@ function MemberPage({
               }
             }
           });
+          break;
+        case "proPENDING":
+          setTab(7);
+          navigate("/member", {replace: true});
       }
     }
     let anns = [];
@@ -605,6 +729,7 @@ function MemberPage({
               }
               setSpinner({bookings: false});
               setBookings(bkgs);
+              setInitialBadges3();
             }
           });
         }
@@ -620,6 +745,21 @@ function MemberPage({
         setBookings(bkgs);
       }
     });
+  }
+  function handleBadges(items) {
+    items.map((item) => {
+      switch (item[0]) {
+        case "othersToMe":
+          bdgs.unread.othersToMe = bdgs.unread.othersToMe += item[1];
+          break;
+        case "meToOthers":
+          bdgs.unread.meToOthers = bdgs.unread.meToOthers += item[1];
+          break;
+        default: //profile, corporate, admin,bookings
+          bdgs[item[0]] = item[1];
+      }
+    });
+    setBadges(bdgs);
   }
   try {
     async function handleToggle(idx, user) {
@@ -662,11 +802,11 @@ function MemberPage({
             });
             setInvoices(pmt);
           } else setInvoices(originalInvoices);
+          break;
+        case 6: //messaging
+          if (currentUser.status === "PENDING") return;
       }
       setTab(idx);
-    }
-    function handleBadges(item) {
-      setBadges({...badges, ...item});
     }
     return (
       flg && (
@@ -701,6 +841,13 @@ function MemberPage({
                 setDirty(bl);
                 onHandleDirty(bl);
               }}
+              /*  onHandlebadges={async () => {
+                const abortController = new AbortController();
+                await setInitialBadges1(abortController.signal);
+                setInitialBadges2();
+                setInitialBadges3();
+                abortController.abort();
+              }} */
             />
             <PageContent
               announces={announces}

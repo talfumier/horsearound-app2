@@ -473,10 +473,8 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
     if (!dirty) {
       dirty = imagesUnsavedChanges(false);
     }
-    if (dirty) {
-      onHandleDirty(dirty);
-      navigate(null);
-    }
+    if (dirty) navigate(null);
+    onHandleDirty(dirty);
   }
   function handleGlobals(cs, val) {
     const len = val.length;
@@ -587,7 +585,7 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
           }
         });
     }
-    console.log("body", body);
+    console.log("body announce", body);
     return body;
   }
   function checkForImagesChange(imagesSet) {
@@ -629,7 +627,7 @@ function AnnounceForm({onHandleSaveDelete, onHandleDirty}) {
         return img.lastModified !== 0;
       }),
     };
-    console.log("body", body);
+    console.log("body images", body);
     return body;
   }
   async function handleSave() {

@@ -1,4 +1,3 @@
-import {useIntl} from "react-intl";
 import {Avatar, Card} from "@mui/material";
 import {useCookies} from "react-cookie";
 import {decodeJWT} from "../../../../services/httpUsers.js";
@@ -6,7 +5,6 @@ import {getFormattedDate} from "../../utils/utilityFunctions.js";
 
 function ChatList({messages, onHandleReply, onHandleRead}) {
   const [cookies] = useCookies(["user"]);
-  const {formatMessage} = useIntl();
   const currentUser = cookies.user ? decodeJWT(cookies.user) : null;
   function checkSource(id_sender) {
     //check if a message has been created by the logged in user or not

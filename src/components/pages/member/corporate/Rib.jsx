@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import {useIntl} from "react-intl";
 import SimpleText from "../announces/form/SimpleText.jsx";
+import {isEven} from "../../utils/utilityFunctions.js";
 
 function Rib({reset, dataIn, valid, onHandleGlobals}) {
   const {formatMessage} = useIntl();
@@ -13,8 +14,10 @@ function Rib({reset, dataIn, valid, onHandleGlobals}) {
     "domiciliation",
   ];
   const [state, setState] = useState({});
+  const [cur, setCurrency] = useState("");
   useEffect(() => {
     setState(dataIn);
+    setCurrency(dataIn.deviseAccount.data[isEven(reset) ? "default" : "saved"]);
   }, [reset, dataIn]);
   const wd = {
     bankCode: [230, 220],
@@ -24,6 +27,10 @@ function Rib({reset, dataIn, valid, onHandleGlobals}) {
     deviseAccount: [100, 90],
     domiciliation: [270, 260],
   };
+  function handleChange(e) {
+    setCurrency(e.target.value);
+    onHandleGlobals("value", [e.target.id, e.target.value]);
+  }
   return (
     Object.keys(state).length > 0 && (
       <div className="container">
@@ -60,15 +67,36 @@ function Rib({reset, dataIn, valid, onHandleGlobals}) {
                       verticalAlign: "top",
                     }}
                   >
-                    <SimpleText
-                      reset={reset}
-                      dataIn={state[key]}
-                      required={true}
-                      valid={valid[key]}
-                      onHandleGlobals={onHandleGlobals}
-                      label={false}
-                      w={wd[key][1]}
-                    ></SimpleText>
+                    {key !== "deviseAccount" ? (
+                      <SimpleText
+                        reset={reset}
+                        dataIn={state[key]}
+                        required={true}
+                        valid={valid[key]}
+                        onHandleGlobals={onHandleGlobals}
+                        label={false}
+                        w={wd[key][1]}
+                      ></SimpleText>
+                    ) : (
+                      <select
+                        id="deviseAccount"
+                        className="ml-4 pl-4 mr-0 mt-2 "
+                        style={{
+                          cursor: "pointer",
+                          border: "solid 1px",
+                          borderColor: "green",
+                          height: "35px",
+                          width: "90px",
+                          borderRadius: "5px",
+                        }}
+                        onChange={handleChange}
+                        value={cur}
+                      >
+                        <option>EUR</option>
+                        <option>GBP</option>
+                        <option>USD</option>
+                      </select>
+                    )}
                   </td>
                 );
               })}

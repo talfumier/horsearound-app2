@@ -9,12 +9,11 @@ import TabContainer from "./common/TabContainer";
 import AnnounceProgram from "./AnnounceProgram";
 import EquestrianPhysicalInfo from "./EquestrianPhysicalInfo.jsx";
 import PriceDatesTable from "./priceDatesTable/PriceDatesTable";
-import StandardInfo from "./common/StandardInfo";
 import AccomodationInfo from "./AccomodationInfo";
 import PracticalInfo from "./practicalInfo/PracticalInfo";
 import ProInfo from "./proInfo/ProInfo";
 import ContactMessaging from "./proInfo/ContactMessaging";
-import Options from "./priceDatesTable/option/Options.jsx";
+import Options from "./Options.jsx";
 import "../../../../css/draggable_resizable.css";
 
 function AnnounceDetails({
@@ -122,38 +121,7 @@ function AnnounceDetails({
             <EquestrianPhysicalInfo announce={announce} full={true} />
           </TabContainer>
           <TabContainer>
-            <div className="d-flex justify-content-between mt-4 ">
-              {((announce.included && announce.included[lang]) ||
-                (announce.notIncluded && announce.notIncluded[lang])) && (
-                <div className="col-5 ">
-                  {announce.included && announce.included[lang] && (
-                    <StandardInfo
-                      field={announce.included}
-                      lang={lang}
-                      id="src.components.announcePage.announceDetailTab.labels.included"
-                    ></StandardInfo>
-                  )}
-                  {announce.notIncluded && announce.notIncluded[lang] && (
-                    <StandardInfo
-                      field={announce.notIncluded}
-                      lang={lang}
-                      id="src.components.announcePage.announceDetailTab.labels.notIncluded"
-                    ></StandardInfo>
-                  )}
-                </div>
-              )}
-              <div className="ml-4 mt-1">
-                <h5 className="media-heading font-weight-bold">Options</h5>
-                {announce.options.length > 0 && (
-                  <Options
-                    dataIn={{announce, dates: [], dateParticipants: {}}}
-                    recap={{}}
-                    locks={false}
-                    mt={10}
-                  ></Options>
-                )}
-              </div>
-            </div>
+            <Options announce={announce}></Options>
           </TabContainer>
           <TabContainer>
             <PriceDatesTable

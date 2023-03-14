@@ -277,7 +277,7 @@ function FormLogin({onClose}) {
         if (res.data.statusCode >= 500) return;
       } else {
         let bl = true;
-        if (state.$data.type === "pro") {
+        if (state.$data.creation && state.$data.type === "pro") {
           await postCompany(
             {
               id_user: res.data.data[0]._id,
@@ -318,6 +318,11 @@ function FormLogin({onClose}) {
             </div>
           );
         handleClose();
+        if (bl && state.$data.creation && state.$data.type === "pro")
+          setTimeout(() => {
+            navigate("/member?proPENDING");
+            window.location.assign("/member?proPENDING");
+          }, 500);
       }
     }
     //sign-out case

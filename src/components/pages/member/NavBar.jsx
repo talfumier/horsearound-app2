@@ -12,16 +12,18 @@ function NavBar({
   badges,
   onHandleToggle,
   onHandleDirty,
+  // onHandlebadges,
 }) {
+  console.log("navbar", badges);
   const {formatMessage} = useIntl();
   const [tab, setTab] = useState(1);
   useEffect(() => {
+    setActionRequired(badges);
+  }, [badges]);
+  useEffect(() => {
     setTab(initTab);
   }, [initTab]);
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    setCount(badges["unread"]);
-  }, [badges]);
+  const [actionRequired, setActionRequired] = useState({});
   async function toggle(idx) {
     if (tab !== idx) {
       if (dirty) {
@@ -29,7 +31,10 @@ function NavBar({
         if (result === "cancel") {
           onHandleDirty(true);
           return;
-        } else onHandleDirty(false);
+        } else {
+          onHandleDirty(false);
+          //onHandlebadges(); //reset badges initial values
+        }
       }
       setTab(idx);
       onHandleToggle(idx);
@@ -76,6 +81,18 @@ function NavBar({
                   >
                     <i className="fa fa-tachometer" aria-hidden="true" />
                     <FormattedMessage id="src.components.memberPage.DashboardMenu.link1" />
+                    {role === "ADMIN" && (
+                      <span
+                        className="badge rounded-pill badge-notification bg-danger ml-2"
+                        style={{marginTop: -10}}
+                      >
+                        {actionRequired.admin
+                          ? formatMessage({
+                              id: "src.components.memberPage.DashboardMenu.actionRequired",
+                            })
+                          : ""}
+                      </span>
+                    )}
                   </a>
                 </li>
                 {type === "pro" || role === "ADMIN" ? (
@@ -113,6 +130,16 @@ function NavBar({
                     ) : (
                       <FormattedMessage id="src.components.memberPage.DashboardMenu.link3" />
                     )}
+                    <span
+                      className="badge rounded-pill badge-notification bg-danger ml-2"
+                      style={{marginTop: -10}}
+                    >
+                      {role !== "ADMIN" && actionRequired.bookings
+                        ? formatMessage({
+                            id: "src.components.memberPage.DashboardMenu.actionRequired",
+                          })
+                        : ""}
+                    </span>
                   </a>
                 </li>
                 <li>
@@ -161,12 +188,26 @@ function NavBar({
                     <span className="notification">
                       <FormattedMessage id="src.components.memberPage.DashboardMenu.link8" />
                     </span>
-                    <span
-                      className="badge rounded-pill badge-notification bg-danger ml-2"
-                      style={{marginTop: -10}}
-                    >
-                      {count !== 0 ? count : ""}
-                    </span>
+                    {actionRequired && actionRequired.unread && (
+                      <>
+                        <span
+                          className="badge rounded-pill badge-notification bg-danger ml-2"
+                          style={{marginTop: -10}}
+                        >
+                          {actionRequired.unread.othersToMe !== 0
+                            ? actionRequired.unread.othersToMe
+                            : ""}
+                        </span>
+                        <span
+                          className="badge rounded-pill badge-notification bg-warning ml-2"
+                          style={{marginTop: -10}}
+                        >
+                          {actionRequired.unread.meToOthers !== 0
+                            ? actionRequired.unread.meToOthers
+                            : ""}
+                        </span>
+                      </>
+                    )}
                   </a>
                 </li>
                 {type === "pro" || role === "ADMIN" ? (
@@ -181,6 +222,16 @@ function NavBar({
                     >
                       <i className="fa fa-cogs" aria-hidden="true" />
                       <FormattedMessage id="src.components.memberPage.DashboardMenu.link5" />
+                      <span
+                        className="badge rounded-pill badge-notification bg-danger ml-2"
+                        style={{marginTop: -10}}
+                      >
+                        {actionRequired.corporate
+                          ? formatMessage({
+                              id: "src.components.memberPage.DashboardMenu.actionRequired",
+                            })
+                          : ""}
+                      </span>
                     </a>
                   </li>
                 ) : null}
@@ -195,6 +246,16 @@ function NavBar({
                   >
                     <i className="fa fa-user" aria-hidden="true" />
                     <FormattedMessage id="src.components.memberPage.DashboardMenu.link2" />
+                    <span
+                      className="badge rounded-pill badge-notification bg-danger ml-2"
+                      style={{marginTop: -10}}
+                    >
+                      {actionRequired.profile
+                        ? formatMessage({
+                            id: "src.components.memberPage.DashboardMenu.actionRequired",
+                          })
+                        : ""}
+                    </span>
                   </a>
                 </li>
               </ul>

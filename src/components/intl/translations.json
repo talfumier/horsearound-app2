@@ -1437,7 +1437,8 @@
             "link6": "Mes factures",
             "link6a": "Factures & conditions",
             "link7": "Agenda",
-            "link8": "Messagerie"
+            "link8": "Messagerie",
+            "actionRequired": "action"
           }
         },
         "objectDataTable": {
@@ -4077,7 +4078,8 @@
             "link6": "My invoices & conditions",
             "link6a": "Invoices & conditions",
             "link7": "Agenda",
-            "link8": "Messaging"
+            "link8": "Messaging",
+            "actionRequired": "action"
           }
         },
         "objectDataTable": {
