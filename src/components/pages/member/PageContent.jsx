@@ -80,11 +80,14 @@ function PageContent({
     bl = !(await errorHandlingToast(res, locale, false));
     successFailure("PATCH", [bl], formatMessage, "UpdateProfile");
     if (bl) {
+      let nbPending = 0;
       const usrs = _.cloneDeep(users);
       usrs.map((usr) => {
         if (usr._id === id) usr.status = "ACTIVE";
+        else nbPending += usr.status === "PENDING" ? 1 : 0;
       });
-      setUsers(usrs); //style={styles.container}
+      setUsers(usrs);
+      onHandleBadges([["admin", nbPending > 0]]);
     }
   }
   let usr_details = null;

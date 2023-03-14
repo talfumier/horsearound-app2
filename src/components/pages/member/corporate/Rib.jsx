@@ -92,9 +92,9 @@ function Rib({reset, dataIn, valid, onHandleGlobals}) {
                         onChange={handleChange}
                         value={cur}
                       >
-                        <option>€</option>
-                        <option>£</option>
-                        <option>$</option>
+                        <option>EUR</option>
+                        <option>GBP</option>
+                        <option>USD</option>
                       </select>
                     )}
                   </td>

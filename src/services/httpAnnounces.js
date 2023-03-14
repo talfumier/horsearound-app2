@@ -135,11 +135,14 @@ export function patchMessage(id, data, token, signal) {
     signal,
   });
 }
-export function getMessages(id_sender, id_receiver, token, signal) {
-  return http.get(`${api}/messages/user/${id_sender}`, {
-    headers: {"x-auth-token": token},
-    signal,
-  });
+export function getMessages(userId, token, signal) {
+  return http.get(
+    `${api}/messages/user/${userId}`, //get messages sent or received by a given user
+    {
+      headers: {"x-auth-token": token},
+      signal,
+    }
+  );
 }
 export function checkAnnounceDelete(id, model, token, signal) {
   //id=email for model 'newsletters'

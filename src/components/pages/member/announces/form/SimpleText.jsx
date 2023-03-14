@@ -43,7 +43,7 @@ function SimpleText({
     const result = alert(name, null, dataIn.data, required);
     setWarning(result);
     setColor(valid ? "green" : "red");
-  }, [dataIn]);
+  }, [dataIn, reset]);
   useEffect(() => {
     if (typeof reset === "undefined") return;
     let data = isEven(reset) ? dataIn.data.default : dataIn.data.saved;
@@ -51,7 +51,7 @@ function SimpleText({
     if (disabled) setValue(data);
     else handleChange(data, 1); //set value state, update validation upon reset change
     setWarning(false);
-  }, [reset]);
+  }, [dataIn, reset]);
   useEffect(() => {
     function changeEvent() {
       setLineThrough(document.getElementById(lt).value == 1 ? false : true);

@@ -3,7 +3,7 @@ import {useQuery} from "react-query";
 import {useIntl} from "react-intl";
 import {ThemeProvider} from "@mui/material";
 import _ from "lodash";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, RouterProvider, redirect} from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import {getMuiTheme} from "./AppMuiTheme";
 import ContainerToast from "./components/pages/common/toastSwal/ContainerToast.jsx";

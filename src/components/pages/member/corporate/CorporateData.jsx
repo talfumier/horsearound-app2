@@ -40,7 +40,7 @@ function CorporateData({user, onHandleDirty, onHandleActionRequired}) {
   const [spin2, setSpinner2] = useState(false);
   const [formValid, setFormValid] = useState(false);
   useEffect(() => {
-    onHandleActionRequired({corporate: !formValid});
+    onHandleActionRequired([["corporate", !formValid]]);
   }, [formValid]);
   const [values, setValues] = useState({});
   const [valid, setValid] = useState({

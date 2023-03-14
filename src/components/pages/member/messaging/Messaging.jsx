@@ -57,11 +57,6 @@ function Messaging({onHandleBadges}) {
         const data = prepareData(res.data);
         setMessages(data.msgs);
         setConversations(data.convs);
-        let unread = 0;
-        data.msgs.map((msg) => {
-          if (!msg.msg.isRead) unread += 1;
-        });
-        onHandleBadges({unread});
       }
     }
     const abortController = new AbortController();
@@ -70,14 +65,6 @@ function Messaging({onHandleBadges}) {
       abortController.abort(); //clean-up code after component has unmounted
     };
   }, []);
-  useEffect(() => {
-    const msgs = _.cloneDeep(messages);
-    onHandleBadges({
-      unread: _.filter(msgs, (msg) => {
-        return msg.msg.isRead === false;
-      }).length,
-    });
-  }, [messages]);
   async function sendMessage() {
     const abortController = new AbortController();
     let res = await postMessage(
@@ -138,6 +125,7 @@ function Messaging({onHandleBadges}) {
       if (msg.msg._id === id) msgs[idx].msg.isRead = value;
     });
     setMessages(msgs);
+    onHandleBadges([["othersToMe", value ? -1 : 1]]);
   }
   function handleReply(avatar, title, id_receiver, msg_id, conv_id) {
     //msg_id is the incomingl message that is being replied >>> read=true, it is assumed that incoming message is read before repying to it

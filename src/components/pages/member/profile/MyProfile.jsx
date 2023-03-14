@@ -82,7 +82,7 @@ function MyProfile({
   const [spin2, setSpinner2] = useState(false);
   const [formValid, setFormValid] = useState(false);
   useEffect(() => {
-    onHandleActionRequired({profile: !formValid});
+    onHandleActionRequired([["profile", !formValid]]);
   }, [formValid]);
   const [values, setValues] = useState({});
   const [valid, setValid] = useState({

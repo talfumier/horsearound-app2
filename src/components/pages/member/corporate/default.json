@@ -27,7 +27,7 @@
   },
   "deviseAccount": {
     "name": "deviseAccount",
-    "data": {"default": "€", "saved": ""}
+    "data": {"default": "EUR", "saved": ""}
   },
   "domiciliation": {
     "name": "domiciliation",
